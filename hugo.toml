@@ -1,5 +1,5 @@
 # config/_default/hugo.toml
-baseURL = "https://press.brandmine.io"
+baseURL = "https://brandmine-presskit.pages.dev"
 languageCode = "en"
 defaultContentLanguage = "en"
 title = "Brandmine Press Kit Service"
