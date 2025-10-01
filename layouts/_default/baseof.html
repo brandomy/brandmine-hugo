@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+
+    {{ $options := (dict "targetPath" "css/main.css" "outputStyle" "compressed") }}
+    {{ $styles := resources.Get "scss/main.scss" | toCSS $options }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 </head>
 <body>
     {{ block "main" . }}{{ end }}

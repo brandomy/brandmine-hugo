@@ -1,0 +1,92 @@
+/* ==========================================================================
+   BRANDMINE PRESS KIT - MAIN STYLESHEET
+   ========================================================================== */
+
+/* 1. Design Tokens */
+@import 'tokens';
+
+/* 2. Font Declarations */
+@import 'fonts';
+
+/* 3. Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--neutral-800);
+  background-color: var(--neutral-50);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: var(--leading-tight);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-4);
+}
+
+h1 {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+}
+
+p {
+  margin-bottom: var(--space-4);
+}
+
+a {
+  color: var(--primary-400);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-600);
+}
+
+/* 4. Layout */
+main {
+  max-width: var(--content-width-xl);
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-4);
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: var(--space-12) var(--space-8);
+  }
+}
+
+/* 5. Utility Classes */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--space-8);
+  }
+}

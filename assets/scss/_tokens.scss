@@ -310,24 +310,7 @@
    - max-width: 767px  (instead of 768px)
    - max-width: 991px  (instead of 992px)
 
-   Example usage:
-   /* Mobile first - base styles outside of any media query */
-   .element {
-    font-size: var(--text-sm);
-  }
-
-  /* Then enhance for larger screens */
-  @media (width >= 480px) {
-    .element {
-      font-size: var(--text-base);
-    }
-  }
-
-  @media (width >= 768px) {
-    .element {
-      font-size: var(--text-lg);
-    }
-  }
+   ========================================================================== */
 
 
   /* ==========================================================================
@@ -746,23 +729,25 @@
    - dimension tag styles: assets/css/components/ui/dimension-tag-cloud.scss
 */
 
-/* Mobile-First Responsive Example */
+/* Mobile-First Responsive Example:
+
 .example-component {
-  /* Mobile base styles (no media query) */
+  Mobile base styles (no media query)
   width: 100%;
   padding: var(--space-4);
 
-  /* Tablet and up (min-width only) */
+  Tablet and up (min-width only)
   @media (min-width: 768px) {
     width: var(--card-width-standard);
     padding: var(--space-6);
   }
 
-  /* Desktop and up (min-width only) */
+  Desktop and up (min-width only)
   @media (min-width: 1024px) {
     width: var(--card-width-featured);
   }
 }
+*/
 
 /* CSS File Organization Standard */
 /* Every HTML component should have a matching CSS file:
