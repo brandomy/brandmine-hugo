@@ -1,0 +1,76 @@
+{{ define "main" }}
+<main>
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+
+    <div class="pricing-tiers">
+        {{ range $key, $tier := .Site.Data.pricing.tiers }}
+        <div class="pricing-card">
+            <h2>{{ $tier.name }}</h2>
+            <div class="price">
+                <span class="price-rub">₽{{ $tier.price_rub }}/mo</span>
+                <span class="price-usd">${{ $tier.price_usd }}/mo</span>
+            </div>
+            <ul class="features">
+                {{ range $tier.features }}
+                <li>{{ . }}</li>
+                {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+    </div>
+</main>
+
+<style>
+    .pricing-tiers {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .pricing-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 2rem;
+        background: #fff;
+    }
+
+    .pricing-card h2 {
+        margin-top: 0;
+        color: #333;
+    }
+
+    .price {
+        display: flex;
+        flex-direction: column;
+        margin: 1.5rem 0;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .price-rub {
+        color: #0066cc;
+    }
+
+    .price-usd {
+        font-size: 1rem;
+        color: #666;
+        font-weight: normal;
+    }
+
+    .features {
+        list-style: none;
+        padding: 0;
+    }
+
+    .features li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .features li:last-child {
+        border-bottom: none;
+    }
+</style>
+{{ end }}

@@ -1,0 +1,36 @@
+tiers:
+  basic:
+    name: "DIY Press Kit"
+    price_rub: 10000
+    price_usd: 99
+    features:
+      - "1 Newsroom page"
+      - "5 Press releases/year"
+      - "English only"
+      - "Basic analytics"
+      - "Email support"
+
+  standard:
+    name: "Assisted Press Kit"
+    price_rub: 20000
+    price_usd: 199
+    features:
+      - "1 Newsroom page"
+      - "12 Press releases/year"
+      - "2 Languages"
+      - "Media kit hosting"
+      - "Priority support"
+      - "Content review"
+
+  premium:
+    name: "Full Service"
+    price_rub: 30000
+    price_usd: 299
+    features:
+      - "1 Newsroom page"
+      - "Unlimited releases"
+      - "4 Languages"
+      - "Premium media portal"
+      - "Dedicated manager"
+      - "Content creation"
+      - "Distribution assistance"
