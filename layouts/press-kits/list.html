@@ -1,0 +1,173 @@
+{{ define "main" }}
+<main class="press-kit">
+    <div class="container">
+        <!-- Header -->
+        <header class="press-kit__header">
+            {{ if .Params.logo }}
+            <img src="{{ .Params.logo }}" alt="{{ .Title }} logo" class="press-kit__logo">
+            {{ end }}
+            <h1>{{ .Title }}</h1>
+            <p class="press-kit__description">{{ .Description }}</p>
+
+            {{ if .Params.website }}
+            <a href="{{ .Params.website }}" class="press-kit__website" target="_blank" rel="noopener">
+                {{ .Params.website }}
+            </a>
+            {{ end }}
+        </header>
+
+        <!-- Key Facts -->
+        <section class="press-kit__section">
+            <h2>Key Facts</h2>
+            <div class="press-kit__facts">
+                {{ if .Params.established }}
+                <div class="fact">
+                    <strong>Founded:</strong> {{ .Params.established }}
+                </div>
+                {{ end }}
+                {{ if .Params.sector }}
+                <div class="fact">
+                    <strong>Industry:</strong> {{ .Params.sector }}
+                </div>
+                {{ end }}
+                {{ if .Params.tier }}
+                <div class="fact">
+                    <strong>Service Tier:</strong> {{ .Params.tier }}
+                </div>
+                {{ end }}
+            </div>
+        </section>
+
+        <!-- Content -->
+        <section class="press-kit__content">
+            {{ .Content }}
+        </section>
+
+        <!-- Media Contact -->
+        {{ if .Params.media_contact }}
+        <section class="press-kit__section press-kit__contact">
+            <h2>Media Contact</h2>
+            <div class="contact-card">
+                {{ with .Params.media_contact.name }}
+                <p><strong>Name:</strong> {{ . }}</p>
+                {{ end }}
+                {{ with .Params.media_contact.email }}
+                <p><strong>Email:</strong> <a href="mailto:{{ . }}">{{ . }}</a></p>
+                {{ end }}
+                {{ with .Params.media_contact.phone }}
+                <p><strong>Phone:</strong> <a href="tel:{{ . }}">{{ . }}</a></p>
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+
+        <!-- Social Media -->
+        {{ if .Params.social }}
+        <section class="press-kit__section press-kit__social">
+            <h2>Connect With Us</h2>
+            <div class="social-links">
+                {{ range $platform, $url := .Params.social }}
+                {{ if $url }}
+                <a href="{{ $url }}" class="social-link social-link--{{ $platform }}" target="_blank" rel="noopener">
+                    {{ $platform }}
+                </a>
+                {{ end }}
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+    </div>
+</main>
+
+<style>
+.press-kit {
+    padding: var(--space-8) 0;
+}
+
+.press-kit__header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+    padding-bottom: var(--space-8);
+    border-bottom: var(--border-light);
+}
+
+.press-kit__logo {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: var(--space-4);
+}
+
+.press-kit__description {
+    font-size: var(--text-lg);
+    color: var(--neutral-600);
+    margin-bottom: var(--space-4);
+}
+
+.press-kit__website {
+    color: var(--primary-400);
+    font-size: var(--text-sm);
+}
+
+.press-kit__section {
+    margin-bottom: var(--space-12);
+}
+
+.press-kit__section h2 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-6);
+    color: var(--neutral-900);
+}
+
+.press-kit__facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+}
+
+.fact {
+    padding: var(--space-4);
+    background: var(--neutral-100);
+    border-radius: var(--radius-md);
+}
+
+.contact-card {
+    padding: var(--space-6);
+    background: var(--neutral-50);
+    border: var(--border-light);
+    border-radius: var(--radius-md);
+}
+
+.contact-card p {
+    margin-bottom: var(--space-2);
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.social-link {
+    padding: var(--space-2) var(--space-4);
+    background: var(--neutral-100);
+    border-radius: var(--radius-sm);
+    text-transform: capitalize;
+    transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+    background: var(--primary-400);
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .press-kit {
+        padding: var(--space-16) 0;
+    }
+
+    .press-kit__logo {
+        max-width: 300px;
+    }
+}
+</style>
+{{ end }}
