@@ -1,0 +1,125 @@
+{{ define "main" }}
+<div class="taxonomy-page">
+  <div class="container">
+    <!-- Taxonomy Header -->
+    <header class="taxonomy-header" style="border-left-color: {{ .Page.Scratch.Get "dimensionColor" }}">
+      <div class="taxonomy-meta">
+        <span class="taxonomy-type">{{ .Data.Plural | humanize }}</span>
+      </div>
+
+      <h1>{{ .Title }}</h1>
+
+      {{ with .Description }}
+        <p class="taxonomy-description">{{ . }}</p>
+      {{ end }}
+
+      <div class="taxonomy-count">
+        {{ .Pages | len }} {{ if eq (.Pages | len) 1 }}{{ i18n "brand" | default "brand" }}{{ else }}{{ i18n "brands" | default "brands" }}{{ end }}
+      </div>
+    </header>
+
+    <!-- Optional Rich Content -->
+    {{ with .Content }}
+      <div class="taxonomy-content">
+        {{ . }}
+      </div>
+    {{ end }}
+
+    <!-- Brand List -->
+    {{ if .Pages }}
+      <div class="brand-grid">
+        {{ range .Pages }}
+          {{ partial "brand-card.html" . }}
+        {{ end }}
+      </div>
+    {{ else }}
+      <p class="no-content">{{ i18n "no_brands" | default "No brands found" }}.</p>
+    {{ end }}
+  </div>
+</div>
+
+<style>
+.taxonomy-page {
+  padding: var(--space-12) 0;
+}
+
+.taxonomy-header {
+  margin-bottom: var(--space-12);
+  padding: var(--space-8);
+  background: var(--neutral-50);
+  border-radius: var(--radius-lg);
+  border-left: 6px solid var(--neutral-400);
+}
+
+.taxonomy-meta {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--neutral-600);
+  margin-bottom: var(--space-2);
+}
+
+.taxonomy-header h1 {
+  font-size: var(--text-5xl);
+  margin-bottom: var(--space-4);
+}
+
+.taxonomy-description {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  max-width: 700px;
+  margin-bottom: var(--space-4);
+}
+
+.taxonomy-count {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--neutral-700);
+}
+
+.taxonomy-content {
+  margin-bottom: var(--space-12);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.no-content {
+  text-align: center;
+  color: var(--neutral-600);
+  font-size: var(--text-lg);
+  padding: var(--space-12) 0;
+}
+
+@media (min-width: 768px) {
+  .brand-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+</style>
+
+<script>
+// Set dimension color based on taxonomy type
+document.addEventListener('DOMContentLoaded', function() {
+  const taxonomyHeader = document.querySelector('.taxonomy-header');
+  const taxonomyType = '{{ .Data.Plural }}';
+
+  const dimensionColors = {
+    'markets': 'var(--sky-500)',
+    'sectors': 'var(--olive-500)',
+    'attributes': 'var(--secondary-500)',
+    'signals': 'var(--accent-500)'
+  };
+
+  if (taxonomyHeader && dimensionColors[taxonomyType]) {
+    taxonomyHeader.style.borderLeftColor = dimensionColors[taxonomyType];
+  }
+});
+</script>
+{{ end }}

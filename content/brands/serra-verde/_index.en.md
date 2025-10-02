@@ -1,0 +1,46 @@
+---
+title: "Serra Verde Coffee"
+translationKey: "br-serra-verde-brand"
+date: 2024-10-15
+draft: false
+
+# Taxonomies (4 dimensions)
+markets: ["brazil", "south-america"]
+sectors: ["food-beverage", "specialty-coffee"]
+attributes: ["founder-led", "sustainability-pioneer", "artisanal-excellence"]
+signals: ["export-ready", "revenue-growth"]
+
+# Founder relationship
+founder: "carlos-santos"
+
+# Business details
+founded: 2008
+employees: 45
+revenue: "$5M-8M"
+website: "https://serraverde.com.br"
+headquarters:
+  city: "Espírito Santo"
+  region: "Southeastern Brazil"
+  coordinates: [-19.1834, -40.3089]
+
+# Assets
+logo: "logo-color.png"
+heroImage: "hero-farmland.jpg"
+
+# SEO
+description: "Premium single-origin Brazilian coffee from sustainable mountain farms in Espírito Santo"
+---
+
+Serra Verde Coffee produces exceptional single-origin coffee from sustainable mountain farms in Brazil's Espírito Santo region. Founded by third-generation coffee farmer Carlos Santos, the company combines traditional cultivation methods with modern sustainability practices.
+
+## Mountain Terroir
+
+The Serra Verde mountains provide ideal growing conditions for specialty coffee: high altitude, volcanic soil, and perfect rainfall. The company works exclusively with small family farms committed to quality over quantity.
+
+## Sustainability Leadership
+
+Serra Verde pioneered direct trade relationships with farmers, ensuring fair pricing and sustainable farming practices. The company's carbon-neutral certification and reforestation programs set new standards for the Brazilian coffee industry.
+
+## International Success
+
+The brand has successfully entered specialty coffee markets across South America and is expanding into North American and European markets. Serra Verde's success demonstrates the global demand for traceable, sustainable, story-driven coffee products.

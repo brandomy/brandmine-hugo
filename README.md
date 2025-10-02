@@ -1,9 +1,9 @@
-# Brandmine Press Kit Service
+# Brandmine Hugo
 
-Professional press kit service for Russian SME brands expanding globally.
+Hugo-based website for discovering exceptional founder-led brands from BRICS+ markets.
 
 ## Tech Stack
-- **Framework**: Hugo 0.136.0
+- **Framework**: Hugo 0.150.0
 - **Languages**: EN/RU/ZH/AR with RTL support
 - **Deployment**: Cloudflare Pages
 - **Database**: Supabase (future)
@@ -25,23 +25,25 @@ hugo --minify
 ## Structure
 ```
 content/
-├── press-kits/     # Client newsrooms
-├── pages/          # Static pages
-└── _index.md       # Homepage
+├── brands/         # Brand profiles
+├── founders/       # Founder stories
+├── insights/       # Articles & analysis
+└── case-studies/   # Success stories
 
 data/
-├── pricing/        # Service tiers
-├── clients/        # Client testimonials
-└── team/           # Team members
+├── dimensions.yaml # Market dimensions
+├── insights.yaml   # Insight metadata
+└── people.yaml     # Team & founders
 
 layouts/
 ├── _default/       # Base templates
-├── press-kits/     # Newsroom templates
+├── brands/         # Brand templates
+├── insights/       # Article templates
 └── partials/       # Reusable components
 ```
 
 ## Deployment
 
-Automatically deploys to GitHub Pages on push to main branch.
-Production deployment via Cloudflare Pages (configured separately).
+Production deployment via Cloudflare Pages.
+Configured in `cloudflare.json`.
 

@@ -1,0 +1,278 @@
+{{ define "main" }}
+{{ $insightTypes := .Site.Data.insights.types }}
+{{ $insightType := index $insightTypes .Params.insightType }}
+
+<article class="insight-single">
+  <div class="container">
+    <!-- Insight Hero -->
+    <header class="insight-hero" style="border-left-color: {{ $insightType.colorHex }}">
+      {{ with $insightType }}
+        <div class="insight-category" style="background: {{ .colorHex }}">
+          {{ .title }}
+        </div>
+      {{ end }}
+
+      <h1>{{ .Title }}</h1>
+
+      <div class="insight-meta">
+        {{ with .Params.author }}
+          <span class="meta-item">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+            {{ . }}
+          </span>
+        {{ end }}
+
+        <span class="meta-item">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+          </svg>
+          {{ .Date.Format "January 2, 2006" }}
+        </span>
+
+        {{ with .Params.readTime }}
+          <span class="meta-item">{{ . }} min read</span>
+        {{ end }}
+      </div>
+
+      {{ $insightSlug := .Params.translationKey }}
+
+      {{ with .Params.heroImage }}
+        <div class="hero-image">
+          {{ partial "responsive-image.html" (dict
+            "src" (printf "images/insights/%s/originals/%s" $insightSlug .)
+            "alt" $.Title
+            "sizes" "(min-width: 1200px) 1200px, 100vw"
+          ) }}
+        </div>
+      {{ else }}
+        <div class="hero-image">
+          <img src="/images/placeholders/insight-hero-800w.jpg" alt="{{ $.Title }}" loading="lazy">
+        </div>
+      {{ end }}
+
+      {{ with .Params.summary }}
+        <p class="insight-summary">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <!-- Insight Content -->
+    <div class="insight-content">
+      <div class="content-main">
+        {{ .Content }}
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="content-sidebar">
+        <!-- Related Brands -->
+        {{ with .Params.relatedBrands }}
+          <div class="related-box">
+            <h3>{{ i18n "related_brands" | default "Related Brands" }}</h3>
+            <ul class="related-list">
+              {{ range . }}
+                {{ $brandSlug := . }}
+                {{ $brandPage := site.GetPage (printf "/brands/%s" .) }}
+                {{ if $brandPage }}
+                  <li><a href="{{ $brandPage.Permalink }}">{{ $brandPage.Title }}</a></li>
+                {{ end }}
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
+
+        <!-- Related Founders -->
+        {{ with .Params.relatedFounders }}
+          <div class="related-box">
+            <h3>{{ i18n "related_founders" | default "Related Founders" }}</h3>
+            <ul class="related-list">
+              {{ range . }}
+                {{ $founderPage := site.GetPage (printf "/founders/%s" .) }}
+                {{ if $founderPage }}
+                  <li><a href="{{ $founderPage.Permalink }}">{{ $founderPage.Title }}</a></li>
+                {{ end }}
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
+
+        <!-- Taxonomies -->
+        {{ if or .Params.markets .Params.sectors }}
+          <div class="related-box">
+            <h3>{{ i18n "topics" | default "Topics" }}</h3>
+
+            {{ with .Params.markets }}
+              <div class="taxonomy-group">
+                <h4 style="color: var(--sky-700)">{{ i18n "markets" | default "Markets" }}</h4>
+                <ul class="taxonomy-list">
+                  {{ range . }}
+                    <li><a href="{{ printf "/markets/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+
+            {{ with .Params.sectors }}
+              <div class="taxonomy-group">
+                <h4 style="color: var(--olive-700)">{{ i18n "sectors" | default "Sectors" }}</h4>
+                <ul class="taxonomy-list">
+                  {{ range . }}
+                    <li><a href="{{ printf "/sectors/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </aside>
+    </div>
+  </div>
+</article>
+
+<style>
+.insight-single {
+  padding: var(--space-8) 0;
+}
+
+.insight-hero {
+  margin-bottom: var(--space-12);
+  padding: var(--space-8);
+  background: var(--neutral-50);
+  border-radius: var(--radius-lg);
+  border-left: 6px solid var(--neutral-400);
+}
+
+.insight-category {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  color: white;
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+}
+
+.insight-hero h1 {
+  font-size: var(--text-5xl);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-6);
+}
+
+.insight-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.hero-image {
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  margin: var(--space-6) 0;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.insight-summary {
+  font-size: var(--text-xl);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-700);
+  font-weight: var(--font-medium);
+  margin-top: var(--space-6);
+}
+
+.insight-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+.content-main {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-800);
+}
+
+.content-main h2 {
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-4);
+}
+
+.content-main p {
+  margin-bottom: var(--space-6);
+}
+
+.related-box {
+  padding: var(--space-6);
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.related-box h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-4);
+}
+
+.related-list,
+.taxonomy-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.related-list li,
+.taxonomy-list li {
+  margin-bottom: var(--space-2);
+}
+
+.related-list a,
+.taxonomy-list a {
+  color: var(--neutral-700);
+  font-size: var(--text-sm);
+  transition: color 0.2s ease;
+}
+
+.related-list a:hover,
+.taxonomy-list a:hover {
+  color: var(--primary-600);
+}
+
+.taxonomy-group {
+  margin-bottom: var(--space-4);
+}
+
+.taxonomy-group h4 {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-2);
+}
+
+@media (min-width: 992px) {
+  .insight-content {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+</style>
+{{ end }}

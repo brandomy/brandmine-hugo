@@ -1,92 +1,63 @@
 /* ==========================================================================
-   BRANDMINE PRESS KIT - MAIN STYLESHEET
+   BRANDMINE MAIN STYLESHEET - Hugo
    ========================================================================== */
 
-/* 1. Design Tokens */
-@import 'tokens';
+/* Design Tokens */
+@import 'tokens/colors';
+@import 'tokens/typography';
+@import 'tokens/spacing';
 
-/* 2. Font Declarations */
+/* Font Declarations */
 @import 'fonts';
 
-/* 3. Base Styles */
+/* Base Styles */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html {
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 body {
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
-  color: var(--neutral-800);
+  color: var(--neutral-900);
   background-color: var(--neutral-50);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  font-weight: var(--font-bold);
   line-height: var(--leading-tight);
   color: var(--neutral-900);
-  margin-bottom: var(--space-4);
 }
 
-h1 {
-  font-size: var(--text-4xl);
-  font-weight: var(--font-bold);
-}
-
-h2 {
-  font-size: var(--text-3xl);
-  font-weight: var(--font-bold);
-}
-
-h3 {
-  font-size: var(--text-2xl);
-  font-weight: var(--font-semibold);
-}
-
-p {
-  margin-bottom: var(--space-4);
-}
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-base); }
 
 a {
-  color: var(--primary-400);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-a:hover {
   color: var(--primary-600);
-}
+  text-decoration: none;
+  transition: color 0.2s ease;
 
-/* 4. Layout */
-main {
-  max-width: var(--content-width-xl);
-  margin: 0 auto;
-  padding: var(--space-8) var(--space-4);
-}
-
-@media (min-width: 768px) {
-  main {
-    padding: var(--space-12) var(--space-8);
+  &:hover {
+    color: var(--primary-700);
   }
 }
 
-/* 5. Utility Classes */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container */
 .container {
   max-width: var(--container-max-width);
   margin: 0 auto;
   padding: 0 var(--space-4);
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding: 0 var(--space-8);
-  }
 }

@@ -1,0 +1,136 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Company Info -->
+      <div class="footer-section">
+        <h3 class="footer-heading">{{ .Site.Params.company.name }}</h3>
+        <p class="footer-tagline">{{ .Site.Params.company.tagline }}</p>
+        <p class="footer-location">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 0a5 5 0 0 0-5 5c0 2.5 5 11 5 11s5-8.5 5-11a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+          </svg>
+          {{ .Site.Params.company.location }}
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h3 class="footer-heading">{{ i18n "explore" | default "Explore" }}</h3>
+        <ul class="footer-links">
+          <li><a href="{{ "/brands" | relLangURL }}">{{ i18n "brands" | default "Brands" }}</a></li>
+          <li><a href="{{ "/founders" | relLangURL }}">{{ i18n "founders" | default "Founders" }}</a></li>
+          <li><a href="{{ "/insights" | relLangURL }}">{{ i18n "insights" | default "Insights" }}</a></li>
+        </ul>
+      </div>
+
+      <!-- Dimensions -->
+      <div class="footer-section">
+        <h3 class="footer-heading">{{ i18n "dimensions" | default "Dimensions" }}</h3>
+        <ul class="footer-links">
+          <li><a href="{{ "/markets" | relLangURL }}">{{ i18n "markets" | default "Markets" }}</a></li>
+          <li><a href="{{ "/sectors" | relLangURL }}">{{ i18n "sectors" | default "Sectors" }}</a></li>
+          <li><a href="{{ "/attributes" | relLangURL }}">{{ i18n "attributes" | default "Attributes" }}</a></li>
+          <li><a href="{{ "/signals" | relLangURL }}">{{ i18n "signals" | default "Signals" }}</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-section">
+        <h3 class="footer-heading">{{ i18n "contact" | default "Contact" }}</h3>
+        <p>
+          <a href="mailto:{{ .Site.Params.company.email }}">{{ .Site.Params.company.email }}</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">&copy; {{ now.Year }} {{ .Site.Params.company.name }}. {{ i18n "all_rights_reserved" | default "All rights reserved" }}.</p>
+      <p class="built-with">{{ i18n "built_with_hugo" | default "Built with Hugo" }}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+.site-footer {
+  background-color: var(--neutral-800);
+  color: var(--neutral-300);
+  padding: var(--space-12) 0 var(--space-6);
+  margin-top: var(--space-20);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.footer-heading {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: white;
+  margin-bottom: var(--space-4);
+}
+
+.footer-tagline {
+  color: var(--neutral-400);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-3);
+}
+
+.footer-location {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--neutral-400);
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: var(--space-2);
+}
+
+.footer-links a {
+  color: var(--neutral-400);
+  font-size: var(--text-sm);
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary-400);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--neutral-700);
+  padding-top: var(--space-6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.copyright,
+.built-with {
+  font-size: var(--text-sm);
+  color: var(--neutral-500);
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>

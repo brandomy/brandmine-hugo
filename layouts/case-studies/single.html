@@ -1,0 +1,529 @@
+{{ define "main" }}
+<article class="case-study-single">
+  <div class="container">
+    <!-- Case Study Hero -->
+    <header class="case-study-hero">
+      <div class="hero-meta">
+        <span class="meta-badge">Case Study</span>
+        {{ with .Params.industry }}
+          <span class="meta-item">{{ . }}</span>
+        {{ end }}
+        {{ with .Params.country }}
+          <span class="meta-item">{{ . }}</span>
+        {{ end }}
+        {{ with .Params.duration }}
+          <span class="meta-item">{{ . }}</span>
+        {{ end }}
+      </div>
+
+      <h1>{{ .Title }}</h1>
+
+      {{ with .Params.summary }}
+        <p class="hero-summary">{{ . }}</p>
+      {{ end }}
+
+      {{ $caseStudySlug := path.Base .File.Dir }}
+      {{ with .Params.heroImage }}
+        <div class="hero-image">
+          {{ partial "responsive-image.html" (dict
+            "src" (printf "images/case-studies/%s/originals/%s" $caseStudySlug .)
+            "alt" $.Title
+            "sizes" "(min-width: 1200px) 1200px, 100vw"
+          ) }}
+        </div>
+      {{ end }}
+    </header>
+
+    <!-- Metrics Dashboard -->
+    {{ with .Params.metrics }}
+      <section class="metrics-dashboard">
+        <h2 class="metrics-title">Key Metrics</h2>
+        <div class="metrics-grid">
+          {{ range . }}
+            <div class="metric-card">
+              <div class="metric-label">{{ .label }}</div>
+              <div class="metric-value">
+                {{ .value }}
+                {{ if .trend }}
+                  <span class="metric-trend metric-trend--{{ .trend }}">
+                    {{ if eq .trend "up" }}
+                      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 3l5 5h-3v5H6V8H3z"/>
+                      </svg>
+                    {{ else if eq .trend "down" }}
+                      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 13l-5-5h3V3h4v5h3z"/>
+                      </svg>
+                    {{ else }}
+                      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M2 8h12" stroke="currentColor" stroke-width="2"/>
+                      </svg>
+                    {{ end }}
+                  </span>
+                {{ end }}
+              </div>
+            </div>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+
+    <!-- Quick Summary Cards -->
+    <section class="summary-cards">
+      {{ with .Params.challenge }}
+        <div class="summary-card summary-card--challenge">
+          <h3>The Challenge</h3>
+          <p>{{ . }}</p>
+        </div>
+      {{ end }}
+      {{ with .Params.solution }}
+        <div class="summary-card summary-card--solution">
+          <h3>The Solution</h3>
+          <p>{{ . }}</p>
+        </div>
+      {{ end }}
+      {{ with .Params.results }}
+        <div class="summary-card summary-card--results">
+          <h3>The Results</h3>
+          <p>{{ . }}</p>
+        </div>
+      {{ end }}
+    </section>
+
+    <!-- Main Content -->
+    <div class="case-study-content">
+      <div class="content-main">
+        {{ .Content }}
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="content-sidebar">
+        <!-- Founder Quote -->
+        {{ with .Params.founderQuote }}
+          <div class="founder-quote-box">
+            <div class="quote-icon">
+              <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+              </svg>
+            </div>
+            <blockquote class="quote-text">{{ .text }}</blockquote>
+            <footer class="quote-footer">
+              <strong>{{ .attribution }}</strong>
+              {{ with .title }}<span>{{ . }}</span>{{ end }}
+            </footer>
+          </div>
+        {{ end }}
+
+        <!-- Client Info -->
+        {{ if or .Params.client .Params.founderName .Params.industry }}
+          <div class="info-box">
+            <h3>About {{ .Params.client }}</h3>
+            {{ with .Params.founderName }}
+              <div class="info-item">
+                <strong>Founder:</strong>
+                <span>{{ . }}</span>
+              </div>
+            {{ end }}
+            {{ with .Params.industry }}
+              <div class="info-item">
+                <strong>Industry:</strong>
+                <span>{{ . }}</span>
+              </div>
+            {{ end }}
+            {{ with .Params.country }}
+              <div class="info-item">
+                <strong>Location:</strong>
+                <span>{{ . }}</span>
+              </div>
+            {{ end }}
+            {{ with .Params.duration }}
+              <div class="info-item">
+                <strong>Duration:</strong>
+                <span>{{ . }}</span>
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        <!-- Related Brands -->
+        {{ with .Params.relatedBrands }}
+          <div class="related-box">
+            <h3>Related Brands</h3>
+            <ul class="related-list">
+              {{ range . }}
+                {{ $brandPage := site.GetPage (printf "/brands/%s" .) }}
+                {{ if $brandPage }}
+                  <li><a href="{{ $brandPage.Permalink }}">{{ $brandPage.Title }}</a></li>
+                {{ end }}
+              {{ end }}
+            </ul>
+          </div>
+        {{ end }}
+
+        <!-- Taxonomies -->
+        {{ if or .Params.markets .Params.sectors }}
+          <div class="related-box">
+            <h3>Topics</h3>
+            {{ with .Params.markets }}
+              <div class="taxonomy-group">
+                <h4 style="color: var(--sky-700)">Markets</h4>
+                <ul class="taxonomy-list">
+                  {{ range . }}
+                    <li><a href="{{ printf "/markets/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+            {{ with .Params.sectors }}
+              <div class="taxonomy-group">
+                <h4 style="color: var(--olive-700)">Sectors</h4>
+                <ul class="taxonomy-list">
+                  {{ range . }}
+                    <li><a href="{{ printf "/sectors/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </aside>
+    </div>
+  </div>
+</article>
+
+<style>
+.case-study-single {
+  padding: var(--space-8) 0;
+}
+
+.case-study-hero {
+  margin-bottom: var(--space-12);
+  text-align: center;
+}
+
+.hero-meta {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.meta-badge {
+  padding: var(--space-2) var(--space-4);
+  background: var(--primary-500);
+  color: white;
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  border-radius: var(--radius-full);
+}
+
+.meta-item {
+  padding: var(--space-2) var(--space-4);
+  background: var(--neutral-100);
+  color: var(--neutral-700);
+  border-radius: var(--radius-full);
+}
+
+.case-study-hero h1 {
+  font-size: var(--text-5xl);
+  line-height: var(--leading-tight);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-6);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-summary {
+  font-size: var(--text-xl);
+  color: var(--neutral-700);
+  line-height: var(--leading-relaxed);
+  max-width: 800px;
+  margin: 0 auto var(--space-8);
+}
+
+.hero-image {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  margin: var(--space-8) 0;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Metrics Dashboard */
+.metrics-dashboard {
+  background: linear-gradient(135deg, var(--primary-50) 0%, var(--accent-50) 100%);
+  padding: var(--space-10);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-12);
+}
+
+.metrics-title {
+  text-align: center;
+  font-size: var(--text-2xl);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-8);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-6);
+}
+
+.metric-card {
+  background: white;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.metric-label {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-3);
+}
+
+.metric-value {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  color: var(--neutral-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.metric-trend {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-base);
+}
+
+.metric-trend--up {
+  color: var(--green-600);
+}
+
+.metric-trend--down {
+  color: var(--red-600);
+}
+
+.metric-trend--stable {
+  color: var(--neutral-500);
+}
+
+/* Summary Cards */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-12);
+}
+
+.summary-card {
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid;
+}
+
+.summary-card--challenge {
+  background: var(--red-50);
+  border-color: var(--red-500);
+}
+
+.summary-card--solution {
+  background: var(--blue-50);
+  border-color: var(--blue-500);
+}
+
+.summary-card--results {
+  background: var(--green-50);
+  border-color: var(--green-500);
+}
+
+.summary-card h3 {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-3);
+}
+
+.summary-card p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-700);
+  margin: 0;
+}
+
+/* Content Grid */
+.case-study-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+.content-main {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-800);
+}
+
+.content-main h2 {
+  font-size: var(--text-3xl);
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-4);
+  color: var(--neutral-900);
+}
+
+.content-main p {
+  margin-bottom: var(--space-6);
+}
+
+.content-main ul,
+.content-main ol {
+  margin-bottom: var(--space-6);
+  padding-left: var(--space-6);
+}
+
+.content-main li {
+  margin-bottom: var(--space-2);
+}
+
+/* Sidebar */
+.founder-quote-box {
+  background: linear-gradient(135deg, var(--accent-50) 0%, var(--primary-50) 100%);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-6);
+  position: relative;
+}
+
+.quote-icon {
+  color: var(--primary-200);
+  margin-bottom: var(--space-3);
+}
+
+.quote-text {
+  font-size: var(--text-lg);
+  font-style: italic;
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-800);
+  margin: 0 0 var(--space-4);
+}
+
+.quote-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+}
+
+.quote-footer strong {
+  color: var(--neutral-900);
+}
+
+.quote-footer span {
+  color: var(--neutral-600);
+}
+
+.info-box,
+.related-box {
+  padding: var(--space-6);
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.info-box h3,
+.related-box h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-4);
+  color: var(--neutral-900);
+}
+
+.info-item {
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.info-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.info-item strong {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin-bottom: var(--space-1);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+.info-item span {
+  color: var(--neutral-800);
+  font-size: var(--text-base);
+}
+
+.related-list,
+.taxonomy-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.related-list li,
+.taxonomy-list li {
+  margin-bottom: var(--space-2);
+}
+
+.related-list a,
+.taxonomy-list a {
+  color: var(--neutral-700);
+  font-size: var(--text-sm);
+  transition: color 0.2s ease;
+}
+
+.related-list a:hover,
+.taxonomy-list a:hover {
+  color: var(--primary-600);
+}
+
+.taxonomy-group {
+  margin-bottom: var(--space-4);
+}
+
+.taxonomy-group h4 {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-2);
+}
+
+@media (min-width: 992px) {
+  .case-study-content {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+</style>
+{{ end }}

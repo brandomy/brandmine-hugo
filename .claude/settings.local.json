@@ -1,7 +1,31 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(hugo:*)",
+      "Bash(tree:*)",
+      "Bash(test:*)",
+      "Bash(cat:*)",
+      "Bash(for:*)",
+      "Bash(head:*)",
+      "Bash(done)",
+      "Bash(python3:*)",
+      "Bash(pkill:*)",
+      "Bash(grep:*)",
+      "Bash(awk:*)",
+      "Bash(xargs:*)",
+      "Bash(find:*)",
+      "Bash(echo:*)",
+      "Bash(do echo \"=== $dir ===\")",
+      "Bash(ls:*)",
+      "Read(//private/tmp/**)",
+      "Bash(do mkdir -p \"$case\")",
+      "Bash(npm install:*)",
+      "Bash(lighthouse:*)",
+      "Bash(curl:*)",
+      "Read(//Users/randaleastman/dev/**)"
     ],
     "deny": [],
     "ask": []

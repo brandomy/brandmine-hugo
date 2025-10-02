@@ -1,0 +1,32 @@
+dimensions:
+  markets:
+    title: "Markets"
+    color: "sky"
+    colorVar: "--sky-500"
+    colorHex: "#0EA5E9"
+    icon: "map-pin"
+    description: "Geographic markets and regional focus areas"
+
+  sectors:
+    title: "Sectors"
+    color: "olive"
+    colorVar: "--olive-500"
+    colorHex: "#A3B763"
+    icon: "tag"
+    description: "Industry sectors and business categories"
+
+  attributes:
+    title: "Attributes"
+    color: "secondary"
+    colorVar: "--secondary-500"
+    colorHex: "#F97316"
+    icon: "star"
+    description: "Brand qualities and characteristics"
+
+  signals:
+    title: "Signals"
+    color: "accent"
+    colorVar: "--accent-500"
+    colorHex: "#6366F1"
+    icon: "trending-up"
+    description: "Growth indicators and market signals"

@@ -1,0 +1,68 @@
+{{ define "main" }}
+<div class="insights-list-page">
+  <div class="container">
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}
+        <p class="page-description">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <!-- Insights Grid -->
+    {{ if .Pages }}
+      <div class="insights-grid">
+        {{ range .Pages }}
+          {{ partial "insight-card.html" . }}
+        {{ end }}
+      </div>
+    {{ else }}
+      <p class="no-content">{{ i18n "no_insights" | default "No insights found." }}</p>
+    {{ end }}
+  </div>
+</div>
+
+<style>
+.insights-list-page {
+  padding: var(--space-12) 0;
+}
+
+.page-header {
+  margin-bottom: var(--space-12);
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: var(--text-5xl);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-4);
+}
+
+.page-description {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.no-content {
+  text-align: center;
+  color: var(--neutral-600);
+  font-size: var(--text-lg);
+  padding: var(--space-12) 0;
+}
+
+@media (min-width: 768px) {
+  .insights-grid {
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  }
+}
+</style>
+{{ end }}

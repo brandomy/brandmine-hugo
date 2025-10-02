@@ -1,0 +1,127 @@
+{{/*
+  Component: partials/icon.html
+  Purpose: Unified icon component for Brandmine icons
+
+  Parameters:
+  - system: Icon system (required) - "dimensions" or "insights"
+  - type: Icon type (conditional) - "sectors", "markets", "attributes", "signals" (required for dimensions)
+  - name: Specific icon name (conditional) - for PNG icons or "default" for SVG defaults
+  - size: Size variant (optional, default: "md") - "sm", "md", "lg"
+  - class: Additional CSS classes (optional)
+  - color: Override color theme (optional) - for SVG icons only
+
+  Usage Examples:
+
+  Default dimension SVG:
+  {{ partial "icon.html" (dict "system" "dimensions" "type" "sectors" "name" "default") }}
+
+  Specific dimension PNG:
+  {{ partial "icon.html" (dict "system" "dimensions" "type" "sectors" "name" "wine") }}
+
+  Insight category SVG:
+  {{ partial "icon.html" (dict "system" "insights" "name" "brand-spotlight") }}
+
+  With custom size and color:
+  {{ partial "icon.html" (dict "system" "dimensions" "type" "markets" "name" "default" "size" "lg" "color" "custom") }}
+*/}}
+
+{{- $system := .system | default "dimensions" -}}
+{{- $icon_type := .type -}}
+{{- $icon_name := .name | default "default" -}}
+{{- $icon_size := .size | default "md" -}}
+{{- $icon_class := .class | default "" -}}
+{{- $icon_color := .color -}}
+
+{{/* Determine if this is an SVG (default icons only) or PNG */}}
+{{- $is_svg := false -}}
+{{- if eq $icon_name "default" -}}
+  {{- $is_svg = true -}}
+{{- else if eq $system "insights" -}}
+  {{/* Check if this is one of the 4 insight category SVGs */}}
+  {{- $insight_svgs := slice "market-momentum" "founders-journey" "location-intelligence" "brand-spotlight" "brandmine-news" -}}
+  {{- if in $insight_svgs $icon_name -}}
+    {{- $is_svg = true -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Build CSS classes */}}
+{{- $base_classes := printf "icon icon--%s" $system -}}
+{{- if $icon_type -}}
+  {{- $base_classes = printf "%s icon--%s" $base_classes $icon_type -}}
+{{- end -}}
+{{- $base_classes = printf "%s icon--%s" $base_classes $icon_size -}}
+{{- if $icon_color -}}
+  {{- $base_classes = printf "%s icon--%s" $base_classes $icon_color -}}
+{{- end -}}
+{{- if ne $icon_class "" -}}
+  {{- $base_classes = printf "%s %s" $base_classes $icon_class -}}
+{{- end -}}
+
+{{/* Render SVG icons */}}
+{{- if $is_svg -}}
+  <span class="{{ $base_classes }}">
+    {{- if and (eq $system "dimensions") $icon_type (eq $icon_name "default") -}}
+      {{/* Default dimension icons */}}
+      {{- if eq $icon_type "sectors" -}}
+        {{- partial "icons/sector-default.svg" . -}}
+      {{- else if eq $icon_type "markets" -}}
+        {{- partial "icons/market-default.svg" . -}}
+      {{- else if eq $icon_type "attributes" -}}
+        {{- partial "icons/attribute-default.svg" . -}}
+      {{- else if eq $icon_type "signals" -}}
+        {{- partial "icons/signal-default.svg" . -}}
+      {{- else -}}
+        {{- partial "icons/insights-default.svg" . -}}
+      {{- end -}}
+    {{- else if and (eq $system "dimensions") (eq $icon_name "russian-sector") -}}
+      {{/* Special case for Russian sector */}}
+      {{- partial "icons/russian-sector-default.svg" . -}}
+    {{- else if and (eq $system "insights") (eq $icon_name "default") -}}
+      {{/* General insights default */}}
+      {{- partial "icons/insights-default.svg" . -}}
+    {{- else if eq $system "insights" -}}
+      {{/* Specific insight category SVGs */}}
+      {{- if eq $icon_name "brand-spotlight" -}}
+        {{- partial "icons/brand-spotlight.svg" . -}}
+      {{- else if eq $icon_name "founders-journey" -}}
+        {{- partial "icons/founders-journey.svg" . -}}
+      {{- else if eq $icon_name "location-intelligence" -}}
+        {{- partial "icons/location-intelligence.svg" . -}}
+      {{- else if eq $icon_name "market-momentum" -}}
+        {{- partial "icons/market-momentum.svg" . -}}
+      {{- else if eq $icon_name "brandmine-news" -}}
+        {{- partial "icons/company-news.svg" . -}}
+      {{- else -}}
+        {{- partial "icons/insights-default.svg" . -}}
+      {{- end -}}
+    {{- else -}}
+      {{/* Fallback */}}
+      {{- partial "icons/insights-default.svg" . -}}
+    {{- end -}}
+  </span>
+
+{{/* Render PNG icons */}}
+{{- else -}}
+  {{/* Build PNG path - using only one size (largest available) */}}
+  {{- $png_path := printf "/images/icons/%s" $system -}}
+
+  {{- if and (eq $system "dimensions") $icon_type -}}
+    {{- $png_path = printf "%s/png/dimensions/%s/%s.png" $png_path $icon_type $icon_name -}}
+  {{- else if eq $system "insights" -}}
+    {{- $png_path = printf "%s/png/insights/%s.png" $png_path $icon_name -}}
+  {{- else -}}
+    {{/* Fallback path */}}
+    {{- $png_path = printf "%s/png/insights/%s.png" $png_path $icon_name -}}
+  {{- end -}}
+
+  {{/* Generate alt text */}}
+  {{- $alt_text := $icon_name | replaceRE "-" " " | title -}}
+  {{- if $icon_type -}}
+    {{- $alt_text = printf "%s (%s)" $alt_text ($icon_type | replaceRE "-" " ") -}}
+  {{- end -}}
+
+  <img src="{{ $png_path | relURL }}"
+       alt="{{ $alt_text }}"
+       class="{{ $base_classes }}"
+       loading="lazy">
+{{- end -}}

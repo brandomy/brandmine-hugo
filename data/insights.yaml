@@ -1,0 +1,36 @@
+types:
+  brand-spotlight:
+    title: "Brand Spotlight"
+    description: "Featured brand stories and analysis"
+    color: "secondary"
+    colorVar: "--secondary-500"
+    colorHex: "#F97316"
+    icon: "spotlight"
+    alignedWith: "attributes"
+
+  founders-journey:
+    title: "Founder's Journey"
+    description: "Personal stories of founder-led brands"
+    color: "accent"
+    colorVar: "--accent-500"
+    colorHex: "#6366F1"
+    icon: "person"
+    alignedWith: "signals"
+
+  location-intelligence:
+    title: "Location Intelligence"
+    description: "Geographic and market context"
+    color: "sky"
+    colorVar: "--sky-500"
+    colorHex: "#0EA5E9"
+    icon: "map"
+    alignedWith: "markets"
+
+  market-momentum:
+    title: "Market Momentum"
+    description: "Sector trends and opportunities"
+    color: "olive"
+    colorVar: "--olive-500"
+    colorHex: "#A3B763"
+    icon: "trending"
+    alignedWith: "sectors"

@@ -1,0 +1,120 @@
+<div class="language-switcher">
+  {{ if .IsTranslated }}
+    <button class="lang-toggle" aria-label="Language options" aria-expanded="false">
+      <span class="current-lang">{{ .Language.LanguageName }}</span>
+      <svg width="12" height="8" viewBox="0 0 12 8" fill="currentColor" aria-hidden="true">
+        <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none"/>
+      </svg>
+    </button>
+
+    <ul class="lang-menu" hidden>
+      <li class="lang-item current">
+        <a href="{{ .Permalink }}" hreflang="{{ .Language.Lang }}">
+          {{ .Language.LanguageName }}
+        </a>
+      </li>
+      {{ range .Translations }}
+        <li class="lang-item">
+          <a href="{{ .Permalink }}" hreflang="{{ .Language.Lang }}">
+            {{ .Language.LanguageName }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <div class="lang-single">{{ .Language.LanguageName }}</div>
+  {{ end }}
+</div>
+
+<style>
+.language-switcher {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--neutral-100);
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--neutral-700);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-toggle:hover {
+  background: var(--neutral-200);
+  border-color: var(--neutral-400);
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  min-width: 150px;
+  background: white;
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  list-style: none;
+  margin: 0;
+  padding: var(--space-2);
+  z-index: 100;
+}
+
+.lang-menu[hidden] {
+  display: none;
+}
+
+.lang-item a {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  color: var(--neutral-700);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+}
+
+.lang-item a:hover {
+  background: var(--neutral-100);
+}
+
+.lang-item.current a {
+  color: var(--primary-600);
+  font-weight: var(--font-semibold);
+}
+
+.lang-single {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--neutral-600);
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.querySelector('.lang-toggle');
+  const menu = document.querySelector('.lang-menu');
+
+  if (toggle && menu) {
+    toggle.addEventListener('click', function() {
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !isExpanded);
+      menu.hidden = isExpanded;
+    });
+
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.language-switcher')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.hidden = true;
+      }
+    });
+  }
+});
+</script>

@@ -1,0 +1,113 @@
+# hugo.yaml
+baseURL: "https://brandmine.io"
+languageCode: "en"
+title: "Brandmine"
+
+# Build settings
+buildDrafts: false
+buildFuture: false
+enableRobotsTXT: true
+enableGitInfo: true
+
+# Multilingual
+defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: false
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    params:
+      description: "Discover exceptional founder-led brands from BRICS+ markets"
+  ru:
+    languageName: "Русский"
+    weight: 2
+    params:
+      description: "Откройте для себя исключительные бренды основателей из стран БРИКС+"
+  zh:
+    languageName: "中文"
+    weight: 3
+    params:
+      description: "发现来自金砖国家的杰出创始人品牌"
+
+# Taxonomies (4 dimensions)
+taxonomies:
+  market: "markets"
+  sector: "sectors"
+  attribute: "attributes"
+  signal: "signals"
+
+# Pagination
+pagination:
+  pagerSize: 24
+
+# Permalinks
+permalinks:
+  brands: "/:section/:slug/"
+  founders: "/:section/:slug/"
+  insights: "/:section/:slug/"
+
+# Image processing
+imaging:
+  resampleFilter: "Lanczos"
+  quality: 85
+  anchor: "Smart"
+
+# Minification
+minify:
+  disableXML: true
+  minifyOutput: true
+
+# Markup
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: "monokai"
+    lineNos: false
+    noClasses: false
+
+# Output formats
+outputs:
+  home: ["HTML", "RSS", "JSON"]
+  section: ["HTML", "RSS"]
+  taxonomy: ["HTML", "RSS"]
+
+# Custom parameters
+params:
+  designSystem:
+    primaryColor: "#38B2AC"
+    fontHeading: "PT Serif"
+    fontBody: "PT Sans"
+
+  dimensions:
+    markets:
+      color: "sky"
+      colorVar: "--sky-500"
+      colorHex: "#0EA5E9"
+    sectors:
+      color: "olive"
+      colorVar: "--olive-500"
+      colorHex: "#A3B763"
+    attributes:
+      color: "secondary"
+      colorVar: "--secondary-500"
+      colorHex: "#F97316"
+    signals:
+      color: "accent"
+      colorVar: "--accent-500"
+      colorHex: "#6366F1"
+
+  company:
+    name: "Brandmine"
+    tagline: "Illuminate exceptional brands from emerging markets"
+    email: "hello@brandmine.io"
+    location: "George Town, Penang, Malaysia"
+
+  features:
+    search: true
+    multiFilter: true
+    maps: true
+
+  chinaOptimized: true

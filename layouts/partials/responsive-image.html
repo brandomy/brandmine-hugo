@@ -1,0 +1,42 @@
+{{/*
+  Responsive Image Partial
+
+  Usage:
+    {{ partial "responsive-image.html" (dict "src" "images/folder/image.jpg" "alt" "Description" "sizes" "(max-width: 800px) 100vw, 800px") }}
+
+  Parameters:
+    - src (required): Path to image relative to assets/ directory
+    - alt (required): Alt text for accessibility
+    - sizes (optional): Sizes attribute for responsive images (default: "(max-width: 800px) 100vw, 800px")
+    - class (optional): CSS classes to add to img tag
+    - loading (optional): Loading attribute (default: "lazy")
+*/}}
+
+{{ $src := .src }}
+{{ $alt := .alt | default "" }}
+{{ $sizes := .sizes | default "(max-width: 800px) 100vw, 800px" }}
+{{ $class := .class | default "" }}
+{{ $loading := .loading | default "lazy" }}
+
+{{ $img := resources.Get $src }}
+
+{{ if $img }}
+  {{ $small := $img.Resize "400x" }}
+  {{ $medium := $img.Resize "800x" }}
+  {{ $large := $img.Resize "1200x" }}
+
+  <img src="{{ $medium.RelPermalink }}"
+       srcset="{{ $small.RelPermalink }} 400w,
+               {{ $medium.RelPermalink }} 800w,
+               {{ $large.RelPermalink }} 1200w"
+       sizes="{{ $sizes }}"
+       alt="{{ $alt }}"
+       {{ with $class }}class="{{ . }}"{{ end }}
+       loading="{{ $loading }}"
+       width="{{ $medium.Width }}"
+       height="{{ $medium.Height }}">
+{{ else }}
+  {{/* Fallback if image not found */}}
+  <img src="/images/placeholder.jpg" alt="{{ $alt }}" {{ with $class }}class="{{ . }}"{{ end }}>
+  {{ warnf "Image not found: %s" $src }}
+{{ end }}

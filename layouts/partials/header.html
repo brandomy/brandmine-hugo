@@ -1,0 +1,91 @@
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Logo -->
+      <div class="site-branding">
+        <a href="{{ "/" | relLangURL }}" class="site-logo">
+          <span class="site-title">{{ .Site.Title }}</span>
+        </a>
+        <p class="site-tagline">{{ .Site.Params.company.tagline }}</p>
+      </div>
+
+      <!-- Main Navigation -->
+      <nav class="main-nav" role="navigation" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="{{ "/brands" | relLangURL }}">{{ i18n "brands" | default "Brands" }}</a></li>
+          <li><a href="{{ "/founders" | relLangURL }}">{{ i18n "founders" | default "Founders" }}</a></li>
+          <li><a href="{{ "/insights" | relLangURL }}">{{ i18n "insights" | default "Insights" }}</a></li>
+        </ul>
+      </nav>
+
+      <!-- Language Switcher -->
+      {{ partial "language-switcher.html" . }}
+    </div>
+  </div>
+</header>
+
+<style>
+.site-header {
+  background-color: white;
+  border-bottom: 1px solid var(--neutral-200);
+  padding: var(--space-4) 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.site-branding {
+  flex: 0 0 auto;
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--primary-600);
+}
+
+.site-tagline {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin-top: var(--space-1);
+  margin-bottom: 0;
+}
+
+.main-nav {
+  flex: 1 1 auto;
+}
+
+.nav-list {
+  display: flex;
+  gap: var(--space-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  font-weight: var(--font-medium);
+  color: var(--neutral-700);
+  transition: color 0.2s ease;
+}
+
+.nav-list a:hover {
+  color: var(--primary-600);
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    padding: var(--space-6) 0;
+  }
+
+  .site-title {
+    font-size: var(--text-3xl);
+  }
+}
+</style>

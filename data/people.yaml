@@ -1,0 +1,28 @@
+people:
+  randal-eastman:
+    name: "Randal Eastman"
+    roles: ["team", "author"]
+    photo: "headshot-professional.jpg"
+    title: "Co-Founder & Managing Director"
+    bio: "Randal leads Brandmine's brand discovery and market intelligence initiatives, with deep expertise in BRICS+ markets and emerging consumer brands."
+    email: "randal@brandmine.io"
+    linkedin: "https://linkedin.com/in/randaleastman"
+
+  olya-eastman:
+    name: "Olya Eastman"
+    roles: ["team", "author"]
+    photo: "headshot-professional.jpg"
+    title: "Co-Founder & Research Director"
+    bio: "Olya brings extensive experience in cross-cultural brand research and market analysis, specializing in Russian and Eastern European markets."
+    email: "olya@brandmine.io"
+    linkedin: "https://linkedin.com/in/olyaeastman"
+
+  georgie-yam:
+    name: "Georgie Yam"
+    roles: ["client", "testimonial"]
+    photo: "headshot.jpg"
+    portrait: "portrait.jpg"
+    company: "Perfect Diary"
+    title: "International Expansion Director"
+    testimonial: "Brandmine's insights helped us identify key regional partners and understand nuanced market dynamics that were critical to our expansion strategy."
+    featured: true

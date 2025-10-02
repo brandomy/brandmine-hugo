@@ -1,0 +1,161 @@
+{{/*
+  Testimonial Component
+
+  Displays a client testimonial with photo and details
+
+  Usage:
+  {{ partial "testimonial.html" (dict "slug" "georgie-yam" "context" .) }}
+
+  Or with custom quote (overrides data):
+  {{ partial "testimonial.html" (dict "slug" "georgie-yam" "quote" "Custom quote..." "context" .) }}
+*/}}
+
+{{- $slug := .slug -}}
+{{- $context := .context -}}
+{{- $customQuote := .quote -}}
+{{- $person := index $context.Site.Data.people.people $slug -}}
+
+{{- if $person -}}
+  <blockquote class="testimonial">
+    <div class="testimonial-content">
+      {{- if or $person.portrait $person.photo -}}
+        <div class="testimonial-image">
+          {{ partial "responsive-image.html" (dict
+            "src" (printf "images/people/%s/originals/%s" $slug (default $person.photo $person.portrait))
+            "alt" $person.name
+            "sizes" "(max-width: 768px) 80px, 120px"
+            "class" "testimonial-photo"
+          ) }}
+        </div>
+      {{- end -}}
+
+      <div class="testimonial-body">
+        <div class="testimonial-quote-icon">
+          <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+          </svg>
+        </div>
+
+        <p class="testimonial-text">
+          {{- if $customQuote -}}
+            {{ $customQuote }}
+          {{- else if $person.testimonial -}}
+            {{ $person.testimonial }}
+          {{- end -}}
+        </p>
+
+        <footer class="testimonial-footer">
+          <cite class="testimonial-author">
+            <strong class="testimonial-name">{{ $person.name }}</strong>
+            {{- if $person.title -}}
+              <span class="testimonial-title">{{ $person.title }}</span>
+            {{- end -}}
+            {{- if $person.company -}}
+              <span class="testimonial-company">{{ $person.company }}</span>
+            {{- end -}}
+          </cite>
+        </footer>
+      </div>
+    </div>
+  </blockquote>
+{{- end -}}
+
+<style>
+.testimonial {
+  background: linear-gradient(135deg, var(--primary-50) 0%, var(--accent-50) 100%);
+  border-left: 4px solid var(--primary-500);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  margin: var(--space-8) 0;
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-content {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+}
+
+.testimonial-image {
+  flex-shrink: 0;
+}
+
+.testimonial-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: var(--shadow-sm);
+}
+
+.testimonial-body {
+  flex: 1;
+  position: relative;
+}
+
+.testimonial-quote-icon {
+  color: var(--primary-200);
+  margin-bottom: var(--space-3);
+}
+
+.testimonial-text {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-800);
+  font-style: italic;
+  margin-bottom: var(--space-4);
+}
+
+.testimonial-footer {
+  margin-top: var(--space-4);
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-style: normal;
+}
+
+.testimonial-name {
+  font-size: var(--text-base);
+  color: var(--neutral-900);
+  font-weight: var(--font-bold);
+}
+
+.testimonial-title,
+.testimonial-company {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+.testimonial-company::before {
+  content: " • ";
+  margin: 0 var(--space-1);
+}
+
+@media (max-width: 768px) {
+  .testimonial-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .testimonial-photo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .testimonial-author {
+    align-items: center;
+  }
+}
+
+@media (min-width: 992px) {
+  .testimonial-photo {
+    width: 120px;
+    height: 120px;
+  }
+}
+</style>

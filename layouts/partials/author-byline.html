@@ -1,0 +1,71 @@
+{{/*
+  Author Byline Component
+
+  Shows author name and avatar for articles
+
+  Usage:
+  {{ partial "author-byline.html" (dict "author" .Params.author "context" .) }}
+*/}}
+
+{{- $authorSlug := .author -}}
+{{- $context := .context -}}
+
+{{- if $authorSlug -}}
+  {{- $person := index $context.Site.Data.people.people $authorSlug -}}
+  {{- if $person -}}
+    <div class="author-byline">
+      {{- if $person.photo -}}
+        {{ partial "responsive-image.html" (dict
+          "src" (printf "images/people/%s/originals/%s" $authorSlug $person.photo)
+          "alt" $person.name
+          "sizes" "48px"
+          "class" "author-avatar"
+        ) }}
+      {{- end -}}
+      <div class="author-info">
+        <span class="author-name">{{ $person.name }}</span>
+        {{- if $person.title -}}
+          <span class="author-title">{{ $person.title }}</span>
+        {{- end -}}
+      </div>
+    </div>
+  {{- else -}}
+    {{/* Fallback if person not found in data */}}
+    <div class="author-byline">
+      <span class="author-name">{{ $authorSlug | humanize }}</span>
+    </div>
+  {{- end -}}
+{{- end -}}
+
+<style>
+.author-byline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.author-name {
+  font-weight: var(--font-semibold);
+  color: var(--neutral-900);
+  font-size: var(--text-sm);
+}
+
+.author-title {
+  font-size: var(--text-xs);
+  color: var(--neutral-600);
+}
+</style>

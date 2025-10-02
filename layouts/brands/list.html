@@ -1,0 +1,112 @@
+{{ define "main" }}
+<div class="brands-list-page">
+  <div class="container">
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}
+        <p class="page-description">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <!-- Search Bar -->
+    {{ partial "search-bar.html" . }}
+
+    <!-- Main Content Area with Filter Sidebar -->
+    <div class="brands-content-grid">
+      <!-- Filter Sidebar -->
+      <aside class="filter-sidebar">
+        {{ partial "filter-panel.html" . }}
+      </aside>
+
+      <!-- Brand Grid -->
+      <div class="brands-main">
+        {{ if .Pages }}
+          <div id="brand-grid" class="brand-grid">
+            {{ range .Pages }}
+              {{ partial "brand-card.html" . }}
+            {{ end }}
+          </div>
+        {{ else }}
+          <p class="no-content">{{ i18n "no_brands" | default "No brands found." }}</p>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.brands-list-page {
+  padding: var(--space-12) 0;
+}
+
+.page-header {
+  margin-bottom: var(--space-8);
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: var(--text-5xl);
+  color: var(--neutral-900);
+  margin-bottom: var(--space-4);
+}
+
+.page-description {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.brands-content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.filter-sidebar {
+  display: none;
+}
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.no-content {
+  text-align: center;
+  color: var(--neutral-600);
+  font-size: var(--text-lg);
+  padding: var(--space-12) 0;
+}
+
+/* Tablet and up: Show filter sidebar */
+@media (min-width: 992px) {
+  .brands-content-grid {
+    grid-template-columns: 280px 1fr;
+  }
+
+  .filter-sidebar {
+    display: block;
+    position: sticky;
+    top: var(--space-8);
+    align-self: start;
+    max-height: calc(100vh - var(--space-16));
+    overflow-y: auto;
+  }
+
+  .brand-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+/* Desktop optimization */
+@media (min-width: 1200px) {
+  .brand-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+</style>
+{{ end }}

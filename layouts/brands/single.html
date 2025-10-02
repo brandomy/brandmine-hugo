@@ -1,0 +1,324 @@
+{{ define "main" }}
+<article class="brand-single">
+  <div class="container">
+    <!-- Brand Hero -->
+    <header class="brand-hero">
+      {{ $brandSlug := path.Base .File.Dir }}
+      {{ $logoBase := printf "/images/brands/%s/%s-logo-color" $brandSlug $brandSlug }}
+
+      {{ with .Params.heroImage }}
+        {{ $heroPath := . }}
+        <div class="hero-image">
+          <img src="{{ $heroPath | relURL }}" alt="{{ $.Title }} hero image" loading="lazy">
+        </div>
+      {{ else }}
+        <div class="hero-image">
+          <img src="/images/placeholders/brand-hero-800w.jpg" alt="{{ $.Title }}" loading="lazy">
+        </div>
+      {{ end }}
+
+      <div class="hero-content">
+        {{ with .Params.logo }}
+          {{ partial "responsive-image.html" (dict
+            "src" (printf "images/brands/%s/originals/%s" $brandSlug .)
+            "alt" (printf "%s logo" $.Title)
+            "sizes" "150px"
+            "class" "brand-logo"
+          ) }}
+        {{ else }}
+          <img src="/images/placeholders/brand-logo-800w.jpg" alt="{{ $.Title }}" class="brand-logo" loading="lazy">
+        {{ end }}
+
+        <h1>{{ .Title }}</h1>
+
+        {{ with .Params.description }}
+          <p class="brand-tagline">{{ . }}</p>
+        {{ end }}
+
+        <!-- Quick Facts -->
+        <div class="quick-facts">
+          {{ with .Params.founded }}
+            <div class="fact">
+              <span class="fact-label">{{ i18n "founded" | default "Founded" }}</span>
+              <span class="fact-value">{{ . }}</span>
+            </div>
+          {{ end }}
+
+          {{ with .Params.headquarters }}
+            <div class="fact">
+              <span class="fact-label">{{ i18n "location" | default "Location" }}</span>
+              <span class="fact-value">{{ .city }}, {{ .region }}</span>
+            </div>
+          {{ end }}
+
+          {{ with .Params.website }}
+            <div class="fact">
+              <span class="fact-label">{{ i18n "website" | default "Website" }}</span>
+              <span class="fact-value"><a href="{{ . }}" target="_blank" rel="noopener">{{ . }}</a></span>
+            </div>
+          {{ end }}
+        </div>
+      </div>
+    </header>
+
+    <!-- Brand Content -->
+    <div class="brand-content">
+      <div class="content-main">
+        {{ .Content }}
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="content-sidebar">
+        <!-- Dimensions -->
+        {{ if or .Params.markets .Params.sectors .Params.attributes .Params.signals }}
+          <div class="dimensions-box">
+            <h3>{{ i18n "dimensions" | default "Dimensions" }}</h3>
+
+            {{ with .Params.markets }}
+              <div class="dimension-group">
+                <h4 class="dimension-label" style="color: var(--sky-700)">{{ i18n "markets" | default "Markets" }}</h4>
+                <ul class="dimension-list">
+                  {{ range . }}
+                    <li><a href="{{ printf "/markets/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+
+            {{ with .Params.sectors }}
+              <div class="dimension-group">
+                <h4 class="dimension-label" style="color: var(--olive-700)">{{ i18n "sectors" | default "Sectors" }}</h4>
+                <ul class="dimension-list">
+                  {{ range . }}
+                    <li><a href="{{ printf "/sectors/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+
+            {{ with .Params.attributes }}
+              <div class="dimension-group">
+                <h4 class="dimension-label" style="color: var(--secondary-700)">{{ i18n "attributes" | default "Attributes" }}</h4>
+                <ul class="dimension-list">
+                  {{ range . }}
+                    <li><a href="{{ printf "/attributes/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+
+            {{ with .Params.signals }}
+              <div class="dimension-group">
+                <h4 class="dimension-label" style="color: var(--accent-700)">{{ i18n "signals" | default "Signals" }}</h4>
+                <ul class="dimension-list">
+                  {{ range . }}
+                    <li><a href="{{ printf "/signals/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                  {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        <!-- Founder -->
+        {{ with .Params.founder }}
+          {{ $founderPage := site.GetPage (printf "/founders/%s" .) }}
+          {{ if $founderPage }}
+            {{ $founderSlug := . }}
+            <div class="founder-box">
+              <h3>{{ i18n "founder" | default "Founder" }}</h3>
+              <a href="{{ $founderPage.Permalink }}" class="founder-link">
+                {{ with $founderPage.Params.photo }}
+                  {{ partial "responsive-image.html" (dict
+                    "src" (printf "images/founders/%s/originals/%s" $founderSlug .)
+                    "alt" $founderPage.Title
+                    "sizes" "60px"
+                    "class" "founder-photo"
+                  ) }}
+                {{ else }}
+                  <img src="/images/placeholders/founder-headshot-800w.jpg" alt="{{ $founderPage.Title }}" class="founder-photo" loading="lazy">
+                {{ end }}
+                <div class="founder-info">
+                  <strong>{{ $founderPage.Title }}</strong>
+                  {{ with $founderPage.Params.role }}
+                    <span class="founder-role">{{ . }}</span>
+                  {{ end }}
+                </div>
+              </a>
+            </div>
+          {{ end }}
+        {{ end }}
+      </aside>
+    </div>
+  </div>
+</article>
+
+<style>
+.brand-single {
+  padding: var(--space-8) 0;
+}
+
+.brand-hero {
+  margin-bottom: var(--space-12);
+}
+
+.hero-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-6);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand-logo {
+  max-width: 150px;
+  height: auto;
+  margin-bottom: var(--space-4);
+}
+
+.hero-content h1 {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-3);
+}
+
+.brand-tagline {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  margin-bottom: var(--space-6);
+}
+
+.quick-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: var(--neutral-100);
+  border-radius: var(--radius-md);
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.fact-label {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+.fact-value {
+  font-size: var(--text-base);
+  color: var(--neutral-900);
+  font-weight: var(--font-semibold);
+}
+
+.brand-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+.content-main {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-800);
+}
+
+.content-main p {
+  margin-bottom: var(--space-6);
+}
+
+.dimensions-box,
+.founder-box {
+  padding: var(--space-6);
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.dimensions-box h3,
+.founder-box h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-4);
+}
+
+.dimension-group {
+  margin-bottom: var(--space-4);
+}
+
+.dimension-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-2);
+}
+
+.dimension-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dimension-list li {
+  margin-bottom: var(--space-1);
+}
+
+.dimension-list a {
+  font-size: var(--text-sm);
+  color: var(--neutral-700);
+  transition: color 0.2s ease;
+}
+
+.dimension-list a:hover {
+  color: var(--primary-600);
+}
+
+.founder-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  text-decoration: none;
+  color: inherit;
+}
+
+.founder-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.founder-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.founder-role {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+@media (min-width: 992px) {
+  .brand-content {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .hero-image {
+    height: 400px;
+  }
+}
+</style>
+{{ end }}
