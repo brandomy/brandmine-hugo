@@ -1,5 +1,5 @@
 # hugo.yaml
-baseURL: "https://brandmine.io"
+baseURL: "/"
 languageCode: "en"
 title: "Brandmine"
 
