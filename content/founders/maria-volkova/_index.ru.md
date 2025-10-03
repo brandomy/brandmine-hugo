@@ -19,7 +19,7 @@ city: "Казань"
 
 # Professional
 brands: ["seven-spices"]
-markets: ["russia", "eu"]
+markets: ["russia"]
 expertise: ["кулинарное искусство", "традиционная консервация", "устойчивые закупки", "пищевая археология"]
 keyAchievement: "Золото на Международной выставке приправ"
 

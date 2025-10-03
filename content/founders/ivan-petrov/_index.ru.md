@@ -19,7 +19,7 @@ city: "Белокуриха"
 
 # Professional
 brands: ["altai-honey"]
-markets: ["russia", "china", "kazakhstan"]
+markets: ["russia", "china"]
 expertise: ["пчеловодство", "органическое сельское хозяйство", "устойчивый сбор", "развитие сообщества"]
 keyAchievement: "Международная органическая сертификация"
 

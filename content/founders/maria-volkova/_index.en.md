@@ -19,7 +19,7 @@ city: "Kazan"
 
 # Professional
 brands: ["seven-spices"]
-markets: ["russia", "eu"]
+markets: ["russia"]
 expertise: ["culinary arts", "traditional preservation", "sustainable sourcing", "food archaeology"]
 keyAchievement: "Gold at International Condiment Exhibition"
 

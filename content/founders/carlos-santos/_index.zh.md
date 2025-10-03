@@ -19,7 +19,7 @@ city: "贡萨尔维斯"
 
 # Professional
 brands: ["serra-verde"]
-markets: ["brazil", "portugal", "spain"]
+markets: ["brazil"]
 expertise: ["有机农业", "可持续农业", "农林业", "出口开发"]
 keyAchievement: "恢复500多公顷大西洋森林"
 

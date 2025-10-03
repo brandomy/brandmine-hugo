@@ -19,7 +19,7 @@ city: "Moscow"
 
 # Professional
 brands: ["teatime"]
-markets: ["russia", "gb", "fr", "de", "jp", "sg"]
+markets: ["russia"]
 expertise: ["tea blending", "beverage innovation", "cultural ambassador", "brand storytelling"]
 keyAchievement: "Featured in Harrods London"
 

@@ -19,7 +19,7 @@ city: "莫斯科"
 
 # Professional
 brands: ["teatime"]
-markets: ["russia", "gb", "fr", "de", "jp", "sg"]
+markets: ["russia"]
 expertise: ["茶叶调配", "饮料创新", "文化大使", "品牌叙事"]
 keyAchievement: "入驻伦敦哈罗德百货"
 

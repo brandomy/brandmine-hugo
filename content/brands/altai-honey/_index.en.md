@@ -1,6 +1,6 @@
 ---
 title: "Altai Gold Honey"
-translationKey: "ru-altai-honey-brand"
+translationKey: "altai-honey"
 date: 2024-10-15
 draft: false
 

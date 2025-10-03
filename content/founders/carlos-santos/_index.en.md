@@ -19,7 +19,7 @@ city: "Gonçalves"
 
 # Professional
 brands: ["serra-verde"]
-markets: ["brazil", "portugal", "spain"]
+markets: ["brazil"]
 expertise: ["organic agriculture", "sustainable farming", "agroforestry", "export development"]
 keyAchievement: "Restored 500+ hectares of Atlantic Forest"
 

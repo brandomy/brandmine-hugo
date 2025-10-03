@@ -1,6 +1,6 @@
 ---
 title: "Сожурн Бутик-Отели"
-translationKey: "br-sojourn-hotels-brand"
+translationKey: "sojourn-hotels"
 date: 2024-10-15
 draft: false
 

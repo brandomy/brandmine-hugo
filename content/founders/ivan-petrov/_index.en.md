@@ -19,7 +19,7 @@ city: "Belokurikha"
 
 # Professional
 brands: ["altai-honey"]
-markets: ["russia", "china", "kazakhstan"]
+markets: ["russia", "china"]
 expertise: ["beekeeping", "organic agriculture", "sustainable harvesting", "community development"]
 keyAchievement: "International organic certification"
 yearsExperience: 15

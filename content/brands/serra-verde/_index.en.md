@@ -1,6 +1,6 @@
 ---
 title: "Serra Verde Organics"
-translationKey: "br-serra-verde-brand"
+translationKey: "serra-verde"
 date: 2024-10-15
 draft: false
 

@@ -19,7 +19,7 @@ city: "喀山"
 
 # Professional
 brands: ["seven-spices"]
-markets: ["russia", "eu"]
+markets: ["russia"]
 expertise: ["烹饪艺术", "传统保存", "可持续采购", "食品考古学"]
 keyAchievement: "国际调味品展览会金奖"
 

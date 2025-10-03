@@ -19,7 +19,7 @@ city: "别洛库里哈"
 
 # Professional
 brands: ["altai-honey"]
-markets: ["russia", "china", "kazakhstan"]
+markets: ["russia", "china"]
 expertise: ["养蜂", "有机农业", "可持续采集", "社区发展"]
 keyAchievement: "国际有机认证"
 

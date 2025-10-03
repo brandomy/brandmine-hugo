@@ -19,7 +19,7 @@ city: "Гонсалвис"
 
 # Professional
 brands: ["serra-verde"]
-markets: ["brazil", "portugal", "spain"]
+markets: ["brazil"]
 expertise: ["органическое сельское хозяйство", "устойчивое фермерство", "агролесоводство", "развитие экспорта"]
 keyAchievement: "Восстановил более 500 гектаров Атлантического леса"
 
