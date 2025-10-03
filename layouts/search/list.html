@@ -1,0 +1,94 @@
+{{ define "main" }}
+<div class="search-page">
+  <div class="search-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}
+      <p class="search-description">{{ . }}</p>
+    {{ end }}
+  </div>
+
+  <div class="search-container">
+    <!-- Pagefind search UI will be inserted here -->
+    <div id="search"></div>
+  </div>
+</div>
+
+<style>
+.search-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.search-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.search-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color, #38B2AC);
+}
+
+.search-description {
+  color: var(--text-secondary, #666);
+  font-size: 1.125rem;
+}
+
+.search-container {
+  margin-top: 2rem;
+}
+
+/* Pagefind UI customization */
+#search {
+  --pagefind-ui-primary: #38B2AC;
+  --pagefind-ui-text: #333;
+  --pagefind-ui-background: #ffffff;
+  --pagefind-ui-border: #e5e7eb;
+  --pagefind-ui-tag: #F97316;
+  --pagefind-ui-border-radius: 0.5rem;
+  --pagefind-ui-font: 'PT Sans', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .search-header h1 {
+    font-size: 2rem;
+  }
+
+  .search-description {
+    font-size: 1rem;
+  }
+}
+</style>
+{{ end }}
+
+{{ define "scripts" }}
+<!-- Load Pagefind UI -->
+<link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/_pagefind/pagefind-ui.js"></script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      showImages: true,
+      excerptLength: 30,
+      translations: {
+        placeholder: "{{ if eq .Language.Lang "en" }}Search Brandmine...{{ else if eq .Language.Lang "ru" }}Поиск в Brandmine...{{ else }}搜索 Brandmine...{{ end }}",
+        clear_search: "{{ if eq .Language.Lang "en" }}Clear{{ else if eq .Language.Lang "ru" }}Очистить{{ else }}清除{{ end }}",
+        load_more: "{{ if eq .Language.Lang "en" }}Load more results{{ else if eq .Language.Lang "ru" }}Загрузить еще{{ else }}加载更多{{ end }}",
+        search_label: "{{ if eq .Language.Lang "en" }}Search this site{{ else if eq .Language.Lang "ru" }}Поиск по сайту{{ else }}搜索此站点{{ end }}",
+        filters_label: "{{ if eq .Language.Lang "en" }}Filters{{ else if eq .Language.Lang "ru" }}Фильтры{{ else }}筛选{{ end }}",
+        zero_results: "{{ if eq .Language.Lang "en" }}No results for [SEARCH_TERM]{{ else if eq .Language.Lang "ru" }}Нет результатов для [SEARCH_TERM]{{ else }}没有找到 [SEARCH_TERM]{{ end }}",
+        many_results: "{{ if eq .Language.Lang "en" }}[COUNT] results for [SEARCH_TERM]{{ else if eq .Language.Lang "ru" }}[COUNT] результатов для [SEARCH_TERM]{{ else }}找到 [COUNT] 个结果 [SEARCH_TERM]{{ end }}",
+        one_result: "{{ if eq .Language.Lang "en" }}[COUNT] result for [SEARCH_TERM]{{ else if eq .Language.Lang "ru" }}[COUNT] результат для [SEARCH_TERM]{{ else }}找到 [COUNT] 个结果 [SEARCH_TERM]{{ end }}",
+        alt_search: "{{ if eq .Language.Lang "en" }}Search for [SEARCH_TERM]{{ else if eq .Language.Lang "ru" }}Искать [SEARCH_TERM]{{ else }}搜索 [SEARCH_TERM]{{ end }}",
+        search_suggestion: "{{ if eq .Language.Lang "en" }}No results. Try: [DIFFERENT_TERM]{{ else if eq .Language.Lang "ru" }}Нет результатов. Попробуйте: [DIFFERENT_TERM]{{ else }}没有结果。试试: [DIFFERENT_TERM]{{ end }}",
+        searching: "{{ if eq .Language.Lang "en" }}Searching...{{ else if eq .Language.Lang "ru" }}Поиск...{{ else }}搜索中...{{ end }}"
+      }
+    });
+  });
+</script>
+{{ end }}

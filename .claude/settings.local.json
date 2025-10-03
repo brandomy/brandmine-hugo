@@ -44,7 +44,8 @@
       "Bash(git -C /Users/randaleastman/dev/brandmine-hugo status)",
       "Bash(git -C /Users/randaleastman/dev/brandmine-hugo add -A)",
       "Bash(git -C /Users/randaleastman/dev/brandmine-hugo commit -m \"$(cat <<''EOF''\ndocs: strategic pivot from Jekyll migration to clean Hugo build\n\n- Add HUGO-MIGRATION.md with pivot rationale and archived original plan\n- Add CLEAN-BUILD-PLAN.md with 4-week Hugo-native build strategy\n- Add temp-folder-comprehensive-inventory.md (full Jekyll analysis)\n- Add temp-folder-detailed-assessment.md (detailed component breakdown)\n- Update BACKLOG.md with Pagefind, Supabase, and card component tasks\n- Archive old documentation in docs/archive/\n- Move dev journals to docs/dev-journal/\n\nRationale:\nAfter comprehensive temp folder inspection, discovered 575 Jekyll HTML files\n(25 layouts + 352 includes + 198 page sections) with 35+ complex helpers.\nConverting would take 8-10 weeks with significant technical debt.\n\nNew approach builds clean Hugo-native site in 4 weeks:\n- Import 166 markdown content files only\n- Rebuild templates using Hugo patterns\n- Focus on Pagefind search + Supabase integration\n- Minimal components, maximum scalability\n\nTechnical assessment shows Jekyll content is production-ready but template\ncomplexity doesn''t align with Hugo philosophy or business goals (fast data\ningestion, elegant search, scalability for 100s of brands).\n\nCTO autonomous decision based on temp folder analysis.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
-      "Bash(git -C /Users/randaleastman/dev/brandmine-hugo log -1 --oneline)"
+      "Bash(git -C /Users/randaleastman/dev/brandmine-hugo log -1 --oneline)",
+      "Bash(npx pagefind:*)"
     ],
     "deny": [],
     "ask": []

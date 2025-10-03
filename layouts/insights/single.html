@@ -2,7 +2,12 @@
 {{ $insightTypes := .Site.Data.insights.types }}
 {{ $insightType := index $insightTypes .Params.insightType }}
 
-<article class="insight-single">
+<article class="insight-single"
+  {{ with .Params.insightType }}data-pagefind-filter="insight-type:{{ . }}" {{ end }}
+  {{ range .Params.markets }}data-pagefind-filter="market:{{ . }}" {{ end }}
+  {{ range .Params.sectors }}data-pagefind-filter="sector:{{ . }}" {{ end }}
+  data-pagefind-sort="date:{{ .Date.Format "2006-01-02" }}"
+>
   <div class="container">
     <!-- Insight Hero -->
     <header class="insight-hero" style="border-left-color: {{ $insightType.colorHex }}">

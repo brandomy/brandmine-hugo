@@ -1,0 +1,38 @@
+# Pagefind Configuration
+# https://pagefind.app/docs/config-options/
+
+# Site directory
+site: public
+
+# Multilingual support
+languages:
+  - code: en
+    name: English
+  - code: ru
+    name: Русский
+  - code: zh
+    name: 中文
+
+# Index all HTML files
+glob: "**/*.html"
+
+# Custom filtering - use data attributes for taxonomies
+filters:
+  markets: '[data-pagefind-filter="market"]'
+  sectors: '[data-pagefind-filter="sector"]'
+  attributes: '[data-pagefind-filter="attribute"]'
+  signals: '[data-pagefind-filter="signal"]'
+
+# Sort options
+sort:
+  date: '[data-pagefind-sort="date"]'
+  title: '[data-pagefind-sort="title"]'
+
+# Output directory (where Pagefind assets go)
+output_subdir: _pagefind
+
+# Indexing options
+keep_index_url: true
+
+# Performance
+verbose: true

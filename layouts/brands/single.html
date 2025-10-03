@@ -1,5 +1,11 @@
 {{ define "main" }}
-<article class="brand-single">
+<article class="brand-single"
+  {{ range .Params.markets }}data-pagefind-filter="market:{{ . }}" {{ end }}
+  {{ range .Params.sectors }}data-pagefind-filter="sector:{{ . }}" {{ end }}
+  {{ range .Params.attributes }}data-pagefind-filter="attribute:{{ . }}" {{ end }}
+  {{ range .Params.signals }}data-pagefind-filter="signal:{{ . }}" {{ end }}
+  data-pagefind-sort="date:{{ .Date.Format "2006-01-02" }}"
+>
   <div class="container">
     <!-- Brand Hero -->
     <header class="brand-hero">
