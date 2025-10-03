@@ -1,5 +1,5 @@
 ---
-title: "Serra Verde Coffee"
+title: "Serra Verde Organics"
 translationKey: "br-serra-verde-brand"
 date: 2024-10-15
 draft: false

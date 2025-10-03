@@ -1,5 +1,5 @@
 ---
-title: "塞拉维德咖啡"
+title: "塞拉维德有机食品"
 translationKey: "br-serra-verde-brand"
 date: 2024-10-15
 draft: false

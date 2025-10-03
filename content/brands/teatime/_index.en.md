@@ -1,5 +1,5 @@
 ---
-title: "TeaTime Premium Russian Tea"
+title: "TeaTime"
 translationKey: "teatime-brand"
 date: 2024-10-15
 draft: false

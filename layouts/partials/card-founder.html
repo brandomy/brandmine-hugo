@@ -20,6 +20,11 @@
 {{ $photo := .Params.photo | default "placeholder-founder.jpg" }}
 {{ $imagePath := printf "images/founders/%s/originals/%s" $founderSlug $photo }}
 {{ $image := resources.Get $imagePath }}
+{{ if not $image }}
+  {{/* Fallback: Try without originals/ subdirectory */}}
+  {{ $imagePath = printf "images/founders/%s/%s" $founderSlug $photo }}
+  {{ $image = resources.Get $imagePath }}
+{{ end }}
 
 <article class="card card--founder">
   {{/* Portrait Photo with Experience Metric */}}
@@ -47,7 +52,7 @@
   <div class="card__content">
     {{/* Name */}}
     <h3 class="card__title">
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <a href="{{ .RelPermalink }}">{{ .Params.name }}</a>
     </h3>
 
     {{/* Role */}}
