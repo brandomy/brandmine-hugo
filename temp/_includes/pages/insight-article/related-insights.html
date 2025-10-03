@@ -1,0 +1,60 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Related Insights
+PATH: _includes/pages/insight-article/related-insights.html
+PURPOSE: Display related insight articles using component-based architecture
+UPDATED: 2025-07-04 - Component integration with intelligent content discovery
+================================================================================
+
+Features:
+- Dynamic related content discovery based on category and taxonomy
+- Uses compact insight-card component variant for space efficiency
+- Smart fallback logic for content matching
+- Limits to 3 related insights for optimal user experience
+
+Dependencies:
+- Components: components/cards/insight-card.html (compact variant)
+- Collections: site.insights for content discovery
+- Translation: helpers/t.html for localized headings
+
+Logic:
+1. Find insights in same category (priority)
+2. Find insights with shared sectors (secondary)
+3. Combine and deduplicate results
+4. Limit to 3 items maximum
+================================================================================
+{% endcomment %}
+
+{% comment %} Build related insights intelligently {% endcomment %}
+{% assign related_insights = site.insights | where: "lang", page.lang | where_exp: "insight", "insight.ref != page.ref" %}
+
+{% comment %} Priority 1: Same category {% endcomment %}
+{% if page.category %}
+  {% assign category_insights = related_insights | where: "category", page.category | limit: 2 %}
+{% endif %}
+
+{% comment %} Priority 2: Shared sectors {% endcomment %}
+{% if page.sectors and page.sectors.size > 0 %}
+  {% assign sector_insights = related_insights | where_exp: "insight", "insight.sectors contains page.sectors[0]" | limit: 1 %}
+{% endif %}
+
+{% comment %} Combine and deduplicate {% endcomment %}
+{% assign final_related = category_insights | concat: sector_insights | uniq | limit: 3 %}
+
+{% if final_related.size > 0 %}
+  <section class="insight-related-insights">
+    <h3 class="panel__heading-tertiary">
+      {% include helpers/t.html key="insights.related_insights_title" fallback="Related Insights" %}
+    </h3>
+    
+    <div class="insight-related-insights__grid">
+      {% for insight in final_related %}
+        <div class="insight-related-insights__item">
+          {% include components/cards/insight-card.html 
+             insight=insight 
+             variant="compact" %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

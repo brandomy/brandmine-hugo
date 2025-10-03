@@ -1,0 +1,315 @@
+{% comment %}
+================================================================================
+COMPONENT: Insight Card
+PATH: _includes/components/cards/insight-card.html
+PURPOSE: Streamlined insight display card with category badges, configurable metadata, and responsive layouts
+CREATED: 2024-01-01 | VERSION: 1.8
+================================================================================
+
+Features:
+- Configurable insight card with component defaults integration
+- Category-specific styling with color-coded badges and icons
+- Responsive image handling with hero image display
+- Configurable metadata display (date, category, tags, excerpt)
+- Truncated excerpt with customizable word limits
+- Direct navigation to detailed insight articles
+- Component defaults system for site-wide configuration
+- Category icon integration with insights icon system
+
+Parameters:
+- insight (required): Object - Complete insight data object containing:
+  - title: String - Insight headline/title
+  - permalink: String - URL path to insight detail page
+  - hero_image: String - Path to main insight image
+  - category: String - Primary insight category slug
+  - date: Date - Publication timestamp
+  - excerpt: String - Summary/description text
+  - lang: String - Content language code
+  - tags: Array - Topic and category tags (optional)
+- variant (optional): String - Display variant ("standard", "minimal", "featured"). Default: "standard"
+- excerpt_words (optional): Integer - Excerpt truncation limit. Default: component default (150)
+- show_date (optional): Boolean - Display publication date. Default: component default (true)
+- show_category (optional): Boolean - Display category badge. Default: component default (false)
+- show_tags (optional): Boolean - Display insight tags. Default: component default (false)
+- tag_limit (optional): Integer - Maximum tags to display. Default: component default (3)
+- layout (optional): String - Layout style ("minimal", "standard", "enhanced"). Default: component default
+
+Dependencies:
+- CSS: assets/css/components/cards/insight-card.scss
+- Components: components/icons/icon.html for category icons
+- Helpers: helpers/t.html for translation, helpers/component-defaults.html for configuration
+- Data: site.data.translations for category names and UI text
+- Icon System: insights icon set for category-specific icons
+
+Usage Examples:
+{% include components/cards/insight-card.html insight=insight %}
+{% include components/cards/insight-card.html insight=insight variant="featured" show_category=true %}
+{% include components/cards/insight-card.html insight=insight excerpt_words=100 show_tags=true tag_limit=2 %}
+
+Real-world Usage:
+Used in insights grids, related content sections, category pages, and homepage insight highlights
+
+Category Integration:
+- brand-spotlight: Orange badge with brand icon
+- founders-journey: Indigo badge with founder icon
+- location-intelligence: Sky blue badge with location icon
+- market-momentum: Olive green badge with trend icon
+
+BEM Structure:
+- .insight-card (main card container)
+- .insight-card--[category] (category-specific styling)
+- .insight-card--[variant] (variant modifier)
+- .insight-card__image (hero image container)
+- .insight-card__content (text content area)
+- .insight-card__category (category badge)
+- .insight-card__title (insight headline)
+- .insight-card__excerpt (description text)
+- .insight-card__meta (metadata container)
+- .insight-card__date (publication date)
+- .insight-card__tags (tags container)
+- .insight-card__tag (individual tag)
+
+Accessibility:
+- Semantic article structure for each insight
+- Descriptive alt text for hero images
+- Clear heading hierarchy with insight titles
+- Screen reader friendly date formatting
+- High contrast category badges for visibility
+- Keyboard navigation support for insight links
+
+Responsive:
+- Mobile: Single column layout with full-width images
+- Tablet: Grid layout with optimized image ratios
+- Desktop: Enhanced grid with hover effects and transitions
+
+Performance Notes:
+- Component defaults system for efficient configuration
+- Optimized image loading with responsive sizing
+- Truncated excerpts prevent layout overflow
+- CSS-only responsive behavior with grid layouts
+- Minimal DOM structure for fast rendering
+================================================================================
+{% endcomment %}
+
+{% comment %} Component defaults for configurable behavior {% endcomment %}
+{% capture default_excerpt_words %}{% include helpers/component-defaults.html component="cards.insight-card" param="excerpt_words" fallback=150 %}{% endcapture %}
+{% capture default_show_date %}{% include helpers/component-defaults.html component="cards.insight-card" param="show_date" fallback=true %}{% endcapture %}
+{% capture default_show_category %}{% include helpers/component-defaults.html component="cards.insight-card" param="show_category" fallback=false %}{% endcapture %}
+{% capture default_show_tags %}{% include helpers/component-defaults.html component="cards.insight-card" param="show_tags" fallback=false %}{% endcapture %}
+{% capture default_tag_limit %}{% include helpers/component-defaults.html component="cards.insight-card" param="tag_limit" fallback=3 %}{% endcapture %}
+{% capture default_layout %}{% include helpers/component-defaults.html component="cards.insight-card" param="layout" fallback="minimal" %}{% endcapture %}
+
+{% assign variant = include.variant | default: "standard" %}
+{% assign excerpt_words = include.excerpt_words | default: default_excerpt_words | plus: 0 %}
+{% assign show_date = include.show_date | default: default_show_date %}
+{% assign show_category = include.show_category | default: default_show_category %}
+{% assign show_tags = include.show_tags | default: default_show_tags %}
+{% assign tag_limit = include.tag_limit | default: default_tag_limit | plus: 0 %}
+{% assign layout = include.layout | default: default_layout %}
+
+{% if variant == "tagged" %}
+  <article class="insight-card insight-card--{{ include.insight.category }}">
+    <a href="{{ include.insight.permalink | relative_url }}" class="insight-card__link">
+      <div class="insight-card__image">
+        {% if include.insight.images.hero %}
+          {% include components/images/collection-image.html
+             collection="insights"
+             slug=include.insight.ref
+             purpose="hero"
+             name=include.insight.images.hero.name
+             ext=include.insight.images.hero.ext
+             alt=include.insight.images.hero.alt
+             sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+             loading="lazy" %}
+        {% else %}
+          <div class="insight-card__image-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="insight-card__content">
+        {% if include.insight.category %}
+          {% comment %} TEST: Using new component {% endcomment %}
+          {% include components/ui/insight-category-new.html 
+             category=include.insight.category %}
+        {% endif %}
+
+        <h3 class="insight-card__title">{{ include.insight.title }}</h3>
+
+        <div class="insight-card__meta">
+          <span class="insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
+          {% if include.insight.reading_time %}
+            <span class="insight-card__reading-time">{{ include.insight.reading_time }} {% include helpers/t.html key="insights.minute_read" fallback="min read" lang=include.insight.lang %}</span>
+          {% endif %}
+        </div>
+
+        {% if include.insight.excerpt %}
+          <p class="insight-card__excerpt">{{ include.insight.excerpt | truncatewords: excerpt_words }}</p>
+        {% endif %}
+
+        <!-- Dimension Tags (Using unified component) -->
+        {% include components/ui/dimension-tag-cloud.html 
+           parent=include.insight
+           show_all=true
+           class_prefix="insight-card-tags"
+           spacing="tight" %}
+
+        <div class="insight-card__footer">
+          <span class="insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" lang=include.insight.lang %} →</span>
+        </div>
+      </div>
+    </a>
+  </article>
+{% elsif variant == "related" %}
+  <article style="border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: white; display: grid; grid-template-columns: 120px 1fr; gap: 1rem; align-items: start;">
+    <div style="width: 120px; height: 80px; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+      {% if include.insight.images.hero %}
+        {% assign hero_image = include.insight.images.hero %}
+        {% assign image_path = '/assets/images/insights/' | append: include.insight.ref | append: '/' | append: include.insight.ref | append: '-hero-' | append: hero_image.name | append: '-400w.' | append: hero_image.ext %}
+        <img src="{{ image_path }}" 
+             alt="{{ hero_image.alt | default: include.insight.title }}" 
+             style="width: 100%; height: 100%; object-fit: cover;" 
+             loading="lazy">
+      {% else %}
+        <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #e8f5e8, #c8e6c9); display: flex; align-items: center; justify-content: center; color: #388e3c; font-size: 0.8rem;">
+          {{ include.insight.title | slice: 0, 3 | upcase }}
+        </div>
+      {% endif %}
+    </div>
+    
+    <div>
+      {% if include.insight.category %}
+        {% include components/ui/insight-category-new.html 
+           category=include.insight.category %}
+      {% endif %}
+      
+      <h5 style="margin: 0.5rem 0; color: #333;">
+        <a href="{{ include.insight.permalink | relative_url }}" style="color: inherit; text-decoration: none;">
+          {{ include.insight.title }}
+        </a>
+      </h5>
+      
+      <p style="margin: 0; color: #6c757d; font-size: 0.9rem; line-height: 1.4;">
+        {{ include.insight.excerpt | default: include.insight.description | truncatewords: 20 }}
+      </p>
+    </div>
+  </article>
+{% elsif variant == "featured" %}
+  <article class="insight-card insight-card--featured insight-card--{{ include.insight.category }}">
+    <div class="insight-card__image">
+      {% if include.insight.images.hero %}
+        {% include components/images/collection-image.html
+           collection="insights"
+           slug=include.insight.ref
+           purpose="hero"
+           name=include.insight.images.hero.name
+           ext=include.insight.images.hero.ext
+           alt=include.insight.images.hero.alt
+           sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+           loading="lazy" %}
+      {% elsif include.insight.hero_image %}
+        {% assign base_path = include.insight.hero_image | split: "." %}
+        {% assign base_name = base_path[0] %}
+        {% assign extension = base_path[1] | default: "jpg" %}
+
+        <img src="{{ base_name | relative_url }}-400w.{{ extension }}"
+             srcset="{{ base_name | relative_url }}-400w.{{ extension }} 400w,
+                     {{ base_name | relative_url }}-800w.{{ extension }} 800w,
+                     {{ base_name | relative_url }}-1200w.{{ extension }} 1200w"
+             sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+             alt="{{ include.insight.title }}"
+             loading="lazy">
+      {% else %}
+        <div class="insight-card__image-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="insight-card__content">
+      <div class="insight-card__category">
+        <a href="{{ site.baseurl }}/{{ include.insight.lang }}/insights/categories/{{ include.insight.category }}/" 
+           class="insight-card__category-link">
+          {% include components/ui/insight-category-new.html 
+             category=include.insight.category 
+             size="lg" %}
+        </a>
+      </div>
+
+      <a href="{{ include.insight.permalink | relative_url }}" class="insight-card__content-link">
+        <h3 class="insight-card__title">{{ include.insight.title }}</h3>
+
+        <div class="insight-card__meta">
+          <span class="insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>{% if include.insight.reading_time %}<span class="insight-card__separator"> • </span><span class="insight-card__reading-time">{{ include.insight.reading_time }} min read</span>{% endif %}
+        </div>
+
+        <p class="insight-card__description">{{ include.insight.excerpt | truncatewords: 20 }}</p>
+
+        <div class="insight-card__cta">
+          <span class="insight-card__read-more">
+            {% include helpers/t.html key="insights.read_more" fallback="Read Article" lang=include.insight.lang %} →
+          </span>
+        </div>
+      </a>
+    </div>
+  </article>
+{% else %}
+  <article class="insight-card insight-card--{{ include.insight.category }}">
+    <a href="{{ include.insight.permalink | relative_url }}" class="insight-card__link">
+      <div class="insight-card__image">
+        {% if include.insight.images.hero %}
+          {% include components/images/collection-image.html
+             collection="insights"
+             slug=include.insight.ref
+             purpose="hero"
+             name=include.insight.images.hero.name
+             ext=include.insight.images.hero.ext
+             alt=include.insight.images.hero.alt
+             sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px"
+             loading="lazy" %}
+        {% else %}
+          <div class="insight-card__image-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="insight-card__content">
+        {% if include.insight.category %}
+          {% include components/ui/insight-category-new.html 
+             category=include.insight.category %}
+        {% endif %}
+
+        <h3 class="insight-card__title">{{ include.insight.title }}</h3>
+
+        <div class="insight-card__meta">
+          <span class="insight-card__date">{{ include.insight.date | date: "%b %-d, %Y" }}</span>
+          {% if include.insight.reading_time %}
+            <span class="insight-card__reading-time">{{ include.insight.reading_time }} {% include helpers/t.html key="insights.minute_read" fallback="min read" lang=include.insight.lang %}</span>
+          {% endif %}
+        </div>
+
+        {% if include.insight.excerpt %}
+          <p class="insight-card__excerpt">{{ include.insight.excerpt | truncatewords: excerpt_words }}</p>
+        {% endif %}
+
+        <div class="insight-card__footer">
+          <span class="insight-card__read-more">{% include helpers/t.html key="insights.read_more" fallback="Read More" lang=include.insight.lang %} →</span>
+        </div>
+      </div>
+    </a>
+  </article>
+{% endif %}

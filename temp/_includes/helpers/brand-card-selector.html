@@ -1,0 +1,41 @@
+{% comment %}
+HELPER: Brand Card Selector
+PURPOSE: Intelligently selects appropriate universal card variant based on featured level to ensure visual hierarchy consistency across brand listings
+
+USAGE: {% include helpers/brand-card-selector.html brand=brand %}
+
+PARAMETERS:
+- brand (required): Brand object with featured_level and featured properties
+- force_variant (optional): Override automatic selection - "hero", "featured", "standard"
+
+RETURNS: Renders universal-card with appropriate variant
+
+DEPENDENCIES:
+- Data: brand.featured_level (integer), brand.featured (boolean)
+- Includes: components/cards/brand-card.html
+- Variables: None
+
+EXAMPLE:
+{% include helpers/brand-card-selector.html brand=brand %}
+<!-- Auto-selects hero variant for featured_level >= 2 -->
+{% include helpers/brand-card-selector.html brand=brand force_variant="featured" %}
+<!-- Forces featured variant regardless of brand status -->
+{% endcomment %}
+
+{% comment %} Selection logic: force_variant > featured_level >= 2 > featured > standard {% endcomment %}
+{% if include.force_variant %}
+  {% assign card_variant = include.force_variant %}
+{% elsif include.brand.featured_level and include.brand.featured_level >= 2 %}
+  {% assign card_variant = "hero" %}
+{% elsif include.brand.featured %}
+  {% assign card_variant = "featured" %}
+{% else %}
+  {% assign card_variant = "standard" %}
+{% endif %}
+
+{% comment %} Use single brand-card.html component with variant parameter {% endcomment %}
+{% if card_variant == "hero" or card_variant == "featured" %}
+  {% include components/cards/brand-card.html brand=include.brand variant="featured" %}
+{% else %}
+  {% include components/cards/brand-card.html brand=include.brand %}
+{% endif %}

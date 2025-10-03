@@ -1,3 +1,21 @@
+# ⚠️ STRATEGIC PIVOT - 2025-10-03
+
+**Original Plan**: Import 575 Jekyll HTML files + 35 helpers (8-10 weeks)
+**New Plan**: Build clean Hugo-native site, import content only (4 weeks)
+
+**Rationale**: 
+- Jekyll complexity creates technical debt
+- Goal is fast data ingestion (Supabase → Hugo)
+- Need elegant search (Pagefind)
+- Clean architecture for scale
+
+**See**: docs/CLEAN-BUILD-PLAN.md for new approach
+
+
+
+
+
+
 # Hugo Migration - Working Document
 
 **Project**: Brandmine Jekyll → Hugo Migration

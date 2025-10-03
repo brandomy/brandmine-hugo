@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+{% comment %}
+  Layout: insights-category.html
+
+  Used for displaying insights filtered by category, such as:
+    - /en/insights/categories/brand-spotlight/
+    - /en/insights/categories/founders-journey/
+
+  Purpose:
+  - Displays all insights of a specific category type
+  - Uses section-based architecture for modularity
+  - Supports configurable sections via page front matter
+
+  Dependencies:
+  - Section includes in _includes/pages/insights-category/
+  - Translation helper include for multilingual labels
+  - _includes/components/cards/insight-card.html for insight display
+
+  Page Front Matter Requirements:
+  - ref: insights-category-{category}
+  - sections: array of section names to include
+  - category: category slug for filtering (replaces insight_type)
+{% endcomment %}
+
+<div class="insights-category-page" data-insight-type="{{ page.category }}">
+  {% comment %} Use data-driven section rendering {% endcomment %}
+  {% include helpers/page-sections.html page_type="insights-category" %}
+</div>

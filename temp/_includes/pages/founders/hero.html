@@ -1,0 +1,49 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Hero
+PATH: _includes/pages/founders/hero.html
+PURPOSE: Split hero section for Founders page with standardized translation keys
+STANDARDIZED: 2025-06-12 - Unified hero section structure
+================================================================================
+
+Features:
+- Split layout with text content and hero image
+- Uses split-hero component with teal background
+- Responsive: stacks on mobile devices
+
+Dependencies:
+- CSS: pages/journal/_hero.scss (shared journal hero styles)
+- Component: components/images/collection-image.html
+- Translation keys: founders.hero.title, founders.hero.subtitle
+
+Image Configuration:
+- Collection: site
+- Category: pages
+- Slug: founders
+- Purpose: hero
+- Loading: eager (above the fold)
+================================================================================
+{% endcomment %}
+
+<div class="split-hero split-hero--teal split-hero--landing">
+  <!-- Text Content Section -->
+  <div class="split-hero__content">
+    <h1 class="split-hero__title">
+      {% include helpers/t.html key="founders.hero.title" fallback="Meet the Founders" %}
+    </h1>
+    <p class="split-hero__subtitle">
+      {% include helpers/t.html key="founders.hero.subtitle" fallback="Discover the visionaries behind exceptional Global South brands" %}
+    </p>
+  </div>
+  
+  <!-- Image Section -->
+  <div class="split-hero__image">
+    {% include components/images/collection-image.html
+       collection="pages"
+       slug="founders"
+       purpose="hero"
+       alt="Global South founders and visionaries"
+       class="split-hero__img"
+       loading="eager" %}
+  </div>
+</div>

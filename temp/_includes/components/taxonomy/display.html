@@ -1,0 +1,123 @@
+{% comment %}
+  Component: components/taxonomy/display.html
+  Purpose: Displays taxonomy tags for content objects
+  Parameters:
+    - parent: The parent object with taxonomy data
+    - display_style: The style to use (cloud, list, sections) (default: cloud)
+    - class_name: Optional CSS class name prefix for styling
+  Dependencies:
+    - CSS: components/taxonomy/display.scss
+    - helpers/taxonomy-tag.html
+{% endcomment %}
+
+{% comment %}Using t.html helper for tags translations{% endcomment %}
+{% assign display_style = include.display_style | default: "cloud" %}
+{% assign class_name = include.class_name | default: "taxonomy" %}
+
+{% if include.parent %}
+  {% assign parent = include.parent %}
+
+  {% if parent.sectors.size > 0 or parent.markets.size > 0 or parent.attributes.size > 0 or parent.signals.size > 0 %}
+    <div class="{{ class_name }} {{ class_name }}--{{ display_style }}">
+
+      {% case display_style %}
+        {% when "cloud" %}
+          <h3 class="{{ class_name }}__heading">{% include helpers/t.html key="tags.explore_related" fallback="Explore Related" %}</h3>
+          <div class="{{ class_name }}__tags">
+            {% if parent.sectors.size > 0 %}
+              {% for sector in parent.sectors %}
+                <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
+                   class="{{ class_name }}__tag {{ class_name }}__tag--sector">
+                  {% include helpers/dimension-name.html type="sectors" id=sector %}
+                </a>
+              {% endfor %}
+            {% endif %}
+
+            {% if parent.markets.size > 0 %}
+              {% for market in parent.markets %}
+                <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
+                   class="{{ class_name }}__tag {{ class_name }}__tag--market">
+                  {% include helpers/dimension-name.html type="markets" id=market %}
+                </a>
+              {% endfor %}
+            {% endif %}
+
+            {% if parent.attributes.size > 0 %}
+              {% for attribute in parent.attributes %}
+                <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
+                   class="{{ class_name }}__tag {{ class_name }}__tag--attribute">
+                  {% include helpers/dimension-name.html type="attributes" id=attribute %}
+                </a>
+              {% endfor %}
+            {% endif %}
+
+            {% if parent.signals.size > 0 %}
+              {% for signal in parent.signals %}
+                <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
+                   class="{{ class_name }}__tag {{ class_name }}__tag--signal">
+                  {% include helpers/dimension-name.html type="signals" id=signal %}
+                </a>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+        {% when "sections" %}
+          {% if parent.sectors.size > 0 %}
+            <div class="{{ class_name }}__section">
+              <h3 class="{{ class_name }}__heading">{% include helpers/t.html key="tags.sectors" fallback="Sectors" %}</h3>
+              <div class="{{ class_name }}__tags">
+                {% for sector in parent.sectors %}
+                  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/sectors/{{ sector | slugify }}/"
+                     class="{{ class_name }}__tag {{ class_name }}__tag--sector">
+                    {% include helpers/dimension-name.html type="sectors" id=sector %}
+                  </a>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if parent.markets.size > 0 %}
+            <div class="{{ class_name }}__section">
+              <h3 class="{{ class_name }}__heading">{% include helpers/t.html key="tags.markets" fallback="Markets" %}</h3>
+              <div class="{{ class_name }}__tags">
+                {% for market in parent.markets %}
+                  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/markets/{{ market | slugify }}/"
+                     class="{{ class_name }}__tag {{ class_name }}__tag--market">
+                    {% include helpers/dimension-name.html type="markets" id=market %}
+                  </a>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if parent.attributes.size > 0 %}
+            <div class="{{ class_name }}__section">
+              <h3 class="{{ class_name }}__heading">{% include helpers/t.html key="tags.attributes" fallback="Attributes" %}</h3>
+              <div class="{{ class_name }}__tags">
+                {% for attribute in parent.attributes %}
+                  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/attributes/{{ attribute | slugify }}/"
+                     class="{{ class_name }}__tag {{ class_name }}__tag--attribute">
+                    {% include helpers/dimension-name.html type="attributes" id=attribute %}
+                  </a>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if parent.signals.size > 0 %}
+            <div class="{{ class_name }}__section">
+              <h3 class="{{ class_name }}__heading">{% include helpers/t.html key="tags.signals" fallback="Signals" %}</h3>
+              <div class="{{ class_name }}__tags">
+                {% for signal in parent.signals %}
+                  <a href="{{ site.baseurl }}/{{ page.lang }}/discover/signals/{{ signal | slugify }}/"
+                     class="{{ class_name }}__tag {{ class_name }}__tag--signal">
+                    {% include helpers/dimension-name.html type="signals" id=signal %}
+                  </a>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+      {% endcase %}
+    </div>
+  {% endif %}
+{% endif %}
