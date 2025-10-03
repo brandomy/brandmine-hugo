@@ -1,0 +1,115 @@
+{% comment %}
+  Page Section: pages/founders/founders-carousel.html
+  
+  Purpose: Displays a horizontal scrolling carousel of founders using 50% portrait cards
+           for engaging founder storytelling experience
+  
+  Section Type: Content
+  Template: Compatible with all layouts
+  
+  Parameters:
+    title (optional): Custom section title
+    subtitle (optional): Custom section subtitle
+    carousel_class (optional): Additional CSS classes
+    show_nav (optional): Whether to show navigation dots (default: true)
+    cta_text (optional): Custom CTA button text
+    cta_url (optional): Custom CTA button URL
+  
+  Dependencies:
+    - Translation keys: founders.carousel.*
+    - CSS: assets/css/components/founders-carousel.scss
+    - JavaScript: assets/js/components/founder-carousel.js
+    - Include: components/cards/founder-card.html
+{% endcomment %}
+
+{% assign show_nav = include.show_nav | default: true %}
+{% assign carousel_class = include.carousel_class | default: "" %}
+{% assign cta_text = include.cta_text | default: "Explore All Founders" %}
+{% assign cta_url = include.cta_url | default: site.baseurl | append: "/" | append: page.lang | append: "/founders/" %}
+
+<section class="carousel-section carousel-section--founders {{ carousel_class }}">
+  <div class="container">
+    <header class="carousel-header">
+      <h2 class="carousel-title">
+        {{ include.title | default: "Meet the Visionaries" }}
+      </h2>
+      <p class="carousel-subtitle">
+        {{ include.subtitle | default: "The remarkable founders building bridges between cultures through exceptional brands" }}
+      </p>
+    </header>
+    
+    <div class="carousel carousel--founders" id="foundersCarousel" data-carousel="founders">
+      <div class="carousel__track" id="foundersTrack">
+        
+        {% comment %} Eduardo Santos {% endcomment %}
+        <div class="carousel__slide">
+          <div class="carousel__slide-content">
+            {% assign eduardo = site.founders | where: "ref", "br-eduardo-santos" | where: "lang", page.lang | first %}
+            {% if eduardo %}
+              {% include components/cards/founder-card.html 
+                 founder=eduardo 
+                 variant="featured" %}
+            {% endif %}
+          </div>
+        </div>
+        
+        {% comment %} Alexei Sokolov {% endcomment %}
+        <div class="carousel__slide">
+          <div class="carousel__slide-content">
+            {% assign alexei = site.founders | where: "ref", "ru-alexei-sokolov" | where: "lang", page.lang | first %}
+            {% if alexei %}
+              {% include components/cards/founder-card.html 
+                 founder=alexei 
+                 variant="featured" %}
+            {% endif %}
+          </div>
+        </div>
+        
+        {% comment %} Maria Kuznetsova {% endcomment %}
+        <div class="carousel__slide">
+          <div class="carousel__slide-content">
+            {% assign maria = site.founders | where: "ref", "ru-maria-kuznetsova" | where: "lang", page.lang | first %}
+            {% if maria %}
+              {% include components/cards/founder-card.html 
+                 founder=maria 
+                 variant="featured" %}
+            {% endif %}
+          </div>
+        </div>
+        
+        {% comment %} Ivan Petrov {% endcomment %}
+        <div class="carousel__slide">
+          <div class="carousel__slide-content">
+            {% assign ivan = site.founders | where: "ref", "ru-ivan-petrov" | where: "lang", page.lang | first %}
+            {% if ivan %}
+              {% include components/cards/founder-card.html 
+                 founder=ivan 
+                 variant="featured" %}
+            {% endif %}
+          </div>
+        </div>
+        
+      </div>
+      
+      {% comment %} Navigation Dots - Following existing founder-focus pattern {% endcomment %}
+      {% if show_nav %}
+      <div class="carousel__navigation">
+        <div class="founder-focus-nav" id="foundersCarouselDots">
+          <div class="founder-focus-nav-dot active" data-slide="0" aria-label="Eduardo Santos"></div>
+          <div class="founder-focus-nav-dot" data-slide="1" aria-label="Alexei Sokolov"></div>
+          <div class="founder-focus-nav-dot" data-slide="2" aria-label="Maria Kuznetsova"></div>
+          <div class="founder-focus-nav-dot" data-slide="3" aria-label="Ivan Petrov"></div>
+        </div>
+      </div>
+      {% endif %}
+      
+    </div>
+    
+    <div class="carousel-footer">
+      <a href="{{ cta_url }}" class="btn btn--primary-cta btn--lg">
+        {{ cta_text }} →
+      </a>
+    </div>
+    
+  </div>
+</section>

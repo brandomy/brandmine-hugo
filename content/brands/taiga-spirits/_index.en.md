@@ -5,10 +5,10 @@ date: 2024-10-15
 draft: false
 
 # Taxonomies (4 dimensions)
-markets: ["russia", "western-europe"]
-sectors: ["spirits-distilled", "luxury-goods"]
-attributes: ["founder-led", "artisanal-excellence", "premium-positioning"]
-signals: ["export-ready", "award-winning", "international-distribution"]
+markets: ["russia"]
+sectors: ["artisanal-spirits"]
+attributes: ["founder-led", "artisanal-excellence", "premium-positioning", "innovation-leader"]
+signals: ["export-ready"]
 
 # Founder relationship
 founder: "dmitri-morozov"
@@ -20,6 +20,7 @@ revenue: "$8M-12M"
 website: "https://taigaspirits.com"
 headquarters:
   city: "Irkutsk"
+  country: "ru"
   region: "Siberia"
   coordinates: [52.2869, 104.3050]
 

@@ -6,6 +6,7 @@ draft: false
 
 # Insight category
 insightType: "location-intelligence"
+heroImage: "hero-corridor.jpg"
 
 # Related entities
 relatedBrands: ["altai-honey"]

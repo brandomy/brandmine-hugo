@@ -1,0 +1,127 @@
+{{/*
+  Insight Card Component
+
+  Usage:
+    {{ partial "card-insight.html" . }}
+
+  Context: Insight/article page object
+
+  Features:
+  - Illustrative hero image (16:10 aspect ratio)
+  - Category badge (colored, top-center)
+  - Date + reading time
+  - Title (2-line clamp)
+  - Excerpt (3-line clamp)
+  - Teal CTA button
+*/}}
+
+{{ $insightSlug := .File.TranslationBaseName }}
+{{ $heroImage := .Params.heroImage | default "" }}
+{{ $image := "" }}
+{{ if $heroImage }}
+  {{ $imagePath := printf "images/insights/%s/originals/%s" $insightSlug $heroImage }}
+  {{ $image = resources.Get $imagePath }}
+{{ end }}
+{{ $insightType := .Params.insightType | default "insight" }}
+{{ $readingTime := .Params.readingTime | default (div (countwords .Content) 200) }}
+
+<article class="card card--insight">
+  {{/* Hero Image */}}
+  <div class="card__image">
+    {{ if $image }}
+      <img
+        src="{{ $image.RelPermalink }}"
+        alt="{{ .Title }}"
+        loading="lazy"
+      >
+    {{ else }}
+      <div class="card__image-placeholder">
+        <span>{{ .Title | truncate 2 "" }}</span>
+      </div>
+    {{ end }}
+
+    {{/* Category Badge with Icon */}}
+    <div class="card__category card__category--{{ $insightType }}">
+      {{ if eq $insightType "brand-spotlight" }}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="category-icon">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      {{ else if eq $insightType "founders-journey" }}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="category-icon">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M12 12v7" />
+          <line x1="8" y1="16" x2="16" y2="16" />
+        </svg>
+      {{ else if eq $insightType "location-intelligence" }}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="category-icon">
+          <path d="M12 22c3.5-3.5 7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 3.5 7.5 7 11z" />
+          <circle cx="12" cy="11" r="2" />
+        </svg>
+      {{ else if eq $insightType "market-momentum" }}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="category-icon">
+          <polyline points="22 7 13 15 9 12 2 19" />
+          <polyline points="16 7 22 7 22 13" />
+        </svg>
+      {{ end }}
+      {{ $insightType | humanize }}
+    </div>
+  </div>
+
+  {{/* Card Content */}}
+  <div class="card__content">
+    {{/* Date + Reading Time */}}
+    <div class="card__date">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">
+        {{ .Date.Format "January 2, 2006" }}
+      </time>
+      <span class="card__reading-time">
+        {{ $readingTime }} {{ i18n "min_read" | default "min read" }}
+      </span>
+    </div>
+
+    {{/* Title (2-line clamp) */}}
+    <h3 class="card__title">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h3>
+
+    {{/* Excerpt (3-line clamp) */}}
+    {{ with .Params.description }}
+      <p class="card__excerpt">{{ . }}</p>
+    {{ else }}
+      <p class="card__excerpt">{{ .Summary }}</p>
+    {{ end }}
+
+    {{/* Related Brands (tiny pill tag cloud) */}}
+    {{ with .Params.relatedBrands }}
+      <div class="card__brands">
+        {{ range . }}
+          {{ $brandPage := site.GetPage (printf "/brands/%s" .) }}
+          {{ if $brandPage }}
+            <a href="{{ $brandPage.RelPermalink }}" class="brand-pill">{{ $brandPage.Title }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+    {{ end }}
+
+    {{/* Signal Tags (if any) */}}
+    {{ with .Params.signals }}
+      <div class="card__tags">
+        {{ range . }}
+          <a href="{{ printf "/signals/%s" . | relLangURL }}" class="tag tag--signal">
+            {{ . | humanize }}
+          </a>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+
+  {{/* Card Footer - CTA */}}
+  <div class="card__footer">
+    <a href="{{ .RelPermalink }}" class="card__cta">
+      {{ i18n "read_more" | default "Read More" }}
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</article>

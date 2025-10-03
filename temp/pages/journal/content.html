@@ -1,0 +1,16 @@
+{% comment %}
+  Component: pages/journal/content.html
+  Purpose: Main content section for the journal page
+  Parameters:
+    - content: Page content passed from layout
+  Dependencies:
+    - assets/css/pages/journal/content.scss
+{% endcomment %}
+
+{% assign t = site.data.translations[page.lang].journal %}
+
+{% if include.content and include.content != "" %}
+  <div class="journal-content">
+    {{ include.content }}
+  </div>
+{% endif %}

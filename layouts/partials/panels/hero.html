@@ -1,0 +1,45 @@
+{{/*
+  Hero Panel Partial
+
+  Usage:
+    {{ partial "panels/hero.html" (dict "title" .Title "subtitle" .Params.tagline "context" .) }}
+
+  Parameters:
+    - title (string): Main heading
+    - subtitle (string, optional): Subtitle/tagline
+    - type (string, optional): "hero" (default) or "hero-subtle"
+    - context (page context): Required for language detection
+*/}}
+
+{{ $type := .type | default "hero" }}
+{{ $title := .title }}
+{{ $subtitle := .subtitle }}
+{{ $context := .context }}
+
+<section class="panel panel--{{ $type }}">
+  <div class="panel__content">
+    {{ if $title }}
+      <h1 class="panel__title">{{ $title }}</h1>
+    {{ end }}
+
+    {{ if $subtitle }}
+      <p class="panel__subtitle">{{ $subtitle }}</p>
+    {{ end }}
+
+    {{ if $context.Params.markets }}
+      <div class="panel__meta">
+        {{ range $context.Params.markets }}
+          <span class="tag tag--market">{{ . }}</span>
+        {{ end }}
+      </div>
+    {{ end }}
+
+    {{ if $context.Params.sectors }}
+      <div class="panel__meta">
+        {{ range $context.Params.sectors }}
+          <span class="tag tag--sector">{{ . }}</span>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</section>

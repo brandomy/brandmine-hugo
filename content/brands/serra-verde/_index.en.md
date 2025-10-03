@@ -5,10 +5,10 @@ date: 2024-10-15
 draft: false
 
 # Taxonomies (4 dimensions)
-markets: ["brazil", "south-america"]
-sectors: ["food-beverage", "specialty-coffee"]
-attributes: ["founder-led", "sustainability-pioneer", "artisanal-excellence"]
-signals: ["export-ready", "revenue-growth"]
+markets: ["brazil"]
+sectors: ["gourmet-foods"]
+attributes: ["founder-led", "sustainability-pioneer", "artisanal-excellence", "regional-icon"]
+signals: ["export-ready", "rapid-growth"]
 
 # Founder relationship
 founder: "carlos-santos"
@@ -20,6 +20,7 @@ revenue: "$5M-8M"
 website: "https://serraverde.com.br"
 headquarters:
   city: "Espírito Santo"
+  country: "br"
   region: "Southeastern Brazil"
   coordinates: [-19.1834, -40.3089]
 

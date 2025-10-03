@@ -1,0 +1,68 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Insights Category Hero
+PATH: _includes/pages/insights-category/hero.html
+PURPOSE: Split hero section for insights category pages with category-specific styling
+PATTERN: Replicates insights page hero structure with category color variations
+================================================================================
+
+Features:
+- Split layout with text content and hero image
+- Uses split-hero component with category-specific gradients
+- Badge display for category identification
+- Responsive design with mobile-first approach
+
+Dependencies:
+- CSS: Uses panel--insights-category-hero structure with category-specific gradients
+- Components: helpers/t.html, components/ui/insight-category-new.html, components/images/collection-image.html
+- Translation keys: insights-category.{category}.title, insights-category.{category}.subtitle
+- Data: page.category for category identification
+
+Image Configuration:
+- Collection: categories
+- Slug: {category}
+- Purpose: hero
+- Loading: eager (above the fold)
+================================================================================
+{% endcomment %}
+
+<div class="split-hero split-hero--{{ page.category }} split-hero--landing">
+  <!-- Text Content Section -->
+  <div class="split-hero__content">
+    <!-- Category Badge - Small variant for discrete appearance -->
+    {% include components/ui/insight-category-new.html category=page.category size="sm" %}
+    
+    {% assign category_data = site.data.insights[page.lang].categories | where: "id", page.category | first %}
+    
+    <h1 class="split-hero__title">
+      {{ category_data.name | default: "Category Insights" }}
+    </h1>
+    <p class="split-hero__subtitle">
+      {{ category_data.description | default: "Discover insights and analysis in this category." }}
+    </p>
+    
+    <!-- Dynamic metadata line -->
+    {% assign category_insights = site.insights | where: "lang", page.lang | where: "category", page.category %}
+    {% assign category_insights_count = category_insights.size %}
+    {% assign latest_insight = category_insights | sort: "date" | reverse | first %}
+    
+    <div class="split-hero__metadata" style="margin-top: 2rem; padding-top: 0.5rem;">
+      <span>{{ category_insights_count }} insights</span>
+      {% if latest_insight.date %}
+        {% include components/separators/bullet-separator.html %}
+        <span>Latest: {{ latest_insight.date | date: "%B %Y" }}</span>
+      {% endif %}
+    </div>
+  </div>
+  
+  <!-- Image Section -->
+  <div class="split-hero__image">
+    {% include components/images/collection-image.html
+       collection="categories"
+       slug=page.category
+       purpose="hero"
+       alt="#{page.category} insights"
+       class="split-hero__img"
+       loading="eager" %}
+  </div>
+</div>

@@ -6,10 +6,10 @@ draft: false
 lang: en
 
 # Taxonomies (4 dimensions)
-markets: ["russia", "central-asia"]
-sectors: ["food-beverage", "specialty-tea"]
-attributes: ["heritage-brand", "family-owned", "export-ready"]
-signals: ["revenue-growth", "international-distribution"]
+markets: ["russia"]
+sectors: ["gourmet-foods"]
+attributes: ["heritage-brand", "founder-led", "cultural-bridge"]
+signals: ["rapid-growth", "export-ready"]
 
 # Founder relationship
 founder: "pavel-titov"
@@ -21,6 +21,7 @@ revenue: "$5M-10M"
 website: "https://teatime.ru"
 headquarters:
   city: "Moscow"
+  country: "ru"
   region: "Central Russia"
   coordinates: [55.7558, 37.6173]
 

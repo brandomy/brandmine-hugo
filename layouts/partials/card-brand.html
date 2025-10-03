@@ -1,0 +1,93 @@
+{{/*
+  Brand Card Component
+
+  Usage:
+    {{ partial "card-brand.html" . }}
+
+  Context: Brand page object
+
+  Features:
+  - Hero image (16:9 aspect ratio)
+  - Metric badge overlay (revenue)
+  - Title + tagline
+  - Taxonomy tags (markets + sectors on row 1, attributes on row 2)
+  - Teal CTA button
+*/}}
+
+{{ $brandSlug := path.Base .File.Dir }}
+{{ $heroImage := .Params.heroImage | default "placeholder-brand.jpg" }}
+{{ $imagePath := printf "images/brands/%s/originals/%s" $brandSlug $heroImage }}
+{{ $image := resources.Get $imagePath }}
+
+<article class="card card--brand">
+  {{/* Hero Image */}}
+  <div class="card__image">
+    {{ if $image }}
+      {{ $resized := $image.Resize "800x450 q85" }}
+      <img
+        src="{{ $resized.RelPermalink }}"
+        alt="{{ .Title }}"
+        loading="lazy"
+      >
+    {{ else }}
+      <img
+        src="/images/placeholder-brand.jpg"
+        alt="{{ .Title }}"
+        loading="lazy"
+      >
+    {{ end }}
+
+    {{/* Metric Badge Overlay */}}
+    {{ with .Params.revenue }}
+      <div class="card__metric">
+        {{ . }}{{ if $.Params.peakRevenue }} Peak{{ end }}
+      </div>
+    {{ end }}
+  </div>
+
+  {{/* Card Content */}}
+  <div class="card__content">
+    {{/* Title */}}
+    <h3 class="card__title">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h3>
+
+    {{/* Tagline */}}
+    {{ with .Params.description }}
+      <p class="card__tagline">{{ . }}</p>
+    {{ end }}
+
+    {{/* Location */}}
+    {{ with .Params.headquarters }}
+      <p class="card__location">
+        {{ .city }}{{ if .country }}{{ $countryData := index $.Site.Data.countries.countries .country }}{{ if $countryData }} {{ $countryData.emoji }}{{ end }}{{ end }}
+      </p>
+    {{ end }}
+
+    {{/* Taxonomy Tags - Only the 4 dimensions */}}
+    <div class="card__tags">
+      {{ range .Params.markets }}
+        <span class="tag tag--market">{{ . | humanize | title }}</span>
+      {{ end }}
+      {{ range .Params.sectors }}
+        <span class="tag tag--sector">{{ . | humanize | title }}</span>
+      {{ end }}
+      {{ range .Params.attributes }}
+        <span class="tag tag--attribute">{{ . | humanize | title }}</span>
+      {{ end }}
+      {{ range .Params.signals }}
+        <span class="tag tag--signal">{{ . | humanize | title }}</span>
+      {{ end }}
+    </div>
+  </div>
+
+  {{/* Card Footer - CTA */}}
+  <div class="card__footer">
+    <a href="{{ .RelPermalink }}" class="card__cta">
+      {{ i18n "view_profile" | default "View Profile" }}
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</article>

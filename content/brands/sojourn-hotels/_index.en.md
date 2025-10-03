@@ -5,10 +5,10 @@ date: 2024-10-15
 draft: false
 
 # Taxonomies (4 dimensions)
-markets: ["brazil", "south-america"]
-sectors: ["hospitality", "luxury-services"]
-attributes: ["founder-led", "heritage-brand", "premium-positioning"]
-signals: ["revenue-growth", "expansion-ready"]
+markets: ["brazil"]
+sectors: ["hotels-resorts"]
+attributes: ["founder-led", "heritage-brand", "premium-positioning", "cultural-bridge"]
+signals: ["rapid-growth"]
 
 # Founder relationship
 founder: "ana-silva"
@@ -20,6 +20,7 @@ revenue: "$15M-20M"
 website: "https://sojournhotels.com.br"
 headquarters:
   city: "Salvador"
+  country: "br"
   region: "Bahia"
   coordinates: [-12.9714, -38.5014]
 

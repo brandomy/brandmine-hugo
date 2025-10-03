@@ -5,8 +5,8 @@ date: 2024-10-15
 draft: false
 
 # Taxonomies (4 dimensions)
-markets: ["russia", "central-asia"]
-sectors: ["food-beverage", "specialty-foods"]
+markets: ["russia"]
+sectors: ["honey-bee-products", "gourmet-foods"]
 attributes: ["founder-led", "sustainability-pioneer", "artisanal-excellence"]
 signals: ["export-ready"]
 
@@ -20,6 +20,7 @@ revenue: "$2M-5M"
 website: "https://altaihoney.ru"
 headquarters:
   city: "Gorno-Altaysk"
+  country: "ru"
   region: "Altai Republic"
   coordinates: [51.9580, 85.9603]
 

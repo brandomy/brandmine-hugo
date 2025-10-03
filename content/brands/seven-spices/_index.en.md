@@ -5,10 +5,10 @@ date: 2024-10-15
 draft: false
 
 # Taxonomies (4 dimensions)
-markets: ["russia", "eastern-europe"]
-sectors: ["food-beverage", "specialty-foods"]
+markets: ["russia"]
+sectors: ["gourmet-foods"]
 attributes: ["founder-led", "artisanal-excellence", "heritage-brand"]
-signals: ["export-ready", "revenue-growth"]
+signals: ["export-ready", "rapid-growth"]
 
 # Founder relationship
 founder: "maria-volkova"
@@ -20,6 +20,7 @@ revenue: "$1M-3M"
 website: "https://sevenspices.ru"
 headquarters:
   city: "St. Petersburg"
+  country: "ru"
   region: "Northwestern Russia"
   coordinates: [59.9343, 30.3351]
 

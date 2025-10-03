@@ -6,6 +6,7 @@ draft: false
 
 # Insight category
 insightType: "brand-spotlight"
+heroImage: "hero-market.jpg"
 
 # Related entities
 relatedBrands: ["seven-spices"]

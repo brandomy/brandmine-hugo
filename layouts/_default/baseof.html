@@ -19,8 +19,15 @@
   <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
 
   <!-- Styles -->
-  {{ $options := (dict "targetPath" "css/main.css" "outputStyle" "compressed") }}
-  {{ $style := resources.Get "scss/main.scss" | css.Sass $options }}
+  {{ $variables := resources.Get "css/base/variables.css" }}
+  {{ $fonts := resources.Get "css/base/fonts.css" }}
+  {{ $panels := resources.Get "css/base/panels.css" }}
+  {{ $cards := resources.Get "css/components/cards.css" }}
+  {{ $main := resources.Get "css/main.css" }}
+  {{ $style := slice $variables $fonts $panels $cards $main | resources.Concat "css/bundled.css" }}
+  {{ if hugo.IsProduction }}
+    {{ $style = $style | minify | fingerprint }}
+  {{ end }}
   <link rel="stylesheet" href="{{ $style.RelPermalink }}">
 
   <!-- RSS -->

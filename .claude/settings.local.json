@@ -25,7 +25,22 @@
       "Bash(npm install:*)",
       "Bash(lighthouse:*)",
       "Bash(curl:*)",
-      "Read(//Users/randaleastman/dev/**)"
+      "Read(//Users/randaleastman/dev/**)",
+      "Bash(lsof:*)",
+      "Bash(kill:*)",
+      "Bash(pip3 install:*)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(do mv \"$f\" \"$f#ru-altai-honey-logo-\")",
+      "Bash(do mv \"$f\" \"$f#ru-altai-honey-hero-\")",
+      "Bash(chmod:*)",
+      "Bash(./scripts/rename_images.sh:*)",
+      "Bash(do echo \"=== $brand ===\")",
+      "Bash(do basename \"$f\" .md)",
+      "Bash(do dirname \"$f\")",
+      "Bash(./scripts/import_translations.sh:*)",
+      "Bash(/Users/randaleastman/dev/brandmine-hugo/scripts/validate_taxonomies.sh:*)",
+      "Bash(/Users/randaleastman/dev/brandmine-hugo/scripts/validate_brand_taxonomies.sh:*)"
     ],
     "deny": [],
     "ask": []

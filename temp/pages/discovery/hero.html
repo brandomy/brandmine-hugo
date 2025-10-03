@@ -1,0 +1,50 @@
+{% comment %}
+================================================================================
+PAGE SECTION: Hero
+PATH: _includes/pages/discovery/hero.html
+PURPOSE: Split hero section for Discovery page with standardized translation keys
+STANDARDIZED: 2025-06-12 - Unified hero section structure
+================================================================================
+
+Features:
+- Split layout with text content and hero image
+- Uses split-hero component with teal background
+- Introduces dimension-based discovery system
+
+Dependencies:
+- CSS: Uses split-hero styles for consistent split layout
+- Components: helpers/t.html, components/images/collection-image.html
+- Images: Requires discovery hero image in assets/images/pages/
+- Translation keys: discovery.hero.title, discovery.hero.subtitle
+
+Image Configuration:
+- Collection: site
+- Category: pages
+- Slug: discovery
+- Purpose: hero
+- Loading: eager (above the fold)
+================================================================================
+{% endcomment %}
+
+<div class="split-hero split-hero--teal split-hero--landing">
+  <!-- Text Content Section -->
+  <div class="split-hero__content">
+    <h1 class="split-hero__title">
+      {% include helpers/t.html key="discovery.hero.title" fallback="Discover Brands by Dimensions" %}
+    </h1>
+    <p class="split-hero__subtitle">
+      {% include helpers/t.html key="discovery.hero.subtitle" fallback="Explore exceptional Global South brands through multiple dimensions" %}
+    </p>
+  </div>
+  
+  <!-- Image Section -->
+  <div class="split-hero__image">
+    {% include components/images/collection-image.html
+       collection="pages"
+       slug="discovery"
+       purpose="hero"
+       alt="Discovery hub - explore brand dimensions"
+       class="split-hero__img"
+       loading="eager" %}
+  </div>
+</div>

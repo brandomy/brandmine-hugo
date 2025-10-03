@@ -1,0 +1,283 @@
+/* ==========================================================================
+   BRANDMINE PANEL SYSTEM - HUGO NATIVE
+   ==========================================================================
+
+   Edge-to-edge panel framework with centered content.
+   Adapted from Jekyll BEM architecture for Hugo simplicity.
+
+   Core Principle: Programmatic simplicity with full-width visual impact
+
+   Mobile-first: Base styles for 320px-414px, enhanced for larger screens
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. BASE PANEL COMPONENT
+   -------------------------------------------------------------------------- */
+
+.panel {
+  /* Full viewport width effect */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  /* Default vertical spacing */
+  padding: var(--space-lg) 0;
+  margin: 0;
+
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Panel content container - controls width and centering */
+.panel__content {
+  width: 100%;
+  max-width: var(--content-width-max, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+  box-sizing: border-box;
+}
+
+/* Responsive padding */
+@media (min-width: 375px) {
+  .panel__content {
+    padding: 0 var(--space-md);
+  }
+}
+
+@media (min-width: 768px) {
+  .panel__content {
+    padding: 0 var(--space-lg);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. HERO PANEL SYSTEM - TEAL GRADIENT BRANDING
+   -------------------------------------------------------------------------- */
+
+/* Primary Hero - Navigation pages (Home, Brands, Founders, Insights) */
+.panel--hero {
+  background: radial-gradient(
+    circle at center,
+    var(--color-teal-400, #1AB3B3) 0%,
+    var(--color-teal-600, #006666) 100%
+  );
+  color: white;
+  text-align: center;
+  padding: var(--space-2xl) 0;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+}
+
+.panel--hero .panel__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Hero Typography */
+.panel--hero h1,
+.panel--hero .panel__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.875rem, 1.6rem + 1.375vw, 2.5rem); /* 30px-40px */
+  font-weight: 700;
+  color: var(--color-orange-100, #FFD9CC);
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
+  max-width: 900px;
+}
+
+.panel--hero p,
+.panel--hero .panel__subtitle {
+  font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem); /* 18px-20px */
+  font-weight: 300;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto var(--space-lg);
+  line-height: 1.6;
+}
+
+/* Subtle Hero - Individual profiles (Brand, Founder pages) */
+.panel--hero-subtle {
+  background: radial-gradient(
+    circle at center,
+    var(--color-teal-300, #4DC4C4) 0%,
+    var(--color-teal-500, #008080) 100%
+  );
+  color: white;
+  text-align: center;
+  padding: var(--space-2xl) 0;
+}
+
+.panel--hero-subtle h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem); /* 24px-32px */
+  font-weight: 700;
+  color: var(--color-orange-100);
+  margin-bottom: var(--space-md);
+}
+
+.panel--hero-subtle p {
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem); /* 16px-18px */
+  color: white;
+  opacity: 0.95;
+}
+
+/* --------------------------------------------------------------------------
+   3. CONTENT PANELS - BACKGROUND VARIANTS
+   -------------------------------------------------------------------------- */
+
+/* Light panel - White background */
+.panel--light {
+  background-color: white;
+  color: var(--color-gray-700);
+}
+
+/* Primary soft - Teal tint */
+.panel--primary-soft {
+  background-color: var(--color-teal-50, #E6F7F7);
+  color: var(--color-gray-700);
+}
+
+/* Secondary soft - Orange tint */
+.panel--secondary-soft,
+.panel--orange-soft {
+  background-color: var(--color-orange-50, #FFF3EF);
+  color: var(--color-gray-700);
+}
+
+/* Neutral soft - Gray tint */
+.panel--neutral-soft {
+  background-color: var(--color-gray-50, #F9FAFB);
+  color: var(--color-gray-700);
+}
+
+/* CTA Panel - Teal gradient */
+.panel--cta {
+  background: radial-gradient(
+    circle at center,
+    var(--color-teal-500, #008080) 0%,
+    var(--color-teal-700, #004D4D) 100%
+  );
+  color: white;
+  text-align: center;
+  padding: var(--space-2xl) 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. PANEL SPACING MODIFIERS
+   -------------------------------------------------------------------------- */
+
+.panel--no-padding {
+  padding: 0;
+}
+
+.panel--padding-compact {
+  padding: var(--space-md) 0;
+}
+
+.panel--padding-large {
+  padding: var(--space-3xl) 0;
+}
+
+/* --------------------------------------------------------------------------
+   5. PANEL LAYOUT MODIFIERS
+   -------------------------------------------------------------------------- */
+
+.panel--centered {
+  text-align: center;
+}
+
+.panel--contained {
+  width: 100%;
+  position: static;
+  left: auto;
+  right: auto;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* --------------------------------------------------------------------------
+   6. PANEL TYPOGRAPHY HELPERS
+   -------------------------------------------------------------------------- */
+
+.panel h2,
+.panel__heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
+  line-height: 1.2;
+}
+
+.panel h3,
+.panel__subheading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  line-height: 1.3;
+}
+
+.panel__lead-text {
+  font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  max-width: 800px;
+}
+
+.panel--centered .panel__lead-text {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE BEHAVIOR
+   -------------------------------------------------------------------------- */
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  .panel {
+    padding: var(--space-2xl) 0;
+  }
+
+  .panel--hero,
+  .panel--hero-subtle {
+    min-height: 50vh;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .panel {
+    padding: var(--space-3xl) 0;
+  }
+
+  .panel--hero {
+    min-height: 60vh;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. HUGO-SPECIFIC UTILITIES
+   -------------------------------------------------------------------------- */
+
+/* Section wrapper for Hugo content */
+.section {
+  margin-bottom: var(--space-2xl);
+}
+
+/* Last section - no bottom margin */
+.section:last-child {
+  margin-bottom: 0;
+}
+
+/* Panel within section */
+.section .panel {
+  margin-bottom: 0;
+}

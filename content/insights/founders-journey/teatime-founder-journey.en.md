@@ -6,6 +6,7 @@ draft: false
 
 # Insight category
 insightType: "founders-journey"
+heroImage: "hero-storefront.jpg"
 
 # Related entities
 relatedBrands: ["teatime"]

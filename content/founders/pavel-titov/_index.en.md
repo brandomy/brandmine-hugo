@@ -8,10 +8,12 @@ lang: en
 # Professional
 role: "Founder & CEO"
 industry: "Food & Beverage"
-expertise: ["Hospitality Management", "Premium Tea Sourcing", "Export Development"]
+yearsExperience: 15
+expertise: ["tea blending", "beverage innovation", "cultural ambassador", "brand storytelling"]
 
 # Personal
-location: "Moscow, Russia"
+city: "Moscow"
+country: "ru"
 languages: ["Russian", "English", "German"]
 education: "Moscow State Institute of International Relations (MGIMO)"
 
@@ -21,6 +23,15 @@ email: "pavel@teatime.ru"
 
 # Assets
 photo: "portrait-formal.jpg"
+
+# Associated brands
+brands: ["teatime"]
+
+# Key achievement for card highlight
+keyAchievement: "Built Russia's first premium tea brand combining traditional culture with modern retail excellence"
+
+# Brief bio for card
+bio: "Former luxury hotel executive reimagining Russia's tea culture through premium sourcing, modern retail design, and international quality standards"
 
 # SEO
 description: "Founder of TeaTime, bringing 15 years of luxury hospitality expertise to Russia's specialty tea renaissance"

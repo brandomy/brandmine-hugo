@@ -1,0 +1,120 @@
+{{/*
+  Founder Card Component
+
+  Usage:
+    {{ partial "card-founder.html" . }}
+
+  Context: Founder page object
+
+  Features:
+  - Portrait photo (4:5 aspect ratio)
+  - Name
+  - Founded date + location with flag emoji
+  - One-line bio
+  - Associated brands (linked)
+  - Taxonomy tags
+  - Teal CTA button
+*/}}
+
+{{ $founderSlug := path.Base .File.Dir }}
+{{ $photo := .Params.photo | default "placeholder-founder.jpg" }}
+{{ $imagePath := printf "images/founders/%s/originals/%s" $founderSlug $photo }}
+{{ $image := resources.Get $imagePath }}
+
+<article class="card card--founder">
+  {{/* Portrait Photo with Experience Metric */}}
+  <div class="card__image">
+    {{ if $image }}
+      <img
+        src="{{ $image.RelPermalink }}"
+        alt="{{ .Title }}"
+        loading="lazy"
+      >
+      {{/* Experience/Founded Metric */}}
+      {{ if .Params.yearsExperience }}
+        <div class="card__metric">{{ .Params.yearsExperience }}+ Years</div>
+      {{ else if .Params.founded }}
+        <div class="card__metric">Founded {{ .Params.founded }}</div>
+      {{ end }}
+    {{ else }}
+      <div class="card__image-placeholder">
+        <span>{{ .Title | truncate 2 "" }}</span>
+      </div>
+    {{ end }}
+  </div>
+
+  {{/* Card Content */}}
+  <div class="card__content">
+    {{/* Name */}}
+    <h3 class="card__title">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h3>
+
+    {{/* Role */}}
+    {{ with .Params.role }}
+      <p class="card__role">{{ . }}</p>
+    {{ end }}
+
+    {{/* Company & Location - One Line */}}
+    <div class="card__meta">
+      {{ with .Params.brands }}
+        {{ $brands := . }}
+        {{ range $index, $brandSlug := $brands }}
+          {{ $brandPage := site.GetPage (printf "/brands/%s" $brandSlug) }}
+          {{ if $brandPage }}
+            <a href="{{ $brandPage.RelPermalink }}" class="card__company-link">{{ $brandPage.Title }}</a>
+          {{ else }}
+            <span class="card__company-name">{{ $brandSlug | humanize }}</span>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ if and .Params.brands (or .Params.city .Params.country) }}
+        <span class="card__separator">•</span>
+      {{ end }}
+      {{ if or .Params.city .Params.country }}
+        <span class="card__location">
+          {{ with .Params.city }}{{ . }}{{ end }}
+          {{ if .Params.country }}
+            {{ $countryCode := .Params.country }}
+            {{ $countryData := index .Site.Data.countries.countries $countryCode }}
+            {{ if $countryData }}
+              {{ with $countryData.emoji }} {{ . }}{{ end }}
+            {{ end }}
+          {{ end }}
+        </span>
+      {{ end }}
+    </div>
+
+    {{/* Key Achievement Callout */}}
+    {{ with .Params.keyAchievement }}
+      <div class="card__achievement">
+        <div class="achievement__label">🏆 KEY ACHIEVEMENT</div>
+        <div class="achievement__text">{{ . }}</div>
+      </div>
+    {{ end }}
+
+    {{/* Bio */}}
+    {{ with .Params.bio }}
+      <p class="card__bio">{{ . }}</p>
+    {{ end }}
+
+    {{/* Expertise Tags */}}
+    {{ with .Params.expertise }}
+      <div class="card__tags">
+        {{ range . }}
+          <span class="tag tag--expertise">{{ . }}</span>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+
+  {{/* Card Footer - CTA */}}
+  <div class="card__footer">
+    <a href="{{ .RelPermalink }}" class="card__cta">
+      {{ i18n "view_profile" | default "View Profile" }}
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  </div>
+</article>
