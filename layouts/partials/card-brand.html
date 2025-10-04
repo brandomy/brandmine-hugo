@@ -18,7 +18,14 @@
 {{ $heroImage := .Params.heroImage | default "placeholder-brand.jpg" }}
 {{ $imagePath := printf "images/brands/%s/originals/%s" $brandSlug $heroImage }}
 {{ $image := resources.Get $imagePath }}
-{{ $labels := index .Site.Data.taxonomy_labels .Site.Language.Lang }}
+{{ $labels := dict }}
+{{ with .Site.Data }}
+  {{ with index . "taxonomy-labels" }}
+    {{ with index . $.Site.Language.Lang }}
+      {{ $labels = . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
 
 <article class="card card--brand">
   {{/* Hero Image */}}

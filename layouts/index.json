@@ -1,12 +1,43 @@
 {{- $index := slice -}}
 
 {{- range .Site.Pages -}}
-  {{- if and (eq .Section "brands") (eq .Language.Lang "en") .File -}}
+  {{- if and (eq .Section "brands") (eq .Language.Lang $.Language.Lang) .File -}}
     {{- $city := "" -}}
     {{- $region := "" -}}
     {{- with .Params.headquarters -}}
       {{- $city = .city | default "" -}}
       {{- $region = .region | default "" -}}
+    {{- end -}}
+
+    {{- /* Load taxonomy labels for current language */ -}}
+    {{- $labels := dict -}}
+    {{- with $.Site.Data -}}
+      {{- with index . "taxonomy-labels" -}}
+        {{- with index . $.Language.Lang -}}
+          {{- $labels = . -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- /* Build translated taxonomy arrays */ -}}
+    {{- $marketLabels := slice -}}
+    {{- range .Params.markets -}}
+      {{- $marketLabels = $marketLabels | append (index $labels.markets . | default .) -}}
+    {{- end -}}
+
+    {{- $sectorLabels := slice -}}
+    {{- range .Params.sectors -}}
+      {{- $sectorLabels = $sectorLabels | append (index $labels.sectors . | default .) -}}
+    {{- end -}}
+
+    {{- $attributeLabels := slice -}}
+    {{- range .Params.attributes -}}
+      {{- $attributeLabels = $attributeLabels | append (index $labels.attributes . | default .) -}}
+    {{- end -}}
+
+    {{- $signalLabels := slice -}}
+    {{- range .Params.signals -}}
+      {{- $signalLabels = $signalLabels | append (index $labels.signals . | default .) -}}
     {{- end -}}
 
     {{- $entry := dict
@@ -19,10 +50,10 @@
       "founded" (.Params.founded | default 0)
       "city" $city
       "region" $region
-      "markets" (.Params.markets | default slice)
-      "sectors" (.Params.sectors | default slice)
-      "attributes" (.Params.attributes | default slice)
-      "signals" (.Params.signals | default slice)
+      "markets" $marketLabels
+      "sectors" $sectorLabels
+      "attributes" $attributeLabels
+      "signals" $signalLabels
       "founder" (.Params.founder | default "")
     -}}
     {{- $index = $index | append $entry -}}

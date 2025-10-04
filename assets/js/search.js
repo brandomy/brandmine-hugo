@@ -42,10 +42,14 @@ class BrandSearch {
 
   async loadIndex() {
     try {
-      const response = await fetch('/index.json');
+      // Detect current language from HTML lang attribute or URL
+      const htmlLang = document.documentElement.lang || 'en';
+      const indexPath = htmlLang === 'en' ? '/index.json' : `/${htmlLang}/index.json`;
+
+      const response = await fetch(indexPath);
       this.index = await response.json();
       this.isLoaded = true;
-      console.log(`Search index loaded: ${this.index.length} brands`);
+      console.log(`Search index loaded (${htmlLang}): ${this.index.length} brands`);
     } catch (error) {
       console.error('Failed to load search index:', error);
     }
