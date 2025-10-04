@@ -66,6 +66,8 @@
 .card__footer {
   padding: 0 var(--space-lg) var(--space-lg);
   margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* --------------------------------------------------------------------------
@@ -79,17 +81,34 @@
 /* Metric badge overlay (top-right) */
 .card__metric {
   position: absolute;
-  top: var(--space-md);
-  right: var(--space-md);
+  top: 1rem;
+  right: 1rem;
+  text-align: right;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
-  padding: var(--space-xs) var(--space-md);
-  border-radius: 20px;
-  font-size: var(--text-sm);
-  font-weight: var(--font-semibold);
-  color: var(--neutral-700);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  white-space: nowrap;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-fast);
+}
+
+.card:hover .card__metric {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.metric__value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--primary-600);
+  line-height: 1.2;
+}
+
+.metric__label {
+  font-size: 0.75rem;
+  color: var(--neutral-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .card--brand .card__title {
@@ -329,6 +348,12 @@
   transition: all var(--transition-fast);
   line-height: 1.4 !important;
   gap: 0 !important;
+  cursor: pointer;
+}
+
+.tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Markets - Sky Blue (Official Brandmine Standard) */
@@ -511,8 +536,9 @@
 
 .card-grid {
   display: grid;
-  gap: var(--space-xl);
+  gap: var(--space-2xl);
   margin-bottom: var(--space-2xl);
+  padding: var(--space-lg) 0;
 }
 
 /* Mobile: Single column */
@@ -524,6 +550,7 @@
 @media (min-width: 768px) {
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2xl);
   }
 }
 
@@ -531,6 +558,7 @@
 @media (min-width: 1024px) {
   .card-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2xl);
   }
 
   .card-grid--2 {

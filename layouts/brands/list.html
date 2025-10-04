@@ -10,15 +10,15 @@
   </div>
 </section>
 
-<!-- Search Panel -->
-<section class="panel panel--light">
-  <div class="panel__content">
+<!-- Search (OUTSIDE panel stacking context) -->
+<div class="search-wrapper" style="position: relative; z-index: 1000; background: white; padding: 2rem 0;">
+  <div class="container">
     {{ partial "search-bar.html" . }}
   </div>
-</section>
+</div>
 
 <!-- Brand Grid Panel -->
-<section class="panel panel--neutral-soft">
+<section class="panel panel--neutral-soft" style="padding-top: var(--space-xl); padding-bottom: var(--space-3xl);">
   <div class="panel__content">
     {{ if .Pages }}
       <div id="brand-grid" class="card-grid">

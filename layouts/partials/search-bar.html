@@ -22,6 +22,7 @@
   width: 100%;
   max-width: 600px;
   margin: 0 auto var(--space-8);
+  z-index: 200;
 }
 
 .search-input-wrapper {
@@ -66,7 +67,7 @@
   border: 1px solid var(--neutral-300);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
-  z-index: 100;
+  z-index: 1000;
 }
 
 .search-results[hidden] {
@@ -124,12 +125,20 @@
 }
 
 .result-tag {
-  padding: var(--space-1) var(--space-2);
-  background: var(--sky-100);
-  color: var(--sky-800);
+  padding: 0.125rem 0.5rem;
   font-size: var(--text-xs);
   font-weight: var(--font-medium);
   border-radius: var(--radius-full);
+}
+
+.result-tag--market {
+  background: var(--sky-100);
+  color: var(--sky-800);
+}
+
+.result-tag--sector {
+  background: var(--olive-100);
+  color: var(--olive-800);
 }
 
 .search-no-results {

@@ -15,17 +15,13 @@
    -------------------------------------------------------------------------- */
 
 .panel {
-  /* Full viewport width effect */
-  width: 100vw;
+  /* Full width without overflow */
+  width: 100%;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin: 0;
 
   /* Default vertical spacing */
   padding: var(--space-lg) 0;
-  margin: 0;
 
   overflow: hidden;
   box-sizing: border-box;
@@ -256,10 +252,6 @@
 .panel--contained {
   width: 100%;
   position: static;
-  left: auto;
-  right: auto;
-  margin-left: 0;
-  margin-right: 0;
 }
 
 /* --------------------------------------------------------------------------

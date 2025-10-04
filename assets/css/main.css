@@ -32,6 +32,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -41,6 +43,8 @@ body {
   font-size: var(--text-base);
   color: var(--neutral-600);
   background-color: var(--color-white);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Remove list styles */

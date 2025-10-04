@@ -123,21 +123,37 @@ class BrandSearch {
       return;
     }
 
-    const html = results.map(result => `
-      <a href="${result.url}" class="search-result-item">
-        <div class="result-main">
-          <h4 class="result-title">${this.highlightMatch(result.title, query)}</h4>
-          ${result.city ? `<p class="result-location">${result.city}</p>` : ''}
-        </div>
-        ${result.markets && result.markets.length > 0 ? `
-          <div class="result-tags">
-            ${result.markets.slice(0, 2).map(market =>
-              `<span class="result-tag">${market}</span>`
-            ).join('')}
+    const html = results.map(result => {
+      const tags = [];
+
+      // Add markets (up to 2)
+      if (result.markets && result.markets.length > 0) {
+        result.markets.slice(0, 2).forEach(market => {
+          tags.push(`<span class="result-tag result-tag--market">${market}</span>`);
+        });
+      }
+
+      // Add sectors (up to 2)
+      if (result.sectors && result.sectors.length > 0) {
+        result.sectors.slice(0, 2).forEach(sector => {
+          tags.push(`<span class="result-tag result-tag--sector">${sector}</span>`);
+        });
+      }
+
+      return `
+        <a href="${result.url}" class="search-result-item">
+          <div class="result-main">
+            <h4 class="result-title">${this.highlightMatch(result.title, query)}</h4>
+            ${result.city ? `<p class="result-location">${result.city}</p>` : ''}
           </div>
-        ` : ''}
-      </a>
-    `).join('');
+          ${tags.length > 0 ? `
+            <div class="result-tags">
+              ${tags.join('')}
+            </div>
+          ` : ''}
+        </a>
+      `;
+    }).join('');
 
     this.resultsContainer.innerHTML = html;
     this.showResults();
