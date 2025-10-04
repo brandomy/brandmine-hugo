@@ -28,11 +28,11 @@ content/          # All content (not _collections/)
   founders/       # Founder profiles
   insights/       # Market insights
   dimensions/     # Dimension explanations
-data/            # YAML data files
-  translations/  # i18n files
-    en.yml
-    ru.yml
-    zh.yml
+data/            # YAML data files (taxonomies, etc.)
+i18n/            # Translation files (Hugo i18n system)
+  en.yml         # English UI translations
+  ru.yml         # Russian UI translations
+  zh.yml         # Chinese UI translations
 layouts/         # Templates
   _default/
   partials/
@@ -114,17 +114,21 @@ taxonomies:
 
 ## Translation System
 
-### Existing Translation Files
+### Translation Files Location
+**IMPORTANT**: Hugo i18n files MUST be in `/i18n/` directory (not `/data/translations/`)
+
 ```
-data/translations/en.yml  # English strings
-data/translations/ru.yml  # Russian strings
-data/translations/zh.yml  # Chinese strings
+i18n/en.yml  # English UI strings
+i18n/ru.yml  # Russian UI strings
+i18n/zh.yml  # Chinese UI strings
 ```
 
 ### Usage in Templates
 ```go-html-template
 {{ i18n "key_name" }}
 ```
+
+**Note**: The `{{ i18n }}` function only works with files in `/i18n/` directory.
 
 ### Multilingual Content
 - **Language suffix pattern**: `filename.en.md`, `filename.ru.md`, `filename.zh.md`
