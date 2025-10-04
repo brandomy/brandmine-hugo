@@ -28,6 +28,15 @@ headquarters:
 logo: "logo-color.png"
 heroImage: "hero-apiaries.jpg"
 
+# Social Media (Russia-focused platforms)
+social:
+  telegram: "https://t.me/altaihoney"
+  youtube: "https://youtube.com/@altaigoldhoney"
+  instagram: "https://instagram.com/altaigoldhoney"
+
+# Press Kit
+pressKit: "/press/altai-honey-press-kit.pdf"
+
 # SEO
 description: "Premium wild honey from the pristine Altai Mountains, sustainably harvested using traditional methods"
 ---

@@ -34,6 +34,11 @@ website: "网站"
 founder: "创始人"
 contact: "联系方式"
 min_read: "分钟阅读"
+revenue: "收入"
+follow: "关注"
+press_room: "新闻中心"
+press_room_status: "高级会员可用"
+upgrade_premium: "升级至高级"
 
 # Empty States
 no_brands: "暂无品牌"

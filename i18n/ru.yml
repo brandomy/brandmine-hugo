@@ -34,6 +34,11 @@ website: "Веб-сайт"
 founder: "Основатель"
 contact: "Контактная информация"
 min_read: "мин чтения"
+revenue: "Выручка"
+follow: "Подписаться"
+press_room: "Пресс-центр"
+press_room_status: "Доступно с премиум-членством"
+upgrade_premium: "Перейти на премиум"
 
 # Empty States
 no_brands: "Бренды недоступны"

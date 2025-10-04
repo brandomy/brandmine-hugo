@@ -28,6 +28,15 @@ headquarters:
 logo: "logo-color.png"
 heroImage: "hero-farmland.jpg"
 
+# Social Media
+social:
+  instagram: "https://instagram.com/serraverde.organics"
+  linkedin: "https://linkedin.com/company/serra-verde-organics"
+  youtube: "https://youtube.com/@serraverdecoffee"
+
+# Press Kit
+pressKit: "/press/serra-verde-press-kit.pdf"
+
 # SEO
 description: "Premium single-origin Brazilian coffee from sustainable mountain farms in Espírito Santo"
 ---

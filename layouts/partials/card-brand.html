@@ -15,9 +15,14 @@
 */}}
 
 {{ $brandSlug := path.Base .File.Dir }}
-{{ $heroImage := .Params.heroImage | default "placeholder-brand.jpg" }}
+{{ $heroImage := .Params.heroImage | default "hero.jpg" }}
 {{ $imagePath := printf "images/brands/%s/originals/%s" $brandSlug $heroImage }}
 {{ $image := resources.Get $imagePath }}
+{{ if not $image }}
+  {{/* Fallback: try without originals/ */}}
+  {{ $imagePath = printf "images/brands/%s/%s" $brandSlug $heroImage }}
+  {{ $image = resources.Get $imagePath }}
+{{ end }}
 {{ $labels := dict }}
 {{ with .Site.Data }}
   {{ with index . "taxonomy-labels" }}

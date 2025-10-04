@@ -34,6 +34,11 @@ website: "Website"
 founder: "Founder"
 contact: "Contact"
 min_read: "min read"
+revenue: "Revenue"
+follow: "Follow"
+press_room: "Press Room"
+press_room_status: "Available with Premium membership"
+upgrade_premium: "Upgrade to Premium"
 
 # Empty States
 no_brands: "No brands found."
