@@ -18,6 +18,7 @@
 {{ $heroImage := .Params.heroImage | default "placeholder-brand.jpg" }}
 {{ $imagePath := printf "images/brands/%s/originals/%s" $brandSlug $heroImage }}
 {{ $image := resources.Get $imagePath }}
+{{ $labels := index .Site.Data.taxonomy_labels .Site.Language.Lang }}
 
 <article class="card card--brand">
   {{/* Hero Image */}}
@@ -69,16 +70,24 @@
     {{/* Taxonomy Tags - Only the 4 dimensions */}}
     <div class="card__tags">
       {{ range .Params.markets }}
-        <a href="{{ "/markets/" | relLangURL }}{{ . | urlize }}" class="tag tag--market">{{ . | humanize | title }}</a>
+        <a href="{{ "/markets/" | relLangURL }}{{ . | urlize }}" class="tag tag--market">
+          {{ index $labels.markets . | default (. | humanize | title) }}
+        </a>
       {{ end }}
       {{ range .Params.sectors }}
-        <a href="{{ "/sectors/" | relLangURL }}{{ . | urlize }}" class="tag tag--sector">{{ . | humanize | title }}</a>
+        <a href="{{ "/sectors/" | relLangURL }}{{ . | urlize }}" class="tag tag--sector">
+          {{ index $labels.sectors . | default (. | humanize | title) }}
+        </a>
       {{ end }}
       {{ range .Params.attributes }}
-        <a href="{{ "/attributes/" | relLangURL }}{{ . | urlize }}" class="tag tag--attribute">{{ . | humanize | title }}</a>
+        <a href="{{ "/attributes/" | relLangURL }}{{ . | urlize }}" class="tag tag--attribute">
+          {{ index $labels.attributes . | default (. | humanize | title) }}
+        </a>
       {{ end }}
       {{ range .Params.signals }}
-        <a href="{{ "/signals/" | relLangURL }}{{ . | urlize }}" class="tag tag--signal">{{ . | humanize | title }}</a>
+        <a href="{{ "/signals/" | relLangURL }}{{ . | urlize }}" class="tag tag--signal">
+          {{ index $labels.signals . | default (. | humanize | title) }}
+        </a>
       {{ end }}
     </div>
   </div>
@@ -91,5 +100,13 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
       </svg>
     </a>
+  </div>
+
+  {{/* Hidden search terms for multilingual search indexing */}}
+  <div class="card__search-data" style="position: absolute; left: -9999px;" aria-hidden="true">
+    {{ range .Params.markets }}{{ . }} {{ index $labels.markets . }} {{ end }}
+    {{ range .Params.sectors }}{{ . }} {{ index $labels.sectors . }} {{ end }}
+    {{ range .Params.attributes }}{{ . }} {{ index $labels.attributes . }} {{ end }}
+    {{ range .Params.signals }}{{ . }} {{ index $labels.signals . }} {{ end }}
   </div>
 </article>
