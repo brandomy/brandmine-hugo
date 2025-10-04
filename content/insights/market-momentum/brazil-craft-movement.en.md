@@ -14,11 +14,9 @@ relatedFounders:
   - "ana-silva"
 markets:
   - "brazil"
-  - "south-america"
 sectors:
-  - "specialty-coffee"
-  - "hospitality"
-  - "luxury-services"
+  - "gourmet-foods"
+  - "hotels-resorts"
 ---
 
 Brazil's artisanal brand ecosystem is experiencing a golden age, with founder-led businesses successfully scaling both domestically and internationally. This momentum represents a fundamental shift in how global consumers perceive Brazilian craftsmanship and quality.

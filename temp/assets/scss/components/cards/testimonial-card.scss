@@ -1,0 +1,184 @@
+/* ==========================================================================
+   COMPONENT: Testimonial Card
+   ========================================================================== */
+
+/**
+ * Displays customer testimonials with quote, author details, and metrics
+ * for social proof. Supports both brand and person testimonial types.
+ *
+ * Usage: Applied to .testimonial-card elements
+ * Variants: Standard layout with configurable attribution
+ * Dependencies: Design tokens, image components
+ */
+
+/* Base card structure */
+.testimonial-card {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-default);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+}
+
+/* Quote section */
+.testimonial-card__quote {
+  margin-bottom: var(--space-6);
+  position: relative;
+}
+
+.testimonial-card__quote-icon {
+  color: var(--primary-400);
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.testimonial-card__text {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--text-primary);
+  font-style: italic;
+  margin: 0;
+
+  &::before,
+  &::after {
+    content: '"';
+    color: var(--primary-400);
+    font-size: 1.2em;
+    font-weight: var(--font-bold);
+  }
+}
+
+/* Author section */
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.testimonial-card__author-image {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 2px solid var(--border-subtle);
+}
+
+.testimonial-card__author-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.testimonial-card__author-info {
+  flex-grow: 1;
+  min-width: 0; /* Prevents text overflow */
+}
+
+.testimonial-card__author-name {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--space-1) 0;
+  line-height: var(--leading-tight);
+}
+
+.testimonial-card__author-title {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: var(--leading-tight);
+}
+
+/* Metrics section */
+.testimonial-card__metrics {
+  display: flex;
+  gap: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.metric {
+  flex: 1;
+  text-align: center;
+}
+
+.metric-value {
+  display: block;
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--primary-600);
+  line-height: var(--leading-none);
+  margin-bottom: var(--space-1);
+}
+
+.metric-label {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-tight);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: var(--space-5);
+  }
+
+  .testimonial-card__text {
+    font-size: var(--text-base);
+  }
+
+  .testimonial-card__metrics {
+    gap: var(--space-6);
+  }
+
+  .metric-value {
+    font-size: var(--text-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-card {
+    padding: var(--space-4);
+  }
+
+  .testimonial-card__author {
+    gap: var(--space-3);
+  }
+
+  .testimonial-card__author-image {
+    width: 40px;
+    height: 40px;
+  }
+
+  .testimonial-card__metrics {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: left;
+  }
+
+  .metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .metric-value {
+    font-size: var(--text-lg);
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,98 @@
+/* ==========================================================================
+   Panel Base Component
+   ==========================================================================
+   Core panel framework providing edge-to-edge layout with centered content.
+   
+   Following BEM (Block Element Modifier) methodology:
+   - .panel = Block (the main component)
+   - .panel__element = Elements (parts of the panel)
+   - .panel--modifier = Modifiers (variations of the panel)
+
+   Mobile-first approach:
+   - Base styles are for smallest screens
+   - Media queries use min-width to enhance for larger screens
+*/
+
+/* --------------------------------------------------------------------------
+   1. PANEL BLOCK (Base Component)
+   -------------------------------------------------------------------------- */
+
+/* Base panel block - creates the full-width effect */
+.panel {
+    width: 100vw;
+    padding: var(--space-6) 0;       /* Standardized 24px (1.5rem) padding */
+    margin: 0;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* --------------------------------------------------------------------------
+     PANEL PADDING SYSTEM
+     --------------------------------------------------------------------------
+     Standard vertical padding for consistent spacing between sections:
+     
+     - Default: var(--space-6) = 24px (1.5rem) - Most content sections
+     - Hero sections maintain their own padding for visual impact
+     - Special modifiers available for edge cases
+     
+     This creates predictable, harmonious spacing throughout the site.
+     -------------------------------------------------------------------------- */
+
+  /* Padding modifiers for special cases */
+  .panel--no-padding {
+    padding: 0;
+  }
+
+  .panel--padding-compact {
+    padding: var(--space-4) 0;  /* 16px (1rem) - Dense content */
+  }
+
+  .panel--padding-large {
+    padding: var(--space-8) 0;  /* 32px (2rem) - Breathing room */
+  }
+
+  /* --------------------------------------------------------------------------
+     2. PANEL ELEMENTS (Component Parts)
+     -------------------------------------------------------------------------- */
+
+  /* Panel content container - controls width and centering */
+  .panel__content {
+    width: 100%;
+    max-width: 1200px;  /* Updated to follow the new width strategy */
+    margin: 0 auto;
+    padding: 0 var(--space-1);  /* Extra minimal padding for very small devices (4px) */
+    box-sizing: border-box;
+    
+    /* Small mobile devices */
+    @media (min-width: 375px) {
+      padding: 0 var(--space-2);  /* Slightly more padding when space allows (8px) */
+    }
+    
+    /* Increase padding on larger screens */
+    @media (min-width: 768px) {
+      padding: 0 var(--space-6);
+    }
+  }
+
+/* Section-specific panels use base panel content styles */
+
+/* --------------------------------------------------------------------------
+   3. PANEL MODIFIERS (Variations)
+   -------------------------------------------------------------------------- */
+
+/* Contained panel - doesn't expand to full viewport width */
+.panel--contained {
+  width: 100%;
+  position: static;
+  left: auto;
+  right: auto;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Responsive behavior handled by base panel__content rules in _panel-implementations.scss */

@@ -721,6 +721,25 @@ h3 {
 }
 ```
 
+## Home Page Panel Sequence (OFFICIAL STANDARD)
+
+**Emotional Journey Pattern:**
+1. **Hero** → panel--hero (excitement, visual impact)
+2. **Discovery** → panel--primary (trust, brand reliability)
+3. **Featured Brands** → panel--light (clarity, clean showcase)
+4. **Insights** → panel--orange-soft (warmth, engagement)
+5. **Discovery Tools** → panel--accent-soft (intelligence, capability)
+6. **CTA** → panel--cta (urgency, action)
+
+**Mobile Behavior:**
+- Full-width panels
+- Vertical rhythm: --space-2xl (3rem) between sections
+- No horizontal scrolling
+
+**Typography:**
+- Consistent h2 for section headings
+- Color varies by panel background (maintain WCAG AA contrast)
+
 ## Performance Benchmarks
 
 ### Target Metrics (Lighthouse)

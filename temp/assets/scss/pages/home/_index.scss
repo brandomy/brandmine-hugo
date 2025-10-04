@@ -1,0 +1,20 @@
+/* ==========================================================================
+    Home Page Styles - Main Index
+    ==========================================================================
+    Imports all component styles for the home page
+*/
+
+@import 'hero';
+@import 'impact-statement';
+@import 'discovery-dimensions';
+@import 'how-it-works';
+@import 'testimonials';
+@import 'case-studies-section';
+/* @import 'featured-brands'; - REMOVED: Homepage now uses unified brand-card.html component */
+@import 'lead-capture';
+@import 'location-intelligence';
+@import 'founder-focus';
+@import 'brand-owners';
+@import 'latest-insights';
+@import 'final-cta';
+

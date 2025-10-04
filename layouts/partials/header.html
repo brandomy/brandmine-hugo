@@ -1,91 +1,190 @@
 <header class="site-header" role="banner">
-  <div class="container">
-    <div class="header-inner">
-      <!-- Logo -->
-      <div class="site-branding">
-        <a href="{{ "/" | relLangURL }}" class="site-logo">
-          <span class="site-title">{{ .Site.Title }}</span>
+  <div class="header-container">
+    <!-- Logo - Flush Left -->
+    <div class="header__branding">
+      <a href="{{ "/" | relLangURL }}" class="site-logo">
+        <span class="site-title">{{ .Site.Title }}</span>
+      </a>
+    </div>
+
+    <!-- Main Navigation - Centered -->
+    <nav class="header__nav" role="navigation" aria-label="Main navigation">
+      <a href="{{ "/" | relLangURL }}">{{ i18n "home" | default "Home" }}</a>
+      <a href="{{ "/brands" | relLangURL }}">{{ i18n "brands" | default "Brands" }}</a>
+      <a href="{{ "/founders" | relLangURL }}">{{ i18n "founders" | default "Founders" }}</a>
+      <a href="{{ "/insights" | relLangURL }}">{{ i18n "insights" | default "Insights" }}</a>
+      <a href="{{ "/about" | relLangURL }}">{{ i18n "about" | default "About" }}</a>
+    </nav>
+
+    <!-- Language Switcher - Flush Right -->
+    <div class="header__lang">
+      {{ range .Site.Home.AllTranslations }}
+        <a href="{{ .Permalink }}" {{ if eq .Language.Lang $.Language.Lang }}class="active"{{ end }}>
+          {{ if eq .Language.Lang "en" }}EN{{ end }}
+          {{ if eq .Language.Lang "ru" }}РУ{{ end }}
+          {{ if eq .Language.Lang "zh" }}中文{{ end }}
         </a>
-        <p class="site-tagline">{{ .Site.Params.company.tagline }}</p>
-      </div>
-
-      <!-- Main Navigation -->
-      <nav class="main-nav" role="navigation" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a href="{{ "/brands" | relLangURL }}">{{ i18n "brands" | default "Brands" }}</a></li>
-          <li><a href="{{ "/founders" | relLangURL }}">{{ i18n "founders" | default "Founders" }}</a></li>
-          <li><a href="{{ "/insights" | relLangURL }}">{{ i18n "insights" | default "Insights" }}</a></li>
-        </ul>
-      </nav>
-
-      <!-- Language Switcher -->
-      {{ partial "language-switcher.html" . }}
+      {{ end }}
     </div>
   </div>
 </header>
 
 <style>
+/* ==========================================================================
+   HEADER - Edge-to-Edge Branding Layout
+   ========================================================================== */
+
 .site-header {
-  background-color: white;
-  border-bottom: 1px solid var(--neutral-200);
+  /* Full-width edge-to-edge */
+  background-color: var(--primary-400);
+  color: white;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   padding: var(--space-4) 0;
 }
 
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--space-6);
-  flex-wrap: wrap;
+.header-container {
+  position: relative;
+  height: 60px;
+  max-width: 100%;
 }
 
-.site-branding {
-  flex: 0 0 auto;
+/* Logo - Flush Left (16px from viewport edge) */
+.header__branding {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.site-logo {
+  text-decoration: none;
 }
 
 .site-title {
   font-family: var(--font-heading);
   font-size: var(--text-2xl);
   font-weight: var(--font-bold);
-  color: var(--primary-600);
+  color: white;
 }
 
-.site-tagline {
-  font-size: var(--text-sm);
-  color: var(--neutral-600);
-  margin-top: var(--space-1);
-  margin-bottom: 0;
-}
-
-.main-nav {
-  flex: 1 1 auto;
-}
-
-.nav-list {
+/* Navigation - Centered in Viewport */
+.header__nav {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   gap: var(--space-6);
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  z-index: 5;
 }
 
-.nav-list a {
-  font-weight: var(--font-medium);
-  color: var(--neutral-700);
-  transition: color 0.2s ease;
+.header__nav a {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: white;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: color 0.2s ease, font-weight 0.1s ease;
 }
 
-.nav-list a:hover {
-  color: var(--primary-600);
+.header__nav a:hover {
+  color: var(--secondary-200);
+  font-weight: var(--font-bold);
 }
 
+/* Language Switcher - Flush Right (16px from viewport edge) */
+.header__lang {
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: var(--space-3);
+  z-index: 10;
+}
+
+.header__lang a {
+  font-size: var(--text-base);
+  color: white;
+  opacity: 0.7;
+  font-weight: var(--font-normal);
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease, font-weight 0.1s ease;
+}
+
+.header__lang a:hover {
+  color: var(--secondary-200);
+  opacity: 1;
+  font-weight: var(--font-semibold);
+}
+
+.header__lang a.active {
+  opacity: 1;
+  font-weight: var(--font-semibold);
+}
+
+/* Tablet and Desktop */
 @media (min-width: 768px) {
   .site-header {
     padding: var(--space-6) 0;
   }
 
+  .header-container {
+    height: 70px;
+  }
+
   .site-title {
     font-size: var(--text-3xl);
+  }
+}
+
+/* Mobile - Stack Vertically, Centered */
+@media (max-width: 767px) {
+  .header-container {
+    height: auto;
+    padding: var(--space-4) 0;
+  }
+
+  .header__branding,
+  .header__lang,
+  .header__nav {
+    position: static;
+    transform: none;
+    left: auto;
+    right: auto;
+    top: auto;
+  }
+
+  .header__branding {
+    width: 100%;
+    text-align: center;
+    margin-bottom: var(--space-3);
+  }
+
+  .header__nav {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+
+  .header__nav a {
+    font-size: var(--text-base);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .header__lang {
+    width: 100%;
+    justify-content: center;
   }
 }
 </style>

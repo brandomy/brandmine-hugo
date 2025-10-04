@@ -57,22 +57,70 @@
    2. HERO PANEL SYSTEM - TEAL GRADIENT BRANDING
    -------------------------------------------------------------------------- */
 
-/* Primary Hero - Navigation pages (Home, Brands, Founders, Insights) */
+/* Primary Hero - Home page with rich content */
 .panel--hero {
   background: radial-gradient(
     circle at center,
-    var(--color-teal-400, #1AB3B3) 0%,
-    var(--color-teal-600, #006666) 100%
+    var(--primary-400) 0%,
+    var(--primary-600) 100%
   );
   color: white;
   text-align: center;
   padding: var(--space-2xl) 0;
-  min-height: 40vh;
+  min-height: 35vh;
   display: flex;
   align-items: center;
 }
 
-.panel--hero .panel__content {
+/* Hero Large - Pages with image splits or rich media */
+.panel--hero-large {
+  background: radial-gradient(
+    circle at center,
+    var(--primary-400) 0%,
+    var(--primary-600) 100%
+  );
+  color: white;
+  text-align: center;
+  padding: var(--space-3xl) 0;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Hero List - Compact for list pages (Brands, Founders, Insights) */
+.panel--hero-list {
+  background: radial-gradient(
+    circle at center,
+    var(--primary-400) 0%,
+    var(--primary-600) 100%
+  );
+  color: white;
+  text-align: center;
+  padding: var(--space-xl) 0;
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Hero Compact - Very minimal for simple pages */
+.panel--hero-compact {
+  background: radial-gradient(
+    circle at center,
+    var(--primary-400) 0%,
+    var(--primary-600) 100%
+  );
+  color: white;
+  text-align: center;
+  padding: var(--space-lg) 0;
+  min-height: 25vh;
+  display: flex;
+  align-items: center;
+}
+
+.panel--hero .panel__content,
+.panel--hero-large .panel__content,
+.panel--hero-list .panel__content,
+.panel--hero-compact .panel__content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,18 +130,30 @@
 
 /* Hero Typography */
 .panel--hero h1,
-.panel--hero .panel__title {
+.panel--hero .panel__title,
+.panel--hero-large h1,
+.panel--hero-large .panel__title,
+.panel--hero-list h1,
+.panel--hero-list .panel__title,
+.panel--hero-compact h1,
+.panel--hero-compact .panel__title {
   font-family: var(--font-heading);
   font-size: clamp(1.875rem, 1.6rem + 1.375vw, 2.5rem); /* 30px-40px */
   font-weight: 700;
-  color: var(--color-orange-100, #FFD9CC);
+  color: var(--secondary-100);
   margin-bottom: var(--space-md);
   line-height: 1.2;
   max-width: 900px;
 }
 
 .panel--hero p,
-.panel--hero .panel__subtitle {
+.panel--hero .panel__subtitle,
+.panel--hero-large p,
+.panel--hero-large .panel__subtitle,
+.panel--hero-list p,
+.panel--hero-list .panel__subtitle,
+.panel--hero-compact p,
+.panel--hero-compact .panel__subtitle {
   font-size: clamp(1.125rem, 1rem + 0.625vw, 1.25rem); /* 18px-20px */
   font-weight: 300;
   color: white;
@@ -106,8 +166,8 @@
 .panel--hero-subtle {
   background: radial-gradient(
     circle at center,
-    var(--color-teal-300, #4DC4C4) 0%,
-    var(--color-teal-500, #008080) 100%
+    var(--primary-300) 0%,
+    var(--primary-500) 100%
   );
   color: white;
   text-align: center;
@@ -118,7 +178,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem); /* 24px-32px */
   font-weight: 700;
-  color: var(--color-orange-100);
+  color: var(--secondary-100);
   margin-bottom: var(--space-md);
 }
 
@@ -135,34 +195,34 @@
 /* Light panel - White background */
 .panel--light {
   background-color: white;
-  color: var(--color-gray-700);
+  color: var(--neutral-700);
 }
 
 /* Primary soft - Teal tint */
 .panel--primary-soft {
-  background-color: var(--color-teal-50, #E6F7F7);
-  color: var(--color-gray-700);
+  background-color: var(--primary-50);
+  color: var(--neutral-700);
 }
 
 /* Secondary soft - Orange tint */
 .panel--secondary-soft,
 .panel--orange-soft {
-  background-color: var(--color-orange-50, #FFF3EF);
-  color: var(--color-gray-700);
+  background-color: var(--secondary-50);
+  color: var(--neutral-700);
 }
 
 /* Neutral soft - Gray tint */
 .panel--neutral-soft {
-  background-color: var(--color-gray-50, #F9FAFB);
-  color: var(--color-gray-700);
+  background-color: var(--neutral-50);
+  color: var(--neutral-700);
 }
 
 /* CTA Panel - Teal gradient */
 .panel--cta {
   background: radial-gradient(
     circle at center,
-    var(--color-teal-500, #008080) 0%,
-    var(--color-teal-700, #004D4D) 100%
+    var(--primary-500) 0%,
+    var(--primary-700) 100%
   );
   color: white;
   text-align: center;

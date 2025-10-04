@@ -1,0 +1,185 @@
+/* ==========================================================================
+   Typography System - Hugo Clean Implementation
+   ==========================================================================
+   Font loading, base styles, and breadcrumbs.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   FONT FACE DECLARATIONS
+   -------------------------------------------------------------------------- */
+
+/* PT Serif - for English and Russian headings */
+@font-face {
+  font-family: 'PT Serif';
+  src: url('/static/fonts/pt-serif_regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PT Serif';
+  src: url('/static/fonts/pt-serif_bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* PT Sans - for English and Russian body text */
+@font-face {
+  font-family: 'PT Sans';
+  src: url('/static/fonts/pt-sans_regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  src: url('/static/fonts/pt-sans_bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Noto Sans SC - for Chinese */
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('/static/fonts/NotoSansSC-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('/static/fonts/NotoSansSC-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --------------------------------------------------------------------------
+   BASE TYPOGRAPHY STYLES
+   -------------------------------------------------------------------------- */
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--neutral-700);
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  color: var(--neutral-800);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: var(--text-4xl);
+  letter-spacing: var(--tracking-tight);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+}
+
+h4 {
+  font-size: var(--text-xl);
+}
+
+h5 {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+}
+
+h6 {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Paragraph spacing */
+p {
+  margin-bottom: 1em;
+}
+
+/* Links */
+a {
+  color: var(--primary-600);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-700);
+}
+
+/* --------------------------------------------------------------------------
+   BREADCRUMBS
+   -------------------------------------------------------------------------- */
+
+.breadcrumbs {
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--neutral-50);
+  font-size: var(--text-sm);
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.breadcrumbs__list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.breadcrumbs__item::after {
+  content: '›';
+  color: var(--neutral-400);
+  font-weight: bold;
+}
+
+.breadcrumbs__item:last-child::after {
+  content: '';
+}
+
+.breadcrumbs a {
+  color: var(--primary-600);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+  color: var(--primary-700);
+  text-decoration: underline;
+}
+
+.breadcrumbs__current {
+  color: var(--neutral-600);
+  font-weight: var(--font-medium);
+}

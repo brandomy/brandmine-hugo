@@ -2,9 +2,14 @@
   "scripts": {
     "build": "hugo --gc --minify && npx pagefind --site public",
     "dev": "hugo server",
-    "search": "npx pagefind --site public"
+    "search": "npx pagefind --site public",
+    "migrate": "node scripts/run-migrations.js",
+    "seed-dimensions": "node scripts/seed-dimensions.js",
+    "sync": "node scripts/sync-to-supabase.js"
   },
   "devDependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "dotenv": "^16.3.1",
     "pagefind": "^1.4.0"
   }
 }

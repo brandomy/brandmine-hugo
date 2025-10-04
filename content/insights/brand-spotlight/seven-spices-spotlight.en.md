@@ -11,8 +11,8 @@ heroImage: "hero-market.jpg"
 # Related entities
 relatedBrands: ["seven-spices"]
 relatedFounders: ["maria-volkova"]
-markets: ["russia", "eastern-europe"]
-sectors: ["food-beverage", "specialty-foods"]
+markets: ["russia"]
+sectors: ["gourmet-foods"]
 
 # Metadata
 author: "Brandmine Research Team"

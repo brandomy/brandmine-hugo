@@ -1,0 +1,226 @@
+/* ==========================================================================
+   Panel System - Hugo Clean Implementation
+   ==========================================================================
+   Ported from Jekyll SCSS without technical debt.
+   Mobile-first, BEM-compliant panel component system.
+
+   Panel Types:
+   - .panel--hero: Full teal gradient hero with radial effect
+   - .panel--primary: Light teal background
+   - .panel--light: White background
+   - .panel--orange-soft: Peach/orange tint
+   - .panel--accent-soft: Indigo tint
+   - .panel--sky-soft: Sky blue tint
+   - .panel--cta: Dark teal centered CTA panel
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   PANEL BASE - Full-width Edge-to-Edge Layout
+   -------------------------------------------------------------------------- */
+
+.panel {
+  width: 100vw;
+  padding: var(--space-6) 0;       /* 24px default padding */
+  margin: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Panel content container - controls width and centering */
+.panel__content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-1);  /* 4px for very small devices */
+  box-sizing: border-box;
+}
+
+/* Small mobile devices */
+@media (min-width: 375px) {
+  .panel__content {
+    padding: 0 var(--space-2);  /* 8px when space allows */
+  }
+}
+
+/* Increase padding on larger screens */
+@media (min-width: 768px) {
+  .panel__content {
+    padding: 0 var(--space-6);  /* 24px on tablets+ */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   HERO PANEL - Radial Gradient with Brand Colors
+   -------------------------------------------------------------------------- */
+
+.panel--hero {
+  background: radial-gradient(circle at center, var(--primary-400) 0%, var(--primary-600) 100%);
+  color: white;
+  text-align: center;
+  padding: var(--space-8) 0;  /* 32px for visual impact */
+}
+
+.panel--hero .panel__heading-primary {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  color: var(--secondary-200);  /* Light orange for contrast */
+  margin-bottom: var(--space-4);
+  font-family: var(--font-heading);
+  line-height: var(--leading-tight);
+}
+
+@media (min-width: 768px) {
+  .panel--hero .panel__heading-primary {
+    font-size: var(--text-4xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .panel--hero .panel__heading-primary {
+    font-size: var(--text-5xl);
+  }
+}
+
+.panel--hero .panel__subtitle {
+  font-size: var(--text-lg);
+  font-weight: var(--font-light);
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: var(--leading-relaxed);
+}
+
+@media (min-width: 768px) {
+  .panel--hero .panel__subtitle {
+    font-size: var(--text-xl);
+  }
+}
+
+/* Home page hero gets extra top padding */
+.home-page .panel--hero .panel__heading-primary {
+  padding-top: var(--space-16);  /* 64px */
+}
+
+/* --------------------------------------------------------------------------
+   COLOR PANEL VARIANTS
+   -------------------------------------------------------------------------- */
+
+/* Light background - white */
+.panel--light {
+  background-color: white;
+  color: var(--neutral-700);
+}
+
+/* Primary - light teal background */
+.panel--primary {
+  background-color: var(--primary-50);
+  color: var(--neutral-700);
+}
+
+/* Orange soft - peach/orange tint */
+.panel--orange-soft {
+  background-color: var(--secondary-50);
+  color: var(--neutral-700);
+}
+
+/* Accent soft - indigo tint */
+.panel--accent-soft {
+  background-color: var(--accent-50);
+  color: var(--neutral-700);
+}
+
+/* Sky soft - light blue background */
+.panel--sky-soft {
+  background-color: var(--sky-50);
+  color: var(--neutral-700);
+}
+
+/* Neutral soft - light gray background */
+.panel--neutral-soft {
+  background-color: var(--neutral-50);
+  color: var(--neutral-700);
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+/* --------------------------------------------------------------------------
+   CTA PANEL - Dark Teal Gradient, Centered Content
+   -------------------------------------------------------------------------- */
+
+.panel--cta {
+  background: radial-gradient(circle at center, var(--primary-500) 0%, var(--primary-700) 100%);
+  color: white;
+  text-align: center;
+}
+
+.panel--centered {
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   PANEL TYPOGRAPHY ELEMENTS
+   -------------------------------------------------------------------------- */
+
+.panel__heading-primary {
+  font-size: var(--text-3xl);
+  padding-bottom: var(--space-4);
+  line-height: var(--leading-tight);
+  text-align: center;
+  margin-top: 0;
+  color: inherit;
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+}
+
+.panel__heading-secondary {
+  font-size: var(--text-4xl);
+  padding-bottom: var(--space-4);
+  margin-top: 0;
+  text-align: center;
+  color: inherit;
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+}
+
+.panel__lead-text {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  padding-bottom: var(--space-6);
+  font-family: var(--font-body);
+  font-weight: var(--font-medium);
+  max-width: var(--content-width-lg);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Impact statement modifier - centered text */
+.panel--impact .panel__heading-secondary {
+  text-align: center;
+}
+
+.panel--impact .panel__lead-text {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --------------------------------------------------------------------------
+   PADDING MODIFIERS
+   -------------------------------------------------------------------------- */
+
+.panel--no-padding {
+  padding: 0;
+}
+
+.panel--padding-compact {
+  padding: var(--space-4) 0;  /* 16px - dense content */
+}
+
+.panel--padding-large {
+  padding: var(--space-8) 0;  /* 32px - breathing room */
+}

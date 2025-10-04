@@ -12,7 +12,7 @@ heroImage: "hero-storefront.jpg"
 relatedBrands: ["teatime"]
 relatedFounders: ["pavel-titov"]
 markets: ["russia"]
-sectors: ["food-beverage"]
+sectors: ["gourmet-foods"]
 
 # Metadata
 author: "Brandmine Research Team"

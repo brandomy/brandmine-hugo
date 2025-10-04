@@ -1,38 +1,93 @@
-# Chinese Translations (中文)
+# Chinese Translations - Hugo i18n
+# Only includes keys actively used in templates
 
-# Brand Identity
-vision: "🔆 照亮世界隐藏的品牌，助力其成长"
-tagline: "照亮全球南方卓越品牌"
-tagline_market: "全球南方品牌获得全球认可之地"
-
-# Navigation
+# Navigation & Content Types
+home: "首页"
 brands: "品牌"
 founders: "创始人"
 insights: "洞察"
+about: "关于"
 markets: "市场"
 sectors: "行业"
-attributes: "属性"
+attributes: "特性"
 signals: "信号"
+dimensions: "文章标签"
+topics: "主题"
+
+# Navigation (with nav_ prefix for specific contexts)
+nav_brands: "品牌"
+nav_founders: "创始人"
+nav_insights: "洞察"
 
 # Actions
-view_profile: "查看详情"
+view_profile: "查看资料"
 read_more: "阅读更多"
-learn_more: "了解更多"
 explore: "探索"
-view_all: "查看全部"
-filter_by: "筛选"
-search: "搜索"
-clear_all: "清除全部"
+clear_all: "清除所有筛选"
+filter_brands: "筛选品牌"
+search_brands: "搜索品牌..."
 
-# Common
-founded: "成立"
+# Common Labels
+founded: "成立于"
 location: "位置"
 website: "网站"
-revenue: "收入"
-employees: "员工"
-dimensions: "维度"
 founder: "创始人"
+contact: "联系方式"
 min_read: "分钟阅读"
-no_brands: "未找到品牌。"
-no_founders: "未找到创始人。"
-no_insights: "未找到洞察。"
+
+# Empty States
+no_brands: "暂无品牌"
+no_founders: "暂无创始人"
+no_insights: "暂无洞察"
+
+# Founder Profile
+professional: "专业"
+industry: "行业"
+expertise: "专长"
+education: "教育"
+languages: "语言"
+
+# Insight Detail
+related_brands: "相关品牌"
+related_founders: "相关创始人"
+
+# Footer
+all_rights_reserved: "保留所有权利"
+built_with_hugo: "使用 Hugo 构建"
+
+# 404 Page
+404_title: "页面未找到"
+404_message: "您正在寻找的页面不存在或已被移动。"
+404_home: "返回首页"
+404_brands: "浏览品牌"
+404_suggestions_title: "您可能感兴趣："
+
+# Home Page
+home_hero_title: "照亮全球南方的卓越品牌"
+home_hero_subtitle: "打破语言、文化和政治壁垒，在全球范围内放大他们的故事，并将他们与成长所需的人员、合作伙伴和资本联系起来。"
+explore_brands: "探索品牌"
+learn_how: "了解方式"
+revealing_invisible: "揭示无形：全球南方品牌已准备好进入国际市场"
+revealing_description: "全球南方各地由创始人领导的卓越品牌由于语言障碍、文化背景差距和信息碎片化，对国际合作伙伴而言仍然不可见。"
+stat_population: "全球南方占全球人口"
+stat_gdp: "占全球GDP"
+stat_opportunities: "未开发的品牌机会"
+featured_brands: "精选品牌"
+view_all_brands: "查看所有品牌"
+latest_insights: "最新见解"
+view_all_insights: "查看所有见解"
+explore_by_dimension: "按维度探索"
+dimension_description: "从商业领域到增长信号，从不同角度发现品牌。"
+sectors_description: "按商业领域浏览"
+markets_description: "按国家或地区探索"
+attributes_description: "按品牌属性发现"
+signals_description: "按增长信号筛选"
+how_it_works: "工作原理"
+step_illuminate: "照亮"
+step_illuminate_description: "通过我们的全面映射，探索全球南方以前不可见的品牌生态系统。"
+step_contextualize: "背景化"
+step_contextualize_description: "通过创始人故事和其他地方无法获得的区域情报获得关键见解。"
+step_connect: "连接"
+step_connect_description: "基于真实理解和背景识别有前途的合作伙伴关系。"
+start_discovering: "开始发现"
+get_in_touch: "联系我们"

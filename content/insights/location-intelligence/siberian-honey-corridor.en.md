@@ -12,7 +12,7 @@ heroImage: "hero-corridor.jpg"
 relatedBrands: ["altai-honey"]
 relatedFounders: []
 markets: ["russia"]
-sectors: ["food-beverage", "specialty-foods"]
+sectors: ["honey-bee-products", "gourmet-foods"]
 
 # Metadata
 author: "Brandmine Research Team"

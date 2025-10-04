@@ -39,7 +39,7 @@ body {
   line-height: 1.6;
   font-family: var(--font-body);
   font-size: var(--text-base);
-  color: var(--color-gray-600);
+  color: var(--neutral-600);
   background-color: var(--color-white);
 }
 
@@ -103,102 +103,15 @@ button {
    3. TYPOGRAPHY
    -------------------------------------------------------------------------- */
 
-@import './base/fonts.css';
-
-/* Typography Base Styles */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
-  font-weight: var(--font-bold);
-  line-height: var(--leading-tight);
-  color: var(--color-gray-700);
-  margin-bottom: var(--space-md);
-}
-
-h1 {
-  font-size: var(--text-4xl);
-  margin-bottom: var(--space-lg);
-}
-
-h2 {
-  font-size: var(--text-3xl);
-}
-
-h3 {
-  font-size: var(--text-2xl);
-}
-
-h4 {
-  font-size: var(--text-xl);
-}
-
-h5,
-h6 {
-  font-size: var(--text-lg);
-}
-
-p {
-  margin-bottom: var(--space-md);
-  line-height: var(--leading-relaxed);
-}
-
-/* Links */
-a {
-  color: var(--color-teal-600);
-  transition: color var(--transition-fast);
-}
-
-a:hover,
-a:focus {
-  color: var(--color-teal-700);
-}
-
-/* Strong and emphasis */
-strong,
-b {
-  font-weight: var(--font-bold);
-}
-
-em,
-i {
-  font-style: italic;
-}
-
-/* Code */
-code,
-pre {
-  font-family: 'Courier New', monospace;
-  font-size: 0.9em;
-}
-
-code {
-  background: var(--color-gray-100);
-  padding: 0.125rem 0.25rem;
-  border-radius: var(--radius-sm);
-}
-
-pre {
-  background: var(--color-gray-100);
-  padding: var(--space-md);
-  border-radius: var(--radius-md);
-  overflow-x: auto;
-  margin-bottom: var(--space-md);
-}
-
-pre code {
-  background: none;
-  padding: 0;
-}
+@import './typography.css';
 
 /* --------------------------------------------------------------------------
    4. LAYOUT SYSTEMS
    -------------------------------------------------------------------------- */
 
-@import './base/panels.css';
+@import './panels.css';
+@import './header.css';
+@import './footer.css';
 
 /* Container */
 .container {
@@ -272,65 +185,7 @@ pre code {
    6. BUTTONS
    -------------------------------------------------------------------------- */
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: var(--touch-target-min);
-  min-width: var(--touch-target-min);
-  padding: 0.75rem 1.5rem;
-
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  font-weight: var(--font-semibold);
-  text-align: center;
-  text-decoration: none;
-
-  background: var(--color-teal-500);
-  color: var(--color-white);
-  border: none;
-  border-radius: var(--radius-md);
-
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.btn:hover,
-.btn:focus {
-  background: var(--color-teal-600);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn:active {
-  background: var(--color-teal-700);
-  transform: translateY(0);
-}
-
-.btn--secondary {
-  background: var(--color-orange-500);
-}
-
-.btn--secondary:hover,
-.btn--secondary:focus {
-  background: var(--color-orange-600);
-}
-
-.btn--secondary:active {
-  background: var(--color-orange-700);
-}
-
-.btn--outline {
-  background: transparent;
-  color: var(--color-teal-500);
-  border: 2px solid var(--color-teal-500);
-}
-
-.btn--outline:hover,
-.btn--outline:focus {
-  background: var(--color-teal-50);
-  transform: translateY(-1px);
-}
+@import './buttons.css';
 
 /* --------------------------------------------------------------------------
    6. TAGS & BADGES
@@ -356,14 +211,14 @@ pre code {
 
 /* Focus Visible (Keyboard Navigation) */
 *:focus-visible {
-  outline: 2px solid var(--color-teal-500);
+  outline: 2px solid var(--primary-500);
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
 
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid var(--color-teal-500);
+  outline: 3px solid var(--primary-500);
   outline-offset: 2px;
 }
 
@@ -372,11 +227,11 @@ a:focus-visible {
   position: absolute;
   top: -40px;
   left: 0;
-  background: var(--color-teal-500);
+  background: var(--primary-500);
   color: var(--color-white);
   padding: 0.5rem 1rem;
   text-decoration: none;
-  z-index: var(--z-modal);
+  z-index: var(--z-modal-content);
 }
 
 .skip-link:focus {
@@ -460,6 +315,14 @@ a:focus-visible {
   max-width: var(--content-width-lg);
   margin-left: auto;
   margin-right: auto;
+}
+
+/* No Content Message */
+.no-content {
+  text-align: center;
+  color: var(--neutral-600);
+  font-size: var(--text-lg);
+  padding: var(--space-12) var(--space-4);
 }
 
 /* --------------------------------------------------------------------------

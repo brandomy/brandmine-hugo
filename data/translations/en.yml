@@ -1,38 +1,93 @@
-# English Translations
+# English Translations - Hugo i18n
+# Only includes keys actively used in templates
 
-# Brand Identity
-vision: "🔆 Illuminate the world's hidden brands to fuel their growth"
-tagline: "Illuminating Exceptional Global South Brands"
-tagline_market: "Where Global South brands gain global recognition"
-
-# Navigation
+# Navigation & Content Types
+home: "Home"
 brands: "Brands"
 founders: "Founders"
 insights: "Insights"
+about: "About"
 markets: "Markets"
 sectors: "Sectors"
 attributes: "Attributes"
 signals: "Signals"
+dimensions: "Dimensions"
+topics: "Topics"
+
+# Navigation (with nav_ prefix for specific contexts)
+nav_brands: "Brands"
+nav_founders: "Founders"
+nav_insights: "Insights"
 
 # Actions
 view_profile: "View Profile"
 read_more: "Read More"
-learn_more: "Learn More"
 explore: "Explore"
-view_all: "View All"
-filter_by: "Filter by"
-search: "Search"
 clear_all: "Clear all"
+filter_brands: "Filter Brands"
+search_brands: "Search brands..."
 
-# Common
+# Common Labels
 founded: "Founded"
 location: "Location"
 website: "Website"
-revenue: "Revenue"
-employees: "Employees"
-dimensions: "Dimensions"
 founder: "Founder"
+contact: "Contact"
 min_read: "min read"
+
+# Empty States
 no_brands: "No brands found."
 no_founders: "No founders found."
 no_insights: "No insights found."
+
+# Founder Profile
+professional: "Professional"
+industry: "Industry"
+expertise: "Expertise"
+education: "Education"
+languages: "Languages"
+
+# Insight Detail
+related_brands: "Related Brands"
+related_founders: "Related Founders"
+
+# Footer
+all_rights_reserved: "All rights reserved"
+built_with_hugo: "Built with Hugo"
+
+# 404 Page
+404_title: "Page Not Found"
+404_message: "The page you're looking for doesn't exist or has been moved."
+404_home: "Return Home"
+404_brands: "Browse Brands"
+404_suggestions_title: "You might be interested in:"
+
+# Home Page
+home_hero_title: "Illuminating Exceptional Global South Brands"
+home_hero_subtitle: "Breaking through language, cultural, and political barriers to amplify their stories globally and connect them with the people, partners, and capital they need to grow."
+explore_brands: "Explore Brands"
+learn_how: "Learn How"
+revealing_invisible: "Revealing the Invisible: Global South Brands Ready for International Markets"
+revealing_description: "Exceptional founder-led brands across the Global South remain invisible to international partners due to language barriers, cultural context gaps, and fragmented information."
+stat_population: "of global population in the Global South"
+stat_gdp: "of worldwide GDP"
+stat_opportunities: "of untapped brand opportunities"
+featured_brands: "Featured Brands"
+view_all_brands: "View All Brands"
+latest_insights: "Latest Insights"
+view_all_insights: "View All Insights"
+explore_by_dimension: "Explore By Dimension"
+dimension_description: "Discover brands through different perspectives from business sectors to growth signals."
+sectors_description: "Browse by Business Sector"
+markets_description: "Explore by Country or Region"
+attributes_description: "Discover by Brand Attribute"
+signals_description: "Filter by Growth Signal"
+how_it_works: "How It Works"
+step_illuminate: "Illuminate"
+step_illuminate_description: "Explore previously invisible brand ecosystems across the Global South through our comprehensive mapping."
+step_contextualize: "Contextualize"
+step_contextualize_description: "Gain critical insights through founder stories and regional intelligence unavailable anywhere else."
+step_connect: "Connect"
+step_connect_description: "Identify promising partnerships based on authentic understanding and context."
+start_discovering: "Start Discovering"
+get_in_touch: "Get in Touch"

@@ -1,29 +1,35 @@
 {{ define "main" }}
-<div class="brands-list-page">
-  <div class="container">
-    <!-- Page Header -->
-    <header class="page-header text-center">
-      <h1>{{ .Title }}</h1>
-      {{ with .Description }}
-        <p class="page-description">{{ . }}</p>
-      {{ end }}
-    </header>
 
-    <!-- Search Bar -->
-    {{ partial "search-bar.html" . }}
-
-    <!-- Brand Grid (No Sidebar - Mobile-First) -->
-    <div class="brands-main">
-      {{ if .Pages }}
-        <div id="brand-grid" class="card-grid">
-          {{ range .Pages }}
-            {{ partial "card-brand.html" . }}
-          {{ end }}
-        </div>
-      {{ else }}
-        <p class="no-content">{{ i18n "no_brands" | default "No brands found." }}</p>
-      {{ end }}
-    </div>
+<!-- Hero Panel -->
+<section class="panel panel--hero-list">
+  <div class="panel__content">
+    <h1 class="panel__title">{{ .Title }}</h1>
+    {{ with .Description }}
+      <p class="panel__subtitle">{{ . }}</p>
+    {{ end }}
   </div>
-</div>
+</section>
+
+<!-- Search Panel -->
+<section class="panel panel--light">
+  <div class="panel__content">
+    {{ partial "search-bar.html" . }}
+  </div>
+</section>
+
+<!-- Brand Grid Panel -->
+<section class="panel panel--neutral-soft">
+  <div class="panel__content">
+    {{ if .Pages }}
+      <div id="brand-grid" class="card-grid">
+        {{ range .Pages }}
+          {{ partial "card-brand.html" . }}
+        {{ end }}
+      </div>
+    {{ else }}
+      <p class="no-content">{{ i18n "no_brands" | default "No brands found." }}</p>
+    {{ end }}
+  </div>
+</section>
+
 {{ end }}

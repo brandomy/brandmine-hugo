@@ -49,27 +49,6 @@
 **Status**: Backlogged (Week 2 of clean build)
 **Added**: 2025-10-03
 
-### #003: Supabase Integration Script
-**Type**: Feature
-**Description**: Create sync script to fetch content from Supabase and generate Hugo markdown files
-**Reference**: CLEAN-BUILD-PLAN.md Phase 4, Day 18
-**Scope**:
-- Design Supabase schema (brands, founders, insights tables)
-- Create `scripts/sync-from-supabase.js`
-- Fetch data from Supabase API
-- Generate Hugo markdown files (multilingual .en.md, .ru.md, .zh.md)
-- Update front matter from database fields
-- Add to build process (`npm run sync && hugo`)
-
-**Acceptance Criteria**:
-- Script fetches all content from Supabase
-- Generates valid Hugo markdown files
-- Preserves all front matter fields
-- Handles multilingual content correctly
-- Can run in CI/CD pipeline
-
-**Status**: Backlogged (Week 4 of clean build)
-**Added**: 2025-10-03
 
 ### #004: Clean Hugo Card Components
 **Type**: Enhancement
@@ -113,7 +92,39 @@
 
 ## Completed
 
-*Track completed backlog items here for reference*
+### #003: Supabase Integration Script ✅
+**Type**: Feature
+**Description**: Hugo → Supabase sync script to sync content to database
+**Reference**: CLEAN-BUILD-PLAN.md Phase 4, Day 18
+**Scope**:
+- ✅ Design Supabase schema (brands, founders, insights tables)
+- ✅ Create SQL migrations (11 tables, RLS policies, indexes)
+- ✅ Create `scripts/sync-to-supabase.js` (Hugo → Supabase)
+- ✅ Parse Hugo markdown files (multilingual .en.md, .ru.md, .zh.md)
+- ✅ Upload images to Supabase Storage
+- ✅ Upsert brands + translations to database
+- ✅ Update taxonomy junction tables
+- ✅ Add `npm run sync` command
+- ✅ Test with 6 brands (altai-honey, serra-verde, seven-spices, sojourn-hotels, taiga-spirits, teatime)
+- ✅ Fix image path (assets/images/brands/{brand}/originals/)
+- ✅ Upload 12 brand images to Supabase Storage
+
+**Acceptance Criteria**:
+- ✅ Script parses Hugo content front matter
+- ✅ Generates Supabase records with translations
+- ✅ Preserves all front matter fields
+- ✅ Handles multilingual content correctly
+- ✅ Uploads images to Supabase Storage CDN
+
+**Status**: Completed
+**Added**: 2025-10-03
+**Completed**: 2025-10-03
+**Implementation**:
+- Database: 6 brands, 54 translations, 12 images
+- Schema: docs/supabase-schema.md
+- Migrations: scripts/migrations/
+- Sync: scripts/sync-to-supabase.js
+- Storage: Supabase Storage (brand-images bucket)
 
 ---
 

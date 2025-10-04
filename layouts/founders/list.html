@@ -1,26 +1,28 @@
 {{ define "main" }}
-<div class="founders-list-page">
-  <div class="container">
-    <!-- Page Header -->
-    <header class="page-header text-center">
-      <h1>{{ .Title }}</h1>
-      {{ with .Description }}
-        <p class="page-description">{{ . }}</p>
-      {{ end }}
-    </header>
 
-    <!-- Founders Grid -->
-    <div class="founders-main">
-      {{ if .Pages }}
-        <div id="founder-grid" class="card-grid">
-          {{ range .Pages }}
-            {{ partial "card-founder.html" . }}
-          {{ end }}
-        </div>
-      {{ else }}
-        <p class="no-content">{{ i18n "no_founders" | default "No founders found." }}</p>
-      {{ end }}
-    </div>
+<!-- Hero Panel -->
+<section class="panel panel--hero-list">
+  <div class="panel__content">
+    <h1 class="panel__title">{{ .Title }}</h1>
+    {{ with .Description }}
+      <p class="panel__subtitle">{{ . }}</p>
+    {{ end }}
   </div>
-</div>
+</section>
+
+<!-- Founders Grid Panel -->
+<section class="panel panel--light">
+  <div class="panel__content">
+    {{ if .Pages }}
+      <div id="founder-grid" class="card-grid">
+        {{ range .Pages }}
+          {{ partial "card-founder.html" . }}
+        {{ end }}
+      </div>
+    {{ else }}
+      <p class="no-content">{{ i18n "no_founders" | default "No founders found." }}</p>
+    {{ end }}
+  </div>
+</section>
+
 {{ end }}

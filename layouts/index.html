@@ -1,5 +1,146 @@
 {{ define "main" }}
-<main>
-    {{ .Content }}
-</main>
+
+<!-- 1. Hero Section (Excitement) -->
+<section class="panel panel--hero">
+  <div class="panel__content">
+    <h1 class="panel__title">{{ i18n "home_hero_title" }}</h1>
+    <p class="panel__subtitle">{{ i18n "home_hero_subtitle" }}</p>
+    <div class="hero-actions" style="margin-top: var(--space-8); display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center;">
+      <a href="{{ "/brands/" | relLangURL }}" class="btn btn--primary" style="display: inline-block; padding: var(--btn-padding-default); background: var(--secondary-500); color: white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        {{ i18n "explore_brands" }}
+      </a>
+      <a href="#how-it-works" class="btn btn--outline" style="display: inline-block; padding: var(--btn-padding-default); background: transparent; color: white; border: 2px solid white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        {{ i18n "learn_how" }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Brand Discovery Section (Trust) -->
+<section class="panel panel--primary-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading">{{ i18n "revealing_invisible" }}</h2>
+    <p class="panel__lead-text">{{ i18n "revealing_description" }}</p>
+
+    <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-8); margin-top: var(--space-8); text-align: center;">
+      <div class="stat-item">
+        <div style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--primary-600); margin-bottom: var(--space-2);">40%+</div>
+        <div style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "stat_population" }}</div>
+      </div>
+      <div class="stat-item">
+        <div style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--primary-600); margin-bottom: var(--space-2);">25%+</div>
+        <div style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "stat_gdp" }}</div>
+      </div>
+      <div class="stat-item">
+        <div style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--primary-600); margin-bottom: var(--space-2);">1000s</div>
+        <div style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "stat_opportunities" }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Featured Brands Section (Clarity) -->
+<section class="panel panel--light">
+  <div class="panel__content">
+    <h2 class="panel__heading" style="text-align: center;">{{ i18n "featured_brands" }}</h2>
+
+    <div class="brands-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
+      {{ range first 6 (where site.RegularPages "Section" "brands") }}
+        {{ partial "card-brand.html" . }}
+      {{ end }}
+    </div>
+
+    <div style="text-align: center; margin-top: var(--space-8);">
+      <a href="{{ "/brands/" | relLangURL }}" class="btn btn--primary" style="display: inline-block; padding: var(--btn-padding-default); background: var(--primary-500); color: white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        {{ i18n "view_all_brands" }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Insights Preview Section (Warmth) -->
+<section class="panel panel--secondary-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading" style="text-align: center;">{{ i18n "latest_insights" }}</h2>
+
+    <div class="insights-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
+      {{ range first 3 (where site.RegularPages "Section" "insights") }}
+        {{ partial "card-insight.html" . }}
+      {{ end }}
+    </div>
+
+    <div style="text-align: center; margin-top: var(--space-8);">
+      <a href="{{ "/insights/" | relLangURL }}" class="btn btn--secondary" style="display: inline-block; padding: var(--btn-padding-default); background: var(--secondary-600); color: white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        {{ i18n "view_all_insights" }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Discovery Tools Section (Intelligence) -->
+<section class="panel panel--neutral-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading" style="text-align: center;">{{ i18n "explore_by_dimension" }}</h2>
+    <p class="panel__lead-text" style="text-align: center;">{{ i18n "dimension_description" }}</p>
+
+    <div class="dimension-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
+      <a href="{{ "/sectors/" | relLangURL }}" class="dimension-card" style="display: block; padding: var(--space-6); background: white; border-radius: var(--radius-lg); border-left: 4px solid var(--olive-500); text-decoration: none; transition: transform var(--transition-base), box-shadow var(--transition-base);">
+        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--olive-700); margin-bottom: var(--space-2);">{{ i18n "sectors" }}</h3>
+        <p style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "sectors_description" }}</p>
+      </a>
+
+      <a href="{{ "/markets/" | relLangURL }}" class="dimension-card" style="display: block; padding: var(--space-6); background: white; border-radius: var(--radius-lg); border-left: 4px solid var(--sky-500); text-decoration: none; transition: transform var(--transition-base), box-shadow var(--transition-base);">
+        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--sky-700); margin-bottom: var(--space-2);">{{ i18n "markets" }}</h3>
+        <p style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "markets_description" }}</p>
+      </a>
+
+      <a href="{{ "/attributes/" | relLangURL }}" class="dimension-card" style="display: block; padding: var(--space-6); background: white; border-radius: var(--radius-lg); border-left: 4px solid var(--secondary-500); text-decoration: none; transition: transform var(--transition-base), box-shadow var(--transition-base);">
+        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--secondary-700); margin-bottom: var(--space-2);">{{ i18n "attributes" }}</h3>
+        <p style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "attributes_description" }}</p>
+      </a>
+
+      <a href="{{ "/signals/" | relLangURL }}" class="dimension-card" style="display: block; padding: var(--space-6); background: white; border-radius: var(--radius-lg); border-left: 4px solid var(--accent-500); text-decoration: none; transition: transform var(--transition-base), box-shadow var(--transition-base);">
+        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--accent-700); margin-bottom: var(--space-2);">{{ i18n "signals" }}</h3>
+        <p style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "signals_description" }}</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Call to Action Section (Urgency) -->
+<section class="panel panel--cta" id="how-it-works">
+  <div class="panel__content">
+    <h2 class="panel__heading">{{ i18n "how_it_works" }}</h2>
+
+    <div class="steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); margin: var(--space-12) 0; text-align: center;">
+      <div class="step-item">
+        <div style="font-size: var(--text-5xl); font-weight: var(--font-bold); color: var(--secondary-300); margin-bottom: var(--space-4);">1</div>
+        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: white; margin-bottom: var(--space-3);">{{ i18n "step_illuminate" }}</h3>
+        <p style="font-size: var(--text-base); color: white; opacity: 0.95;">{{ i18n "step_illuminate_description" }}</p>
+      </div>
+
+      <div class="step-item">
+        <div style="font-size: var(--text-5xl); font-weight: var(--font-bold); color: var(--secondary-300); margin-bottom: var(--space-4);">2</div>
+        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: white; margin-bottom: var(--space-3);">{{ i18n "step_contextualize" }}</h3>
+        <p style="font-size: var(--text-base); color: white; opacity: 0.95;">{{ i18n "step_contextualize_description" }}</p>
+      </div>
+
+      <div class="step-item">
+        <div style="font-size: var(--text-5xl); font-weight: var(--font-bold); color: var(--secondary-300); margin-bottom: var(--space-4);">3</div>
+        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: white; margin-bottom: var(--space-3);">{{ i18n "step_connect" }}</h3>
+        <p style="font-size: var(--text-base); color: white; opacity: 0.95;">{{ i18n "step_connect_description" }}</p>
+      </div>
+    </div>
+
+    <div class="cta-buttons" style="margin-top: var(--space-12); display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center;">
+      <a href="{{ "/brands/" | relLangURL }}" class="btn btn--white" style="display: inline-block; padding: var(--btn-padding-default); background: white; color: var(--primary-700); border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        {{ i18n "start_discovering" }}
+      </a>
+      <a href="{{ "/about/" | relLangURL }}" class="btn btn--outline-light" style="display: inline-block; padding: var(--btn-padding-default); background: transparent; color: white; border: 2px solid white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        {{ i18n "get_in_touch" }}
+      </a>
+    </div>
+  </div>
+</section>
+
 {{ end }}
