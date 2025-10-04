@@ -135,6 +135,30 @@ i18n/zh.yml  # Chinese UI strings
 - **Translation key**: `translationKey: "unique-identifier"` in front matter
 - **Default language**: English (en)
 
+## Multilingual Search Architecture
+
+**Data File**: `data/taxonomy-labels.yml` (single source of truth)
+- Structure: `lang: { markets: {}, sectors: {}, attributes: {}, signals: {} }`
+- Used by: Templates for display, search index for multilingual queries
+
+**Search Index Generation**: `layouts/index.json`
+- Language-specific indexes: `/index.json`, `/ru/index.json`, `/zh/index.json`
+- Translates slugs to labels at build time using taxonomy-labels.yml
+- Pattern: `{{ $labels := index .Site.Data.taxonomy_labels $.Language.Lang }}`
+
+**Search Client**: `assets/js/search.js`
+- Detects language from `document.documentElement.lang`
+- Loads correct index: `/${lang}/index.json` or `/index.json` for EN
+- No hardcoded language paths
+
+**Card Hidden Search Data**:
+```go
+<div style="position: absolute; left: -9999px;">
+  {{ range .Params.markets }}{{ . }} {{ index $labels.markets . }}{{ end }}
+</div>
+```
+Enables search by slug OR translated term in any language.
+
 ## Layout Philosophy
 
 ### Mobile-First Standards
@@ -295,6 +319,6 @@ If any answer is "no," reconsider the approach.
 
 ---
 
-**Last Updated**: 2025-10-03
+**Last Updated**: 2025-10-05
 **Hugo Version**: 0.139.3
-**Status**: Phase 3
+**Status**: Phase 3 - Multilingual search system operational

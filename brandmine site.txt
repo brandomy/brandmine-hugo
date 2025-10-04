@@ -1,0 +1,585 @@
+/Users/randaleastman/dev/brandmine-hugo
+├── archetypes
+│   ├── brands.md
+│   ├── case-studies.md
+│   ├── default.md
+│   ├── founders.md
+│   ├── insights.md
+│   └── press-kits.md
+├── assets
+│   ├── css
+│   │   ├── base
+│   │   ├── buttons.css
+│   │   ├── components
+│   │   ├── footer.css
+│   │   ├── header.css
+│   │   ├── main.css
+│   │   ├── panels.css
+│   │   └── typography.css
+│   ├── fonts
+│   │   ├── NotoSansSC-Bold.woff2
+│   │   ├── NotoSansSC-Medium.woff2
+│   │   ├── NotoSansSC-Regular.woff2
+│   │   ├── NotoSerifSC-Bold.woff2
+│   │   ├── NotoSerifSC-Medium.woff2
+│   │   ├── NotoSerifSC-Regular.woff2
+│   │   ├── pt-mono_bold.woff2
+│   │   ├── pt-mono_regular.woff2
+│   │   ├── pt-sans_bold-italic.woff2
+│   │   ├── pt-sans_bold.woff2
+│   │   ├── pt-sans_caption-bold.woff2
+│   │   ├── pt-sans_caption-regular.woff2
+│   │   ├── pt-sans_italic.woff2
+│   │   ├── pt-sans_narrow-bold.woff2
+│   │   ├── pt-sans_narrow-regular.woff2
+│   │   ├── pt-sans_regular.woff2
+│   │   ├── pt-serif_bold-italic.woff2
+│   │   ├── pt-serif_bold.woff2
+│   │   ├── pt-serif_caption-italic.woff2
+│   │   ├── pt-serif_caption-regular.woff2
+│   │   ├── pt-serif_italic.woff2
+│   │   ├── pt-serif_regular.woff2
+│   │   ├── SourceCodePro-Bold.woff2
+│   │   ├── SourceCodePro-BoldIt.woff2
+│   │   ├── SourceCodePro-It.woff2
+│   │   └── SourceCodePro-Regular.woff2
+│   ├── images
+│   │   ├── brands
+│   │   ├── case-studies
+│   │   ├── categories
+│   │   ├── founders
+│   │   ├── insights
+│   │   └── people
+│   ├── js
+│   │   ├── filter.js
+│   │   └── search.js
+│   └── scss
+│       ├── _fonts.scss
+│       ├── _tokens.scss
+│       ├── base
+│       ├── components
+│       ├── main.scss
+│       └── tokens
+├── brandmine site.txt
+├── claude.md
+├── cloudflare.json
+├── content
+│   ├── _index.en.md
+│   ├── _index.md
+│   ├── _index.ru.md
+│   ├── _index.zh.md
+│   ├── about
+│   │   ├── _index.en.md
+│   │   ├── _index.ru.md
+│   │   └── _index.zh.md
+│   ├── brands
+│   │   ├── _index.md
+│   │   ├── altai-honey
+│   │   ├── serra-verde
+│   │   ├── seven-spices
+│   │   ├── sojourn-hotels
+│   │   ├── taiga-spirits
+│   │   └── teatime
+│   ├── case-studies
+│   │   ├── perfect-diary
+│   │   ├── solerebels
+│   │   ├── sugar-cosmetics
+│   │   └── walk-of-shame
+│   ├── dimensions
+│   │   ├── attributes
+│   │   ├── markets
+│   │   ├── sectors
+│   │   └── signals
+│   ├── founders
+│   │   ├── _index.md
+│   │   ├── carlos-santos
+│   │   ├── ivan-petrov
+│   │   ├── maria-volkova
+│   │   └── pavel-titov
+│   ├── insights
+│   │   ├── brand-spotlight
+│   │   ├── founders-journey
+│   │   ├── location-intelligence
+│   │   └── market-momentum
+│   ├── pages
+│   │   └── pricing.md
+│   ├── press-kits
+│   │   └── teatime
+│   └── search
+│       ├── _index.en.md
+│       ├── _index.ru.md
+│       └── _index.zh.md
+├── data
+│   ├── clients
+│   ├── countries.json
+│   ├── dimensions.yaml
+│   ├── insights.yaml
+│   ├── people.yaml
+│   ├── pricing
+│   ├── pricing.yaml
+│   ├── taxonomies
+│   │   ├── attributes.json
+│   │   ├── markets.json
+│   │   ├── sectors.json
+│   │   └── signals.json
+│   ├── taxonomy-labels.yml
+│   └── team
+├── docs
+│   ├── archive
+│   │   ├── card-system-documentation.md
+│   │   ├── CEO-WORKFLOW-ADDING-BRANDS.md
+│   │   ├── CLEAN-BUILD-PLAN.md
+│   │   ├── deployment-checklist.md
+│   │   ├── hugo-implementation-plan.md
+│   │   ├── HUGO-MIGRATION.md
+│   │   ├── IMAGE-INTEGRATION-REPORT.md
+│   │   ├── people-system-usage.md
+│   │   ├── temp-folder-comprehensive-inventory.md
+│   │   ├── temp-folder-detailed-assessment.md
+│   │   ├── week-1-link-audit-report.md
+│   │   └── week-1-summary.md
+│   ├── BACKLOG.md
+│   ├── brandmine-brand-guide.md
+│   ├── brandmine-vision-mission-values.md
+│   ├── dev-journal
+│   │   ├── 2025-10-03-translation-import.md
+│   │   ├── 2025-10-04-edge-to-edge-layout-accessibility.md
+│   │   ├── 2025-10-04-token-system-fix-panel-implementation.md
+│   │   ├── dev-journal-2025-10-03-color-fix.md
+│   │   ├── dev-journal-2025-10-03-pagefind-search.md
+│   │   ├── dev-journal-2025-10-03-pill-styling.md
+│   │   ├── dev-journal-2025-10-03-supabase-setup.md
+│   │   └── dev-journal-2025-10-03.md
+│   ├── hugo-technical-standards.md
+│   ├── supabase-schema.md
+│   └── TAXONOMY-STANDARDS.md
+├── hugo.yaml
+├── i18n
+│   ├── en.yml
+│   ├── ru.yml
+│   └── zh.yml
+├── layouts
+│   ├── _default
+│   │   ├── baseof.html
+│   │   ├── list.html
+│   │   └── single.html
+│   ├── 404.html
+│   ├── brands
+│   │   ├── list.html
+│   │   └── single.html
+│   ├── case-studies
+│   │   ├── list.html
+│   │   └── single.html
+│   ├── founders
+│   │   ├── list.html
+│   │   └── single.html
+│   ├── index.html
+│   ├── index.json
+│   ├── insights
+│   │   ├── list.html
+│   │   └── single.html
+│   ├── pages
+│   │   └── pricing.html
+│   ├── partials
+│   │   ├── author-byline.html
+│   │   ├── card-brand.html
+│   │   ├── card-founder.html
+│   │   ├── card-insight.html
+│   │   ├── cards
+│   │   ├── filter-panel.html
+│   │   ├── footer.html
+│   │   ├── forms
+│   │   ├── header.html
+│   │   ├── hero
+│   │   ├── icon.html
+│   │   ├── icons
+│   │   ├── insight-card.html
+│   │   ├── language-switcher.html
+│   │   ├── panels
+│   │   ├── responsive-image.html
+│   │   ├── search-bar.html
+│   │   ├── team-card.html
+│   │   └── testimonial.html
+│   ├── press-kits
+│   │   └── list.html
+│   ├── search
+│   │   └── list.html
+│   └── taxonomy
+│       └── term.html
+├── package-lock.json
+├── package.json
+├── pagefind.yml
+├── public
+│   ├── 404.html
+│   ├── about
+│   │   ├── index.html
+│   │   └── index.xml
+│   ├── apple-touch-icon.png
+│   ├── attributes
+│   │   ├── artisanal-excellence
+│   │   ├── cultural-bridge
+│   │   ├── founder-led
+│   │   ├── heritage-brand
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   ├── innovation-leader
+│   │   ├── premium-positioning
+│   │   ├── regional-icon
+│   │   └── sustainability-pioneer
+│   ├── brands
+│   │   ├── altai-honey
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   ├── serra-verde
+│   │   ├── seven-spices
+│   │   ├── sojourn-hotels
+│   │   ├── taiga-spirits
+│   │   └── teatime
+│   ├── case-studies
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   └── perfect-diary
+│   ├── css
+│   │   └── bundled.css
+│   ├── dimensions
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   └── markets
+│   ├── en
+│   │   ├── index.html
+│   │   └── sitemap.xml
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
+│   ├── favicon.ico
+│   ├── fonts
+│   ├── founders
+│   │   ├── carlos-santos
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   ├── ivan-petrov
+│   │   ├── maria-volkova
+│   │   └── pavel-titov
+│   ├── icons
+│   │   ├── brand-spotlight.svg
+│   │   ├── founders-journey.svg
+│   │   ├── location-intelligence.svg
+│   │   └── market-momentum.svg
+│   ├── images
+│   │   ├── brands
+│   │   ├── case-studies
+│   │   ├── categories
+│   │   ├── clients
+│   │   ├── dimensions
+│   │   ├── founders
+│   │   ├── icons
+│   │   ├── insights
+│   │   ├── logos
+│   │   ├── placeholders
+│   │   └── team
+│   ├── index.html
+│   ├── index.json
+│   ├── index.xml
+│   ├── insights
+│   │   ├── alexei-sokolov-teatimes-journey-from-moscow-to-global-markets
+│   │   ├── brazils-artisan-craft-movement-gains-international-recognition
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   ├── seven-spices-bridging-russian-and-global-flavors
+│   │   └── siberian-honey-corridor-russias-emerging-apiary-ecosystem
+│   ├── js
+│   │   └── bundle.js
+│   ├── markets
+│   │   ├── brazil
+│   │   ├── china
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   └── russia
+│   ├── pages
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   └── pricing
+│   ├── press-kits
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   └── teatime
+│   ├── robots.txt
+│   ├── ru
+│   │   ├── 404.html
+│   │   ├── about
+│   │   ├── attributes
+│   │   ├── brands
+│   │   ├── founders
+│   │   ├── index.html
+│   │   ├── index.json
+│   │   ├── index.xml
+│   │   ├── markets
+│   │   ├── search
+│   │   ├── sectors
+│   │   ├── signals
+│   │   └── sitemap.xml
+│   ├── search
+│   │   ├── index.html
+│   │   └── index.xml
+│   ├── sectors
+│   │   ├── artisanal-spirits
+│   │   ├── gourmet-foods
+│   │   ├── honey-bee-products
+│   │   ├── hotels-resorts
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   └── natural-beauty
+│   ├── signals
+│   │   ├── export-ready
+│   │   ├── index.html
+│   │   ├── index.xml
+│   │   └── rapid-growth
+│   ├── site.webmanifest
+│   ├── sitemap.xml
+│   └── zh
+│       ├── 404.html
+│       ├── about
+│       ├── attributes
+│       ├── brands
+│       ├── founders
+│       ├── index.html
+│       ├── index.json
+│       ├── index.xml
+│       ├── markets
+│       ├── search
+│       ├── sectors
+│       ├── signals
+│       └── sitemap.xml
+├── README.md
+├── resources
+│   └── _gen
+│       └── images
+├── scripts
+│   ├── migrations
+│   │   ├── 00-complete-schema.sql
+│   │   ├── 01-create-tables.sql
+│   │   ├── 02-create-indexes.sql
+│   │   ├── 03-create-triggers.sql
+│   │   └── 04-enable-rls.sql
+│   ├── run-migrations.js
+│   ├── seed-dimensions.js
+│   ├── setup-storage.js
+│   ├── sync-to-supabase.js
+│   ├── validate_brand_taxonomies.sh
+│   ├── validate_taxonomies.sh
+│   └── verify-schema.js
+├── static
+│   ├── apple-touch-icon.png
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
+│   ├── favicon.ico
+│   ├── fonts
+│   ├── icons
+│   │   ├── brand-spotlight.svg
+│   │   ├── founders-journey.svg
+│   │   ├── location-intelligence.svg
+│   │   └── market-momentum.svg
+│   ├── images
+│   │   ├── brands
+│   │   ├── categories
+│   │   ├── clients
+│   │   ├── dimensions
+│   │   ├── icons
+│   │   ├── insights
+│   │   ├── logos
+│   │   ├── placeholders
+│   │   └── team
+│   └── site.webmanifest
+├── temp
+│   ├── _brands
+│   │   ├── en
+│   │   ├── ru
+│   │   └── zh
+│   ├── _data
+│   │   ├── attributes.json
+│   │   ├── brands.json
+│   │   ├── brands.json.backup
+│   │   ├── case_studies.yml
+│   │   ├── case_study_mappings.yml
+│   │   ├── component_defaults.yml
+│   │   ├── countries.json
+│   │   ├── countries.json.backup
+│   │   ├── dimensions
+│   │   ├── dimensions_config.yml
+│   │   ├── fallback
+│   │   ├── featured_content.yml
+│   │   ├── footer
+│   │   ├── founders.json
+│   │   ├── founders.json.backup
+│   │   ├── icons
+│   │   ├── image_attributions.yml
+│   │   ├── insights
+│   │   ├── insights.json
+│   │   ├── language_map.json
+│   │   ├── languages.json
+│   │   ├── market_sector_map.json
+│   │   ├── market_sector_map.json.backup
+│   │   ├── market-sectors
+│   │   ├── markets.json
+│   │   ├── markets.json.backup
+│   │   ├── navigation
+│   │   ├── navigation_cache.json
+│   │   ├── page_sections.yml
+│   │   ├── search_presets.yml
+│   │   ├── sectors.json
+│   │   ├── signals.json
+│   │   ├── social
+│   │   └── translations
+│   ├── _dimensions
+│   │   ├── dimensions_structure.txt
+│   │   ├── en
+│   │   ├── ru
+│   │   └── zh
+│   ├── _founders
+│   │   ├── en
+│   │   ├── ru
+│   │   └── zh
+│   ├── _includes
+│   │   ├── components
+│   │   ├── dev
+│   │   ├── helpers
+│   │   ├── layout
+│   │   ├── pages
+│   │   ├── reference
+│   │   ├── styleguide
+│   │   ├── test
+│   │   └── utilities
+│   ├── _insights
+│   │   ├── en
+│   │   ├── ru
+│   │   └── zh
+│   ├── _layouts
+│   │   ├── about-test.html
+│   │   ├── about.html
+│   │   ├── brand-basic.html
+│   │   ├── brand-profile.html
+│   │   ├── brands.html
+│   │   ├── case-study.html
+│   │   ├── default.html
+│   │   ├── dimension-profile.html
+│   │   ├── dimensions-category.html
+│   │   ├── discovery.html
+│   │   ├── error-404.html
+│   │   ├── founder-cards-test.html
+│   │   ├── founder-profile.html
+│   │   ├── founders.html
+│   │   ├── home.html
+│   │   ├── insight-article.html
+│   │   ├── insights-category.html
+│   │   ├── insights.html
+│   │   ├── journal.html
+│   │   ├── market-sector.html
+│   │   ├── post.html
+│   │   ├── search.html
+│   │   ├── simple.html
+│   │   ├── styleguide.html
+│   │   └── test.html
+│   ├── assets
+│   │   ├── images
+│   │   └── scss
+│   ├── attributes.json
+│   ├── brands.json
+│   ├── case-studies-disabled
+│   │   ├── perfect-diary.md
+│   │   ├── solerebels.md
+│   │   ├── sugar-cosmetics.md
+│   │   └── walk-of-shame.md
+│   ├── case-studies.disabled
+│   │   ├── perfect-diary.md
+│   │   ├── solerebels.md
+│   │   ├── sugar-cosmetics.md
+│   │   └── walk-of-shame.md
+│   ├── case-studies.disabled 2
+│   │   ├── perfect-diary.md
+│   │   ├── solerebels.md
+│   │   ├── sugar-cosmetics.md
+│   │   └── walk-of-shame.md
+│   ├── countries.json
+│   ├── dummy-brands
+│   │   ├── br-serra-verde.md
+│   │   ├── br-sojourn-hotels.md
+│   │   ├── ru-altai-honey.md
+│   │   ├── ru-seven-spices.md
+│   │   ├── ru-taiga-spirits.md
+│   │   └── ru-teatime.md
+│   ├── dummy-founders
+│   │   ├── br-eduardo-santos.md
+│   │   ├── ru-alexei-sokolov.md
+│   │   ├── ru-ivan-petrov.md
+│   │   └── ru-maria-kuznetsova.md
+│   ├── dummy-insights
+│   │   ├── ru-russian-wine-renaissance.md
+│   │   ├── ru-seven-spices-spotlight.md
+│   │   ├── ru-siberian-honey-corridor.md
+│   │   └── ru-teatime-founder-journey.md
+│   ├── icons
+│   │   ├── attribute-default.svg
+│   │   ├── attributes-icon-circle-background.svg
+│   │   ├── attributes-icon.svg
+│   │   ├── brand-spotlight-icon.svg
+│   │   ├── brand-spotlight.svg
+│   │   ├── founders-journey-icon.svg
+│   │   ├── founders-journey.svg
+│   │   ├── icon.html
+│   │   ├── insights-default.svg
+│   │   ├── location-intelligence-icon.svg
+│   │   ├── location-intelligence.svg
+│   │   ├── market-default.svg
+│   │   ├── market-momentum-icon.svg
+│   │   ├── market-momentum.svg
+│   │   ├── markets-icon-circle-background.svg
+│   │   ├── markets-icon.svg
+│   │   ├── russian-sector-default.svg
+│   │   ├── sector-default.svg
+│   │   ├── sectors-icon-circle-background.svg
+│   │   ├── sectors-icon.svg
+│   │   ├── signal-default.svg
+│   │   ├── signals-icon-circle-background.svg
+│   │   └── signals-icon.svg
+│   ├── includes
+│   │   └── icons
+│   ├── jekyll-brandmine-guide.md
+│   ├── jekyll-CLAUDE.md
+│   ├── markets.json
+│   ├── pages
+│   │   ├── about
+│   │   ├── brand
+│   │   ├── brand-basic
+│   │   ├── brands
+│   │   ├── case-study
+│   │   ├── dimension
+│   │   ├── dimension-profile
+│   │   ├── dimensions-category
+│   │   ├── discovery
+│   │   ├── error-404
+│   │   ├── founder
+│   │   ├── founders
+│   │   ├── home
+│   │   ├── insight-article
+│   │   ├── insights
+│   │   ├── insights-category
+│   │   ├── journal
+│   │   ├── market-sector
+│   │   ├── post
+│   │   ├── search
+│   │   └── styleguide
+│   ├── sectors.json
+│   ├── separators
+│   │   ├── bullet-separator.html
+│   │   ├── comma-separator.html
+│   │   ├── dot-separator.html
+│   │   ├── emoji-separator.html
+│   │   ├── en-dash-separator.html
+│   │   ├── pipe-separator.html
+│   │   ├── slash-separator.html
+│   │   └── spacer.html
+│   ├── signals.json
+│   ├── technical-standards.md
+│   └── tokens.scss
+└── themes
+
+254 directories, 329 files

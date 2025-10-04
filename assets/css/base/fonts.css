@@ -72,12 +72,12 @@
 }
 
 /* --------------------------------------------------------------------------
-   NOTO SANS SC - CHINESE FONT (Simplified Chinese)
+   NOTO SANS SC - CHINESE BODY FONT (Simplified Chinese)
    -------------------------------------------------------------------------- */
 
 @font-face {
   font-family: 'Noto Sans SC';
-  src: url('/fonts/NotoSansSC/NotoSansSC-Regular.woff2') format('woff2');
+  src: url('/fonts/NotoSansSC-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -86,7 +86,7 @@
 
 @font-face {
   font-family: 'Noto Sans SC';
-  src: url('/fonts/NotoSansSC/NotoSansSC-Medium.woff2') format('woff2');
+  src: url('/fonts/NotoSansSC-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -95,7 +95,38 @@
 
 @font-face {
   font-family: 'Noto Sans SC';
-  src: url('/fonts/NotoSansSC/NotoSansSC-Bold.woff2') format('woff2');
+  src: url('/fonts/NotoSansSC-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+4E00-9FFF, U+3400-4DBF;
+}
+
+/* --------------------------------------------------------------------------
+   NOTO SERIF SC - CHINESE HEADING FONT (Simplified Chinese)
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Noto Serif SC';
+  src: url('/fonts/NotoSerifSC-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+4E00-9FFF, U+3400-4DBF;
+}
+
+@font-face {
+  font-family: 'Noto Serif SC';
+  src: url('/fonts/NotoSerifSC-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+4E00-9FFF, U+3400-4DBF;
+}
+
+@font-face {
+  font-family: 'Noto Serif SC';
+  src: url('/fonts/NotoSerifSC-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -107,7 +138,7 @@
    -------------------------------------------------------------------------- */
 
 :lang(zh) {
-  font-family: var(--font-chinese);
+  font-family: 'Noto Sans SC', sans-serif;
 }
 
 :lang(zh) h1,
@@ -116,6 +147,6 @@
 :lang(zh) h4,
 :lang(zh) h5,
 :lang(zh) h6 {
-  font-family: var(--font-chinese);
+  font-family: 'Noto Serif SC', serif;
   font-weight: 500; /* Medium weight for better Chinese rendering */
 }
