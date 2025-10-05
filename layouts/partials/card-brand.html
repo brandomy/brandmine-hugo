@@ -23,6 +23,10 @@
   {{ $imagePath = printf "images/brands/%s/%s" $brandSlug $heroImage }}
   {{ $image = resources.Get $imagePath }}
 {{ end }}
+{{ if not $image }}
+  {{/* Final fallback: placeholder */}}
+  {{ $image = resources.Get "images/placeholders/originals/brand-hero.jpg" }}
+{{ end }}
 {{ $labels := dict }}
 {{ with .Site.Data }}
   {{ with index . "taxonomy-labels" }}
@@ -39,12 +43,6 @@
       {{ $resized := $image.Resize "800x450 q85" }}
       <img
         src="{{ $resized.RelPermalink }}"
-        alt="{{ .Title }}"
-        loading="lazy"
-      >
-    {{ else }}
-      <img
-        src="/images/placeholder-brand.jpg"
         alt="{{ .Title }}"
         loading="lazy"
       >

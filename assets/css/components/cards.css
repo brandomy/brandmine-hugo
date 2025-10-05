@@ -151,8 +151,15 @@
    -------------------------------------------------------------------------- */
 
 .card--founder .card__image {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 2 / 3;
   max-height: 320px;
+}
+
+.card--founder .card__image img {
+  aspect-ratio: 2 / 3;
+  border-radius: 12px;
+  object-fit: cover;
+  width: 100%;
 }
 
 .card--founder .card__name {

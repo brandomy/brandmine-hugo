@@ -25,7 +25,7 @@ headquarters:
   coordinates: [19.0760, 72.8777]
 
 # Assets
-logo: "logo-color.png"
+logo: "logo-color.jpg"
 heroImage: "hero-campaign.jpg"
 
 # Social Media (India-focused platforms)

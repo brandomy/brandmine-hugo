@@ -25,6 +25,10 @@
   {{ $imagePath = printf "images/founders/%s/%s" $founderSlug $photo }}
   {{ $image = resources.Get $imagePath }}
 {{ end }}
+{{ if not $image }}
+  {{/* Final fallback: placeholder */}}
+  {{ $image = resources.Get "images/placeholders/originals/founder-headshot.jpg" }}
+{{ end }}
 
 <article class="card card--founder">
   {{/* Portrait Photo with Experience Metric */}}

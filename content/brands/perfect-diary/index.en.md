@@ -25,7 +25,7 @@ headquarters:
   coordinates: [23.1291, 113.2644]
 
 # Assets
-logo: "logo-color.png"
+logo: "logo-color.jpg"
 heroImage: "hero-cosmetics.jpg"
 
 # Social Media (China-focused platforms)

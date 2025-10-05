@@ -19,6 +19,18 @@
 {{ $loading := .loading | default "lazy" }}
 
 {{ $img := resources.Get $src }}
+{{ if not $img }}
+  {{/* Try to determine fallback based on path */}}
+  {{ if strings.Contains $src "founders" }}
+    {{ $img = resources.Get "images/placeholders/originals/founder-headshot.jpg" }}
+  {{ else if strings.Contains $src "brands" }}
+    {{ if strings.Contains $src "logo" }}
+      {{ $img = resources.Get "images/placeholders/originals/brand-logo.jpg" }}
+    {{ else }}
+      {{ $img = resources.Get "images/placeholders/originals/brand-hero.jpg" }}
+    {{ end }}
+  {{ end }}
+{{ end }}
 
 {{ if $img }}
   {{ $small := $img.Resize "400x" }}

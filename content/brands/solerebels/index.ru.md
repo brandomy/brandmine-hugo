@@ -25,7 +25,7 @@ headquarters:
   coordinates: [9.0320, 38.7469]
 
 # Assets
-logo: "logo-color.png"
+logo: "logo-color.jpg"
 heroImage: "hero-workshop.jpg"
 
 # Social Media

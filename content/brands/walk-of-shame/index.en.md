@@ -25,7 +25,7 @@ headquarters:
   coordinates: [55.7558, 37.6173]
 
 # Assets
-logo: "logo-color.png"
+logo: "logo-color.jpg"
 heroImage: "hero-streetwear.jpg"
 
 # Social Media (Russia-focused platforms)
