@@ -1,13 +1,22 @@
 {{ define "main" }}
 
-<!-- Hero Panel -->
-<section class="panel panel--hero-list">
-  <div class="panel__content">
-    <h1 class="panel__title">{{ .Title }}</h1>
-    {{ with .Description }}
-      <p class="panel__subtitle">{{ . }}</p>
-    {{ end }}
+<!-- Split-Panel Hero -->
+<section class="panel panel--hero-split">
+  <div class="split-hero split-hero--blue">
+    <div class="split-hero__content">
+      <h1 class="split-hero__title">See What Others Overlook</h1>
+      <p class="split-hero__subtitle">Bite-sized intelligence from BRICS+ markets moving faster than headlines suggest.</p>
+    </div>
+    <div class="split-hero__image">
+      <img src="{{ "images/heroes/insights-hero.jpg" | relURL }}" alt="Market insights" loading="eager">
+    </div>
   </div>
+</section>
+
+<!-- Impact Statement -->
+<section class="impact-statement">
+  <h2>Quick Reads on Hidden Opportunities</h2>
+  <p>Not think pieces. Not trend reports. Sharp 5-8 minute reads on specific brands, founders, and markets where language barriers hide real opportunity. Filter by what matters: Brand Spotlights, Founder Stories, Location Intelligence, or Market Momentum.</p>
 </section>
 
 <!-- Insights Grid Panel -->
