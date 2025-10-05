@@ -13,6 +13,27 @@
     <header class="insight-hero" style="border-left-color: {{ $insightType.colorHex }}">
       {{ with $insightType }}
         <div class="insight-category" style="background: {{ .colorHex }}">
+          {{ if eq $.Params.insightType "brand-spotlight" }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; margin-right: 6px;">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          {{ else if eq $.Params.insightType "founders-journey" }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; margin-right: 6px;">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M12 12v7" />
+              <line x1="8" y1="16" x2="16" y2="16" />
+            </svg>
+          {{ else if eq $.Params.insightType "location-intelligence" }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; margin-right: 6px;">
+              <path d="M12 22c3.5-3.5 7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 3.5 7.5 7 11z" />
+              <circle cx="12" cy="11" r="2" />
+            </svg>
+          {{ else if eq $.Params.insightType "market-momentum" }}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; margin-right: 6px;">
+              <polyline points="22 7 13 15 9 12 2 19" />
+              <polyline points="16 7 22 7 22 13" />
+            </svg>
+          {{ end }}
           {{ .title }}
         </div>
       {{ end }}
@@ -20,6 +41,20 @@
       <h1>{{ .Title }}</h1>
 
       <div class="insight-meta">
+        {{ with .Params.markets }}
+          {{ $market := index . 0 }}
+          <span class="meta-item meta-item--flag">
+            {{ if eq $market "russia" }}🇷🇺
+            {{ else if eq $market "china" }}🇨🇳
+            {{ else if eq $market "brazil" }}🇧🇷
+            {{ else if eq $market "india" }}🇮🇳
+            {{ else if eq $market "south-africa" }}🇿🇦
+            {{ else if eq $market "ethiopia" }}🇪🇹
+            {{ else if eq $market "global" }}🌍
+            {{ end }}
+          </span>
+        {{ end }}
+
         {{ with .Params.author }}
           <span class="meta-item">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -86,7 +121,7 @@
                 <h4 style="color: var(--sky-700)">{{ i18n "markets" | default "Markets" }}</h4>
                 <ul class="taxonomy-list">
                   {{ range . }}
-                    <li><a href="{{ printf "/markets/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                    <li><a href="{{ printf "/markets/%s" . | relLangURL }}">{{ . | humanize | title }}</a></li>
                   {{ end }}
                 </ul>
               </div>
@@ -97,7 +132,7 @@
                 <h4 style="color: var(--olive-700)">{{ i18n "sectors" | default "Sectors" }}</h4>
                 <ul class="taxonomy-list">
                   {{ range . }}
-                    <li><a href="{{ printf "/sectors/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                    <li><a href="{{ printf "/sectors/%s" . | relLangURL }}">{{ . | humanize | title }}</a></li>
                   {{ end }}
                 </ul>
               </div>
@@ -108,7 +143,7 @@
                 <h4 style="color: var(--secondary-700)">{{ i18n "attributes" | default "Attributes" }}</h4>
                 <ul class="taxonomy-list">
                   {{ range . }}
-                    <li><a href="{{ printf "/attributes/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                    <li><a href="{{ printf "/attributes/%s" . | relLangURL }}">{{ . | humanize | title }}</a></li>
                   {{ end }}
                 </ul>
               </div>
@@ -119,7 +154,7 @@
                 <h4 style="color: var(--accent-700)">{{ i18n "signals" | default "Signals" }}</h4>
                 <ul class="taxonomy-list">
                   {{ range . }}
-                    <li><a href="{{ printf "/signals/%s" . | relLangURL }}">{{ . | humanize }}</a></li>
+                    <li><a href="{{ printf "/signals/%s" . | relLangURL }}">{{ . | humanize | title }}</a></li>
                   {{ end }}
                 </ul>
               </div>
@@ -131,15 +166,28 @@
         {{ with .Params.relatedBrands }}
           <div class="related-box">
             <h3>{{ i18n "related_brands" | default "Related Brands" }}</h3>
-            <ul class="related-list">
+            <div class="related-brands-grid">
               {{ range . }}
                 {{ $brandSlug := . }}
                 {{ $brandPage := site.GetPage (printf "/brands/%s" .) }}
                 {{ if $brandPage }}
-                  <li><a href="{{ $brandPage.Permalink }}">{{ $brandPage.Title }}</a></li>
+                  <a href="{{ $brandPage.Permalink }}" class="brand-mini-card">
+                    <div class="brand-mini-card__image">
+                      {{ $logoPath := printf "images/brands/%s/originals/%s" $brandSlug ($brandPage.Params.logo | default "logo-color.jpg") }}
+                      {{ $logo := resources.Get $logoPath }}
+                      {{ if $logo }}
+                        <img src="{{ $logo.RelPermalink }}" alt="{{ $brandPage.Title }}" loading="lazy">
+                      {{ else }}
+                        <div class="brand-mini-card__fallback">
+                          {{ substr $brandPage.Title 0 1 }}
+                        </div>
+                      {{ end }}
+                    </div>
+                    <div class="brand-mini-card__name">{{ $brandPage.Title }}</div>
+                  </a>
                 {{ end }}
               {{ end }}
-            </ul>
+            </div>
           </div>
         {{ end }}
 
@@ -147,16 +195,42 @@
         {{ with .Params.relatedFounders }}
           <div class="related-box">
             <h3>{{ i18n "related_founders" | default "Related Founders" }}</h3>
-            <ul class="related-list">
+            <div class="related-founders-list">
               {{ range . }}
+                {{ $founderSlug := . }}
                 {{ $founderPage := site.GetPage (printf "/founders/%s" .) }}
                 {{ if $founderPage }}
-                  <li><a href="{{ $founderPage.Permalink }}">{{ $founderPage.Title }}</a></li>
+                  <a href="{{ $founderPage.Permalink }}" class="founder-card">
+                    <div class="founder-card__photo">
+                      {{ $photoPath := printf "images/founders/%s/originals/%s" $founderSlug ($founderPage.Params.image | default "photo-headshot.jpg") }}
+                      {{ $photo := resources.Get $photoPath }}
+                      {{ if $photo }}
+                        <img src="{{ $photo.RelPermalink }}" alt="{{ $founderPage.Title }}" loading="lazy">
+                      {{ else }}
+                        <div class="founder-card__fallback">
+                          {{ substr $founderPage.Title 0 1 }}
+                        </div>
+                      {{ end }}
+                    </div>
+                    <div class="founder-card__info">
+                      <strong class="founder-card__name">{{ $founderPage.Title }}</strong>
+                      {{ with $founderPage.Params.role }}
+                        <span class="founder-card__role">{{ . }}</span>
+                      {{ end }}
+                    </div>
+                  </a>
                 {{ end }}
               {{ end }}
-            </ul>
+            </div>
           </div>
         {{ end }}
+
+        <!-- Membership CTA -->
+        <div class="related-box cta-box">
+          <h3>Connect with Featured Brands</h3>
+          <p class="cta-box__text">Premium members get direct introductions to founders featured in our insights.</p>
+          <a href="/premium-membership-for-partners/" class="cta-box__button">Explore Membership</a>
+        </div>
       </aside>
     </div>
   </div>
@@ -176,7 +250,8 @@
 }
 
 .insight-category {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: var(--space-2) var(--space-4);
   color: white;
   font-size: var(--text-sm);
@@ -206,6 +281,11 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+}
+
+.meta-item--flag {
+  font-size: 20px;
+  line-height: 1;
 }
 
 .hero-image {
@@ -300,6 +380,191 @@
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   margin-bottom: var(--space-2);
+}
+
+/* Brand Mini Cards */
+.related-brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--space-4);
+}
+
+.brand-mini-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-4);
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.brand-mini-card:hover {
+  border-color: var(--primary-600);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.brand-mini-card__image {
+  width: 60px;
+  height: 60px;
+  margin-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+}
+
+.brand-mini-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brand-mini-card__fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--neutral-100);
+  color: var(--neutral-600);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+}
+
+.brand-mini-card__name {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--neutral-800);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.brand-mini-card:hover .brand-mini-card__name {
+  color: var(--primary-600);
+}
+
+/* Founder Cards */
+.related-founders-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.founder-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.founder-card:hover {
+  border-color: var(--primary-600);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.founder-card__photo {
+  width: 60px;
+  height: 90px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.founder-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.founder-card__fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--neutral-100);
+  color: var(--neutral-600);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+}
+
+.founder-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+}
+
+.founder-card__name {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--neutral-800);
+  line-height: 1.3;
+}
+
+.founder-card:hover .founder-card__name {
+  color: var(--primary-600);
+}
+
+.founder-card__role {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  line-height: 1.3;
+}
+
+/* Membership CTA Box */
+.cta-box {
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  margin-bottom: 0;
+}
+
+.cta-box h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+  color: var(--primary-800);
+  font-size: var(--text-xl);
+}
+
+.cta-box__text {
+  color: var(--neutral-700);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  margin-bottom: var(--space-4);
+}
+
+.cta-box__button {
+  display: inline-block;
+  background: var(--primary-600);
+  color: white;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: var(--font-semibold);
+  font-size: var(--text-sm);
+  transition: background var(--transition-fast);
+}
+
+.cta-box__button:hover {
+  background: var(--primary-700);
 }
 
 @media (min-width: 992px) {

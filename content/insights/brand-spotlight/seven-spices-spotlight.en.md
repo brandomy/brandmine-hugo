@@ -1,7 +1,7 @@
 ---
 title: "Seven Spices: Bridging Russian and Global Flavors"
 translationKey: "seven-spices-spotlight"
-date: 2024-10-20
+date: 2025-09-10
 draft: false
 
 # Insight category
@@ -25,9 +25,9 @@ summary: "St. Petersburg-based Seven Spices creates distinctive spice blends tha
 
 ## A Chef's Vision
 
-Maria Volkova's background in classical French cuisine might seem an unlikely foundation for a Russian spice company. Yet it's precisely this cross-cultural expertise that makes Seven Spices unique in the artisanal food market.
+Maria Kuznetsova's background in classical French cuisine might seem an unlikely foundation for a Russian spice company. Yet it's precisely this cross-cultural expertise that makes Seven Spices unique in the artisanal food market.
 
-"Russian cuisine has incredible depth, but it's often misunderstood internationally," Volkova explains. "I wanted to create products that would help people discover authentic Russian flavors while being accessible to global palates."
+"Russian cuisine has incredible depth, but it's often misunderstood internationally," Kuznetsova explains. "I wanted to create products that would help people discover authentic Russian flavors while being accessible to global palates."
 
 ## Cultural Bridge Through Flavor
 
@@ -39,7 +39,7 @@ Their bestselling "Moscow Nights" blend combines black pepper, coriander, and di
 
 The company maintains direct relationships with spice farmers across Asia and the Mediterranean, while Russian herbs are wild-harvested from sustainable sources in collaboration with local foragers.
 
-"Every ingredient has a story and a relationship behind it," notes Volkova. "This isn't just good ethics—it's essential for maintaining the exceptional quality our customers expect."
+"Every ingredient has a story and a relationship behind it," notes Kuznetsova. "This isn't just good ethics—it's essential for maintaining the exceptional quality our customers expect."
 
 ## International Expansion
 

@@ -1,7 +1,7 @@
 ---
 title: "阿列克谢·索科洛夫：TeaTime从莫斯科到全球市场的旅程"
 translationKey: "teatime-founder-journey"
-date: 2024-10-18
+date: 2025-08-20
 draft: false
 
 # Insight category

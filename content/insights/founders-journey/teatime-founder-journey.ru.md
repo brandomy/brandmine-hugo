@@ -1,7 +1,7 @@
 ---
 title: "Алексей Соколов: путь TeaTime от Москвы к мировым рынкам"
 translationKey: "teatime-founder-journey"
-date: 2024-10-18
+date: 2025-08-20
 draft: false
 
 # Insight category

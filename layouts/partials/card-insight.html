@@ -27,18 +27,19 @@
 
 <article class="card card--insight">
   {{/* Hero Image */}}
-  <div class="card__image">
-    {{ if $image }}
-      <img
-        src="{{ $image.RelPermalink }}"
-        alt="{{ .Title }}"
-        loading="lazy"
-      >
-    {{ else }}
-      <div class="card__image-placeholder">
-        <span>{{ .Title | truncate 2 "" }}</span>
-      </div>
-    {{ end }}
+  <a href="{{ .RelPermalink }}" class="card__image-link">
+    <div class="card__image">
+      {{ if $image }}
+        <img
+          src="{{ $image.RelPermalink }}"
+          alt="{{ .Title }}"
+          loading="lazy"
+        >
+      {{ else }}
+        <div class="card__image-placeholder">
+          <span>{{ .Title | truncate 2 "" }}</span>
+        </div>
+      {{ end }}
 
     {{/* Category Badge with Icon */}}
     <div class="card__category card__category--{{ $insightType }}">
@@ -65,12 +66,26 @@
       {{ end }}
       {{ $insightType | humanize }}
     </div>
-  </div>
+    </div>
+  </a>
 
   {{/* Card Content */}}
   <div class="card__content">
     {{/* Date + Reading Time */}}
     <div class="card__date">
+      {{ with .Params.markets }}
+        {{ $market := index . 0 }}
+        <span class="card__flag-inline">
+          {{ if eq $market "russia" }}🇷🇺
+          {{ else if eq $market "china" }}🇨🇳
+          {{ else if eq $market "brazil" }}🇧🇷
+          {{ else if eq $market "india" }}🇮🇳
+          {{ else if eq $market "south-africa" }}🇿🇦
+          {{ else if eq $market "ethiopia" }}🇪🇹
+          {{ else if eq $market "global" }}🌍
+          {{ end }}
+        </span>
+      {{ end }}
       <time datetime="{{ .Date.Format "2006-01-02" }}">
         {{ .Date.Format "January 2, 2006" }}
       </time>

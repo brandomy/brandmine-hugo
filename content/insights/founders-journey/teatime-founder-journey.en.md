@@ -1,7 +1,7 @@
 ---
 title: "Alexei Sokolov: TeaTime's Journey from Moscow to Global Markets"
 translationKey: "teatime-founder-journey"
-date: 2024-10-18
+date: 2025-08-20
 draft: false
 
 # Insight category

@@ -223,6 +223,23 @@
   aspect-ratio: 16 / 10;
 }
 
+.card__image-link {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.card__image-link:hover .card__image {
+  opacity: 0.95;
+}
+
+/* Country Flag Inline */
+.card__flag-inline {
+  font-size: 16px;
+  line-height: 1;
+  margin-right: 6px;
+}
+
 /* Category badge (top-left or top-center) */
 .card__category {
   position: absolute;
