@@ -2,6 +2,8 @@
 title: "Иван Петров"
 translationKey: "ivan-petrov"
 date: 2025-05-03
+featured: true
+weight: 1
 draft: false
 
 # Founder details

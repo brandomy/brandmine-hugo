@@ -2,6 +2,8 @@
 title: "西伯利亚蜂蜜走廊：俄罗斯新兴的养蜂生态系统"
 translationKey: "siberian-honey-corridor"
 date: 2025-07-15
+featured: true
+weight: 2
 draft: false
 
 # Insight category

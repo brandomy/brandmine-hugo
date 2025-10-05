@@ -2,6 +2,8 @@
 title: "俄罗斯葡萄酒复兴：五年内市场增长52%"
 translationKey: "russian-wine-renaissance"
 date: 2025-09-25
+featured: true
+weight: 3
 draft: false
 
 # Insight category

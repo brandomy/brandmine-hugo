@@ -3,6 +3,8 @@ title: "Siberian Honey Corridor: Russia's Emerging Apiary Ecosystem"
 translationKey: "siberian-honey-corridor"
 date: 2025-07-15
 draft: false
+featured: true
+weight: 2
 
 # Insight category
 insightType: "location-intelligence"

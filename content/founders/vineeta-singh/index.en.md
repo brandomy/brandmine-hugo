@@ -3,6 +3,8 @@ title: "Vineeta Singh"
 translationKey: "vineeta-singh"
 date: 2025-05-03
 draft: false
+featured: true
+weight: 3
 
 # Founder details
 name: "Vineeta Singh"

@@ -2,6 +2,8 @@
 title: "贝特莱赫姆·蒂拉洪·阿莱穆"
 translationKey: "bethlehem-alemu"
 date: 2025-05-03
+featured: true
+weight: 2
 draft: false
 
 # Founder details

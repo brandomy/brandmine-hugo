@@ -3,6 +3,8 @@ title: "Russian Wine Renaissance: 52% Market Growth Over Five Years"
 translationKey: "russian-wine-renaissance"
 date: 2025-09-25
 draft: false
+featured: true
+weight: 3
 
 # Insight category
 insightType: "market-momentum"

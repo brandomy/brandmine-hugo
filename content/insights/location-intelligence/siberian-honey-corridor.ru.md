@@ -2,6 +2,8 @@
 title: "Сибирский медовый коридор: формирующаяся экосистема пчеловодства России"
 translationKey: "siberian-honey-corridor"
 date: 2025-07-15
+featured: true
+weight: 2
 draft: false
 
 # Insight category

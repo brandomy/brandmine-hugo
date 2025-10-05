@@ -2,6 +2,8 @@
 title: "维妮塔·辛格"
 translationKey: "vineeta-singh"
 date: 2025-05-03
+featured: true
+weight: 3
 draft: false
 
 # Founder details

@@ -3,6 +3,8 @@ title: "Bethlehem Tilahun Alemu"
 translationKey: "bethlehem-alemu"
 date: 2025-05-03
 draft: false
+featured: true
+weight: 2
 
 # Founder details
 name: "Bethlehem Tilahun Alemu"

@@ -2,6 +2,8 @@
 title: "Ренессанс российского виноделия: рост рынка на 52% за пять лет"
 translationKey: "russian-wine-renaissance"
 date: 2025-09-25
+featured: true
+weight: 3
 draft: false
 
 # Insight category

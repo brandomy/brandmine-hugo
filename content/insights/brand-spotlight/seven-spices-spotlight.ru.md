@@ -2,6 +2,8 @@
 title: "Семь Специй: Мост между русской и мировой кухней"
 translationKey: "seven-spices-spotlight"
 date: 2025-09-10
+featured: true
+weight: 1
 draft: false
 
 # Insight category

@@ -3,6 +3,8 @@ title: "Seven Spices: Bridging Russian and Global Flavors"
 translationKey: "seven-spices-spotlight"
 date: 2025-09-10
 draft: false
+featured: true
+weight: 1
 
 # Insight category
 insightType: "brand-spotlight"

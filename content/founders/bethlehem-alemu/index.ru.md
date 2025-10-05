@@ -2,6 +2,8 @@
 title: "Бетлехем Тилахун Алему"
 translationKey: "bethlehem-alemu"
 date: 2025-05-03
+featured: true
+weight: 2
 draft: false
 
 # Founder details

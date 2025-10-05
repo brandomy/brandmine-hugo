@@ -2,6 +2,8 @@
 title: "七香料：连接俄罗斯和全球风味的桥梁"
 translationKey: "seven-spices-spotlight"
 date: 2025-09-10
+featured: true
+weight: 1
 draft: false
 
 # Insight category

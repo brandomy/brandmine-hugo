@@ -16,8 +16,8 @@
   </div>
 </section>
 
-<!-- 2. Stats Section (Clarity) - White/Light Gray -->
-<section class="panel panel--light">
+<!-- 2. Stats Section (Clarity) - Light Teal -->
+<section class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading" style="text-align: center;">{{ i18n "revealing_invisible" }}</h2>
     <p class="panel__lead-text" style="text-align: center; max-width: 100%; margin-left: auto; margin-right: auto;">{{ i18n "revealing_description" }}</p>
@@ -39,10 +39,10 @@
   </div>
 </section>
 
-<!-- 3. Featured Brands Section (Trust) - Teal -->
-<section class="panel panel--primary-soft">
+<!-- 3. Featured Brands Section (Trust) - White/Light Gray -->
+<section class="panel panel--light">
   <div class="panel__content">
-    <h2 class="panel__heading" style="text-align: center;">{{ i18n "featured_brands" }}</h2>
+    <h2 class="panel__heading" style="text-align: center;">{{ i18n "brands" }}</h2>
 
     <div class="brands-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
       {{ range first 6 (where (where site.RegularPages "Section" "brands") ".Params.featured" true).ByWeight }}
@@ -58,13 +58,15 @@
   </div>
 </section>
 
-<!-- 4. Founders Section (Human Connection) - White/Light Gray -->
-<section class="panel panel--light">
+<!-- 4. Founders Section (Human Connection) - Light Teal -->
+<section class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading" style="text-align: center;">{{ i18n "behind_the_brands" }}</h2>
 
     <div class="founders-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
-      {{ range first 4 (where site.RegularPages "Section" "founders") }}
+      {{ $founders := where site.RegularPages "Section" "founders" }}
+      {{ $featuredFounders := where $founders "Params.featured" true }}
+      {{ range first 3 $featuredFounders }}
         {{ partial "card-founder.html" . }}
       {{ end }}
     </div>
@@ -77,8 +79,8 @@
   </div>
 </section>
 
-<!-- 5. Dimensions Section (Intelligence) - Teal -->
-<section class="panel panel--primary-soft">
+<!-- 5. Dimensions Section (Intelligence) - White/Light Gray -->
+<section class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading" style="text-align: center;">{{ i18n "explore_by_dimension" }}</h2>
     <p class="panel__lead-text" style="text-align: center; max-width: 100%; margin-left: auto; margin-right: auto;">{{ i18n "dimension_description" }}</p>
@@ -132,10 +134,12 @@
 <!-- 6. Insights Section (Warmth/Engagement) - Orange Soft -->
 <section class="panel panel--orange-soft">
   <div class="panel__content">
-    <h2 class="panel__heading" style="text-align: center;">{{ i18n "latest_insights" }}</h2>
+    <h2 class="panel__heading" style="text-align: center;">{{ i18n "market_intelligence" }}</h2>
 
     <div class="insights-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
-      {{ range first 3 (where site.RegularPages "Section" "insights") }}
+      {{ $insights := where site.RegularPages "Section" "insights" }}
+      {{ $featuredInsights := where $insights "Params.featured" true }}
+      {{ range first 3 $featuredInsights }}
         {{ partial "card-insight.html" . }}
       {{ end }}
     </div>
