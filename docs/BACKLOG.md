@@ -80,7 +80,52 @@
 
 ## Future Enhancements
 
-*No items yet*
+### #005: Home Page Success Stories Section
+**Type**: Enhancement
+**Description**: Add "Success Stories" section to home page showcasing case studies
+**Reference**: Currently have 4 case studies (Perfect Diary, SoleRebels, Sugar Cosmetics, Walk of Shame) but no home page section
+**Scope**:
+- Add Success Stories section to `layouts/index.html` (between Featured Brands and Insights sections)
+- Create `layouts/partials/card-case-study.html` component
+  - Hero image, brand name, challenge/solution/results snippet
+  - Founder quote callout
+  - Metrics display (revenue, valuation, etc.)
+  - "Read Story" CTA link
+- Query first 3 case studies from `/case-studies/` section
+- Add translations to `i18n/*.yml` (success_stories, read_story, etc.)
+- Style with panel system (panel--accent-soft or panel--secondary-soft)
+
+**Acceptance Criteria**:
+- Home page displays 3 featured case studies
+- Cards are visually distinct from brand cards
+- Links to full case study pages
+- Responsive on mobile (320px+)
+- Multilingual (EN/RU/ZH)
+- Touch-friendly CTA buttons (44px minimum)
+
+**Status**: Backlogged
+**Added**: 2025-10-05
+
+### #006: Dragonfly Brand Profile
+**Type**: Content
+**Description**: Create brand profile for Dragonfly
+**Scope**:
+- Create `content/brands/dragonfly/index.{en,ru,zh}.md` files
+- Add brand hero image to `assets/images/brands/dragonfly/`
+- Add founder profile if needed
+- Assign appropriate taxonomies (markets, sectors, attributes, signals)
+- Write 3-4 paragraph brand description
+- Add social media links and business details
+
+**Acceptance Criteria**:
+- Brand appears on /brands/ page
+- All 3 languages complete (EN/RU/ZH)
+- Hero image displays on brand card and profile page
+- Taxonomies allow filtering/discovery
+- Links to founder profile (if applicable)
+
+**Status**: Backlogged
+**Added**: 2025-10-05
 
 ---
 
