@@ -1,6 +1,75 @@
 # Hugo Technical Standards - Brandmine
 
-## Directory Structure
+## Image Placement Standards
+
+**CRITICAL RULE**: All content images MUST go in `/assets/images/` (Hugo processes them). NEVER use `/static/images/` for content images.
+
+### Directory Structure
+```
+assets/images/          # ALL content images here (Hugo processes)
+├── brands/
+│   ├── brandname/
+│   │   └── originals/
+│   │       ├── hero-*.jpg
+│   │       └── logo-*.png
+├── founders/
+│   ├── foundername/
+│   │   └── originals/
+│   │       └── photo-*.jpg
+├── insights/
+│   └── article-name/
+│       └── originals/
+│           └── hero-*.jpg
+└── dimensions/
+    └── category/
+        └── originals/
+            └── icon-*.svg
+
+static/                 # ONLY non-content assets
+├── fonts/             # Self-hosted fonts only
+└── favicon.ico        # Site favicon only
+```
+
+### Why This Matters
+- **Hugo Image Processing**: Only `/assets/images/` files get processed (resize, WebP, optimization)
+- **Performance**: Processed images = faster load times
+- **Responsive Images**: Hugo generates srcset variants automatically
+- **Cache Busting**: Hugo adds content hashes to processed images
+
+### Content Front Matter Pattern
+```yaml
+# Brand profile
+heroImage: "hero-storefront.jpg"  # Lives in assets/images/brands/{slug}/originals/
+
+# Founder profile
+photo: "photo-headshot.jpg"  # Lives in assets/images/founders/{slug}/originals/
+
+# Insight
+heroImage: "hero-graph.jpg"  # Lives in assets/images/insights/{slug}/originals/
+```
+
+### Template Usage
+```go-html-template
+{{/* Hugo processes from assets/images/ */}}
+{{ $brandSlug := path.Base .File.Dir }}
+{{ $heroPath := printf "images/brands/%s/originals/%s" $brandSlug .Params.heroImage }}
+{{ $hero := resources.Get $heroPath }}
+{{ if $hero }}
+  {{ $resized := $hero.Resize "800x600 q85" }}
+  <img src="{{ $resized.RelPermalink }}" alt="{{ .Title }}">
+{{ end }}
+```
+
+**Never manually reference `/static/images/` in templates or front matter for content images.**
+
+### When Adding New Images
+1. **Identify image type**: Brand hero? Founder photo? Insight illustration?
+2. **Create directory**: `assets/images/{type}/{name}/originals/`
+3. **Place file**: Move image to the originals directory
+4. **Update front matter**: Reference just the filename (template builds full path)
+5. **Clear cache if needed**: `hugo --gc --cleanDestinationDir`
+
+## Site Directory Structure
 
 ### Complete Site Structure
 ```
