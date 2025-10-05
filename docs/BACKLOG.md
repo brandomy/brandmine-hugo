@@ -127,6 +127,34 @@
 **Status**: Backlogged
 **Added**: 2025-10-05
 
+### #007: MapLibre Mini Map on Brand Profiles
+**Type**: Enhancement
+**Description**: Add interactive mini map to brand profile pages showing headquarters location
+**Reference**: Brand profiles have headquarters coordinates in front matter
+**Scope**:
+- Add MapLibre GL JS library to site (via CDN or npm)
+- Create `layouts/partials/brand-map.html` partial
+  - Read headquarters.coordinates from page front matter
+  - Render 300x200px map (responsive)
+  - Center on brand headquarters location
+  - Add custom marker with brand color
+  - Disable zoom/pan for simplicity (static view)
+- Add map section to `layouts/brands/single.html`
+- Style map container with brand system
+- Add fallback for brands without coordinates
+
+**Acceptance Criteria**:
+- Map displays on all brand profile pages
+- Centered on correct headquarters location
+- Lightweight (< 50KB additional load)
+- Works offline/cached after first load
+- Mobile-friendly (responsive)
+- Accessible (aria labels, keyboard navigation)
+- No API keys required (open source tiles)
+
+**Status**: Backlogged
+**Added**: 2025-10-05
+
 ---
 
 ## Ideas to Explore
