@@ -4,6 +4,10 @@ translationKey: "seven-spices"
 date: 2024-10-15
 draft: false
 
+# Featured on home page
+featured: true
+weight: 3
+
 # Taxonomies (4 dimensions)
 markets: ["russia"]
 sectors: ["gourmet-foods"]

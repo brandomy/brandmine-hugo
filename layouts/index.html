@@ -45,7 +45,7 @@
     <h2 class="panel__heading" style="text-align: center;">{{ i18n "featured_brands" }}</h2>
 
     <div class="brands-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
-      {{ range first 6 (where site.RegularPages "Section" "brands") }}
+      {{ range first 6 (where (where site.RegularPages "Section" "brands") ".Params.featured" true).ByWeight }}
         {{ partial "card-brand.html" . }}
       {{ end }}
     </div>

@@ -4,6 +4,10 @@ translationKey: "altai-honey"
 date: 2024-10-15
 draft: false
 
+# Featured on home page
+featured: true
+weight: 1
+
 # Taxonomies (4 dimensions)
 markets: ["russia"]
 sectors: ["honey-bee-products", "gourmet-foods"]
