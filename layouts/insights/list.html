@@ -4,8 +4,8 @@
 <section class="panel panel--hero-split">
   <div class="split-hero split-hero--blue">
     <div class="split-hero__content">
-      <h1 class="split-hero__title">See What Others Overlook</h1>
-      <p class="split-hero__subtitle">Bite-sized intelligence from BRICS+ markets moving faster than headlines suggest.</p>
+      <h1 class="split-hero__title">{{ i18n "insights_hero_title" | default "See What Others Overlook" }}</h1>
+      <p class="split-hero__subtitle">{{ i18n "insights_hero_subtitle" | default "Bite-sized intelligence from BRICS+ markets moving faster than headlines suggest." }}</p>
     </div>
     <div class="split-hero__image">
       <img src="{{ "images/heroes/insights-hero.jpg" | relURL }}" alt="Market insights" loading="eager">
@@ -15,21 +15,21 @@
 
 <!-- Impact Statement -->
 <section class="impact-statement">
-  <h2>Quick Reads on Hidden Opportunities</h2>
-  <p>Not think pieces. Not trend reports. Sharp 5-8 minute reads on specific brands, founders, and markets where language barriers hide real opportunity. Filter by what matters: Brand Spotlights, Founder Stories, Location Intelligence, or Market Momentum.</p>
+  <h2>{{ i18n "insights_impact_title" | default "Quick Reads on Hidden Opportunities" }}</h2>
+  <p>{{ i18n "insights_impact_description" | default "Not think pieces. Not trend reports. Sharp 5-8 minute reads on specific brands, founders, and markets where language barriers hide real opportunity. Filter by what matters: Brand Spotlights, Founder Stories, Location Intelligence, or Market Momentum." }}</p>
 </section>
 
 <!-- Category Filter Panel -->
 <section class="filter-panel">
   <div class="filter-panel__buttons">
     <button class="filter-btn filter-btn--active" data-category="all">
-      All Insights
+      {{ i18n "all_insights" | default "All Insights" }}
     </button>
     <button class="filter-btn" data-category="brand-spotlight">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="filter-icon">
         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
       </svg>
-      Brand Spotlight
+      {{ i18n "category_brand_spotlight" | default "Brand Spotlight" }}
     </button>
     <button class="filter-btn" data-category="founders-journey">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="filter-icon">
@@ -37,21 +37,21 @@
         <path d="M12 12v7" />
         <line x1="8" y1="16" x2="16" y2="16" />
       </svg>
-      Founder's Journey
+      {{ i18n "category_founders_journey" | default "Founder's Journey" }}
     </button>
     <button class="filter-btn" data-category="location-intelligence">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="filter-icon">
         <path d="M12 22c3.5-3.5 7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 3.5 7.5 7 11z" />
         <circle cx="12" cy="11" r="2" />
       </svg>
-      Location Intelligence
+      {{ i18n "category_location_intelligence" | default "Location Intelligence" }}
     </button>
     <button class="filter-btn" data-category="market-momentum">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="filter-icon">
         <polyline points="22 7 13 15 9 12 2 19" />
         <polyline points="16 7 22 7 22 13" />
       </svg>
-      Market Momentum
+      {{ i18n "category_market_momentum" | default "Market Momentum" }}
     </button>
   </div>
 </section>
