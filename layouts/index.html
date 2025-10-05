@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-<!-- 1. Hero Section (Excitement) -->
+<!-- 1. Hero Section (Excitement) - Dark Teal -->
 <section class="panel panel--hero">
   <div class="panel__content">
     <h1 class="panel__title">{{ i18n "home_hero_title" }}</h1>
@@ -16,8 +16,8 @@
   </div>
 </section>
 
-<!-- 2. Brand Discovery Section (Trust) -->
-<section class="panel panel--primary-soft">
+<!-- 2. Stats Section (Clarity) - White/Light Gray -->
+<section class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading" style="text-align: center;">{{ i18n "revealing_invisible" }}</h2>
     <p class="panel__lead-text" style="text-align: center; max-width: 100%; margin-left: auto; margin-right: auto;">{{ i18n "revealing_description" }}</p>
@@ -39,8 +39,8 @@
   </div>
 </section>
 
-<!-- 3. Featured Brands Section (Clarity) -->
-<section class="panel panel--light">
+<!-- 3. Featured Brands Section (Trust) - Teal -->
+<section class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading" style="text-align: center;">{{ i18n "featured_brands" }}</h2>
 
@@ -58,27 +58,27 @@
   </div>
 </section>
 
-<!-- 4. Insights Preview Section (Warmth) -->
-<section class="panel panel--secondary-soft">
+<!-- 4. Founders Section (Human Connection) - White/Light Gray -->
+<section class="panel panel--light">
   <div class="panel__content">
-    <h2 class="panel__heading" style="text-align: center;">{{ i18n "latest_insights" }}</h2>
+    <h2 class="panel__heading" style="text-align: center;">{{ i18n "behind_the_brands" }}</h2>
 
-    <div class="insights-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
-      {{ range first 3 (where site.RegularPages "Section" "insights") }}
-        {{ partial "card-insight.html" . }}
+    <div class="founders-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
+      {{ range first 4 (where site.RegularPages "Section" "founders") }}
+        {{ partial "card-founder.html" . }}
       {{ end }}
     </div>
 
     <div style="text-align: center; margin-top: var(--space-8);">
-      <a href="{{ "/insights/" | relLangURL }}" class="btn btn--secondary" style="display: inline-block; padding: var(--btn-padding-default); background: var(--secondary-600); color: white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
-        {{ i18n "view_all_insights" }}
+      <a href="{{ "/founders/" | relLangURL }}" class="btn btn--primary" style="display: inline-block; padding: var(--btn-padding-default); background: var(--primary-500); color: white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        {{ i18n "view_all_founders" }}
       </a>
     </div>
   </div>
 </section>
 
-<!-- 5. Discovery Tools Section (Intelligence) -->
-<section class="panel panel--neutral-soft">
+<!-- 5. Dimensions Section (Intelligence) - Teal -->
+<section class="panel panel--primary-soft">
   <div class="panel__content">
     <h2 class="panel__heading" style="text-align: center;">{{ i18n "explore_by_dimension" }}</h2>
     <p class="panel__lead-text" style="text-align: center; max-width: 100%; margin-left: auto; margin-right: auto;">{{ i18n "dimension_description" }}</p>
@@ -129,7 +129,26 @@
   </div>
 </section>
 
-<!-- 6. Call to Action Section (Urgency) -->
+<!-- 6. Insights Section (Warmth/Engagement) - Orange Soft -->
+<section class="panel panel--orange-soft">
+  <div class="panel__content">
+    <h2 class="panel__heading" style="text-align: center;">{{ i18n "latest_insights" }}</h2>
+
+    <div class="insights-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
+      {{ range first 3 (where site.RegularPages "Section" "insights") }}
+        {{ partial "card-insight.html" . }}
+      {{ end }}
+    </div>
+
+    <div style="text-align: center; margin-top: var(--space-8);">
+      <a href="{{ "/insights/" | relLangURL }}" class="btn btn--secondary" style="display: inline-block; padding: var(--btn-padding-default); background: var(--secondary-600); color: white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        {{ i18n "view_all_insights" }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 7. How It Works + CTA Section (Action) - Dark Teal -->
 <section class="panel panel--cta" id="how-it-works">
   <div class="panel__content">
     <h2 class="panel__heading">{{ i18n "how_it_works" }}</h2>
@@ -155,7 +174,7 @@
     </div>
 
     <div class="cta-buttons" style="margin-top: var(--space-12); display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center;">
-      <a href="{{ "/brands/" | relLangURL }}" class="btn btn--white" style="display: inline-block; padding: var(--btn-padding-default); background: white; color: var(--primary-700); border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+      <a href="{{ "/brands/" | relLangURL }}" class="btn btn--secondary" style="display: inline-block; padding: var(--btn-padding-default); background: var(--secondary-500); color: white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
         {{ i18n "start_discovering" }}
       </a>
       <a href="{{ "/about/" | relLangURL }}" class="btn btn--outline-light" style="display: inline-block; padding: var(--btn-padding-default); background: transparent; color: white; border: 2px solid white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
