@@ -39,6 +39,8 @@ follow: "关注"
 press_room: "新闻中心"
 press_room_status: "高级会员可用"
 upgrade_premium: "升级至高级"
+premium_membership_brands: "品牌高级会员"
+premium_membership_partners: "合作伙伴高级会员"
 
 # Empty States
 no_brands: "暂无品牌"

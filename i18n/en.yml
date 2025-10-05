@@ -39,6 +39,8 @@ follow: "Follow"
 press_room: "Press Room"
 press_room_status: "Available with Premium membership"
 upgrade_premium: "Upgrade to Premium"
+premium_membership_brands: "Premium Membership for Brands"
+premium_membership_partners: "Premium Membership for Partners"
 
 # Empty States
 no_brands: "No brands found."

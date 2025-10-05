@@ -7,8 +7,8 @@
       type="search"
       id="search-input"
       class="search-input"
-      placeholder="{{ i18n "search_brands" | default "Search brands..." }}"
-      aria-label="{{ i18n "search_brands" | default "Search brands" }}"
+      placeholder="{{ .placeholder | default (i18n "search_brands" | default "Search brands...") }}"
+      aria-label="{{ .placeholder | default (i18n "search_brands" | default "Search brands") }}"
       autocomplete="off"
     >
   </div>

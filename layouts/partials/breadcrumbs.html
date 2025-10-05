@@ -1,0 +1,77 @@
+{{- /*
+Breadcrumbs Navigation with Schema.org Structured Data
+- Uses Hugo's .Ancestors method for clean hierarchy
+- Responsive: Full trail on desktop, back arrow on mobile <768px
+- Multilingual: i18n support for "Home"
+- SEO: JSON-LD structured data included
+*/ -}}
+
+{{- if not .IsHome -}}
+<nav class="breadcrumbs" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+    {{- /* Home link */ -}}
+    <li class="breadcrumb-item">
+      <a href="{{ "/" | relLangURL }}">{{ i18n "home" | default "Home" }}</a>
+    </li>
+
+    {{- /* Parent pages (ancestors) */ -}}
+    {{- range .Ancestors.Reverse -}}
+      <li class="breadcrumb-item">
+        <span class="breadcrumb-separator" aria-hidden="true">›</span>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </li>
+    {{- end -}}
+
+    {{- /* Current page (unlinked) */ -}}
+    <li class="breadcrumb-item breadcrumb-item--current">
+      <span class="breadcrumb-separator" aria-hidden="true">›</span>
+      <span aria-current="page">{{ .Title }}</span>
+    </li>
+    </ol>
+
+    {{- /* Mobile back arrow (hidden on desktop) */ -}}
+    {{- with .Parent -}}
+      <a href="{{ .RelPermalink }}" class="breadcrumb-back" aria-label="Back to {{ .Title }}">
+        ← {{ .Title }}
+      </a>
+    {{- else -}}
+      <a href="{{ "/" | relLangURL }}" class="breadcrumb-back" aria-label="Back to {{ i18n "home" | default "Home" }}">
+        ← {{ i18n "home" | default "Home" }}
+      </a>
+    {{- end -}}
+  </div>
+</nav>
+
+{{- /* Schema.org BreadcrumbList JSON-LD */ -}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "{{ i18n "home" | default "Home" }}",
+      "item": "{{ "/" | absLangURL }}"
+    }
+    {{- $position := 2 -}}
+    {{- range .Ancestors.Reverse -}}
+    ,{
+      "@type": "ListItem",
+      "position": {{ $position }},
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+    {{- $position = add $position 1 -}}
+    {{- end -}}
+    ,{
+      "@type": "ListItem",
+      "position": {{ $position }},
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+  ]
+}
+</script>
+{{- end -}}

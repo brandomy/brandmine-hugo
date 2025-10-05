@@ -36,6 +36,7 @@ i18n/            # Translation files (Hugo i18n system)
 layouts/         # Templates
   _default/
   partials/
+    breadcrumbs.html   # Navigation breadcrumbs (uses .Ancestors)
   shortcodes/
 static/          # Static assets
   fonts/        # Self-hosted fonts
@@ -52,6 +53,12 @@ hugo server --logLevel info    # With logging
 hugo --gc --minify            # Production build
 hugo new content/brands/name.md  # New content
 ```
+
+### Breadcrumbs Implementation (2025-10-05)
+- **Location**: `layouts/partials/breadcrumbs.html`
+- **Method**: Uses Hugo's `.Ancestors` to auto-generate hierarchy
+- **Display**: Home > Section > Current Page
+- **Styling**: Inline teal separator (›), current page bold
 
 ## Typography System
 
@@ -85,8 +92,15 @@ params:
 ### Card Types
 1. **Brand Cards**: Image, name, tagline, markets, sectors
 2. **Founder Cards**: Photo, name, role, brands
-3. **Insight Cards**: Title, excerpt, date, signals
+3. **Insight Cards**: Category badge, title, excerpt, country flag, date, related brands/founders
 4. **Dimension Cards**: Icon, name, description
+
+### Insight Card Specifics (2025-10-05)
+- **Category badge**: 11px, medium weight, 70% opacity, tighter padding (4px 10px)
+- **Country flag**: 16px inline emoji before date (🇷🇺, 🇨🇳, 🇧🇷, 🇮🇳, 🇿🇦, 🇪🇹, 🌍)
+- **Clickable hero image**: Subtle opacity hover (0.95)
+- **Founder names**: 13px, italic, neutral-500 color (not pills)
+- **Related brands**: Display as pills, related founders as plain text
 
 **Critical**: Cards must be simple Hugo partials with straightforward logic. Avoid Jekyll-era complexity.
 
@@ -145,11 +159,13 @@ i18n/zh.yml  # Chinese UI strings
 - Language-specific indexes: `/index.json`, `/ru/index.json`, `/zh/index.json`
 - Translates slugs to labels at build time using taxonomy-labels.yml
 - Pattern: `{{ $labels := index .Site.Data.taxonomy_labels $.Language.Lang }}`
+- **Includes**: Brands (with markets/sectors) + Founders (with company/role/expertise)
 
 **Search Client**: `assets/js/search.js`
 - Detects language from `document.documentElement.lang`
 - Loads correct index: `/${lang}/index.json` or `/index.json` for EN
 - No hardcoded language paths
+- **Unified search**: Brands and founders in single index, differentiated by `type` field
 
 **Card Hidden Search Data**:
 ```go
@@ -174,6 +190,13 @@ Enables search by slug OR translated term in any language.
 3. Thumb-friendly navigation
 4. Performance first (< 2s load)
 5. Accessibility (WCAG 2.1 AA minimum)
+
+### Hero Panel System (2025-10-05)
+- **Split-panel gradients**: 2-layer system (outer radial + inner linear)
+- **Text panel**: Always teal linear gradient (--primary-600 to --primary-700)
+- **Outer background**: Radial gradient with category colors (orange/purple/blue/green)
+- **Image panel**: 3:2 aspect ratio, responsive at 768px breakpoint (NOT 992px)
+- **Responsive**: Desktop shows side-by-side, mobile stacks vertically
 
 ## Hugo-Specific Patterns
 
@@ -212,6 +235,39 @@ Content here.
   {{ partial "card-brand.html" . }}
 {{ end }}
 ```
+
+### Insights Article Sidebar Pattern (2025-10-05)
+```go-html-template
+<!-- Dimensions Box -->
+<div class="dimensions-box">
+  <h3>Dimensions</h3>
+  <!-- Display all 4 taxonomies with color coding -->
+</div>
+
+<!-- Related Brands (Visual Mini Cards) -->
+<div class="related-brands-box">
+  <h3>Related Brands</h3>
+  <!-- 60px square logo cards with grid layout -->
+</div>
+
+<!-- Related Founders (Visual Cards) -->
+<div class="related-founders-box">
+  <h3>Related Founders</h3>
+  <!-- 60×90px photo cards, horizontal layout -->
+</div>
+
+<!-- Membership CTA -->
+<div class="cta-box">
+  <h3>Connect with Featured Brands</h3>
+  <p>Premium members get direct introductions...</p>
+  <a href="/premium-membership-for-partners/">Explore Membership</a>
+</div>
+```
+
+**Mini Card Patterns**:
+- **Brand mini cards**: 60px square, teal border on hover, fallback first letter
+- **Founder cards**: 60×90px (2:3 ratio), rounded rectangle (12px), top-aligned crop
+- **CTA box**: White background, teal button, positioned last in sidebar
 
 ## Performance Standards
 
@@ -321,4 +377,4 @@ If any answer is "no," reconsider the approach.
 
 **Last Updated**: 2025-10-05
 **Hugo Version**: 0.139.3
-**Status**: Phase 3 - Multilingual search system operational
+**Status**: Phase 3 complete - Breadcrumbs, insights styling, sidebar components, unified search (brands + founders) operational

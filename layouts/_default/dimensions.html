@@ -1,0 +1,159 @@
+{{ define "main" }}
+
+<!-- Split-Panel Hero -->
+<section class="panel panel--hero-split">
+  <div class="split-hero split-hero--green">
+    <div class="split-hero__content">
+      <h1 class="split-hero__title">Explore Brand Dimensions</h1>
+      <p class="split-hero__subtitle">Markets, Sectors, Attributes, and Signals that define Global South brands.</p>
+    </div>
+    <div class="split-hero__image">
+      <img src="{{ "images/heroes/dimensions-hero.jpg" | relURL }}" alt="Brand dimensions" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- Impact Statement -->
+<section class="impact-statement">
+  <h2>Impact Statement Header</h2>
+  <p>Impact statement text for dimensions page - to be updated.</p>
+</section>
+
+<!-- Dimensions Grid Panel -->
+<section class="panel panel--light" style="padding-top: var(--space-2xl); padding-bottom: var(--space-3xl);">
+  <div class="panel__content">
+    <div class="dimensions-overview">
+
+      <!-- Markets -->
+      <div class="dimension-card dimension-card--markets">
+        <h2>{{ i18n "markets" | default "Markets" }}</h2>
+        <p>{{ i18n "markets_description" | default "Geographic and cultural markets where brands operate and scale." }}</p>
+        <ul class="dimension-list">
+          {{ range $.Site.Taxonomies.markets }}
+            <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a></li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <!-- Sectors -->
+      <div class="dimension-card dimension-card--sectors">
+        <h2>{{ i18n "sectors" | default "Sectors" }}</h2>
+        <p>{{ i18n "sectors_description" | default "Industry verticals and business categories." }}</p>
+        <ul class="dimension-list">
+          {{ range $.Site.Taxonomies.sectors }}
+            <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a></li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <!-- Attributes -->
+      <div class="dimension-card dimension-card--attributes">
+        <h2>{{ i18n "attributes" | default "Attributes" }}</h2>
+        <p>{{ i18n "attributes_description" | default "Brand characteristics and defining qualities." }}</p>
+        <ul class="dimension-list">
+          {{ range $.Site.Taxonomies.attributes }}
+            <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a></li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <!-- Signals -->
+      <div class="dimension-card dimension-card--signals">
+        <h2>{{ i18n "signals" | default "Signals" }}</h2>
+        <p>{{ i18n "signals_description" | default "Market indicators and growth signals." }}</p>
+        <ul class="dimension-list">
+          {{ range $.Site.Taxonomies.signals }}
+            <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }} ({{ .Count }})</a></li>
+          {{ end }}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.dimensions-overview {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .dimensions-overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.dimension-card {
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  background: white;
+  border: 2px solid var(--neutral-200);
+  transition: all 0.3s ease;
+}
+
+.dimension-card:hover {
+  border-color: var(--primary-400);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.dimension-card h2 {
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-md);
+  color: var(--primary-800);
+}
+
+.dimension-card p {
+  font-size: var(--text-base);
+  color: var(--neutral-600);
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.dimension-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.dimension-list li a {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  background: var(--neutral-50);
+  border-radius: var(--radius-sm);
+  color: var(--neutral-700);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: var(--text-sm);
+}
+
+.dimension-list li a:hover {
+  background: var(--primary-50);
+  color: var(--primary-700);
+  transform: translateX(4px);
+}
+
+/* Color accents for dimension cards */
+.dimension-card--markets {
+  border-left: 4px solid var(--sky-500);
+}
+
+.dimension-card--sectors {
+  border-left: 4px solid var(--olive-600);
+}
+
+.dimension-card--attributes {
+  border-left: 4px solid var(--secondary-600);
+}
+
+.dimension-card--signals {
+  border-left: 4px solid var(--accent-600);
+}
+</style>
+
+{{ end }}

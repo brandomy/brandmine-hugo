@@ -110,6 +110,7 @@ brandmine-hugo/
 │   │   ├── head.html
 │   │   ├── header.html
 │   │   ├── footer.html
+│   │   ├── breadcrumbs.html  # Navigation breadcrumbs (uses .Ancestors)
 │   │   ├── card-brand.html
 │   │   ├── card-founder.html
 │   │   ├── card-insight.html
@@ -407,6 +408,69 @@ signals: "Signals"
   <a href="{{ "/brands/" | relLangURL }}">{{ i18n "nav_brands" }}</a>
 </nav>
 ```
+
+## Insight Article Sidebar Components (2025-10-05)
+
+### Sidebar Structure
+```go-html-template
+<!-- Dimensions Box -->
+<div class="dimensions-box">
+  <h3>Dimensions</h3>
+  <!-- Display all 4 taxonomies with color coding -->
+</div>
+
+<!-- Related Brands (Visual Mini Cards) -->
+<div class="related-brands-box">
+  <h3>Related Brands</h3>
+  <div class="related-brands-grid">
+    {{ range .Params.relatedBrands }}
+      <a href="{{ (site.GetPage (printf "brands/%s" .)).RelPermalink }}" class="brand-mini-card">
+        <!-- 60px square logo with fallback -->
+      </a>
+    {{ end }}
+  </div>
+</div>
+
+<!-- Related Founders (Visual Cards) -->
+<div class="related-founders-box">
+  <h3>Related Founders</h3>
+  {{ range .Params.relatedFounders }}
+    <a href="{{ (site.GetPage (printf "founders/%s" .)).RelPermalink }}" class="founder-card">
+      <!-- 60×90px photo, horizontal layout -->
+    </a>
+  {{ end }}
+</div>
+
+<!-- Membership CTA -->
+<div class="cta-box">
+  <h3>Connect with Featured Brands</h3>
+  <p>Premium members get direct introductions...</p>
+  <a href="/premium-membership-for-partners/" class="button">Explore Membership</a>
+</div>
+```
+
+### Mini Card Specifications
+
+**Brand Mini Cards**:
+- Size: 60px square
+- Grid layout: `auto-fill, minmax(100px, 1fr)`
+- Teal border on hover (`--primary-600`)
+- Fallback: First letter if no logo
+- White background, subtle lift animation
+
+**Founder Cards**:
+- Photo: 60×90px (2:3 aspect ratio)
+- Border-radius: 12px (rounded rectangle)
+- Image crop: `object-position: top center` (top-aligned)
+- Layout: Horizontal (photo left, name/role right)
+- Teal accent on hover (`--primary-600`)
+
+**CTA Box**:
+- Background: White (`--color-white`)
+- Border: 1px solid `--color-gray-200`
+- Button: Teal (`--color-teal-600`)
+- Position: Last in sidebar
+- Soft conversion (not alert-style)
 
 ## Card System: Simple & Programmatic
 
@@ -790,6 +854,66 @@ h3 {
 }
 ```
 
+## Breadcrumbs Implementation (2025-10-05)
+
+**Location**: `layouts/partials/breadcrumbs.html`
+
+**Implementation**:
+```go-html-template
+<nav aria-label="Breadcrumb">
+  <ol class="breadcrumbs">
+    <li><a href="{{ "/" | relLangURL }}">{{ i18n "home" | default "Home" }}</a></li>
+    {{ range .Ancestors.Reverse }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+    <li aria-current="page">{{ .Title }}</li>
+  </ol>
+</nav>
+```
+
+**Hugo Method**: Uses `.Ancestors` to auto-generate hierarchy
+**Display**: Home > Section > Current Page
+**Styling**: Inline teal separator (›), current page bold
+
+## Hero Panel System (2025-10-05)
+
+### Split-Panel Gradient Architecture
+**2-layer gradient system** for soothing color transitions:
+
+**Layer 1 - Outer Section Background**:
+```css
+.panel--hero-split {
+  background: radial-gradient(
+    circle at 30% 40%,
+    var(--primary-400) 0%,
+    var(--primary-700) 100%
+  );
+}
+```
+
+**Layer 2 - Text Panel (Always Teal)**:
+```css
+.split-hero__content {
+  background: linear-gradient(
+    90deg,
+    var(--primary-600) 0%,
+    var(--primary-700) 100%
+  );
+}
+```
+
+**Color Variants** (outer background only):
+- Orange (Brand Spotlight): `--secondary-400` → `--secondary-700`
+- Purple (Founder's Journey): `#A78BFA` → `#7E22CE`
+- Blue (Location Intelligence): `--sky-400` → `--sky-700`
+- Green (Market Momentum): `--olive-400` → `--olive-700`
+
+**Image Panel**:
+- Aspect ratio: 3:2 (horizontal)
+- Responsive breakpoint: **768px** (NOT 992px)
+- Desktop: Side-by-side layout
+- Mobile: Stacked vertically
+
 ## Home Page Panel Sequence (OFFICIAL STANDARD)
 
 **Emotional Journey Pattern:**
@@ -988,6 +1112,6 @@ hugo --gc --minify --templateMetrics --templateMetricsHints
 
 ---
 
-**Last Updated**: 2025-10-03
+**Last Updated**: 2025-10-05
 **Hugo Version**: 0.139.3
-**Status**: Technical standards established
+**Status**: Breadcrumbs, hero panel gradients, insight sidebar components, and mini card patterns documented

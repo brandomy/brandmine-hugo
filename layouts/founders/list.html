@@ -1,17 +1,33 @@
 {{ define "main" }}
 
-<!-- Hero Panel -->
-<section class="panel panel--hero-list">
-  <div class="panel__content">
-    <h1 class="panel__title">{{ .Title }}</h1>
-    {{ with .Description }}
-      <p class="panel__subtitle">{{ . }}</p>
-    {{ end }}
+<!-- Split-Panel Hero -->
+<section class="panel panel--hero-split">
+  <div class="split-hero split-hero--purple">
+    <div class="split-hero__content">
+      <h1 class="split-hero__title">The Leaders Behind BRICS+ Breakout Brands</h1>
+      <p class="split-hero__subtitle">Proven operators. Clear vision. Market dominance in regions you're not tracking.</p>
+    </div>
+    <div class="split-hero__image">
+      <img src="{{ "images/heroes/founders-hero.jpg" | relURL }}" alt="Global South founders" loading="eager">
+    </div>
   </div>
 </section>
 
+<!-- Impact Statement -->
+<section class="impact-statement">
+  <h2>Find the Operators Behind Hidden Brands</h2>
+  <p>Search founder profiles from Russia, China, India, and ASEAN markets. Each one: proven revenue, category expertise, international ambition. Filter by market, generation, and sector to find leaders others overlook.</p>
+</section>
+
+<!-- Search (OUTSIDE panel stacking context) -->
+<div class="search-wrapper" style="position: relative; z-index: 1000; background: white; padding: 2rem 0;">
+  <div class="container">
+    {{ partial "search-bar.html" (dict "context" . "placeholder" "Search founders...") }}
+  </div>
+</div>
+
 <!-- Founders Grid Panel -->
-<section class="panel panel--light">
+<section class="panel panel--neutral-soft" style="padding-top: var(--space-xl); padding-bottom: var(--space-3xl);">
   <div class="panel__content">
     {{ if .Pages }}
       <div id="founder-grid" class="card-grid">

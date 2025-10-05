@@ -1,5 +1,15 @@
 {{- $index := slice -}}
 
+{{- /* Load taxonomy labels for current language */ -}}
+{{- $labels := dict -}}
+{{- with $.Site.Data -}}
+  {{- with index . "taxonomy-labels" -}}
+    {{- with index . $.Language.Lang -}}
+      {{- $labels = . -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
 {{- range .Site.Pages -}}
   {{- if and (eq .Section "brands") (eq .Language.Lang $.Language.Lang) .File -}}
     {{- $city := "" -}}
@@ -7,16 +17,6 @@
     {{- with .Params.headquarters -}}
       {{- $city = .city | default "" -}}
       {{- $region = .region | default "" -}}
-    {{- end -}}
-
-    {{- /* Load taxonomy labels for current language */ -}}
-    {{- $labels := dict -}}
-    {{- with $.Site.Data -}}
-      {{- with index . "taxonomy-labels" -}}
-        {{- with index . $.Language.Lang -}}
-          {{- $labels = . -}}
-        {{- end -}}
-      {{- end -}}
     {{- end -}}
 
     {{- /* Build translated taxonomy arrays */ -}}
@@ -55,6 +55,28 @@
       "attributes" $attributeLabels
       "signals" $signalLabels
       "founder" (.Params.founder | default "")
+    -}}
+    {{- $index = $index | append $entry -}}
+  {{- else if and (eq .Section "founders") (eq .Language.Lang $.Language.Lang) .File -}}
+    {{- $city := "" -}}
+    {{- $region := "" -}}
+    {{- with .Params.headquarters -}}
+      {{- $city = .city | default "" -}}
+      {{- $region = .region | default "" -}}
+    {{- end -}}
+
+    {{- $entry := dict
+      "id" .File.UniqueID
+      "title" .Title
+      "description" (.Params.description | default (.Summary | plainify | truncate 150))
+      "url" .Permalink
+      "type" "founder"
+      "lang" .Language.Lang
+      "city" $city
+      "region" $region
+      "company" (.Params.company | default "")
+      "role" (.Params.role | default "")
+      "expertise" (.Params.expertise | default slice)
     -}}
     {{- $index = $index | append $entry -}}
   {{- end -}}

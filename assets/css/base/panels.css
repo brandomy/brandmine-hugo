@@ -56,7 +56,7 @@
 /* Primary Hero - Home page with rich content */
 .panel--hero {
   background: radial-gradient(
-    circle at center,
+    circle at 30% 40%,
     var(--primary-400) 0%,
     var(--primary-600) 100%
   );
@@ -71,7 +71,7 @@
 /* Hero Large - Pages with image splits or rich media */
 .panel--hero-large {
   background: radial-gradient(
-    circle at center,
+    circle at 30% 40%,
     var(--primary-400) 0%,
     var(--primary-600) 100%
   );
@@ -86,7 +86,7 @@
 /* Hero List - Compact for list pages (Brands, Founders, Insights) */
 .panel--hero-list {
   background: radial-gradient(
-    circle at center,
+    circle at 30% 40%,
     var(--primary-400) 0%,
     var(--primary-600) 100%
   );
@@ -101,7 +101,7 @@
 /* Hero Compact - Very minimal for simple pages */
 .panel--hero-compact {
   background: radial-gradient(
-    circle at center,
+    circle at 30% 40%,
     var(--primary-400) 0%,
     var(--primary-600) 100%
   );
@@ -316,7 +316,174 @@
 }
 
 /* --------------------------------------------------------------------------
-   8. HUGO-SPECIFIC UTILITIES
+   8. SPLIT-PANEL HERO SYSTEM
+   -------------------------------------------------------------------------- */
+
+/* Layer 1: Outer section background - DEFAULT TEAL */
+.panel--hero-split {
+  padding: 0;
+  min-height: auto;
+  overflow: hidden;
+  /* Teal radial gradient background - matches Jekyll */
+  background: radial-gradient(
+    circle at center,
+    var(--primary-400) 0%,
+    var(--primary-600) 100%
+  );
+}
+
+/* Layer 2: Centered split container (max-width, sits on top) */
+.split-hero {
+  display: flex;
+  flex-direction: column;
+  min-height: auto;
+  align-items: stretch;
+  max-width: var(--content-width-max, 1200px);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .split-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 60vh;
+  }
+}
+
+/* Left column: Text panel - ALWAYS TEAL regardless of section color */
+.split-hero__content {
+  padding: var(--space-2xl) var(--space-lg);
+  margin: var(--space-3xl) 0; /* Top and bottom margin for inset effect */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  order: 1;
+  /* Teal radial gradient - matches Jekyll */
+  background: radial-gradient(
+    circle at 30% 40%,
+    var(--primary-400) 0%,
+    var(--primary-600) 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .split-hero__content {
+    padding: var(--space-3xl) var(--space-2xl);
+    margin: var(--space-3xl) 0;
+  }
+}
+
+.split-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 1.7rem + 1.5vw, 3rem); /* 32px-48px */
+  font-weight: 700;
+  color: white;
+  margin-bottom: var(--space-lg);
+  line-height: 1.1;
+}
+
+.split-hero__subtitle {
+  font-size: clamp(1.125rem, 1rem + 0.625vw, 1.375rem); /* 18px-22px */
+  color: white;
+  opacity: 0.95;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* Right column: Image (no background) */
+.split-hero__image {
+  width: 100%;
+  order: 2;
+  overflow: hidden;
+  padding: 2rem 2rem 2rem 0; /* top right bottom left */
+  display: none; /* Hidden on mobile */
+  align-self: center; /* Vertically center the image */
+}
+
+@media (min-width: 768px) {
+  .split-hero__image {
+    display: flex; /* Show on tablet and desktop */
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.split-hero__image img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   COLOR VARIANTS - OUTER SECTION BACKGROUND ONLY
+   Text panel always stays teal
+   -------------------------------------------------------------------------- */
+
+/* Orange variant (Brand Spotlight) */
+.panel--hero-split.split-hero--orange {
+  background: radial-gradient(
+    circle at 30% 40%,
+    var(--secondary-400) 0%,
+    var(--secondary-700) 100%
+  );
+}
+
+/* Purple variant (Founder's Journey) */
+.panel--hero-split.split-hero--purple {
+  background: radial-gradient(
+    circle at 30% 40%,
+    #A78BFA 0%,
+    #7E22CE 100%
+  );
+}
+
+/* Blue variant (Location Intelligence) */
+.panel--hero-split.split-hero--blue {
+  background: radial-gradient(
+    circle at 30% 40%,
+    var(--sky-400) 0%,
+    var(--sky-700) 100%
+  );
+}
+
+/* Green variant (Market Momentum) */
+.panel--hero-split.split-hero--green {
+  background: radial-gradient(
+    circle at 30% 40%,
+    var(--olive-400) 0%,
+    var(--olive-700) 100%
+  );
+}
+
+/* Impact Statement Section (light teal background below split hero) */
+.impact-statement {
+  background-color: var(--primary-50);
+  padding: var(--space-2xl) var(--space-lg);
+  text-align: center;
+}
+
+.impact-statement h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem); /* 24px-32px */
+  font-weight: 700;
+  color: var(--primary-800);
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
+}
+
+.impact-statement p {
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); /* 16px-18px */
+  color: var(--neutral-700);
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* --------------------------------------------------------------------------
+   9. HUGO-SPECIFIC UTILITIES
    -------------------------------------------------------------------------- */
 
 /* Section wrapper for Hugo content */

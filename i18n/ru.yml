@@ -39,6 +39,8 @@ follow: "Подписаться"
 press_room: "Пресс-центр"
 press_room_status: "Доступно с премиум-членством"
 upgrade_premium: "Перейти на премиум"
+premium_membership_brands: "Премиум членство для брендов"
+premium_membership_partners: "Премиум членство для партнёров"
 
 # Empty States
 no_brands: "Бренды недоступны"

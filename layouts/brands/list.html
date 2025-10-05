@@ -1,19 +1,28 @@
 {{ define "main" }}
 
-<!-- Hero Panel -->
-<section class="panel panel--hero-list">
-  <div class="panel__content">
-    <h1 class="panel__title">{{ .Title }}</h1>
-    {{ with .Description }}
-      <p class="panel__subtitle">{{ . }}</p>
-    {{ end }}
+<!-- Split-Panel Hero -->
+<section class="panel panel--hero-split">
+  <div class="split-hero split-hero--orange">
+    <div class="split-hero__content">
+      <h1 class="split-hero__title">Discover Global South Brands Ready to Scale</h1>
+      <p class="split-hero__subtitle">Founder-led. Proven traction. Global potential.</p>
+    </div>
+    <div class="split-hero__image">
+      <img src="{{ "images/heroes/brands-hero.jpg" | relURL }}" alt="Global South brands" loading="eager">
+    </div>
   </div>
+</section>
+
+<!-- Impact Statement -->
+<section class="impact-statement">
+  <h2>Search Beyond the Usual Markets</h2>
+  <p>The world's fastest-growing consumer markets aren't producing brands for Western eyes. We found them anyway. Explore founder-led companies from Russia, China, India, and ASEAN with real traction and global ambition.</p>
 </section>
 
 <!-- Search (OUTSIDE panel stacking context) -->
 <div class="search-wrapper" style="position: relative; z-index: 1000; background: white; padding: 2rem 0;">
   <div class="container">
-    {{ partial "search-bar.html" . }}
+    {{ partial "search-bar.html" (dict "context" . "placeholder" "Search brands...") }}
   </div>
 </div>
 

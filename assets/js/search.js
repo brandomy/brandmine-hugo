@@ -49,7 +49,9 @@ class BrandSearch {
       const response = await fetch(indexPath);
       this.index = await response.json();
       this.isLoaded = true;
-      console.log(`Search index loaded (${htmlLang}): ${this.index.length} brands`);
+      const brandCount = this.index.filter(i => i.type === 'brand').length;
+      const founderCount = this.index.filter(i => i.type === 'founder').length;
+      console.log(`Search index loaded (${htmlLang}): ${brandCount} brands, ${founderCount} founders`);
     } catch (error) {
       console.error('Failed to load search index:', error);
     }
@@ -90,13 +92,36 @@ class BrandSearch {
         score += 6;
       }
 
-      // Taxonomy matches
-      const taxonomies = ['markets', 'sectors', 'attributes', 'signals'];
-      for (const taxonomy of taxonomies) {
-        if (item[taxonomy]) {
-          for (const term of item[taxonomy]) {
-            if (term.toLowerCase().includes(lowerQuery)) {
-              score += 4;
+      // Brand-specific fields
+      if (item.type === 'brand') {
+        // Taxonomy matches
+        const taxonomies = ['markets', 'sectors', 'attributes', 'signals'];
+        for (const taxonomy of taxonomies) {
+          if (item[taxonomy]) {
+            for (const term of item[taxonomy]) {
+              if (term.toLowerCase().includes(lowerQuery)) {
+                score += 4;
+              }
+            }
+          }
+        }
+      }
+
+      // Founder-specific fields
+      if (item.type === 'founder') {
+        // Company match
+        if (item.company && item.company.toLowerCase().includes(lowerQuery)) {
+          score += 8;
+        }
+        // Role match
+        if (item.role && item.role.toLowerCase().includes(lowerQuery)) {
+          score += 6;
+        }
+        // Expertise match
+        if (item.expertise) {
+          for (const exp of item.expertise) {
+            if (exp.toLowerCase().includes(lowerQuery)) {
+              score += 5;
             }
           }
         }
@@ -120,7 +145,7 @@ class BrandSearch {
     if (results.length === 0) {
       this.resultsContainer.innerHTML = `
         <div class="search-no-results">
-          No brands found for "${this.escapeHtml(query)}"
+          No results found for "${this.escapeHtml(query)}"
         </div>
       `;
       this.showResults();
@@ -130,18 +155,25 @@ class BrandSearch {
     const html = results.map(result => {
       const tags = [];
 
-      // Add markets (up to 2)
-      if (result.markets && result.markets.length > 0) {
-        result.markets.slice(0, 2).forEach(market => {
-          tags.push(`<span class="result-tag result-tag--market">${market}</span>`);
-        });
-      }
+      if (result.type === 'brand') {
+        // Add markets (up to 2)
+        if (result.markets && result.markets.length > 0) {
+          result.markets.slice(0, 2).forEach(market => {
+            tags.push(`<span class="result-tag result-tag--market">${market}</span>`);
+          });
+        }
 
-      // Add sectors (up to 2)
-      if (result.sectors && result.sectors.length > 0) {
-        result.sectors.slice(0, 2).forEach(sector => {
-          tags.push(`<span class="result-tag result-tag--sector">${sector}</span>`);
-        });
+        // Add sectors (up to 2)
+        if (result.sectors && result.sectors.length > 0) {
+          result.sectors.slice(0, 2).forEach(sector => {
+            tags.push(`<span class="result-tag result-tag--sector">${sector}</span>`);
+          });
+        }
+      } else if (result.type === 'founder') {
+        // Add company tag
+        if (result.company) {
+          tags.push(`<span class="result-tag result-tag--market">${this.escapeHtml(result.company)}</span>`);
+        }
       }
 
       return `

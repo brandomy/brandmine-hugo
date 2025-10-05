@@ -1,4 +1,6 @@
 {{ define "main" }}
+{{ partial "breadcrumbs.html" . }}
+
 <article class="founder-single" data-pagefind-sort="date:{{ .Date.Format "2006-01-02" }}">
   <div class="container">
     <!-- Founder Hero - Split Panel Layout -->
@@ -214,7 +216,7 @@
         <div class="sidebar-box sidebar-box--cta">
           <h3>Connect with {{ .Params.name | default .Title }}</h3>
           <p class="cta-text">Premium members can directly connect with founders for partnership opportunities, investment discussions, and collaboration.</p>
-          <a href="{{ "/premium/" | relLangURL }}" class="button button--primary">Upgrade to Premium</a>
+          <a href="{{ "/premium-membership-for-partners/" | relLangURL }}" class="button button--primary">{{ i18n "premium_membership_partners" | default "Premium Membership for Partners" }}</a>
         </div>
       </aside>
     </div>
@@ -531,6 +533,7 @@
 
 .button--primary:hover {
   background: var(--primary-700);
+  color: var(--secondary-200);
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }

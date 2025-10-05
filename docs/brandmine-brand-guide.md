@@ -791,6 +791,73 @@ p a {
 }
 ```
 
+## Insight Card & CTA Styling (2025-10-05)
+
+### Insight Card Components
+```css
+/* Category Badge - Subtle, not dominant */
+.insight-category {
+  font-size: 11px;
+  font-weight: var(--font-medium);
+  opacity: 0.7;
+  padding: 4px 10px;
+}
+
+/* Country Flag - Inline indicator */
+.card__flag-inline {
+  font-size: 16px;
+  margin-right: 0.375rem;
+}
+
+/* Founder Names - Light, italic text (NOT pills) */
+.founder-pill {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--color-gray-500);
+  font-weight: 400;
+}
+
+/* Clickable Hero Images */
+.card__image-link {
+  text-decoration: none;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.card__image-link:hover {
+  opacity: 0.95;
+}
+```
+
+### CTA Box Differentiation
+
+**Brand Profiles**: Teal alert-style box (prominent conversion)
+```css
+.press-room-box {
+  padding: var(--space-6);
+  background: var(--primary-50);
+  border: 1px solid var(--primary-200);
+  border-radius: var(--radius-md);
+}
+```
+
+**Insights Articles**: White subtle box (soft conversion)
+```css
+.cta-box {
+  padding: var(--space-6);
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+}
+
+.cta-box .button {
+  background: var(--color-teal-600);
+  color: white;
+}
+```
+
+**Rationale**: Brand profiles encourage immediate upgrade, insights articles maintain reading flow with softer CTAs.
+
 ## Spacing System
 
 ### Space Scale
@@ -869,6 +936,6 @@ a:focus-visible {
 
 ---
 
-**Last Updated**: 2025-10-03
-**Status**: Brand guide established for 2025 minimalist design
+**Last Updated**: 2025-10-05
+**Status**: Insight card styling, CTA differentiation, and sidebar components documented
 **Design Philosophy**: Content first, mobile first, performance first
