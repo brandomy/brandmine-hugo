@@ -10,13 +10,12 @@ heroImage: "hero-market.jpg"
 
 # Related entities
 relatedBrands: ["seven-spices"]
-relatedFounders: ["maria-volkova"]
+relatedFounders: ["maria-kuznetsova"]
 markets: ["russia"]
 sectors: ["gourmet-foods"]
 
 # Metadata
 author: "Brandmine Research Team"
-readTime: 5
 heroImage: "hero-market.jpg"
 
 # SEO

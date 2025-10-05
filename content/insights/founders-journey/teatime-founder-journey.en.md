@@ -10,13 +10,12 @@ heroImage: "hero-storefront.jpg"
 
 # Related entities
 relatedBrands: ["teatime"]
-relatedFounders: ["pavel-titov"]
+relatedFounders: ["alexei-sokolov"]
 markets: ["russia"]
 sectors: ["gourmet-foods"]
 
 # Metadata
 author: "Brandmine Research Team"
-readTime: 8
 heroImage: "hero-storefront.jpg"
 
 # SEO

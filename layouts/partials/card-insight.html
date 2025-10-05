@@ -23,7 +23,7 @@
   {{ $image = resources.Get $imagePath }}
 {{ end }}
 {{ $insightType := .Params.insightType | default "insight" }}
-{{ $readingTime := .Params.readingTime | default (div (countwords .Content) 200) }}
+{{ $readingTime := div .WordCount 150 }}
 
 <article class="card card--insight">
   {{/* Hero Image */}}
@@ -91,7 +91,7 @@
       <p class="card__excerpt">{{ .Summary }}</p>
     {{ end }}
 
-    {{/* Related Brands (tiny pill tag cloud) */}}
+    {{/* Related Brands */}}
     {{ with .Params.relatedBrands }}
       <div class="card__brands">
         {{ range . }}
@@ -103,13 +103,14 @@
       </div>
     {{ end }}
 
-    {{/* Signal Tags (if any) */}}
-    {{ with .Params.signals }}
-      <div class="card__tags">
+    {{/* Related Founders */}}
+    {{ with .Params.relatedFounders }}
+      <div class="card__founders">
         {{ range . }}
-          <a href="{{ printf "/signals/%s" . | relLangURL }}" class="tag tag--signal">
-            {{ . | humanize }}
-          </a>
+          {{ $founderPage := site.GetPage (printf "/founders/%s" .) }}
+          {{ if $founderPage }}
+            <a href="{{ $founderPage.RelPermalink }}" class="founder-pill">{{ $founderPage.Title }}</a>
+          {{ end }}
         {{ end }}
       </div>
     {{ end }}

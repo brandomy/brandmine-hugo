@@ -10,13 +10,12 @@ heroImage: "hero-corridor.jpg"
 
 # Related entities
 relatedBrands: ["altai-honey"]
-relatedFounders: []
+relatedFounders: ["ivan-petrov"]
 markets: ["russia"]
 sectors: ["honey-bee-products", "gourmet-foods"]
 
 # Metadata
 author: "Brandmine Research Team"
-readTime: 6
 heroImage: "hero-corridor.jpg"
 
 # SEO
