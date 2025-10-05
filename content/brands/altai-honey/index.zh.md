@@ -28,12 +28,14 @@ headquarters:
 logo: "logo-color.png"
 heroImage: "hero-apiaries.jpg"
 
+# Social Media (Russia-focused platforms)
+social:
+  telegram: "https://t.me/altaihoney"
+  youtube: "https://youtube.com/@altaigoldhoney"
+  instagram: "https://instagram.com/altaigoldhoney"
+
 # SEO
 description: "来自原始阿尔泰山脉的优质野生蜂蜜，采用传统方法可持续采集"
-social_telegram: ""
-social_twitter: ""
-social_vk: "altaigoldhoney"
-social_youtube: ""
 # === BUSINESS INFO ===
 export_ready: true
 export_markets: ["kz", "mn", "cn"]  # Kazakhstan, Mongolia, China

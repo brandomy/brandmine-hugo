@@ -28,6 +28,12 @@ headquarters:
 logo: "logo-color.png"
 heroImage: "hero-property.jpg"
 
+# Social Media
+social:
+  instagram: "https://instagram.com/sojournhotels"
+  linkedin: "https://linkedin.com/company/sojourn-hotels"
+  youtube: "https://youtube.com/@sojournhotels"
+
 # SEO
 description: "Бутик-отели, прославляющие бразильское культурное наследие в отреставрированных исторических объектах"
 ---

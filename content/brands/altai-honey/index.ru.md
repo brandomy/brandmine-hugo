@@ -28,12 +28,14 @@ headquarters:
 logo: "logo-color.png"
 heroImage: "hero-apiaries.jpg"
 
+# Social Media (Russia-focused platforms)
+social:
+  telegram: "https://t.me/altaihoney"
+  youtube: "https://youtube.com/@altaigoldhoney"
+  instagram: "https://instagram.com/altaigoldhoney"
+
 # SEO
 description: "Премиальный дикий мёд из нетронутых Алтайских гор, устойчиво собранный традиционными методами"
-social_telegram: ""
-social_twitter: ""
-social_vk: "altaigoldhoney"
-social_youtube: ""
 # === BUSINESS INFO ===
 export_ready: true
 export_markets: ["kz", "mn", "cn"]  # Kazakhstan, Mongolia, China

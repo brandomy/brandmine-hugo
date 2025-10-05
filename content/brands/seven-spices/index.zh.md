@@ -28,6 +28,12 @@ headquarters:
 logo: "logo-color.png"
 heroImage: "hero-market.jpg"
 
+# Social Media (Russia-focused platforms)
+social:
+  telegram: "https://t.me/sevenspices"
+  instagram: "https://instagram.com/sevenspices.ru"
+  youtube: "https://youtube.com/@sevenspicesru"
+
 # SEO
 description: "结合俄罗斯烹饪传统与全球风味的手工香料混合"
 ---

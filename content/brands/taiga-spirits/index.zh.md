@@ -28,6 +28,13 @@ headquarters:
 logo: "logo-color.png"
 heroImage: "hero-distillery.jpg"
 
+# Social Media (Russia-focused platforms + luxury positioning)
+social:
+  telegram: "https://t.me/taigaspirits"
+  instagram: "https://instagram.com/taiga.spirits"
+  youtube: "https://youtube.com/@taigaspirits"
+  linkedin: "https://linkedin.com/company/taiga-spirits"
+
 # SEO
 description: "采用原始贝加尔湖水和西伯利亚植物制作的超高档西伯利亚伏特加和烈酒"
 ---

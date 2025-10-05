@@ -28,6 +28,12 @@ headquarters:
 logo: "logo-color.png"
 heroImage: "hero-storefront.jpg"
 
+# Social Media (Russia-focused platforms)
+social:
+  telegram: "https://t.me/teatime_ru"
+  instagram: "https://instagram.com/teatime.ru"
+  youtube: "https://youtube.com/@teatimeru"
+
 # SEO
 description: "结合传统文化与现代质量标准的优质俄罗斯茶"
 ---

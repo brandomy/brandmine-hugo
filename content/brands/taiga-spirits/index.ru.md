@@ -28,6 +28,13 @@ headquarters:
 logo: "logo-color.png"
 heroImage: "hero-distillery.jpg"
 
+# Social Media (Russia-focused platforms + luxury positioning)
+social:
+  telegram: "https://t.me/taigaspirits"
+  instagram: "https://instagram.com/taiga.spirits"
+  youtube: "https://youtube.com/@taigaspirits"
+  linkedin: "https://linkedin.com/company/taiga-spirits"
+
 # SEO
 description: "Ультра-премиальная сибирская водка и спиртные напитки из чистой воды Байкала и сибирских растений"
 ---

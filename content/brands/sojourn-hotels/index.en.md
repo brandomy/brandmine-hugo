@@ -33,10 +33,6 @@ social:
   instagram: "https://instagram.com/sojournhotels"
   linkedin: "https://linkedin.com/company/sojourn-hotels"
   youtube: "https://youtube.com/@sojournhotels"
-
-# Press Kit
-pressKit: "/press/sojourn-hotels-press-kit.pdf"
-
 # SEO
 description: "Boutique hotels celebrating Brazilian cultural heritage in restored historic properties"
 ---

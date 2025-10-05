@@ -28,6 +28,12 @@ headquarters:
 logo: "logo-color.png"
 heroImage: "hero-farmland.jpg"
 
+# Social Media
+social:
+  instagram: "https://instagram.com/serraverde.organics"
+  linkedin: "https://linkedin.com/company/serra-verde-organics"
+  youtube: "https://youtube.com/@serraverdecoffee"
+
 # SEO
 description: "来自圣埃斯皮里图可持续山地农场的优质单一产地巴西咖啡"
 ---

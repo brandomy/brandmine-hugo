@@ -34,9 +34,6 @@ social:
   youtube: "https://youtube.com/@altaigoldhoney"
   instagram: "https://instagram.com/altaigoldhoney"
 
-# Press Kit
-pressKit: "/press/altai-honey-press-kit.pdf"
-
 # SEO
 description: "Premium wild honey from the pristine Altai Mountains, sustainably harvested using traditional methods"
 ---
