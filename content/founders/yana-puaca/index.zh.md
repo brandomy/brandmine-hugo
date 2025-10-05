@@ -1,5 +1,5 @@
 ---
-title: "亚娜·普阿卡 - Walk of Shame创始人"
+title: "亚娜·普阿卡"
 translationKey: "yana-puaca"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "亚娜·普阿卡"
 role: "创始人兼创意总监"
 company: "Walk of Shame"
 bio: "创意远见者，将后苏联美学转化为全球认可的奢华街头服饰。"
-photo: "photo-headshot.jpg"
+image: "photo-headshot.jpg"
 founded: 2017
 
 # Location
@@ -23,6 +23,13 @@ markets: ["russia", "global"]
 expertise: ["fashion design", "luxury streetwear", "cultural branding", "premium positioning"]
 keyAchievement: "200+ global stockists, 50+ celebrity endorsements"
 yearsExperience: 7
+languages: ["ru", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: ""
+social_instagram: ""
+social_twitter: ""
 
 # SEO
 description: "亚娜·普阿卡简介 - Walk of Shame创始人，在全球舞台上重新占有后苏联美学的奢华街头服饰品牌。"

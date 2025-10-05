@@ -17,7 +17,7 @@
 */}}
 
 {{ $founderSlug := path.Base .File.Dir }}
-{{ $photo := .Params.photo | default "placeholder-founder.jpg" }}
+{{ $photo := .Params.image | default "placeholder-founder.jpg" }}
 {{ $imagePath := printf "images/founders/%s/originals/%s" $founderSlug $photo }}
 {{ $image := resources.Get $imagePath }}
 {{ if not $image }}
@@ -39,11 +39,29 @@
         alt="{{ .Title }}"
         loading="lazy"
       >
-      {{/* Experience/Founded Metric */}}
-      {{ if .Params.yearsExperience }}
-        <div class="card__metric">{{ .Params.yearsExperience }}+ Years</div>
+      {{/* Generation Badge */}}
+      {{ if .Params.generation }}
+        {{ $genValue := "" }}
+        {{ if eq .Params.generation "first" }}{{ $genValue = "1st" }}{{ end }}
+        {{ if eq .Params.generation "second" }}{{ $genValue = "2nd" }}{{ end }}
+        {{ if eq .Params.generation "third" }}{{ $genValue = "3rd" }}{{ end }}
+        {{ if eq .Params.generation "fourth" }}{{ $genValue = "4th" }}{{ end }}
+        {{ if $genValue }}
+          <div class="card__metric card__metric--generation">
+            <span class="metric__value">{{ $genValue }}</span>
+            <span class="metric__label">GEN</span>
+          </div>
+        {{ end }}
+      {{ else if .Params.yearsExperience }}
+        <div class="card__metric">
+          <span class="metric__value">{{ .Params.yearsExperience }}+</span>
+          <span class="metric__label">YEARS</span>
+        </div>
       {{ else if .Params.founded }}
-        <div class="card__metric">Founded {{ .Params.founded }}</div>
+        <div class="card__metric">
+          <span class="metric__value">{{ .Params.founded }}</span>
+          <span class="metric__label">FOUNDED</span>
+        </div>
       {{ end }}
     {{ else }}
       <div class="card__image-placeholder">
@@ -78,7 +96,7 @@
         {{ end }}
       {{ end }}
       {{ if and .Params.brands (or .Params.city .Params.country) }}
-        <span class="card__separator">•</span>
+        <span class="card__separator card__separator--bullet">✦</span>
       {{ end }}
       {{ if or .Params.city .Params.country }}
         <span class="card__location">

@@ -1,5 +1,5 @@
 ---
-title: "Бетлехем Тилахун Алему - Основательница SoleRebels"
+title: "Бетлехем Тилахун Алему"
 translationKey: "bethlehem-alemu"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "Бетлехем Тилахун Алему"
 role: "Основательница и CEO"
 company: "SoleRebels"
 bio: "Социальный предприниматель, создавший первый глобальный африканский обувной бренд через устойчивые практики и культурную аутентичность."
-photo: "photo-headshot.jpg"
+image: "photo-headshot.jpg"
 founded: 2005
 
 # Location
@@ -23,6 +23,13 @@ markets: ["ethiopia", "global"]
 expertise: ["sustainable manufacturing", "fair trade", "artisanal production", "social enterprise"]
 keyAchievement: "First African footwear brand with global retail presence"
 yearsExperience: 19
+languages: ["am", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: ""
+social_instagram: ""
+social_twitter: ""
 
 # SEO
 description: "Профиль Бетлехем Тилахун Алему - основательницы SoleRebels, первого глобального африканского обувного бренда, пионера устойчивого производства."

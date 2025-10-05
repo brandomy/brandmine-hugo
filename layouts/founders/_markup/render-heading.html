@@ -1,0 +1,18 @@
+{{/*
+  Founder Heading Render Hook
+
+  SEO best practice: Only one H1 per page (the founder's name in the hero)
+  Automatically convert markdown H1 to H2 in article content
+*/}}
+
+{{ if eq .Level 1 }}
+  <h2 id="{{ .Anchor | safeURL }}">
+    {{ .Text | safeHTML }}
+    <a href="#{{ .Anchor | safeURL }}" class="heading-anchor" aria-label="Link to this section">#</a>
+  </h2>
+{{ else }}
+  <h{{ .Level }} id="{{ .Anchor | safeURL }}">
+    {{ .Text | safeHTML }}
+    <a href="#{{ .Anchor | safeURL }}" class="heading-anchor" aria-label="Link to this section">#</a>
+  </h{{ .Level }}>
+{{ end }}

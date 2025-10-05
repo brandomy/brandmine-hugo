@@ -11,7 +11,7 @@ attributes: ["founder-led", "artisanal-excellence", "heritage-brand"]
 signals: ["export-ready", "rapid-growth"]
 
 # Founder relationship
-founder: "maria-volkova"
+founder: "maria-kuznetsova"
 
 # Business details
 founded: 2012

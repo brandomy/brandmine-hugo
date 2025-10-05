@@ -11,7 +11,7 @@ attributes: ["founder-led", "sustainability-pioneer", "artisanal-excellence", "r
 signals: ["export-ready", "rapid-growth"]
 
 # Founder relationship
-founder: "carlos-santos"
+founder: "eduardo-santos"
 
 # Business details
 founded: 2008

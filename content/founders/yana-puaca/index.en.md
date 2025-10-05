@@ -1,5 +1,5 @@
 ---
-title: "Yana Puaca - Walk of Shame Founder"
+title: "Yana Puaca"
 translationKey: "yana-puaca"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "Yana Puaca"
 role: "Founder & Creative Director"
 company: "Walk of Shame"
 bio: "Creative visionary who transformed post-Soviet aesthetics into globally recognized luxury streetwear."
-photo: "photo-headshot.jpg"
+image: "photo-headshot.jpg"
 founded: 2017
 
 # Location
@@ -23,6 +23,13 @@ markets: ["russia", "global"]
 expertise: ["fashion design", "luxury streetwear", "cultural branding", "premium positioning"]
 keyAchievement: "200+ global stockists, 50+ celebrity endorsements"
 yearsExperience: 7
+languages: ["ru", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: ""
+social_instagram: ""
+social_twitter: ""
 
 # SEO
 description: "Yana Puaca profile - Founder of Walk of Shame, luxury streetwear brand reclaiming post-Soviet aesthetics on the global stage."

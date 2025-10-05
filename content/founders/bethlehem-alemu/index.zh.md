@@ -1,5 +1,5 @@
 ---
-title: "贝特莱赫姆·蒂拉洪·阿莱穆 - SoleRebels创始人"
+title: "贝特莱赫姆·蒂拉洪·阿莱穆"
 translationKey: "bethlehem-alemu"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "贝特莱赫姆·蒂拉洪·阿莱穆"
 role: "创始人兼CEO"
 company: "SoleRebels"
 bio: "社会企业家，通过可持续实践和文化真实性建立非洲首个全球鞋履品牌。"
-photo: "photo-headshot.jpg"
+image: "photo-headshot.jpg"
 founded: 2005
 
 # Location
@@ -23,6 +23,13 @@ markets: ["ethiopia", "global"]
 expertise: ["sustainable manufacturing", "fair trade", "artisanal production", "social enterprise"]
 keyAchievement: "First African footwear brand with global retail presence"
 yearsExperience: 19
+languages: ["am", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: ""
+social_instagram: ""
+social_twitter: ""
 
 # SEO
 description: "贝特莱赫姆·蒂拉洪·阿莱穆简介 - SoleRebels创始人，非洲首个全球鞋履品牌，可持续制造先锋。"

@@ -83,6 +83,9 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   text-align: right;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
@@ -467,6 +470,11 @@
 
 .card--founder .card__separator {
   color: var(--neutral-400);
+}
+
+.card--founder .card__separator--bullet {
+  color: var(--primary-600);
+  font-size: 0.75em;
 }
 
 .card--founder .card__location {

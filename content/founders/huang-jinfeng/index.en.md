@@ -1,5 +1,5 @@
 ---
-title: "Huang Jinfeng (David) - Perfect Diary Founder"
+title: "Huang Jinfeng (David)"
 translationKey: "huang-jinfeng"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "Huang Jinfeng (David)"
 role: "Founder & CEO"
 company: "Perfect Diary"
 bio: "Digital marketing pioneer who built China's first publicly traded beauty company through innovative KOL strategies."
-photo: "photo-headshot.jpg"
+image: "photo-headshot.jpg"
 founded: 2017
 
 # Location
@@ -23,6 +23,13 @@ markets: ["china"]
 expertise: ["digital marketing", "KOL strategy", "beauty industry", "e-commerce"]
 keyAchievement: "First Chinese beauty company IPO"
 yearsExperience: 7
+languages: ["zh", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: ""
+social_instagram: ""
+social_twitter: ""
 
 # SEO
 description: "Huang Jinfeng (David) profile - Founder of Perfect Diary, China's first publicly traded beauty company, pioneering KOL marketing strategies."

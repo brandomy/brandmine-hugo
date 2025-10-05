@@ -11,7 +11,7 @@ attributes: ["heritage-brand", "founder-led", "cultural-bridge"]
 signals: ["rapid-growth", "export-ready"]
 
 # Founder relationship
-founder: "pavel-titov"
+founder: "alexei-sokolov"
 
 # Business details
 founded: 2018

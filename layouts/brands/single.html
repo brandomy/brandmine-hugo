@@ -148,7 +148,7 @@
             <div class="founder-box">
               <h3>{{ i18n "founder" | default "Founder" }}</h3>
               <a href="{{ $founderPage.Permalink }}" class="founder-link">
-                {{ with $founderPage.Params.photo }}
+                {{ with $founderPage.Params.image }}
                   {{ partial "responsive-image.html" (dict
                     "src" (printf "images/founders/%s/originals/%s" $founderSlug .)
                     "alt" $founderPage.Title
@@ -251,9 +251,8 @@
 }
 
 .hero-content h1 {
-  font-size: var(--text-4xl);
+  /* Inherits from global: PT Serif, teal color, standard size */
   margin-bottom: var(--space-2);
-  line-height: var(--leading-tight);
 }
 
 .brand-country {
@@ -302,7 +301,7 @@
 
 .fact-value {
   font-size: var(--text-base);
-  color: var(--neutral-900);
+  color: var(--neutral-800); /* COO: softer than black */
   font-weight: var(--font-semibold);
 }
 
@@ -344,7 +343,7 @@
 .content-main {
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
-  color: var(--neutral-800);
+  color: var(--neutral-600); /* COO: comfortable reading */
 }
 
 .content-main p {
@@ -363,6 +362,7 @@
 .dimensions-box h3,
 .founder-box h3 {
   font-size: var(--text-xl);
+  margin-top: 0; /* Remove inherited top margin for visual balance */
   margin-bottom: var(--space-4);
 }
 
@@ -408,8 +408,9 @@
 
 .founder-photo {
   width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  height: 90px;
+  aspect-ratio: 2 / 3;
+  border-radius: 12px;
   object-fit: cover;
 }
 
@@ -434,8 +435,9 @@
 
 .social-links h4 {
   font-size: var(--text-base);
+  margin-top: 0; /* Remove inherited top margin for visual balance */
   margin-bottom: var(--space-3);
-  color: var(--neutral-700);
+  color: var(--primary-800);
   font-weight: var(--font-semibold);
 }
 
@@ -450,11 +452,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--primary-100);
-  color: var(--primary-700);
+  width: 44px;
+  height: 44px;
+  color: var(--neutral-600);
+  background: var(--neutral-50);
+  border-radius: var(--radius-md);
   transition: all 0.2s ease;
   text-decoration: none;
 }
@@ -463,6 +465,7 @@
   background: var(--primary-600);
   color: white;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .press-room-cta {
@@ -473,8 +476,9 @@
 
 .press-room-cta h4 {
   font-size: var(--text-base);
+  margin-top: 0; /* Remove inherited top margin for visual balance */
   margin-bottom: var(--space-2);
-  color: var(--neutral-700);
+  color: var(--primary-800);
   font-weight: var(--font-semibold);
 }
 
@@ -506,7 +510,7 @@
 .button--outline:hover {
   background: var(--neutral-50);
   border-color: var(--neutral-400);
-  color: var(--neutral-900);
+  color: var(--neutral-800); /* COO: softer than black */
 }
 
 @media (min-width: 992px) {

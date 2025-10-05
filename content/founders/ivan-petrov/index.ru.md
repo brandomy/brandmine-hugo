@@ -1,5 +1,5 @@
 ---
-title: "Иван Петров - Пионер Медового Производства на Алтае"
+title: "Иван Петров"
 translationKey: "ivan-petrov"
 date: 2025-05-03
 draft: false
@@ -9,8 +9,8 @@ name: "Иван Петров"
 role: "Основатель и Мастер-пчеловод"
 company: "Altai Honey"
 bio: "Потомственный пчеловод в третьем поколении, модернизирующий родовое ремесло с сохранением традиционных алтайских методов сбора."
-photo: "portrait-working.jpg"
-yearsExperience: 15
+image: "portrait-working.jpg"
+founded: 2015
 
 # Location
 country: "ru"
@@ -22,6 +22,16 @@ brands: ["altai-honey"]
 markets: ["russia", "china"]
 expertise: ["пчеловодство", "органическое сельское хозяйство", "устойчивый сбор", "развитие сообщества"]
 keyAchievement: "Международная органическая сертификация"
+generation: "third"
+yearsExperience: 17
+languages: ["ru", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: "ivan-petrov-12345"
+social_instagram: "ivan_petrov_honey"
+social_twitter: ""
+social_vk: "altai_honey"
 
 # SEO
 description: "Профиль Ивана Петрова - Потомственный алтайский пчеловод в третьем поколении, сохраняющий традиционный сбор меда при построении устойчивой модели сообщества."

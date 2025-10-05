@@ -1,5 +1,5 @@
 ---
-title: "Яна Пуака - Основательница Walk of Shame"
+title: "Яна Пуака"
 translationKey: "yana-puaca"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "Яна Пуака"
 role: "Основательница и креативный директор"
 company: "Walk of Shame"
 bio: "Творческий визионер, превративший постсоветскую эстетику в глобально признанную роскошную уличную моду."
-photo: "photo-headshot.jpg"
+image: "photo-headshot.jpg"
 founded: 2017
 
 # Location
@@ -23,6 +23,13 @@ markets: ["russia", "global"]
 expertise: ["fashion design", "luxury streetwear", "cultural branding", "premium positioning"]
 keyAchievement: "200+ global stockists, 50+ celebrity endorsements"
 yearsExperience: 7
+languages: ["ru", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: ""
+social_instagram: ""
+social_twitter: ""
 
 # SEO
 description: "Профиль Яны Пуака - основательницы Walk of Shame, бренда роскошной уличной моды, возвращающего постсоветскую эстетику на глобальную сцену."

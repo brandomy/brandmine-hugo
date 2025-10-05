@@ -21,10 +21,11 @@
   <!-- Styles -->
   {{ $variables := resources.Get "css/base/variables.css" }}
   {{ $fonts := resources.Get "css/base/fonts.css" }}
+  {{ $typography := resources.Get "css/typography.css" }}
   {{ $panels := resources.Get "css/base/panels.css" }}
   {{ $cards := resources.Get "css/components/cards.css" }}
   {{ $main := resources.Get "css/main.css" }}
-  {{ $style := slice $variables $fonts $panels $cards $main | resources.Concat "css/bundled.css" }}
+  {{ $style := slice $variables $fonts $typography $panels $cards $main | resources.Concat "css/bundled.css" }}
   {{ if hugo.IsProduction }}
     {{ $style = $style | minify | fingerprint }}
   {{ end }}

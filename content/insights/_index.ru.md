@@ -1,0 +1,4 @@
+---
+title: "Аналитика"
+translationKey: "insights"
+---

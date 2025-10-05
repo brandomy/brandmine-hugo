@@ -98,6 +98,7 @@
   --font-body: 'PT Sans', -apple-system, system-ui, sans-serif;
   --font-heading: 'PT Serif', Georgia, serif;
   --font-chinese: 'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  --font-chinese-heading: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
 
   /* Font Sizes - Fluid Typography (Mobile-first) */
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);      /* 12px-14px */
@@ -285,7 +286,7 @@
 
 :lang(zh) {
   --font-body: var(--font-chinese);
-  --font-heading: var(--font-chinese);
+  --font-heading: var(--font-chinese-heading);
 }
 
 /* ----------------------------------------------------------------------

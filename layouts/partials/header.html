@@ -18,13 +18,21 @@
 
     <!-- Language Switcher - Flush Right -->
     <div class="header__lang">
-      {{ range .Site.Home.AllTranslations }}
-        <a href="{{ .Permalink }}" {{ if eq .Language.Lang $.Language.Lang }}class="active"{{ end }}>
-          {{ if eq .Language.Lang "en" }}EN{{ end }}
-          {{ if eq .Language.Lang "ru" }}РУ{{ end }}
-          {{ if eq .Language.Lang "zh" }}中文{{ end }}
-        </a>
+      {{ if .IsTranslated }}
+        {{- range .Translations }}
+          <a href="{{ .Permalink }}" lang="{{ .Language.Lang }}">
+            {{ if eq .Language.Lang "en" }}EN{{ end }}
+            {{ if eq .Language.Lang "ru" }}РУ{{ end }}
+            {{ if eq .Language.Lang "zh" }}中文{{ end }}
+          </a>
+        {{ end -}}
       {{ end }}
+      <!-- Current language (active state) -->
+      <a href="{{ .Permalink }}" class="active" lang="{{ .Language.Lang }}">
+        {{ if eq .Language.Lang "en" }}EN{{ end }}
+        {{ if eq .Language.Lang "ru" }}РУ{{ end }}
+        {{ if eq .Language.Lang "zh" }}中文{{ end }}
+      </a>
     </div>
   </div>
 </header>
@@ -105,12 +113,15 @@
   top: 50%;
   transform: translateY(-50%);
   display: flex;
+  align-items: baseline;
   gap: var(--space-3);
   z-index: 10;
 }
 
 .header__lang a {
+  display: inline-block;
   font-size: var(--text-base);
+  line-height: 1;
   color: white;
   opacity: 0.7;
   font-weight: var(--font-normal);

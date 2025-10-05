@@ -1,5 +1,5 @@
 ---
-title: "维妮塔·辛格 - Sugar Cosmetics联合创始人"
+title: "维妮塔·辛格"
 translationKey: "vineeta-singh"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "维妮塔·辛格"
 role: "联合创始人兼CEO"
 company: "Sugar Cosmetics"
 bio: "数字营销先锋，通过面向千禧一代的大胆营销活动建立印度增长最快的化妆品品牌。"
-photo: "photo-headshot.jpg"
+image: "photo-headshot.jpg"
 founded: 2015
 
 # Location
@@ -23,6 +23,13 @@ markets: ["india"]
 expertise: ["digital marketing", "D2C strategy", "beauty industry", "omnichannel retail"]
 keyAchievement: "Unicorn status achievement in record time"
 yearsExperience: 9
+languages: ["hi", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: ""
+social_instagram: ""
+social_twitter: ""
 
 # SEO
 description: "维妮塔·辛格简介 - Sugar Cosmetics联合创始人，印度增长最快的美妆品牌，实现独角兽地位。"

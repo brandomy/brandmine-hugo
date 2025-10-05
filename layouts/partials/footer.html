@@ -75,7 +75,9 @@
         <p class="copyright">&copy; {{ now.Year }} {{ .Site.Params.company.legalName }}</p>
         <p class="registration">{{ .Site.Params.company.registrationNumber }}</p>
       </div>
-      <p class="built-with">{{ i18n "built_with_hugo" | default "Built with Hugo" }}</p>
+      <p class="privacy-link">
+        <a href="{{ "/privacy" | relLangURL }}">{{ i18n "privacy_policy" | default "Privacy Policy" }}</a>
+      </p>
     </div>
   </div>
 </footer>
@@ -175,16 +177,20 @@
 
 .social-link {
   color: rgba(255, 255, 255, 0.7);
-  transition: color 0.2s ease, transform 0.1s ease;
+  background: transparent;
+  transition: all 0.2s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 32px;
   height: 32px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
 }
 
 .social-link:hover {
-  color: var(--secondary-200);
+  color: white;
+  background: var(--secondary-500);
   transform: translateY(-2px);
 }
 
@@ -211,7 +217,7 @@
 
 .copyright,
 .registration,
-.built-with {
+.privacy-link {
   font-size: var(--text-sm);
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
@@ -220,6 +226,17 @@
 .registration {
   font-size: var(--text-xs);
   color: rgba(255, 255, 255, 0.6);
+}
+
+.privacy-link a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease, font-weight 0.1s ease;
+  text-decoration: none;
+}
+
+.privacy-link a:hover {
+  color: var(--secondary-200);
+  font-weight: var(--font-semibold);
 }
 
 @media (max-width: 767px) {

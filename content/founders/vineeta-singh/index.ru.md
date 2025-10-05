@@ -1,5 +1,5 @@
 ---
-title: "Винита Сингх - Соосновательница Sugar Cosmetics"
+title: "Винита Сингх"
 translationKey: "vineeta-singh"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "Винита Сингх"
 role: "Соосновательница и CEO"
 company: "Sugar Cosmetics"
 bio: "Пионер цифрового маркетинга, создавший самый быстрорастущий косметический бренд Индии через смелые кампании, ориентированные на миллениалов."
-photo: "photo-headshot.jpg"
+image: "photo-headshot.jpg"
 founded: 2015
 
 # Location
@@ -23,6 +23,13 @@ markets: ["india"]
 expertise: ["digital marketing", "D2C strategy", "beauty industry", "omnichannel retail"]
 keyAchievement: "Unicorn status achievement in record time"
 yearsExperience: 9
+languages: ["hi", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: ""
+social_instagram: ""
+social_twitter: ""
 
 # SEO
 description: "Профиль Виниты Сингх - соосновательницы Sugar Cosmetics, самого быстрорастущего индийского бренда красоты, достигшего статуса единорога."

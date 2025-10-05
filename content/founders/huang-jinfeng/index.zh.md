@@ -1,5 +1,5 @@
 ---
-title: "黄锦峰 (David) - 完美日记创始人"
+title: "黄锦峰 (David)"
 translationKey: "huang-jinfeng"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "黄锦峰 (David)"
 role: "创始人兼CEO"
 company: "完美日记"
 bio: "数字营销先锋，通过创新KOL策略建立中国首家上市美妆公司。"
-photo: "photo-headshot.jpg"
+image: "photo-headshot.jpg"
 founded: 2017
 
 # Location
@@ -23,6 +23,13 @@ markets: ["china"]
 expertise: ["digital marketing", "KOL strategy", "beauty industry", "e-commerce"]
 keyAchievement: "First Chinese beauty company IPO"
 yearsExperience: 7
+languages: ["zh", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: ""
+social_instagram: ""
+social_twitter: ""
 
 # SEO
 description: "黄锦峰（David）简介 - 完美日记创始人，中国首家上市美妆公司，KOL营销策略先锋。"

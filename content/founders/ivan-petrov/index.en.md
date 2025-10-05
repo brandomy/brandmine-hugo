@@ -1,5 +1,5 @@
 ---
-title: "Ivan Petrov - Altai Honey Pioneer"
+title: "Ivan Petrov"
 translationKey: "ivan-petrov"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "Ivan Petrov"
 role: "Founder & Master Beekeeper"
 company: "Altai Honey"
 bio: "Third-generation beekeeper modernizing ancestral craft while preserving traditional Altai harvesting techniques."
-photo: "portrait-working.jpg"
+image: "portrait-working.jpg"
 founded: 2015
 
 # Location
@@ -22,7 +22,16 @@ brands: ["altai-honey"]
 markets: ["russia", "china"]
 expertise: ["beekeeping", "organic agriculture", "sustainable harvesting", "community development"]
 keyAchievement: "International organic certification"
-yearsExperience: 15
+generation: "third"
+yearsExperience: 17
+languages: ["ru", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: "ivan-petrov-12345"
+social_instagram: "ivan_petrov_honey"
+social_twitter: ""
+social_vk: "altai_honey"
 
 # SEO
 description: "Ivan Petrov profile - Third-generation Altai beekeeper preserving traditional honey harvesting while building sustainable community model."

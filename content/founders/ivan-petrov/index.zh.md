@@ -1,5 +1,5 @@
 ---
-title: "伊万·彼得罗夫 - 阿尔泰蜂蜜先驱"
+title: "伊万·彼得罗夫"
 translationKey: "ivan-petrov"
 date: 2025-05-03
 draft: false
@@ -9,8 +9,8 @@ name: "伊万·彼得罗夫"
 role: "创始人兼养蜂大师"
 company: "Altai Honey"
 bio: "第三代养蜂人，在保留传统阿尔泰采集技术的同时使祖传技艺现代化。"
-photo: "portrait-working.jpg"
-yearsExperience: 15
+image: "portrait-working.jpg"
+founded: 2015
 
 # Location
 country: "ru"
@@ -22,6 +22,16 @@ brands: ["altai-honey"]
 markets: ["russia", "china"]
 expertise: ["养蜂", "有机农业", "可持续采集", "社区发展"]
 keyAchievement: "国际有机认证"
+generation: "third"
+yearsExperience: 17
+languages: ["ru", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: "ivan-petrov-12345"
+social_instagram: "ivan_petrov_honey"
+social_twitter: ""
+social_vk: "altai_honey"
 
 # SEO
 description: "伊万·彼得罗夫简介 - 第三代阿尔泰养蜂人保护传统蜂蜜采集的同时建立可持续社区模式。"

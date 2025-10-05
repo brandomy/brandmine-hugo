@@ -1,5 +1,5 @@
 ---
-title: "Bethlehem Tilahun Alemu - SoleRebels Founder"
+title: "Bethlehem Tilahun Alemu"
 translationKey: "bethlehem-alemu"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "Bethlehem Tilahun Alemu"
 role: "Founder & CEO"
 company: "SoleRebels"
 bio: "Social entrepreneur who built Africa's first global footwear brand through sustainable practices and cultural authenticity."
-photo: "photo-headshot.jpg"
+image: "photo-headshot.jpg"
 founded: 2005
 
 # Location
@@ -23,6 +23,13 @@ markets: ["ethiopia", "global"]
 expertise: ["sustainable manufacturing", "fair trade", "artisanal production", "social enterprise"]
 keyAchievement: "First African footwear brand with global retail presence"
 yearsExperience: 19
+languages: ["am", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: ""
+social_instagram: ""
+social_twitter: ""
 
 # SEO
 description: "Bethlehem Tilahun Alemu profile - Founder of SoleRebels, Africa's first global footwear brand, pioneering sustainable manufacturing."

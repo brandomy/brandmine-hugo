@@ -11,7 +11,7 @@
 /* PT Serif - for English and Russian headings */
 @font-face {
   font-family: 'PT Serif';
-  src: url('/static/fonts/pt-serif_regular.woff2') format('woff2');
+  src: url('/fonts/pt-serif_regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: 'PT Serif';
-  src: url('/static/fonts/pt-serif_bold.woff2') format('woff2');
+  src: url('/fonts/pt-serif_bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -28,7 +28,7 @@
 /* PT Sans - for English and Russian body text */
 @font-face {
   font-family: 'PT Sans';
-  src: url('/static/fonts/pt-sans_regular.woff2') format('woff2');
+  src: url('/fonts/pt-sans_regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -36,16 +36,16 @@
 
 @font-face {
   font-family: 'PT Sans';
-  src: url('/static/fonts/pt-sans_bold.woff2') format('woff2');
+  src: url('/fonts/pt-sans_bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
-/* Noto Sans SC - for Chinese */
+/* Noto Sans SC - for Chinese body text */
 @font-face {
   font-family: 'Noto Sans SC';
-  src: url('/static/fonts/NotoSansSC-Regular.woff2') format('woff2');
+  src: url('/fonts/NotoSansSC-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -53,7 +53,24 @@
 
 @font-face {
   font-family: 'Noto Sans SC';
-  src: url('/static/fonts/NotoSansSC-Bold.woff2') format('woff2');
+  src: url('/fonts/NotoSansSC-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Noto Serif SC - for Chinese headings */
+@font-face {
+  font-family: 'Noto Serif SC';
+  src: url('/fonts/NotoSerifSC-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Serif SC';
+  src: url('/fonts/NotoSerifSC-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -71,25 +88,58 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
-  color: var(--neutral-700);
+  color: var(--neutral-600); /* COO recommendation: #4B5563 for comfortable reading */
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Heading styles */
-h1, h2, h3, h4, h5, h6 {
+h1 {
+  font-family: var(--font-heading); /* PT Serif */
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  color: var(--primary-800); /* Teal #234E52 for brand identity */
+  margin-top: 0;
+  margin-bottom: 1rem;
+  letter-spacing: var(--tracking-tight);
+}
+
+h2 {
   font-family: var(--font-heading);
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
-  color: var(--neutral-800);
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
+  color: var(--primary-800); /* Dark teal #234E52 for brand identity */
+  margin-top: 2rem;
+  margin-bottom: 0.875rem;
 }
 
-h1 {
-  font-size: var(--text-4xl);
-  letter-spacing: var(--tracking-tight);
+h3 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  color: var(--primary-800); /* Dark teal #234E52 for brand identity */
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  color: var(--primary-800); /* Dark teal #234E52 for brand identity */
+  margin-top: 1rem;
+  margin-bottom: 0.625rem;
+}
+
+h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  color: var(--primary-800); /* Dark teal #234E52 for brand identity */
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 h2 {
@@ -102,6 +152,14 @@ h3 {
 
 h4 {
   font-size: var(--text-xl);
+}
+
+/* First heading in a section should have no top margin */
+.content-main > h2:first-child,
+.content-main > h3:first-child,
+.content-main > h4:first-child,
+.hero-content > h1:first-child {
+  margin-top: 0;
 }
 
 h5 {

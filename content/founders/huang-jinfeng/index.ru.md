@@ -1,5 +1,5 @@
 ---
-title: "Хуан Цзиньфэн (Дэвид) - Основатель Perfect Diary"
+title: "Хуан Цзиньфэн (Дэвид)"
 translationKey: "huang-jinfeng"
 date: 2025-05-03
 draft: false
@@ -9,7 +9,7 @@ name: "Хуан Цзиньфэн (Дэвид)"
 role: "Основатель и CEO"
 company: "Perfect Diary"
 bio: "Пионер цифрового маркетинга, создавший первую публичную косметическую компанию Китая через инновационные KOL-стратегии."
-photo: "photo-headshot.jpg"
+image: "photo-headshot.jpg"
 founded: 2017
 
 # Location
@@ -23,6 +23,13 @@ markets: ["china"]
 expertise: ["digital marketing", "KOL strategy", "beauty industry", "e-commerce"]
 keyAchievement: "First Chinese beauty company IPO"
 yearsExperience: 7
+languages: ["zh", "en"]
+cross_border_expertise: true
+
+# Social Media
+social_linkedin: ""
+social_instagram: ""
+social_twitter: ""
 
 # SEO
 description: "Профиль Хуан Цзиньфэна (Дэвида) - основателя Perfect Diary, первой публичной косметической компании Китая, пионера KOL-маркетинга."
