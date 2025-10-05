@@ -19,13 +19,52 @@
   <p>Not think pieces. Not trend reports. Sharp 5-8 minute reads on specific brands, founders, and markets where language barriers hide real opportunity. Filter by what matters: Brand Spotlights, Founder Stories, Location Intelligence, or Market Momentum.</p>
 </section>
 
+<!-- Category Filter Panel -->
+<section class="filter-panel">
+  <div class="filter-panel__buttons">
+    <button class="filter-btn filter-btn--active" data-category="all">
+      All Insights
+    </button>
+    <button class="filter-btn" data-category="brand-spotlight">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="filter-icon">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+      </svg>
+      Brand Spotlight
+    </button>
+    <button class="filter-btn" data-category="founders-journey">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="filter-icon">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M12 12v7" />
+        <line x1="8" y1="16" x2="16" y2="16" />
+      </svg>
+      Founder's Journey
+    </button>
+    <button class="filter-btn" data-category="location-intelligence">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="filter-icon">
+        <path d="M12 22c3.5-3.5 7-6.5 7-11a7 7 0 1 0-14 0c0 4.5 3.5 7.5 7 11z" />
+        <circle cx="12" cy="11" r="2" />
+      </svg>
+      Location Intelligence
+    </button>
+    <button class="filter-btn" data-category="market-momentum">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="filter-icon">
+        <polyline points="22 7 13 15 9 12 2 19" />
+        <polyline points="16 7 22 7 22 13" />
+      </svg>
+      Market Momentum
+    </button>
+  </div>
+</section>
+
 <!-- Insights Grid Panel -->
 <section class="panel panel--secondary-soft">
   <div class="panel__content">
     {{ if .Pages }}
-      <div class="insights-grid card-grid">
+      <div class="insights-grid card-grid" id="insights-grid">
         {{ range .Pages }}
-          {{ partial "card-insight.html" . }}
+          <div class="insight-card-wrapper" data-category="{{ .Params.insightType }}">
+            {{ partial "card-insight.html" . }}
+          </div>
         {{ end }}
       </div>
     {{ else }}
@@ -33,5 +72,111 @@
     {{ end }}
   </div>
 </section>
+
+<style>
+/* Filter Panel */
+.filter-panel {
+  background: var(--neutral-50);
+  border-top: 1px solid var(--neutral-200);
+  border-bottom: 1px solid var(--neutral-200);
+  padding: var(--space-6) 0;
+  margin-bottom: 0;
+}
+
+.filter-panel__buttons {
+  max-width: var(--content-width-max, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background: white;
+  border: 2px solid var(--neutral-300);
+  border-radius: 9999px;
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--neutral-700);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px; /* WCAG touch target */
+}
+
+.filter-btn:hover {
+  border-color: var(--primary-400);
+  color: var(--primary-700);
+  background: var(--primary-50);
+}
+
+.filter-btn.filter-btn--active {
+  background: var(--primary-400);
+  border-color: var(--primary-400);
+  color: white;
+}
+
+.filter-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Hide filtered cards */
+.insight-card-wrapper {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.insight-card-wrapper.hidden {
+  display: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .filter-panel__buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
+</style>
+
+<script>
+// Category filter functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const insightCards = document.querySelectorAll('.insight-card-wrapper');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const category = this.getAttribute('data-category');
+
+      // Update active button
+      filterButtons.forEach(btn => btn.classList.remove('filter-btn--active'));
+      this.classList.add('filter-btn--active');
+
+      // Filter cards
+      insightCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+
+        if (category === 'all' || cardCategory === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+});
+</script>
 
 {{ end }}
