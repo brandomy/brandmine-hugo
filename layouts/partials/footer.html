@@ -14,11 +14,11 @@
 
         <!-- Language Switcher -->
         <div class="footer-language-switcher">
-          {{ range .Site.Languages }}
-            {{ if eq . $.Site.Language }}
-              <span class="lang-current">{{ .LanguageName }}</span>
+          {{ range .Site.Home.AllTranslations }}
+            {{ if eq .Lang $.Site.Language.Lang }}
+              <span class="lang-current">{{ .Language.LanguageName }}</span>
             {{ else }}
-              <a href="{{ $.Page.RelPermalink | relLangURL }}" lang="{{ .Lang }}" class="lang-link">{{ .LanguageName }}</a>
+              <a href="{{ .RelPermalink }}" lang="{{ .Lang }}" class="lang-link">{{ .Language.LanguageName }}</a>
             {{ end }}
           {{ end }}
         </div>
@@ -125,6 +125,10 @@
   font-weight: var(--font-bold);
   color: white;
   margin-bottom: var(--space-4);
+}
+
+.footer-section:first-child .footer-heading {
+  font-size: var(--text-2xl);
 }
 
 .footer-tagline {

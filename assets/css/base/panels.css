@@ -136,7 +136,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.875rem, 1.6rem + 1.375vw, 2.5rem); /* 30px-40px */
   font-weight: 700;
-  color: var(--secondary-100);
+  color: var(--secondary-200);
   margin-bottom: var(--space-md);
   line-height: 1.2;
   max-width: 900px;
@@ -223,6 +223,17 @@
   color: white;
   text-align: center;
   padding: var(--space-2xl) 0;
+}
+
+/* Dark teal panels need white headings for contrast */
+.panel--cta h1,
+.panel--cta h2,
+.panel--cta h3,
+.panel--cta h4,
+.panel--cta h5,
+.panel--cta h6,
+.panel--cta .panel__heading {
+  color: white;
 }
 
 /* --------------------------------------------------------------------------
