@@ -516,6 +516,139 @@ small {
 }
 ```
 
+## Panel Color System (Updated 2025-10-06)
+
+### Panel Types and Usage
+
+**Enhanced Palette for Emotional Flow:**
+
+```css
+/* Core Panels */
+.panel--hero         /* Dark teal gradient - Excitement, brand entry */
+.panel--primary-soft /* Light teal (--primary-50) - Trust, authority */
+.panel--light        /* White - Clarity, openness */
+.panel--neutral-soft /* Light grey (--neutral-50) - Human connection, subtle emphasis */
+.panel--orange-soft  /* Orange tint - Warmth, engagement */
+.panel--cta          /* Dark teal - Urgency, action */
+```
+
+### When to Use Panel Colors
+
+**panel--hero** (Dark Teal Gradient)
+- Use: Page hero sections
+- Emotion: Excitement, brand entry
+- Text color: White/light
+
+**panel--primary-soft** (Light Teal)
+- Use: Platform/authority content (brands grid, dimensions)
+- Emotion: Trust, credibility
+- Best for: Product/feature sections
+
+**panel--light** (White)
+- Use: People/clarity content (stats, team info)
+- Emotion: Openness, transparency
+- Best for: Information sections
+
+**panel--neutral-soft** (Light Grey #F9FAFB)
+- Use: People-focused sections (founders, team, testimonials)
+- Emotion: Human connection, warmth without stark clinical feel
+- Best for: Content about individuals, softer emphasis
+- **Key distinction**: Warmer than white, more approachable
+
+**panel--orange-soft** (Orange Tint)
+- Use: Insights, thought leadership
+- Emotion: Warmth, engagement
+- Best for: Differentiating editorial content
+
+**panel--cta** (Dark Teal)
+- Use: Final CTAs, conversion panels
+- Emotion: Urgency, action
+- **Heading color**: Orange (--secondary-200) for attention
+- **Primary button**: Always orange (--secondary-500) for maximum conversion
+- **Secondary button**: White outline (optional, for secondary actions)
+
+### Panel Sequence Examples
+
+**Home Page (7 Panels):**
+```
+1. Hero → Dark teal (excitement)
+2. Stats → Light teal (trust)
+3. Brands → White (clarity)
+4. Founders → Neutral soft (human connection)
+5. Dimensions → White (openness)
+6. Insights → Orange soft (engagement)
+7. How It Works → Dark teal (action)
+```
+
+**About Page (6 Panels):**
+```
+1. Hero → Dark teal (excitement)
+2. What We Do → White (clarity)
+3. Who We Serve → Light teal (authority)
+4. Our Approach → Neutral soft (people focus)
+5. Our Team → White (transparency)
+6. Contact Form → Dark teal CTA (conversion)
+```
+
+**Design Principle**: Alternate between teal (brand/platform) and white/neutral (people/content) to create rhythm. Reserve orange for special differentiation (insights).
+
+### CTA Panel Standards (Site-Wide)
+
+**CRITICAL RULE**: All CTA panels must follow this exact pattern for maximum conversion.
+
+**Visual Hierarchy:**
+```
+1. Heading: Orange (--secondary-200) on dark teal*
+2. Body text: White with 90% opacity
+3. Primary button: Orange (--secondary-500) - ALWAYS
+4. Secondary button: White outline (optional)
+
+*Exception: White heading when panel contains orange numbered elements (preserves visual hierarchy)
+```
+
+**Code Template:**
+```html
+<section class="panel panel--cta">
+  <div class="panel__content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <h2 style="color: var(--secondary-200); margin-bottom: var(--space-md);">
+      [Heading]
+    </h2>
+    <p style="color: white; opacity: 0.9; font-size: var(--text-lg); margin-bottom: var(--space-xl);">
+      [Description]
+    </p>
+
+    <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center;">
+      <!-- Primary Button (Orange) -->
+      <a href="[primary-action]" class="btn btn--secondary" style="display: inline-block; padding: var(--btn-padding-default); background: var(--secondary-500); color: white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        [Primary CTA]
+      </a>
+
+      <!-- Secondary Button (White Outline) -->
+      <a href="[secondary-action]" class="btn btn--outline-light" style="display: inline-block; padding: var(--btn-padding-default); background: transparent; color: white; border: 2px solid white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        [Secondary CTA]
+      </a>
+    </div>
+  </div>
+</section>
+```
+
+**CRITICAL: Button styles must be identical across all pages:**
+- Use `class="btn btn--secondary"` for primary orange button
+- Use `class="btn btn--outline-light"` for secondary white outline button
+- Always include: `padding: var(--btn-padding-default)` and `min-height: var(--btn-height-default)`
+- Gap between buttons: `var(--space-4)` (not --space-md)
+
+**Rationale:**
+- **Orange heading**: Grabs attention against dark teal (maximum contrast)
+- **Orange primary button**: Highest conversion element, must stand out
+- **White secondary button**: Lower priority action, recedes visually
+- **Dark teal background**: Creates urgency/action emotion
+
+**Examples:**
+- **Brands page**: "Ready to Grow Beyond Borders?" (orange heading) → "Grow With Brandmine" (orange button)
+- **Home page**: "How It Works" (white heading - exception for numbered steps in orange) → "Start Discovering" (orange button)
+- **About page**: Future CTA panels (orange heading + orange button)
+
 ## 2025 Minimalist Design Principles
 
 ### 1. Content First
@@ -934,8 +1067,49 @@ a:focus-visible {
 }
 ```
 
+## CTA Button Standards
+
+### White Background CTA Pattern
+
+**Use Case**: CTA buttons on white or light backgrounds (sidebars, content boxes)
+
+**Standard Styling**:
+```css
+/* Base state */
+.cta-button {
+  background: var(--primary-600);  /* Teal */
+  color: white;
+  font-weight: var(--font-semibold);
+  transition: color var(--transition-fast), font-weight var(--transition-fast);
+}
+
+/* Hover state */
+.cta-button:hover {
+  color: var(--secondary-200);  /* Light orange #FED7AA */
+  font-weight: var(--font-bold);
+}
+```
+
+**Key Rules**:
+- Background color stays **teal** (no background change on hover)
+- Text color changes from **white → light orange** on hover
+- Font weight increases from **semibold → bold** on hover (creates "growing" effect)
+- Use `--secondary-200` specifically (#FED7AA - same as footer)
+- Simple, clean interaction without lift effects or shadows
+
+**Examples**:
+- Insight sidebar "Explore Membership" button
+- About page "Join Us" button
+- Any CTA on white/light backgrounds
+
+**Why This Pattern**:
+- Maintains brand consistency (teal = trust)
+- Orange text provides clear hover feedback
+- Accessible contrast ratio (WCAG AA compliant)
+- Subtle but noticeable interaction
+
 ---
 
-**Last Updated**: 2025-10-05
-**Status**: Insight card styling, CTA differentiation, and sidebar components documented
+**Last Updated**: 2025-10-06
+**Status**: White background CTA standard added, insight card styling documented
 **Design Philosophy**: Content first, mobile first, performance first

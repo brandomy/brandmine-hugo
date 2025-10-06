@@ -560,11 +560,12 @@
   text-decoration: none;
   font-weight: var(--font-semibold);
   font-size: var(--text-sm);
-  transition: background var(--transition-fast);
+  transition: color var(--transition-fast), font-weight var(--transition-fast);
 }
 
 .cta-box__button:hover {
-  background: var(--primary-700);
+  color: var(--secondary-200);
+  font-weight: var(--font-bold);
 }
 
 @media (min-width: 992px) {
