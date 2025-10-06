@@ -57,7 +57,9 @@
     <h2 style="text-align: center; margin-bottom: var(--space-lg);">
       {{ i18n "ready_to_build" }}
     </h2>
-    {{ partial "contact-form.html" (dict "context" . "source" "build-with-us") }}
+    <div style="display: flex; justify-content: center;">
+      {{ partial "contact-form.html" (dict "context" . "source" "build-with-us") }}
+    </div>
   </div>
 </section>
 
