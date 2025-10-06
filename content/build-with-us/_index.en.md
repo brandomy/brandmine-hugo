@@ -1,33 +1,45 @@
 ---
 title: "Build with Us"
-subtitle: "Help illuminate exceptional Global South brands through intelligence, technology, and cultural insight."
 layout: "build-with-us"
 translationKey: "build-with-us"
+
+# Panel 1: Hero
+hero_title: "Join Our Mission"
+hero_description: "We're building the world's first business intelligence platform for exceptional Global South brands—and we're doing it differently."
+
+# Panel 2: What We're Building
+section2_title: "Intelligence Without the Boring Part"
+section2_content: |
+  Forget dry market reports. We're creating a living platform that discovers, translates, and connects exceptional founder-led brands across BRICS+ markets with the partners and capital they deserve.
+
+  Not aggregating data. Creating understanding. Not chasing trends. Uncovering excellence where others aren't looking.
+
+  This is brand intelligence rebuilt from scratch—AI-powered, culturally fluent, relentlessly curious.
+
+# Panel 3: Our Values in Action
+section3_title: "Our Values in Action"
+value1_title: "Bridge Cultures"
+value1_description: "We turn language barriers and cultural gaps into pathways for connection."
+value2_title: "Champion Founders"
+value2_description: "Exceptional founders shouldn't stay hidden because of geography or language."
+value3_title: "Create Connections"
+value3_description: "Strategic matches, not random meetings. Intelligence that matters."
+
+# Panel 4: The Team We're Building
+section4_title: "A Tribe of Relentless Explorers"
+section4_content: |
+  We're assembling people who:
+  - Embrace AI as a superpower, not a threat
+  - Get energized by discovering what's hidden
+  - Want to work with successful entrepreneurs building real things
+  - Share their culture with the world, not hide it
+  - Build fast, iterate faster
+
+  Pan-Asian startup culture from Penang. Laid back, but deadly serious about our mission.
+
+  Remote-first. Time zones don't matter. Impact does.
+
+# Panel 5: CTA
+cta_title: "Ready to Build Something That Matters?"
+cta_description: "Whether you're a cultural insider who can spot excellence in your market, an AI-savvy researcher, a relationship builder, or someone who just sees what we're doing and wants in—let's talk."
 ---
-
-## We're Building Intelligence Infrastructure for Global South Brands
-
-We're looking for client relationship managers who are natively fluent in BRICS+ cultures—not just language, but business mentality, social media landscapes, and founder dynamics.
-
-### What We're Looking For
-
-- **Native cultural fluency** (Russian, Chinese, Portuguese, Arabic, etc.)
-- **Relationship builders** comfortable connecting with brand founders
-- **AI-savvy storytellers** skilled at leveraging AI tools to scale research and content
-- **Startup mentality** focused on execution over process
-
-### What You'll Do
-
-- Discover exceptional brands in your home market
-- Interview founders and extract authentic stories
-- Build comprehensive profiles using AI-powered research tools
-- Connect brands with international partners who value what makes them different
-
-### Why Brandmine
-
-- **Transform regional intelligence** through cutting-edge AI tools
-- **Global impact** helping exceptional brands reach their potential
-- **Remote-first team** working across BRICS+ time zones
-- **Growth opportunity** building intelligence infrastructure from the ground up
-
-Ready to help illuminate exceptional Global South brands? Get in touch below.

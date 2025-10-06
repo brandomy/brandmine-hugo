@@ -1,37 +1,53 @@
 {{ define "main" }}
 
-<!-- Split-Screen Hero -->
-<section class="panel panel--hero-split">
-  <div class="split-hero">
-    <div class="split-hero__content">
-      <h1 class="split-hero__title">{{ .Title }}</h1>
-      {{ with .Params.subtitle }}
-        <p class="split-hero__subtitle">{{ . }}</p>
-      {{ end }}
-    </div>
-    <div class="split-hero__image">
-      {{ $image := resources.Get "images/build-with-us/originals/hero-build.jpg" }}
-      {{ if $image }}
-        {{ $resized := $image.Resize "1200x800 q85" }}
-        <img src="{{ $resized.RelPermalink }}" alt="{{ .Title }}">
-      {{ end }}
-    </div>
+<!-- Panel 1: Hero -->
+<section class="panel panel--hero">
+  <div class="container text-center">
+    <h1>{{ .Params.hero_title }}</h1>
+    <p class="lead">{{ .Params.hero_description }}</p>
   </div>
 </section>
 
-<!-- Main Content -->
+<!-- Panel 2: What We're Building -->
 <section class="panel panel--light">
   <div class="container max-w-lg">
-    {{ .Content }}
+    <h2>{{ .Params.section2_title }}</h2>
+    {{ .Params.section2_content | markdownify }}
   </div>
 </section>
 
-<!-- Contact CTA -->
+<!-- Panel 3: Our Values in Action -->
+<section class="panel panel--primary-soft">
+  <div class="container max-w-lg">
+    <h2>{{ .Params.section3_title }}</h2>
+
+    <div style="margin-top: var(--space-8);">
+      <h3 style="margin-top: var(--space-6);">{{ .Params.value1_title }}</h3>
+      <p>{{ .Params.value1_description }}</p>
+
+      <h3 style="margin-top: var(--space-6);">{{ .Params.value2_title }}</h3>
+      <p>{{ .Params.value2_description }}</p>
+
+      <h3 style="margin-top: var(--space-6);">{{ .Params.value3_title }}</h3>
+      <p>{{ .Params.value3_description }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Panel 4: The Team We're Building -->
+<section class="panel panel--neutral-soft">
+  <div class="container max-w-lg">
+    <h2>{{ .Params.section4_title }}</h2>
+    {{ .Params.section4_content | markdownify }}
+  </div>
+</section>
+
+<!-- Panel 5: CTA -->
 <section class="panel panel--cta">
   <div class="container text-center">
-    <h2>{{ i18n "lets_connect" }}</h2>
+    <h2>{{ .Params.cta_title }}</h2>
     <p style="margin-top: var(--space-4); margin-bottom: var(--space-6); font-size: var(--text-lg); color: var(--neutral-100);">
-      {{ i18n "build_cta_description" }}
+      {{ .Params.cta_description }}
     </p>
     <a href="{{ "/about/#connect" | relLangURL }}" class="btn btn--secondary">
       {{ i18n "get_in_touch" }}
