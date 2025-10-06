@@ -1,0 +1,117 @@
+/* Build with Us Page - Visual Hierarchy & Impact */
+
+/* Hero Impact */
+.build-hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+}
+
+.build-hero .lead {
+  font-size: var(--text-xl);
+  font-weight: 500;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Section Headers with Visual Punch */
+.build-section h2 {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--primary-700);
+}
+
+.build-section h3 {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+/* Emphasis Phrases */
+.build-section .emphasis {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--primary-600);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+/* Bullet Lists with Impact */
+.build-section ul {
+  list-style: none;
+  margin: var(--space-md) 0;
+}
+
+.build-section ul li {
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  padding-left: var(--space-lg);
+  position: relative;
+  margin-bottom: var(--space-sm);
+}
+
+.build-section ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--secondary-500);
+  font-weight: 700;
+}
+
+/* Pull Quote Style */
+.build-callout {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  line-height: 1.4;
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg);
+  border-left: 4px solid var(--secondary-500);
+  background: rgba(255, 107, 53, 0.05);
+}
+
+/* Values Section Styling */
+.build-values h3 {
+  color: var(--primary-700);
+  font-weight: 700;
+}
+
+/* Icon Styling */
+.build-section svg {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.build-section svg:hover {
+  transform: translateY(-4px);
+  opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .build-hero h1 {
+    font-size: 2rem;
+  }
+
+  .build-section h2 {
+    font-size: var(--text-2xl);
+  }
+
+  .build-callout {
+    font-size: var(--text-xl);
+    padding: var(--space-md);
+  }
+
+  /* Smaller icons on mobile */
+  .build-values svg {
+    width: 56px;
+    height: 56px;
+  }
+
+  .build-section > .container > svg {
+    width: 64px;
+    height: 64px;
+  }
+}

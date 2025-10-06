@@ -1,11 +1,11 @@
 {{ define "main" }}
 
 <!-- Panel 1: Split-Screen Hero -->
-<section class="panel panel--hero-split">
+<section class="panel panel--hero-split build-hero">
   <div class="split-hero">
     <div class="split-hero__content">
       <h1 class="split-hero__title">{{ .Params.hero_title }}</h1>
-      <p class="split-hero__subtitle">{{ .Params.hero_description }}</p>
+      <p class="split-hero__subtitle lead">{{ .Params.hero_description }}</p>
     </div>
     <div class="split-hero__image">
       {{ $image := resources.Get "images/build-with-us/originals/hero-build.jpg" }}
@@ -18,7 +18,7 @@
 </section>
 
 <!-- Panel 2: What We're Building -->
-<section class="panel panel--light">
+<section class="panel panel--light build-section">
   <div class="container max-w-lg">
     <h2>{{ .Params.section2_title }}</h2>
     {{ .Params.section2_content | markdownify }}
@@ -26,25 +26,52 @@
 </section>
 
 <!-- Panel 3: Our Values in Action -->
-<section class="panel panel--primary-soft">
+<section class="panel panel--primary-soft build-section build-values">
   <div class="container max-w-lg">
     <h2>{{ .Params.section3_title }}</h2>
 
-    <div style="margin-top: var(--space-8);">
-      <h3 style="margin-top: var(--space-6);">{{ .Params.value1_title }}</h3>
-      <p>{{ .Params.value1_description }}</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-xl); margin-top: var(--space-8);">
+      <!-- Bridge Cultures -->
+      <div style="text-align: center;">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto 1.5rem;">
+          <path d="M8 3 4 7l4 4"/>
+          <path d="M4 7h16"/>
+          <path d="m16 21 4-4-4-4"/>
+          <path d="M20 17H4"/>
+        </svg>
+        <h3 style="margin-top: 0;">{{ .Params.value1_title }}</h3>
+        <p>{{ .Params.value1_description }}</p>
+      </div>
 
-      <h3 style="margin-top: var(--space-6);">{{ .Params.value2_title }}</h3>
-      <p>{{ .Params.value2_description }}</p>
+      <!-- Champion Founders -->
+      <div style="text-align: center;">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto 1.5rem;">
+          <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+          <path d="M9 18h6"/>
+          <path d="M10 22h4"/>
+        </svg>
+        <h3 style="margin-top: 0;">{{ .Params.value2_title }}</h3>
+        <p>{{ .Params.value2_description }}</p>
+      </div>
 
-      <h3 style="margin-top: var(--space-6);">{{ .Params.value3_title }}</h3>
-      <p>{{ .Params.value3_description }}</p>
+      <!-- Create Connections -->
+      <div style="text-align: center;">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto 1.5rem;">
+          <rect x="16" y="16" width="6" height="6" rx="1"/>
+          <rect x="2" y="16" width="6" height="6" rx="1"/>
+          <rect x="9" y="2" width="6" height="6" rx="1"/>
+          <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/>
+          <path d="M12 12V8"/>
+        </svg>
+        <h3 style="margin-top: 0;">{{ .Params.value3_title }}</h3>
+        <p>{{ .Params.value3_description }}</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Panel 4: The Team We're Building -->
-<section class="panel panel--neutral-soft">
+<section class="panel panel--neutral-soft build-section">
   <div class="container max-w-lg">
     <h2>{{ .Params.section4_title }}</h2>
     {{ .Params.section4_content | markdownify }}

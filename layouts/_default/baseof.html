@@ -25,8 +25,9 @@
   {{ $panels := resources.Get "css/base/panels.css" }}
   {{ $breadcrumbs := resources.Get "css/components/breadcrumbs.css" }}
   {{ $cards := resources.Get "css/components/cards.css" }}
+  {{ $buildWithUs := resources.Get "css/pages/build-with-us.css" }}
   {{ $main := resources.Get "css/main.css" }}
-  {{ $style := slice $variables $fonts $typography $panels $breadcrumbs $cards $main | resources.Concat "css/bundled.css" }}
+  {{ $style := slice $variables $fonts $typography $panels $breadcrumbs $cards $buildWithUs $main | resources.Concat "css/bundled.css" }}
   {{ if hugo.IsProduction }}
     {{ $style = $style | minify | fingerprint }}
   {{ end }}
