@@ -51,16 +51,13 @@
   </div>
 </section>
 
-<!-- Panel 5: CTA -->
+<!-- Panel 5: Contact Form -->
 <section class="panel panel--cta">
-  <div class="container text-center">
-    <h2>{{ .Params.cta_title }}</h2>
-    <p style="margin-top: var(--space-4); margin-bottom: var(--space-6); font-size: var(--text-lg); color: var(--neutral-100);">
-      {{ .Params.cta_description }}
-    </p>
-    <a href="{{ "/about/#connect" | relLangURL }}" class="btn btn--secondary">
-      {{ i18n "get_in_touch" }}
-    </a>
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: var(--space-lg);">
+      {{ i18n "ready_to_build" }}
+    </h2>
+    {{ partial "contact-form.html" (dict "context" . "source" "build-with-us") }}
   </div>
 </section>
 

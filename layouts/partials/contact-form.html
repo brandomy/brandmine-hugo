@@ -125,6 +125,9 @@
     </select>
   </div>
 
+  <!-- Source Tracking (hidden) -->
+  <input type="hidden" name="source" value="{{ if .source }}{{ .source }}{{ else }}about{{ end }}">
+
   <!-- Success/Error Messages -->
   <div id="form-message" style="display: none; padding: 1rem; border-radius: var(--radius-sm); margin-top: var(--space-md);"></div>
 

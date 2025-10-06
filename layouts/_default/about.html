@@ -167,7 +167,7 @@
     </p>
 
     <div style="text-align: left;">
-      {{ partial "contact-form.html" . }}
+      {{ partial "contact-form.html" (dict "context" . "source" "about") }}
     </div>
   </div>
 </section>

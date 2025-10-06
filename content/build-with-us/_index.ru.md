@@ -4,7 +4,7 @@ layout: "build-with-us"
 translationKey: "build-with-us"
 
 # Panel 1: Hero
-hero_title: "Присоединяйтесь к нашей миссии"
+hero_title: "Работайте с нами"
 hero_description: "Мы создаём первую в мире платформу бизнес-аналитики для выдающихся брендов Глобального Юга — и делаем это по-другому."
 
 # Panel 2: What We're Building

@@ -4,7 +4,7 @@ layout: "build-with-us"
 translationKey: "build-with-us"
 
 # Panel 1: Hero
-hero_title: "加入我们的使命"
+hero_title: "与我们共建"
 hero_description: "我们正在构建世界上第一个专为全球南方卓越品牌打造的商业智能平台——而且我们的做法与众不同。"
 
 # Panel 2: What We're Building
