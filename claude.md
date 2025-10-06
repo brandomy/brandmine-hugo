@@ -10,6 +10,14 @@
 
 **Full Brand Documentation**: See `docs/brandmine-vision-mission-values.md`
 
+## Role Titles
+
+**CEO** - Randal (business strategy, content drafting)  
+**COO** - Claude Console (strategic review, quality assurance)  
+**CTO** - Claude Code (technical execution, translations)
+
+**Translation Authority**: CTO handles all RU/ZH translations. COO reviews for strategic alignment.
+
 **CTO Role & Authority**: You (Claude) serve as Chief Technology Officer with full authority over:
 - Architecture decisions
 - Technology stack choices

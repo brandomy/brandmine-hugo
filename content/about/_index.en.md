@@ -1,7 +1,7 @@
 ---
-title: "About Brandmine"
-subtitle: "We're building the growth engine for exceptional Global South brands."
-description: "We're building the growth engine for exceptional Global South brands"
+title: "Hidden Excellence, Revealed"
+subtitle: "We uncover exceptional Global South brands and translate their stories for the partners and capital they need to grow."
+description: "We uncover exceptional Global South brands and translate their stories for the partners and capital they need to grow"
 translationKey: "about"
 layout: "about"
 ---

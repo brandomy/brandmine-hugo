@@ -1,7 +1,7 @@
 ---
-title: "关于Brandmine"
-subtitle: "我们正在为全球南方的杰出品牌打造增长引擎。"
-description: "我们正在为全球南方的杰出品牌打造增长引擎"
+title: "隐藏的卓越，揭示"
+subtitle: "我们发掘全球南方的杰出品牌，并为其成长所需的合作伙伴和资本翻译其故事。"
+description: "我们发掘全球南方的杰出品牌，并为其成长所需的合作伙伴和资本翻译其故事"
 translationKey: "about"
 layout: "about"
 ---

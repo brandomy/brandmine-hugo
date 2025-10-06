@@ -9,6 +9,13 @@ buildFuture: false
 enableRobotsTXT: true
 enableGitInfo: true
 
+# Security - Allow access to environment variables
+security:
+  funcs:
+    getenv:
+      - ^SUPABASE_URL$
+      - ^SUPABASE_ANON_KEY$
+
 # Multilingual
 defaultContentLanguage: "en"
 defaultContentLanguageInSubdir: false

@@ -8,7 +8,7 @@ hero_title: "Build with Us"
 hero_description: "We're building the world's first business intelligence platform for exceptional Global South brands—and we're doing it differently."
 
 # Panel 2: What We're Building
-section2_title: "Intelligence Without the Boring Part"
+section2_title: "Intelligence Without the Boring Bits"
 section2_content: |
   Forget dry market reports. We're creating a living platform that discovers, translates, and connects exceptional founder-led brands across BRICS+ markets with the partners and capital they deserve.
 
