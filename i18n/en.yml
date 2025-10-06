@@ -196,3 +196,7 @@ country_singapore: "Singapore"
 country_thailand: "Thailand"
 country_vietnam: "Vietnam"
 country_other: "Other"
+
+# Build with Us
+build_with_us: "Build with Us"
+build_with_us_cta: "Join Our Team"

@@ -196,3 +196,7 @@ country_singapore: "新加坡"
 country_thailand: "泰国"
 country_vietnam: "越南"
 country_other: "其他"
+
+# Build with Us
+build_with_us: "与我们共建"
+build_with_us_cta: "加入我们"
