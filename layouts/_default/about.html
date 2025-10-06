@@ -1,0 +1,121 @@
+{{ define "main" }}
+
+<!-- Panel 1: Hero Section - Split Screen -->
+<section class="panel panel--hero-split">
+  <div class="split-hero">
+    <div class="split-hero__content">
+      <h1 class="split-hero__title">{{ .Title }}</h1>
+      <p class="split-hero__subtitle">{{ .Params.subtitle }}</p>
+    </div>
+    <div class="split-hero__image">
+      {{ $heroPath := "images/about/originals/hero-about.jpg" }}
+      {{ $hero := resources.Get $heroPath }}
+      {{ if $hero }}
+        {{ $resized := $hero.Resize "1200x800 q85" }}
+        <img src="{{ $resized.RelPermalink }}" alt="{{ .Title }}">
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Panel 2: What We Do (Light) -->
+<section class="panel panel--light">
+  <div class="panel__content" style="max-width: 1000px; margin: 0 auto;">
+    <h2 style="text-align: center; margin-bottom: var(--space-lg); color: var(--primary-800);">{{ i18n "what_we_do" }}</h2>
+    <p class="panel__text" style="font-size: var(--text-lg); text-align: center; max-width: 800px; margin: 0 auto var(--space-md);">
+      {{ i18n "what_we_do_text" }}
+    </p>
+    <p class="panel__text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+      {{ i18n "what_we_do_detail" }}
+    </p>
+  </div>
+</section>
+
+<!-- Panel 3: Who We Serve (Light Teal) -->
+<section class="panel panel--primary-soft">
+  <div class="panel__content" style="max-width: 1000px; margin: 0 auto;">
+    <h2 style="text-align: center; margin-bottom: var(--space-xl); color: var(--primary-800);">{{ i18n "who_we_serve" }}</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-xl);">
+      <!-- For Brands -->
+      <div style="text-align: center;">
+        <h3 style="color: var(--primary-700); margin-bottom: var(--space-md);">{{ i18n "for_brands" }}</h3>
+        <p style="color: var(--neutral-700);">{{ i18n "for_brands_text" }}</p>
+      </div>
+
+      <!-- For Partners -->
+      <div style="text-align: center;">
+        <h3 style="color: var(--primary-700); margin-bottom: var(--space-md);">{{ i18n "for_partners" }}</h3>
+        <p style="color: var(--neutral-700);">{{ i18n "for_partners_text" }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Panel 4: Our Approach (Neutral Soft) -->
+<section class="panel panel--neutral-soft">
+  <div class="panel__content" style="max-width: 1000px; margin: 0 auto;">
+    <h2 style="text-align: center; margin-bottom: var(--space-lg); color: var(--primary-800);">{{ i18n "our_approach" }}</h2>
+    <p class="panel__text" style="font-size: var(--text-lg); text-align: center; max-width: 800px; margin: 0 auto var(--space-xl);">
+      {{ i18n "our_approach_intro" }}
+    </p>
+
+    <div style="max-width: 800px; margin: 0 auto; color: var(--neutral-700);">
+      <ul style="list-style: none; padding: 0; display: grid; gap: var(--space-md);">
+        <li style="padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--primary-600); font-weight: 700;">•</span>
+          <strong>{{ i18n "approach_founder_dives" }}</strong> {{ i18n "approach_founder_dives_text" }}
+        </li>
+        <li style="padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--primary-600); font-weight: 700;">•</span>
+          <strong>{{ i18n "approach_market_context" }}</strong> {{ i18n "approach_market_context_text" }}
+        </li>
+        <li style="padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--primary-600); font-weight: 700;">•</span>
+          <strong>{{ i18n "approach_growth_signals" }}</strong> {{ i18n "approach_growth_signals_text" }}
+        </li>
+        <li style="padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--primary-600); font-weight: 700;">•</span>
+          <strong>{{ i18n "approach_cultural_translation" }}</strong> {{ i18n "approach_cultural_translation_text" }}
+        </li>
+      </ul>
+    </div>
+
+    <p style="text-align: center; margin-top: var(--space-lg); color: var(--neutral-700); font-style: italic;">
+      {{ i18n "approach_footer" }}
+    </p>
+  </div>
+</section>
+
+<!-- Panel 5: Our Team (Light) -->
+<section class="panel panel--light">
+  <div class="panel__content" style="max-width: 1000px; margin: 0 auto;">
+    <h2 style="text-align: center; margin-bottom: var(--space-lg); color: var(--primary-800);">{{ i18n "our_team" }}</h2>
+
+    <div style="text-align: center; margin-bottom: var(--space-2xl);">
+      <h3 style="color: var(--primary-700); margin-bottom: var(--space-md);">{{ i18n "founder_ceo_name" }}</h3>
+      <p style="color: var(--neutral-500); font-style: italic; margin-bottom: var(--space-md);">{{ i18n "founder_ceo_title" }}</p>
+      <p style="max-width: 600px; margin: 0 auto; color: var(--neutral-700);">{{ i18n "founder_ceo_bio" }}</p>
+    </div>
+
+    <div style="text-align: center; padding: var(--space-xl); background: var(--neutral-50); border-radius: var(--radius-md);">
+      <h3 style="color: var(--primary-700); margin-bottom: var(--space-md);">{{ i18n "team_growing" }}</h3>
+      <p style="color: var(--neutral-700); margin-bottom: var(--space-lg);">{{ i18n "team_growing_text" }}</p>
+      <a href="#contact" class="button button--primary" style="display: inline-flex;">{{ i18n "join_team" }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- Panel 6: Contact Form (Dark Teal CTA) -->
+<section class="panel panel--cta" id="contact">
+  <div class="panel__content" style="max-width: 800px; margin: 0 auto;">
+    <h2 style="text-align: center; margin-bottom: var(--space-lg); color: white;">{{ i18n "contact_heading" }}</h2>
+    <p style="text-align: center; margin-bottom: var(--space-xl); color: white; opacity: 0.9; font-size: var(--text-lg);">
+      {{ i18n "contact_subheading" }}
+    </p>
+
+    {{ partial "contact-form.html" . }}
+  </div>
+</section>
+
+{{ end }}
