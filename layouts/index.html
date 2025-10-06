@@ -19,7 +19,7 @@
 <!-- 2. Stats Section (Clarity) - Light Teal -->
 <section class="panel panel--primary-soft">
   <div class="panel__content">
-    <h2 class="panel__heading" style="text-align: center;">{{ i18n "revealing_invisible" }}</h2>
+    <h2 class="panel__heading" style="text-align: center;">{{ i18n "stats_heading" }}</h2>
     <p class="panel__lead-text" style="text-align: center; max-width: 100%; margin-left: auto; margin-right: auto;">{{ i18n "revealing_description" }}</p>
 
     <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-8); margin-top: var(--space-8); text-align: center;">
@@ -43,6 +43,7 @@
 <section class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading" style="text-align: center;">{{ i18n "brands" }}</h2>
+    <p class="section-intro" style="text-align: center; font-size: var(--text-lg); color: var(--neutral-600); margin-top: var(--space-4); margin-bottom: 0; max-width: 800px; margin-left: auto; margin-right: auto;">{{ i18n "brands_intro" }}</p>
 
     <div class="brands-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
       {{ range first 6 (where (where site.RegularPages "Section" "brands") ".Params.featured" true).ByWeight }}
@@ -58,10 +59,11 @@
   </div>
 </section>
 
-<!-- 4. Founders Section (Human Connection) - Light Teal -->
-<section class="panel panel--primary-soft">
+<!-- 4. Founders Section (Human Connection) - White/Light Gray -->
+<section class="panel panel--light">
   <div class="panel__content">
     <h2 class="panel__heading" style="text-align: center;">{{ i18n "behind_the_brands" }}</h2>
+    <p class="section-intro" style="text-align: center; font-size: var(--text-lg); color: var(--neutral-600); margin-top: var(--space-4); margin-bottom: 0; max-width: 800px; margin-left: auto; margin-right: auto;">{{ i18n "founders_intro" }}</p>
 
     <div class="founders-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
       {{ $founders := where site.RegularPages "Section" "founders" }}
@@ -135,6 +137,7 @@
 <section class="panel panel--orange-soft">
   <div class="panel__content">
     <h2 class="panel__heading" style="text-align: center;">{{ i18n "market_intelligence" }}</h2>
+    <p class="section-intro" style="text-align: center; font-size: var(--text-lg); color: var(--neutral-700); margin-top: var(--space-4); margin-bottom: 0; max-width: 800px; margin-left: auto; margin-right: auto;">{{ i18n "insights_intro" }}</p>
 
     <div class="insights-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
       {{ $insights := where site.RegularPages "Section" "insights" }}
