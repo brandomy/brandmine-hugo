@@ -1,9 +1,21 @@
 {{ define "main" }}
 
-<!-- Hero -->
-<section class="panel panel--hero">
-  <div class="container">
-    <h1>{{ .Title }}</h1>
+<!-- Split-Screen Hero -->
+<section class="panel panel--hero-split">
+  <div class="split-hero">
+    <div class="split-hero__content">
+      <h1 class="split-hero__title">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}
+        <p class="split-hero__subtitle">{{ . }}</p>
+      {{ end }}
+    </div>
+    <div class="split-hero__image">
+      {{ $image := resources.Get "images/build-with-us/originals/hero-build.jpg" }}
+      {{ if $image }}
+        {{ $resized := $image.Resize "1200x800 q85" }}
+        <img src="{{ $resized.RelPermalink }}" alt="{{ .Title }}">
+      {{ end }}
+    </div>
   </div>
 </section>
 

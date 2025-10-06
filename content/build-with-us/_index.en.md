@@ -1,5 +1,6 @@
 ---
 title: "Build with Us"
+subtitle: "Help illuminate exceptional Global South brands through intelligence, technology, and cultural insight."
 layout: "build-with-us"
 translationKey: "build-with-us"
 ---
