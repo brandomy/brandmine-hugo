@@ -45,24 +45,30 @@
    BUTTON VARIATIONS
    -------------------------------------------------------------------------- */
 
-/* Primary button (teal) */
-.btn--primary {
+/* Primary button (teal) - Standard for light backgrounds */
+.btn--primary,
+.button--primary {
   background-color: var(--primary-600);
   color: white;
+  transition: background var(--transition-fast);
 }
 
-.btn--primary:hover {
+.btn--primary:hover,
+.button--primary:hover {
   background-color: var(--primary-700);
+  color: white;
 }
 
-/* Secondary button (orange) */
+/* Secondary button (orange) - Standard for dark backgrounds */
 .btn--secondary {
-  background-color: var(--secondary-600);
+  background-color: var(--secondary-500);
   color: white;
+  transition: background var(--transition-fast);
 }
 
 .btn--secondary:hover {
-  background-color: var(--secondary-700);
+  background-color: var(--secondary-400); /* Lighten on dark backgrounds */
+  color: white;
 }
 
 /* Outline button */

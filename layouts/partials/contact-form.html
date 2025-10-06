@@ -1,0 +1,234 @@
+<!-- Contact Form with Supabase Integration -->
+<form id="contact-form" class="contact-form" style="display: grid; gap: var(--space-lg); max-width: 600px;">
+
+  <!-- Name Field -->
+  <div class="form-group">
+    <label for="name" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
+      {{ i18n "form_name" }} <span style="color: var(--secondary-400);">*</span>
+    </label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
+    >
+  </div>
+
+  <!-- Email Field -->
+  <div class="form-group">
+    <label for="email" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
+      {{ i18n "form_email" }} <span style="color: var(--secondary-400);">*</span>
+    </label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
+    >
+  </div>
+
+  <!-- Contact Type Field -->
+  <div class="form-group">
+    <label for="contact_type" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
+      {{ i18n "form_i_am_a" }} <span style="color: var(--secondary-400);">*</span>
+    </label>
+    <select
+      id="contact_type"
+      name="contact_type"
+      required
+      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
+    >
+      <option value="">{{ i18n "form_select" }}</option>
+      <option value="brand">{{ i18n "form_brand" }}</option>
+      <option value="partner">{{ i18n "form_partner_investor" }}</option>
+      <option value="job_seeker">{{ i18n "form_job_seeker" }}</option>
+      <option value="other">{{ i18n "form_other" }}</option>
+    </select>
+  </div>
+
+  <!-- Company Field (Optional) -->
+  <div class="form-group">
+    <label for="company" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
+      {{ i18n "form_company" }} <span style="color: rgba(255,255,255,0.6); font-weight: 400;">({{ i18n "form_optional" }})</span>
+    </label>
+    <input
+      type="text"
+      id="company"
+      name="company"
+      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
+    >
+  </div>
+
+  <!-- Message Field -->
+  <div class="form-group">
+    <label for="message" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
+      {{ i18n "form_message" }} <span style="color: var(--secondary-400);">*</span>
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white; font-family: inherit; resize: vertical;"
+    ></textarea>
+  </div>
+
+  <!-- Referral Source Field -->
+  <div class="form-group">
+    <label for="referral_source" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
+      {{ i18n "form_how_heard" }}
+    </label>
+    <select
+      id="referral_source"
+      name="referral_source"
+      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
+    >
+      <option value="">{{ i18n "form_select" }}</option>
+      <option value="search">{{ i18n "form_search" }}</option>
+      <option value="linkedin">{{ i18n "form_linkedin" }}</option>
+      <option value="referral">{{ i18n "form_referral" }}</option>
+      <option value="other">{{ i18n "form_other" }}</option>
+    </select>
+  </div>
+
+  <!-- Country Field -->
+  <div class="form-group">
+    <label for="country" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
+      {{ i18n "form_country" }}
+    </label>
+    <select
+      id="country"
+      name="country"
+      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
+    >
+      <option value="">{{ i18n "form_select" }}</option>
+      <!-- BRICS+ Countries -->
+      <option value="brazil">🇧🇷 {{ i18n "country_brazil" }}</option>
+      <option value="russia">🇷🇺 {{ i18n "country_russia" }}</option>
+      <option value="india">🇮🇳 {{ i18n "country_india" }}</option>
+      <option value="china">🇨🇳 {{ i18n "country_china" }}</option>
+      <option value="south_africa">🇿🇦 {{ i18n "country_south_africa" }}</option>
+      <option value="egypt">🇪🇬 {{ i18n "country_egypt" }}</option>
+      <option value="ethiopia">🇪🇹 {{ i18n "country_ethiopia" }}</option>
+      <option value="iran">🇮🇷 {{ i18n "country_iran" }}</option>
+      <option value="uae">🇦🇪 {{ i18n "country_uae" }}</option>
+      <option value="saudi_arabia">🇸🇦 {{ i18n "country_saudi_arabia" }}</option>
+      <option value="argentina">🇦🇷 {{ i18n "country_argentina" }}</option>
+      <option value="indonesia">🇮🇩 {{ i18n "country_indonesia" }}</option>
+      <option value="malaysia">🇲🇾 {{ i18n "country_malaysia" }}</option>
+      <option value="thailand">🇹🇭 {{ i18n "country_thailand" }}</option>
+      <option value="vietnam">🇻🇳 {{ i18n "country_vietnam" }}</option>
+      <option value="turkey">🇹🇷 {{ i18n "country_turkey" }}</option>
+      <option value="other">🌍 {{ i18n "country_other" }}</option>
+    </select>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div id="form-message" style="display: none; padding: 1rem; border-radius: var(--radius-sm); margin-top: var(--space-md);"></div>
+
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    class="contact-submit-button"
+    style="justify-self: start; min-width: 200px; padding: 0.75rem 1.5rem; background: var(--secondary-500); color: white; font-weight: var(--font-semibold); border: none; border-radius: var(--radius-sm); cursor: pointer; transition: color var(--transition-fast), font-weight var(--transition-fast); min-height: 44px;"
+  >
+    {{ i18n "form_submit" }}
+  </button>
+</form>
+
+<!-- Supabase Form Handler Script -->
+<script>
+  document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitButton = e.target.querySelector('button[type="submit"]');
+    const messageDiv = document.getElementById('form-message');
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+
+    // Add timestamp
+    data.created_at = new Date().toISOString();
+
+    // Disable button and show loading state
+    submitButton.disabled = true;
+    submitButton.textContent = '{{ i18n "form_sending" | default "Sending..." }}';
+
+    try {
+      // Supabase credentials from environment variables (.env.local)
+      const SUPABASE_URL = '{{ getenv "SUPABASE_URL" }}';
+      const SUPABASE_ANON_KEY = '{{ getenv "SUPABASE_ANON_KEY" }}';
+
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/contacts`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        // Success
+        messageDiv.style.display = 'block';
+        messageDiv.style.background = 'rgba(16, 185, 129, 0.2)';
+        messageDiv.style.border = '1px solid rgba(16, 185, 129, 0.5)';
+        messageDiv.style.color = 'white';
+        messageDiv.textContent = '{{ i18n "form_success" | default "Thank you! We'll be in touch soon." }}';
+
+        // Reset form
+        e.target.reset();
+
+        // Re-enable button
+        submitButton.disabled = false;
+        submitButton.textContent = '{{ i18n "form_submit" }}';
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      // Error
+      messageDiv.style.display = 'block';
+      messageDiv.style.background = 'rgba(239, 68, 68, 0.2)';
+      messageDiv.style.border = '1px solid rgba(239, 68, 68, 0.5)';
+      messageDiv.style.color = 'white';
+      messageDiv.textContent = '{{ i18n "form_error" | default "Something went wrong. Please try again." }}';
+
+      // Re-enable button
+      submitButton.disabled = false;
+      submitButton.textContent = '{{ i18n "form_submit" }}';
+
+      console.error('Form submission error:', error);
+    }
+  });
+</script>
+
+<style>
+  /* Form Input Focus States */
+  #contact-form input:focus,
+  #contact-form select:focus,
+  #contact-form textarea:focus {
+    outline: 2px solid var(--secondary-400);
+    outline-offset: 2px;
+    border-color: var(--secondary-400);
+  }
+
+  /* Select Dropdown Styling */
+  #contact-form select option {
+    background: var(--primary-700);
+    color: white;
+  }
+
+  /* Placeholder Styling */
+  #contact-form input::placeholder,
+  #contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Submit Button Hover - Lighten on dark background */
+  .contact-submit-button:hover {
+    background: var(--secondary-400) !important;
+  }
+</style>

@@ -38,13 +38,25 @@
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-xl);">
       <!-- For Brands -->
-      <div style="text-align: center;">
+      <div class="audience-column" style="text-align: center;">
+        <svg class="audience-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#38B2AC" stroke-width="2" style="display: block; margin: 0 auto 1.5rem;">
+          <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/>
+          <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/>
+          <path d="M12 3v6"/>
+        </svg>
         <h3 style="color: var(--primary-700); margin-bottom: var(--space-md);">{{ i18n "about_brands_title" }}</h3>
         <p style="color: var(--neutral-700);">{{ i18n "about_brands_text" }}</p>
       </div>
 
       <!-- For Partners -->
-      <div style="text-align: center;">
+      <div class="audience-column" style="text-align: center;">
+        <svg class="audience-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" style="display: block; margin: 0 auto 1.5rem;">
+          <path d="m11 17 2 2a1 1 0 1 0 3-3"/>
+          <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/>
+          <path d="m21 3 1 11h-2"/>
+          <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/>
+          <path d="M3 4h8"/>
+        </svg>
         <h3 style="color: var(--primary-700); margin-bottom: var(--space-md);">{{ i18n "about_partners_title" }}</h3>
         <p style="color: var(--neutral-700);">{{ i18n "about_partners_text" }}</p>
       </div>
@@ -127,15 +139,15 @@
     <div style="text-align: center; padding: var(--space-xl); background: white; border-radius: var(--radius-md); margin-top: var(--space-2xl);">
       <h3 style="color: var(--primary-700); margin-bottom: var(--space-md);">{{ i18n "about_team_growing_title" }}</h3>
       <p style="color: var(--neutral-700); margin-bottom: var(--space-lg);">{{ i18n "about_team_growing_text" }}</p>
-      <a href="#connect" class="join-us-button" style="display: inline-flex; align-items: center; padding: 0.75rem 1.5rem; background: var(--primary-600); color: white; text-decoration: none; border-radius: var(--radius-sm); font-weight: var(--font-medium); transition: color 0.2s ease, font-weight 0.2s ease; min-height: 44px;">{{ i18n "about_team_cta" }}</a>
+      <a href="#connect" class="join-us-button" style="display: inline-flex; align-items: center; padding: 0.75rem 1.5rem; background: var(--primary-600); color: white; text-decoration: none; border-radius: var(--radius-sm); font-weight: var(--font-semibold); transition: background 0.2s ease; min-height: 44px;">{{ i18n "about_team_cta" }}</a>
     </div>
   </div>
 </section>
 
 <style>
+/* Teal Button Hover - Darken on light background */
 .join-us-button:hover {
-  color: var(--secondary-200) !important;
-  font-weight: var(--font-bold) !important;
+  background: var(--primary-700) !important;
 }
 
 @media (max-width: 768px) {
@@ -158,7 +170,9 @@
       {{ i18n "about_contact_text" }}
     </p>
 
-    {{ partial "contact-form.html" . }}
+    <div style="text-align: left;">
+      {{ partial "contact-form.html" . }}
+    </div>
   </div>
 </section>
 

@@ -2,8 +2,8 @@
   <div class="container">
     <div class="footer-content">
       <!-- Company Info -->
-      <div class="footer-section">
-        <h3 class="footer-heading">{{ .Site.Params.company.name }}</h3>
+      <div class="footer-section footer-section--company">
+        <h2 class="footer-heading footer-heading--company">{{ .Site.Params.company.name }}</h2>
         <p class="footer-tagline">{{ i18n "company_tagline" }}</p>
         <p class="footer-location">
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
@@ -127,8 +127,10 @@
   margin-bottom: var(--space-4);
 }
 
-.footer-section:first-child .footer-heading {
+/* Company name - H2 styling */
+.footer-heading--company {
   font-size: var(--text-2xl);
+  margin-top: 12px; /* Half of default H2 margin */
 }
 
 .footer-tagline {

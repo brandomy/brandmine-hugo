@@ -41,4 +41,30 @@
   </div>
 </section>
 
+<!-- CTA Panel: Brand Signup -->
+<section class="panel panel--cta">
+  <div class="panel__content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <h2 style="color: var(--secondary-200); margin-bottom: var(--space-md);">{{ i18n "brands_cta_heading" }}</h2>
+    <p style="color: white; opacity: 0.9; font-size: var(--text-lg); margin-bottom: var(--space-xl);">
+      {{ i18n "brands_cta_text" }}
+    </p>
+
+    <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center;">
+      <a href="/brand-signup/" class="btn btn--secondary" style="display: inline-block; padding: var(--btn-padding-default); background: var(--secondary-500); color: white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        {{ i18n "grow_with_brandmine" }}
+      </a>
+      <a href="/about/#contact" class="btn btn--outline-light" style="display: inline-block; padding: var(--btn-padding-default); background: transparent; color: white; border: 2px solid white; border-radius: var(--radius-md); font-weight: var(--font-semibold); min-height: var(--btn-height-default); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+        {{ i18n "learn_more" }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Orange Button Hover - Lighten on dark background */
+.btn--secondary:hover {
+  background: var(--secondary-400) !important;
+}
+</style>
+
 {{ end }}

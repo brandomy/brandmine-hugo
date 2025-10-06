@@ -1069,44 +1069,91 @@ a:focus-visible {
 
 ## CTA Button Standards
 
-### White Background CTA Pattern
+### Universal Hover Pattern: Background Color Change Only
+
+**Core Principle**: All button hover states change **background color only**. No text color or font-weight changes.
+
+### Teal Buttons (Light/White Backgrounds)
 
 **Use Case**: CTA buttons on white or light backgrounds (sidebars, content boxes)
+
+**CSS Classes**: `.btn--primary` or `.button--primary` (centralized in `assets/css/buttons.css`)
 
 **Standard Styling**:
 ```css
 /* Base state */
-.cta-button {
-  background: var(--primary-600);  /* Teal */
+.btn--primary,
+.button--primary {
+  background-color: var(--primary-600);  /* Teal */
   color: white;
-  font-weight: var(--font-semibold);
-  transition: color var(--transition-fast), font-weight var(--transition-fast);
+  transition: background var(--transition-fast);
 }
 
-/* Hover state */
-.cta-button:hover {
-  color: var(--secondary-200);  /* Light orange #FED7AA */
-  font-weight: var(--font-bold);
+/* Hover state - DARKEN on light backgrounds */
+.btn--primary:hover,
+.button--primary:hover {
+  background-color: var(--primary-700);  /* Darker teal */
+  color: white;
 }
 ```
 
 **Key Rules**:
-- Background color stays **teal** (no background change on hover)
-- Text color changes from **white → light orange** on hover
-- Font weight increases from **semibold → bold** on hover (creates "growing" effect)
-- Use `--secondary-200` specifically (#FED7AA - same as footer)
-- Simple, clean interaction without lift effects or shadows
+- Background darkens from `--primary-600` → `--primary-700` on hover
+- White text stays white (no color change)
+- Font weight stays semibold (no weight change)
+- Creates "press down" affordance
 
 **Examples**:
 - Insight sidebar "Explore Membership" button
 - About page "Join Us" button
-- Any CTA on white/light backgrounds
+- Any teal CTA on white/light backgrounds
 
-**Why This Pattern**:
-- Maintains brand consistency (teal = trust)
-- Orange text provides clear hover feedback
-- Accessible contrast ratio (WCAG AA compliant)
-- Subtle but noticeable interaction
+**Why This Works**:
+- Darkening on light backgrounds creates depth perception
+- Matches e-commerce patterns (Add to Cart buttons)
+- Accessible contrast maintained (WCAG AA compliant)
+- Clear interactive feedback
+
+---
+
+### Orange Buttons (Dark/Teal Backgrounds)
+
+**Use Case**: CTA buttons on dark teal or dark backgrounds
+
+**CSS Class**: `.btn--secondary` (centralized in `assets/css/buttons.css`)
+
+**Standard Styling**:
+```css
+/* Base state */
+.btn--secondary {
+  background-color: var(--secondary-500);  /* Orange */
+  color: white;
+  transition: background var(--transition-fast);
+}
+
+/* Hover state - LIGHTEN on dark backgrounds */
+.btn--secondary:hover {
+  background-color: var(--secondary-400);  /* Lighter orange */
+  color: white;
+}
+```
+
+**Key Rules**:
+- Background lightens from `--secondary-500` → `--secondary-400` on hover
+- White text stays white (no color change)
+- Font weight stays semibold (no weight change)
+- Creates "pop forward" affordance
+
+**Examples**:
+- Contact form submit button (dark teal background)
+- Home page CTAs (dark backgrounds)
+- Brand list page CTAs
+
+**Why This Works**:
+- Lightening on dark backgrounds increases contrast
+- Creates perception of button moving toward user
+- Maintains 3:1 WCAG contrast ratio on hover
+- Complements dark teal panel backgrounds
 
 ---
 
