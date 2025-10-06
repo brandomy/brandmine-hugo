@@ -90,17 +90,37 @@
     <h2 style="text-align: center; margin-bottom: var(--space-2xl); color: var(--primary-800);">{{ i18n "about_team_title" }}</h2>
 
     <!-- Randal Eastman -->
-    <div style="margin-bottom: var(--space-2xl);">
-      <h3 style="color: var(--primary-700); margin-bottom: var(--space-sm);">{{ i18n "about_randal_name" }}</h3>
-      <p style="color: var(--neutral-500); font-style: italic; margin-bottom: var(--space-md);">{{ i18n "about_randal_title" }}</p>
-      <p style="color: var(--neutral-700); line-height: 1.6;">{{ i18n "about_randal_bio" }}</p>
+    <div class="team-member" style="display: flex; gap: var(--space-xl); margin-bottom: var(--space-2xl); align-items: flex-start;">
+      {{ $randalPhoto := resources.Get "images/team/randal-eastman/originals/photo-headshot.jpg" }}
+      {{ if $randalPhoto }}
+        {{ $resized := $randalPhoto.Resize "240x240 q85" }}
+        <div class="team-member__photo" style="flex-shrink: 0;">
+          <img src="{{ $resized.RelPermalink }}" alt="{{ i18n "about_randal_name" }}"
+               style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: center; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+        </div>
+      {{ end }}
+      <div class="team-member__bio" style="flex: 1;">
+        <h3 style="color: var(--primary-700); margin-bottom: var(--space-sm);">{{ i18n "about_randal_name" }}</h3>
+        <p style="color: var(--neutral-500); font-style: italic; margin-bottom: var(--space-md);">{{ i18n "about_randal_title" }}</p>
+        <p style="color: var(--neutral-700); line-height: 1.6;">{{ i18n "about_randal_bio" }}</p>
+      </div>
     </div>
 
     <!-- Olya Eastman -->
-    <div style="margin-bottom: var(--space-2xl);">
-      <h3 style="color: var(--primary-700); margin-bottom: var(--space-sm);">{{ i18n "about_olya_name" }}</h3>
-      <p style="color: var(--neutral-500); font-style: italic; margin-bottom: var(--space-md);">{{ i18n "about_olya_title" }}</p>
-      <p style="color: var(--neutral-700); line-height: 1.6;">{{ i18n "about_olya_bio" }}</p>
+    <div class="team-member" style="display: flex; gap: var(--space-xl); margin-bottom: var(--space-2xl); align-items: flex-start;">
+      {{ $olyaPhoto := resources.Get "images/team/olya-eastman/originals/photo-headshot.jpg" }}
+      {{ if $olyaPhoto }}
+        {{ $resized := $olyaPhoto.Resize "240x240 q85" }}
+        <div class="team-member__photo" style="flex-shrink: 0;">
+          <img src="{{ $resized.RelPermalink }}" alt="{{ i18n "about_olya_name" }}"
+               style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: center; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+        </div>
+      {{ end }}
+      <div class="team-member__bio" style="flex: 1;">
+        <h3 style="color: var(--primary-700); margin-bottom: var(--space-sm);">{{ i18n "about_olya_name" }}</h3>
+        <p style="color: var(--neutral-500); font-style: italic; margin-bottom: var(--space-md);">{{ i18n "about_olya_title" }}</p>
+        <p style="color: var(--neutral-700); line-height: 1.6;">{{ i18n "about_olya_bio" }}</p>
+      </div>
     </div>
 
     <!-- We're Growing -->
@@ -111,6 +131,19 @@
     </div>
   </div>
 </section>
+
+<style>
+@media (max-width: 768px) {
+  .team-member {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+  }
+  .team-member__photo {
+    margin-bottom: var(--space-md);
+  }
+}
+</style>
 
 <!-- Panel 6: Contact Form (Dark Teal CTA) -->
 <section class="panel panel--cta" id="contact">
