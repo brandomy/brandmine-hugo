@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+<!-- Hero -->
+<section class="panel panel--hero">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="panel panel--light">
+  <div class="container max-w-lg">
+    {{ .Content }}
+  </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="panel panel--cta">
+  <div class="container text-center">
+    <h2>{{ i18n "lets_connect" }}</h2>
+    <a href="{{ "/about/#connect" | relLangURL }}" class="btn btn--secondary">
+      {{ i18n "get_in_touch" }}
+    </a>
+  </div>
+</section>
+
+{{ end }}

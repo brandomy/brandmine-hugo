@@ -1,6 +1,6 @@
 ---
 title: "与我们共建"
-layout: "simple"
+layout: "build-with-us"
 translationKey: "build-with-us"
 ---
 

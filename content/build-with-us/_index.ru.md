@@ -1,6 +1,6 @@
 ---
 title: "Работайте с нами"
-layout: "simple"
+layout: "build-with-us"
 translationKey: "build-with-us"
 ---
 
