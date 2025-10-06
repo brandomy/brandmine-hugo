@@ -16,7 +16,7 @@ class BrandSearch {
     this.resultsContainer = document.querySelector(resultsSelector);
 
     if (!this.searchInput || !this.resultsContainer) {
-      console.warn('Search elements not found');
+      // Silently return if search elements don't exist on this page
       return;
     }
 

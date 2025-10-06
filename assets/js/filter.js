@@ -21,7 +21,7 @@ class BrandFilter {
     this.resultsContainer = document.querySelector(resultsSelector);
 
     if (!this.filterContainer || !this.resultsContainer) {
-      console.warn('Filter elements not found');
+      // Silently return if filter elements don't exist on this page
       return;
     }
 
