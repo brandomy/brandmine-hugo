@@ -52,6 +52,13 @@ static/          # Static assets
   css/
 assets/          # Processed assets
 archetypes/      # Content templates
+docs/            # Documentation
+  supabase/      # Database documentation
+    README.md           # Overview and conventions
+    schema-design.md    # Full database schema (future)
+    contact-forms.md    # Contact form implementation
+    sql/               # SQL migrations and queries
+    guides/            # Setup and procedures
 ```
 
 ### Hugo Commands
@@ -312,6 +319,48 @@ Content here.
 - **Market Momentum**: Olive Green (#A3B763) - same as Sectors
 
 See `docs/brandmine-brand-guide.md` for complete color system.
+
+## Supabase Database
+
+### Documentation Structure
+
+All Supabase-related documentation lives in `docs/supabase/`:
+
+```
+docs/supabase/
+├── README.md              # Overview, conventions, usage guide
+├── schema-design.md       # Full database schema (Phase 4 - future)
+├── contact-forms.md       # Contact form implementation (Phase 3 - current)
+├── sql/                   # Executable SQL files
+│   ├── 001-contacts-table.sql
+│   ├── 002-duplicate-prevention.sql
+│   ├── 003-data-retention-policy.sql
+│   └── queries.sql       # Common queries for analytics
+└── guides/               # Step-by-step procedures
+    └── setup-guide.md    # Complete setup instructions
+```
+
+### SQL File Conventions
+
+- **Naming**: `NNN-description.sql` (e.g., `001-contacts-table.sql`)
+- **Headers**: Include purpose, created date, production date, prerequisites
+- **Sequential**: Execute in numerical order
+- **Idempotent**: Use `CREATE OR REPLACE` where possible
+
+### Environment Variables
+
+Hugo requires explicit environment variable loading:
+
+```bash
+# Load .env.local before running Hugo
+set -a && source .env.local && set +a && hugo server
+
+# Required variables
+SUPABASE_URL=https://[project].supabase.co
+SUPABASE_ANON_KEY=eyJ...
+```
+
+See `docs/supabase/contact-forms.md` for complete setup.
 
 ## Development Workflow
 

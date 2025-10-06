@@ -101,6 +101,21 @@ brandmine-hugo/
 │       ├── en.yml
 │       ├── ru.yml
 │       └── zh.yml
+├── docs/                # Documentation
+│   ├── supabase/        # Database documentation
+│   │   ├── README.md
+│   │   ├── schema-design.md
+│   │   ├── contact-forms.md
+│   │   ├── sql/
+│   │   │   ├── 001-contacts-table.sql
+│   │   │   ├── 002-duplicate-prevention.sql
+│   │   │   ├── 003-data-retention-policy.sql
+│   │   │   └── queries.sql
+│   │   └── guides/
+│   │       └── setup-guide.md
+│   ├── brandmine-brand-guide.md
+│   ├── hugo-technical-standards.md
+│   └── ...
 ├── layouts/             # Templates
 │   ├── _default/
 │   │   ├── baseof.html
@@ -1052,6 +1067,80 @@ hugo --gc --minify --templateMetrics --templateMetricsHints
 {{/* Plain text version */}}
 {{ .Plain }}
 ```
+
+## Supabase Database Standards
+
+### Documentation Location
+All Supabase documentation is centralized in `docs/supabase/`:
+
+```
+docs/supabase/
+├── README.md              # Overview and conventions
+├── schema-design.md       # Full database schema (Phase 4)
+├── contact-forms.md       # Contact form implementation (Phase 3)
+├── sql/                   # SQL migrations
+│   ├── 001-contacts-table.sql
+│   ├── 002-duplicate-prevention.sql
+│   ├── 003-data-retention-policy.sql
+│   └── queries.sql       # Common queries
+└── guides/               # Procedures
+    └── setup-guide.md
+```
+
+### SQL Migration Standards
+
+**Naming Convention**: `NNN-description.sql`
+- Use sequential numbers (001, 002, 003...)
+- Lowercase with hyphens for descriptions
+- Descriptive but concise
+
+**File Headers**: Every SQL file must include:
+```sql
+-- Purpose: [What this migration does]
+-- Created: [YYYY-MM-DD]
+-- Applied to Production: [YYYY-MM-DD or PENDING]
+-- Prerequisites: [None or list of files]
+```
+
+**Execution Rules**:
+- Execute files in numerical order
+- Track execution dates in file headers
+- Use `CREATE OR REPLACE` for idempotency where possible
+- Test in development before production
+
+### Environment Variables
+
+Hugo does NOT auto-load `.env.local` files. Must export manually:
+
+```bash
+# Load environment variables before Hugo
+set -a && source .env.local && set +a && hugo server
+
+# Required variables
+SUPABASE_URL=https://[project].supabase.co
+SUPABASE_ANON_KEY=eyJ[token]...
+```
+
+**Template Usage**:
+```go-html-template
+const SUPABASE_URL = '{{ getenv "SUPABASE_URL" }}';
+const SUPABASE_ANON_KEY = '{{ getenv "SUPABASE_ANON_KEY" }}';
+```
+
+**Production (Cloudflare Pages)**:
+- Add environment variables in Cloudflare dashboard
+- Variables auto-injected during build
+- No `.env.local` needed in production
+
+### Query Organization
+
+**queries.sql** contains reference queries organized by purpose:
+- Basic queries (recent contacts, by type, by country)
+- Analytics (monthly trends, referral sources, geographic distribution)
+- GDPR compliance (data export, deletion)
+- Maintenance (duplicate detection, recent activity)
+
+Copy queries directly from `queries.sql` into Supabase SQL Editor.
 
 ## Critical Constraints
 
