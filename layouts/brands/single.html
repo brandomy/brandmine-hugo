@@ -209,7 +209,7 @@
         <div class="press-room-box">
           <h4>{{ i18n "press_room" | default "Press Room" }}</h4>
           <p class="press-room-status">{{ i18n "press_room_status" | default "Available for Brands with Premium membership" }}</p>
-          <a href="{{ "/premium-membership-for-brands/" | relLangURL }}" class="button button--primary">
+          <a href="{{ "/premium-membership-for-brands/" | relLangURL }}" class="btn btn--primary">
             {{ i18n "premium_membership_brands" | default "Premium Membership for Brands" }}
           </a>
         </div>
@@ -489,31 +489,7 @@
   line-height: var(--leading-relaxed);
 }
 
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-md);
-  font-size: var(--text-sm);
-  font-weight: var(--font-semibold);
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-/* Teal button styles now centralized in assets/css/buttons.css */
-
-.button--outline {
-  background: transparent;
-  border: 1px solid var(--neutral-300);
-  color: var(--neutral-700);
-}
-
-.button--outline:hover {
-  background: var(--neutral-50);
-  border-color: var(--neutral-400);
-  color: var(--neutral-800); /* COO: softer than black */
-}
+/* Button styles centralized in assets/css/buttons.css */
 
 @media (min-width: 992px) {
   .brand-hero {

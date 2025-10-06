@@ -1,32 +1,29 @@
 /* ==========================================================================
-   Buttons - Hugo Clean Implementation
+   Buttons - Standardized System
    ==========================================================================
-   BEM-compliant button system with teal primary and orange secondary.
+   Research-based hover patterns:
+   - Orange on dark backgrounds: LIGHTEN on hover
+   - Teal on light backgrounds: DARKEN on hover
+   - Text color NEVER changes on hover
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   BASE BUTTON STYLES
+   BASE BUTTON
    -------------------------------------------------------------------------- */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: var(--btn-height-default);
-  padding: 0 var(--space-6);
-  box-sizing: border-box;
-  line-height: 1;
+  padding: var(--btn-padding-default);
+  min-height: var(--btn-height-default);
   border-radius: var(--radius-md);
   font-weight: var(--font-semibold);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
   cursor: pointer;
   border: none;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
+  box-sizing: border-box;
 }
 
 .btn:focus-visible {
@@ -42,191 +39,58 @@
 }
 
 /* --------------------------------------------------------------------------
-   BUTTON VARIATIONS
+   PRIMARY (TEAL) - For light backgrounds
    -------------------------------------------------------------------------- */
 
-/* Primary button (teal) - Standard for light backgrounds */
 .btn--primary,
 .button--primary {
   background-color: var(--primary-600);
   color: white;
-  transition: background var(--transition-fast);
 }
 
 .btn--primary:hover,
 .button--primary:hover {
-  background-color: var(--primary-700);
-  color: white;
+  background-color: var(--primary-700); /* Darker on light backgrounds */
+  color: white; /* Never changes */
 }
 
-/* Secondary button (orange) - Standard for dark backgrounds */
+/* --------------------------------------------------------------------------
+   SECONDARY (ORANGE) - For dark backgrounds
+   -------------------------------------------------------------------------- */
+
 .btn--secondary {
   background-color: var(--secondary-500);
   color: white;
-  transition: background var(--transition-fast);
 }
 
 .btn--secondary:hover {
-  background-color: var(--secondary-400); /* Lighten on dark backgrounds */
-  color: white;
+  background-color: var(--secondary-400); /* Lighter on dark backgrounds */
+  color: white; /* Never changes */
 }
 
-/* Outline button */
-.btn--outline {
-  background-color: transparent;
-  color: var(--neutral-800);
-  border: 2px solid var(--neutral-400);
-}
+/* --------------------------------------------------------------------------
+   OUTLINE LIGHT - For dark backgrounds
+   -------------------------------------------------------------------------- */
 
-.btn--outline:hover {
-  background-color: var(--neutral-100);
-}
-
-/* Outline light button (for dark backgrounds) */
 .btn--outline-light {
   background-color: transparent;
   color: white;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  border: 2px solid white;
 }
 
 .btn--outline-light:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-}
-
-/* White button for CTA panels */
-.btn--white {
-  background-color: white;
-  color: var(--primary-700);
-}
-
-.btn--white:hover {
-  background-color: var(--neutral-100);
-}
-
-/* --------------------------------------------------------------------------
-   BUTTON SIZES
-   -------------------------------------------------------------------------- */
-
-/* Small button */
-.btn--sm {
-  padding: var(--btn-padding-sm);
-  height: var(--btn-height-sm);
-  font-size: var(--text-sm);
-}
-
-/* Large button */
-.btn--lg {
-  padding: var(--btn-padding-lg);
-  height: var(--btn-height-lg);
-  font-size: var(--text-lg);
-}
-
-/* Full-width button */
-.btn--block {
-  display: flex;
-  width: 100%;
-}
-
-/* --------------------------------------------------------------------------
-   ENHANCED CTA BUTTONS
-   -------------------------------------------------------------------------- */
-
-/* Enhanced Primary CTA */
-.btn--primary-cta {
-  background-color: var(--primary-600);
-  color: white;
-  font-size: var(--text-lg);
-  padding: 0 var(--space-8);
-  height: var(--btn-height-lg);
-  font-weight: var(--font-bold);
-  box-shadow: var(--shadow-medium);
-  position: relative;
-  overflow: hidden;
-}
-
-.btn--primary-cta::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: 0.4s;
-}
-
-.btn--primary-cta:hover {
-  background-color: var(--primary-700);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-strong);
-}
-
-.btn--primary-cta:hover::after {
-  left: 100%;
-}
-
-/* Enhanced Secondary CTA */
-.btn--secondary-cta {
-  background-color: var(--secondary-600);
-  color: white;
-  font-size: var(--text-lg);
-  padding: 0 var(--space-8);
-  height: var(--btn-height-lg);
-  font-weight: var(--font-bold);
-  box-shadow: var(--shadow-medium);
-  position: relative;
-  overflow: hidden;
-}
-
-.btn--secondary-cta::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: 0.4s;
-}
-
-.btn--secondary-cta:hover {
-  background-color: var(--secondary-700);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-strong);
-}
-
-.btn--secondary-cta:hover::after {
-  left: 100%;
-}
-
-/* --------------------------------------------------------------------------
-   BUTTON CONTAINER
-   -------------------------------------------------------------------------- */
-
-.cta-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-4);
-  padding-top: var(--space-6);
-  flex-wrap: wrap;
+  color: white; /* Never changes */
+  border-color: white;
 }
 
 /* --------------------------------------------------------------------------
    RESPONSIVE ADJUSTMENTS
    -------------------------------------------------------------------------- */
 
-@media (width <= 767px) {
-  .cta-buttons {
-    flex-direction: column;
+@media (max-width: 767px) {
+  .btn {
     width: 100%;
     max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .cta-buttons .btn {
-    width: 100%;
   }
 }

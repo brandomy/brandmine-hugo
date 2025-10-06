@@ -216,7 +216,7 @@
         <div class="sidebar-box sidebar-box--cta">
           <h3>Connect with {{ .Params.name | default .Title }}</h3>
           <p class="cta-text">Premium members can directly connect with founders for partnership opportunities, investment discussions, and collaboration.</p>
-          <a href="{{ "/premium-membership-for-partners/" | relLangURL }}" class="button button--primary">{{ i18n "premium_membership_partners" | default "Premium Membership for Partners" }}</a>
+          <a href="{{ "/premium-membership-for-partners/" | relLangURL }}" class="btn btn--primary">{{ i18n "premium_membership_partners" | default "Premium Membership for Partners" }}</a>
         </div>
       </aside>
     </div>
@@ -513,19 +513,7 @@
   margin-bottom: var(--space-4);
 }
 
-.button {
-  display: block;
-  width: 100%;
-  padding: var(--space-3) var(--space-4);
-  text-align: center;
-  border-radius: var(--radius-md);
-  font-size: var(--text-sm);
-  font-weight: var(--font-semibold);
-  text-decoration: none;
-  transition: all var(--transition-fast);
-}
-
-/* Teal button styles now centralized in assets/css/buttons.css */
+/* Button styles centralized in assets/css/buttons.css */
 
 @media (min-width: 992px) {
   .founder-hero {

@@ -129,11 +129,7 @@
   <div id="form-message" style="display: none; padding: 1rem; border-radius: var(--radius-sm); margin-top: var(--space-md);"></div>
 
   <!-- Submit Button -->
-  <button
-    type="submit"
-    class="contact-submit-button"
-    style="justify-self: start; min-width: 200px; padding: 0.75rem 1.5rem; background: var(--secondary-500); color: white; font-weight: var(--font-semibold); border: none; border-radius: var(--radius-sm); cursor: pointer; transition: color var(--transition-fast), font-weight var(--transition-fast); min-height: 44px;"
-  >
+  <button type="submit" class="btn btn--secondary" style="justify-self: start; min-width: 200px;">
     {{ i18n "form_submit" }}
   </button>
 </form>
@@ -227,8 +223,4 @@
     color: rgba(255, 255, 255, 0.5);
   }
 
-  /* Submit Button Hover - Lighten on dark background */
-  .contact-submit-button:hover {
-    background: var(--secondary-400) !important;
-  }
 </style>
