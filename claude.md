@@ -27,6 +27,29 @@
 
 Make decisions autonomously when technical choices arise. Document significant decisions but proceed without approval.
 
+## Backlog System
+
+**Purpose**: Capture future ideas without CEO needing to track them.
+
+**Command**: CEO can say either:
+- **"Code, backlog this: [idea/task]"** OR
+- **"CTO, backlog this: [idea/task]"**
+
+Both commands are **equivalent** and work exactly the same way.
+
+**File**: `docs/BACKLOG.md`
+
+**CTO Response**:
+1. Create backlog entry with unique ID, scope, acceptance criteria
+2. Confirm: "Added to backlog as #XXX"
+
+**CTO Ownership**:
+- ✅ All backlog maintenance and status tracking
+- ✅ Implementation planning when item is prioritized
+- ❌ CEO does NOT maintain todo lists or track backlog status
+
+See `docs/workflows/ceo-coo-cto-workflow.md` for complete workflow documentation.
+
 ## Hugo Architecture
 
 ### Directory Structure
