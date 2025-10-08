@@ -14,7 +14,7 @@ Following Pagefind search implementation (documented in dev-journal-2025-10-03-p
 
 ### 1. Schema Design
 
-**Document**: `docs/supabase-schema.md` (CEO-approved)
+**Document**: `docs/database-schema.md` (CEO-approved)
 
 **Key Decisions**:
 - ✅ Relational translations table (polymorphic design)
@@ -267,7 +267,7 @@ CREATE POLICY "Admin brands write" ON brands
 
 **Created**:
 - `.env.local` - Supabase credentials (gitignored)
-- `docs/supabase-schema.md` - Schema design documentation
+- `docs/database-schema.md` - Schema design documentation
 - `scripts/migrations/01-create-tables.sql`
 - `scripts/migrations/02-create-indexes.sql`
 - `scripts/migrations/03-create-triggers.sql`
@@ -349,7 +349,7 @@ Per CLEAN-BUILD-PLAN.md Day 18:
 - [Supabase Documentation](https://supabase.com/docs)
 - [Supabase Storage](https://supabase.com/docs/guides/storage)
 - [Row-Level Security](https://supabase.com/docs/guides/auth/row-level-security)
-- docs/supabase-schema.md - Complete schema design
+- docs/database-schema.md - Complete schema design
 - CLEAN-BUILD-PLAN.md - Phase 4, Day 16-17
 
 ---

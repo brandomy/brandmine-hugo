@@ -72,7 +72,7 @@ CREATE TABLE contacts (
 
 ### Documentation Created
 
-- `docs/supabase-contact-forms.md` - Complete schema, setup instructions, email notifications, GDPR compliance
+- `docs/database-contact-forms.md` - Complete schema, setup instructions, email notifications, GDPR compliance
 
 ## 3. Brands Page CTA Panel
 
@@ -195,7 +195,7 @@ Added **78 new translation keys** across EN/RU/ZH:
 
 ### Documentation (3 files)
 - `docs/brandmine-brand-guide.md` (panel color system + CTA standards)
-- `docs/supabase-contact-forms.md` (new - complete schema documentation)
+- `docs/database-contact-forms.md` (new - complete schema documentation)
 - `docs/dev-journal/2025-10-06-about-page-cta-standardization.md` (this file)
 
 ## 8. Build & Verification
@@ -218,12 +218,12 @@ Added **78 new translation keys** across EN/RU/ZH:
 **1. Supabase Setup**
 - [x] Supabase project exists: `brandmine-prod` (https://wcfhbzbmxztdzwjaujoq.supabase.co)
 - [x] Credentials stored in `.env.local` (DO NOT COMMIT)
-- [ ] Run `contacts` table schema from docs/supabase-contact-forms.md
+- [ ] Run `contacts` table schema from docs/database-contact-forms.md
 
 **2. Form Credentials**
 - [x] Contact form updated to use `{{ getenv "SUPABASE_URL" }}` and `{{ getenv "SUPABASE_ANON_KEY" }}`
 - [x] Hugo security policy updated to allow getenv access
-- [ ] **CRITICAL**: Export environment variables before running Hugo (see docs/supabase-contact-forms.md)
+- [ ] **CRITICAL**: Export environment variables before running Hugo (see docs/database-contact-forms.md)
   - Hugo does NOT automatically load `.env.local` files
   - Must use: `set -a && source .env.local && set +a && hugo server`
   - Or export variables manually to shell environment

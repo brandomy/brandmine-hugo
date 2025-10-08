@@ -1068,13 +1068,13 @@ hugo --gc --minify --templateMetrics --templateMetricsHints
 {{ .Plain }}
 ```
 
-## Supabase Database Standards
+## Database Standards (Supabase)
 
 ### Documentation Location
-All Supabase documentation is centralized in `docs/supabase/`:
+All database documentation is centralized in `docs/database/`:
 
 ```
-docs/supabase/
+docs/database/
 ├── README.md              # Overview and conventions
 ├── schema-design.md       # Full database schema (Phase 4)
 ├── contact-forms.md       # Contact form implementation (Phase 3)

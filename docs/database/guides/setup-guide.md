@@ -48,7 +48,7 @@ Step-by-step instructions for setting up Supabase database for Brandmine.
 
 ## Step 4: Run SQL Migrations
 
-Execute SQL files in order from `docs/supabase/sql/`:
+Execute SQL files in order from `docs/database/sql/`:
 
 ### 1. Create Contacts Table
 
@@ -174,4 +174,4 @@ Execute SQL files in order from `docs/supabase/sql/`:
 - [Supabase Docs](https://supabase.com/docs)
 - [Row Level Security Guide](https://supabase.com/docs/guides/auth/row-level-security)
 - [Hugo getenv Function](https://gohugo.io/functions/getenv/)
-- Internal: `docs/supabase-contact-forms.md`
+- Internal: `docs/database-contact-forms.md`

@@ -194,7 +194,7 @@
 **Completed**: 2025-10-03
 **Implementation**:
 - Database: 6 brands, 54 translations, 12 images
-- Schema: docs/supabase-schema.md
+- Schema: docs/database-schema.md
 - Migrations: scripts/migrations/
 - Sync: scripts/sync-to-supabase.js
 - Storage: Supabase Storage (brand-images bucket)

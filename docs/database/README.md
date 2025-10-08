@@ -5,7 +5,7 @@ This directory contains all SQL commands used to set up and maintain the Brandmi
 ## Directory Structure
 
 ```
-docs/supabase/
+docs/database/
 ├── README.md           # This file
 ├── sql/
 │   ├── 001-initial-setup.sql      # Initial database setup

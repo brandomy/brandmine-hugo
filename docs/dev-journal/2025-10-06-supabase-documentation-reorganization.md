@@ -33,7 +33,7 @@ Reorganize Supabase documentation into a centralized, maintainable structure wit
 Created organized directory structure:
 
 ```
-docs/supabase/
+docs/database/
 ├── README.md              # Overview and conventions
 ├── schema-design.md       # Full database schema (Phase 4)
 ├── contact-forms.md       # Contact form implementation (Phase 3)
@@ -47,8 +47,8 @@ docs/supabase/
 ```
 
 **Files Moved:**
-- `docs/supabase-schema.md` → `docs/supabase/schema-design.md`
-- `docs/supabase-contact-forms.md` → `docs/supabase/contact-forms.md`
+- `docs/supabase-schema.md` → `docs/database/schema-design.md`
+- `docs/supabase-contact-forms.md` → `docs/database/contact-forms.md`
 
 ### 2. SQL Migration System
 
@@ -127,8 +127,8 @@ CREATE INDEX IF NOT EXISTS idx_contacts_source ON contacts(source);
 - Added query organization guidelines
 
 ### Created New Documentation
-- `docs/supabase/README.md` - Overview and conventions
-- `docs/supabase/guides/setup-guide.md` - Step-by-step setup instructions
+- `docs/database/README.md` - Overview and conventions
+- `docs/database/guides/setup-guide.md` - Step-by-step setup instructions
 
 ## Additional Improvements
 
@@ -197,14 +197,14 @@ CREATE INDEX IF NOT EXISTS idx_contacts_source ON contacts(source);
 ### Documentation (10 files)
 - `claude.md` (Supabase section added)
 - `docs/hugo-technical-standards.md` (Supabase standards added)
-- `docs/supabase/README.md` (new)
-- `docs/supabase/schema-design.md` (moved)
-- `docs/supabase/contact-forms.md` (moved)
-- `docs/supabase/guides/setup-guide.md` (new)
-- `docs/supabase/sql/001-contacts-table.sql` (new)
-- `docs/supabase/sql/002-duplicate-prevention.sql` (new)
-- `docs/supabase/sql/003-data-retention-policy.sql` (new)
-- `docs/supabase/sql/queries.sql` (new)
+- `docs/database/README.md` (new)
+- `docs/database/schema-design.md` (moved)
+- `docs/database/contact-forms.md` (moved)
+- `docs/database/guides/setup-guide.md` (new)
+- `docs/database/sql/001-contacts-table.sql` (new)
+- `docs/database/sql/002-duplicate-prevention.sql` (new)
+- `docs/database/sql/003-data-retention-policy.sql` (new)
+- `docs/database/sql/queries.sql` (new)
 
 ### Code (2 files)
 - `assets/js/search.js` (removed console warning)
@@ -219,7 +219,7 @@ CREATE INDEX IF NOT EXISTS idx_contacts_source ON contacts(source);
 ## Git Commits
 
 1. **docs: reorganize Supabase documentation into centralized structure** (6b9a570)
-   - Created docs/supabase/ directory structure
+   - Created docs/database/ directory structure
    - Added SQL migration files with standards
    - Updated CLAUDE.md and hugo-technical-standards.md
    - Moved hero images to assets/
@@ -247,7 +247,7 @@ CREATE INDEX IF NOT EXISTS idx_contacts_source ON contacts(source);
 - Supabase Documentation: https://supabase.com/docs
 - Row Level Security Guide: https://supabase.com/docs/guides/auth/row-level-security
 - Hugo getenv Function: https://gohugo.io/functions/getenv/
-- Internal Docs: `docs/supabase/contact-forms.md`
+- Internal Docs: `docs/database/contact-forms.md`
 
 ---
 

@@ -53,7 +53,7 @@ static/          # Static assets
 assets/          # Processed assets
 archetypes/      # Content templates
 docs/            # Documentation
-  supabase/      # Database documentation
+  database/      # Database documentation
     README.md           # Overview and conventions
     schema-design.md    # Full database schema (future)
     contact-forms.md    # Contact form implementation
@@ -320,14 +320,14 @@ Content here.
 
 See `docs/brandmine-brand-guide.md` for complete color system.
 
-## Supabase Database
+## Database (Supabase)
 
 ### Documentation Structure
 
-All Supabase-related documentation lives in `docs/supabase/`:
+All database documentation lives in `docs/database/`:
 
 ```
-docs/supabase/
+docs/database/
 ├── README.md              # Overview, conventions, usage guide
 ├── schema-design.md       # Full database schema (Phase 4 - future)
 ├── contact-forms.md       # Contact form implementation (Phase 3 - current)
@@ -360,7 +360,7 @@ SUPABASE_URL=https://[project].supabase.co
 SUPABASE_ANON_KEY=eyJ...
 ```
 
-See `docs/supabase/contact-forms.md` for complete setup.
+See `docs/database/contact-forms.md` for complete setup.
 
 ## Development Workflow
 
