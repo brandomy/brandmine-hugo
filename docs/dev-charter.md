@@ -106,6 +106,9 @@
 - ❌ **Code development** - No hands-on programming or implementation
 - ❌ **Direct technical execution** - All building is Claude Code's responsibility
 - ❌ **Detailed debugging** - Review outcomes and quality, don't fix code
+- ❌ **Block or approve** - COO is advisor, not blocker; does not restrict CEO-CTO communication
+
+**Full Documentation**: See `docs/workflows/ceo-coo-cto-workflow.md`
 
 **Communication Style:**
 - Provide structured analysis with executive summaries and detailed findings
@@ -209,12 +212,19 @@ CEO: "Enables customer discovery perfectly" OR "Business requirement XYZ isn't m
 ### Backlog System
 **File**: `docs/BACKLOG.md`
 
-**Usage**: 
-- CEO: "Code, backlog this: [description]"
-- CTO: Adds item with ID, scope, acceptance criteria
+**Command**: CEO can say either:
+- **"Code, backlog this: [description]"** OR
+- **"CTO, backlog this: [description]"**
+
+Both commands are **equivalent** and work exactly the same way.
+
+**CTO Response**:
+- Adds item with unique ID, scope, acceptance criteria
 - Track: backlog → in progress → completed
 
 **Purpose**: System tracks tasks, not CEO's memory
+
+**Full Documentation**: See `docs/workflows/ceo-coo-cto-workflow.md`
 
 ## Quality Assurance Workflow
 
