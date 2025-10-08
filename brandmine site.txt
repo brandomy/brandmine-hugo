@@ -145,11 +145,11 @@
 │   │   ├── 2025-10-03-translation-import.md
 │   │   ├── 2025-10-04-edge-to-edge-layout-accessibility.md
 │   │   ├── 2025-10-04-token-system-fix-panel-implementation.md
-│   │   ├── dev-journal-2025-10-03-color-fix.md
-│   │   ├── dev-journal-2025-10-03-pagefind-search.md
-│   │   ├── dev-journal-2025-10-03-pill-styling.md
-│   │   ├── dev-journal-2025-10-03-supabase-setup.md
-│   │   └── dev-journal-2025-10-03.md
+│   │   ├── 2025-10-03-color-fix.md
+│   │   ├── 2025-10-03-pagefind-search.md
+│   │   ├── 2025-10-03-pill-styling.md
+│   │   ├── 2025-10-03-supabase-setup.md
+│   │   └── 2025-10-03-session-summary.md
 │   ├── hugo-technical-standards.md
 │   ├── supabase-schema.md
 │   └── TAXONOMY-STANDARDS.md

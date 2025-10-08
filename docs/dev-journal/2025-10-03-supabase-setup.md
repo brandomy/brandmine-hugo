@@ -6,7 +6,7 @@
 
 ## Context
 
-Following Pagefind search implementation (documented in dev-journal-2025-10-03-pagefind-search.md), the next priority per CLEAN-BUILD-PLAN.md was to set up Supabase as the database backend for Brandmine.
+Following Pagefind search implementation (documented in 2025-10-03-pagefind-search.md), the next priority per CLEAN-BUILD-PLAN.md was to set up Supabase as the database backend for Brandmine.
 
 **Decision**: Use Supabase PostgreSQL with relational translations table (not JSONB) as approved by CEO.
 
@@ -277,7 +277,7 @@ CREATE POLICY "Admin brands write" ON brands
 - `scripts/seed-dimensions.js` - Insert dimension data
 - `scripts/verify-schema.js` - Schema verification tests
 - `scripts/run-migrations.js` - Migration runner (unused - ran via Supabase dashboard)
-- `docs/dev-journal/dev-journal-2025-10-03-supabase-setup.md` (this file)
+- `docs/dev-journal/2025-10-03-supabase-setup.md` (this file)
 
 **Modified**:
 - `package.json` - Added Supabase dependencies and scripts
