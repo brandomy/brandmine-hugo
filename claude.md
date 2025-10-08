@@ -59,6 +59,9 @@ docs/            # Documentation
     contact-forms.md    # Contact form implementation
     sql/               # SQL migrations and queries
     guides/            # Setup and procedures
+  reference-data/  # Reference CSV/JSON files
+    README.md           # Directory usage guide
+    *.csv              # Data imports, exports, analysis
 ```
 
 ### Hugo Commands
