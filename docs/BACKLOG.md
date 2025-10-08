@@ -2,7 +2,7 @@
 
 **Purpose**: Track ideas, features, and improvements for future implementation.
 
-**Usage**: CEO can say "Code, backlog this: [idea/task]" and CTO adds it here with unique ID.
+**Usage**: CEO can say **"Code, backlog this: [idea/task]"** OR **"CTO, backlog this: [idea/task]"** and CTO adds it here with unique ID.
 
 ---
 
