@@ -75,7 +75,7 @@
         {{ $heroPath := printf "images/brands/%s/originals/%s" $brandSlug $heroImage }}
         {{ $hero := resources.Get $heroPath }}
         {{ if $hero }}
-          {{ $resized := $hero.Resize "800x600 q85" }}
+          {{ $resized := $hero.Resize "1200x800 q85" }}
           <img src="{{ $resized.RelPermalink }}" alt="{{ $.Title }}" loading="lazy">
         {{ else }}
           <img src="/images/placeholders/brand-hero.jpg" alt="{{ $.Title }}" loading="lazy">

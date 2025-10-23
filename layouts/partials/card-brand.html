@@ -37,26 +37,28 @@
 {{ end }}
 
 <article class="card card--brand">
-  {{/* Hero Image */}}
-  <div class="card__image">
-    {{ if $image }}
-      {{ $resized := $image.Resize "800x450 q85" }}
-      <img
-        src="{{ $resized.RelPermalink }}"
-        alt="{{ .Title }}"
-        loading="lazy"
-      >
-    {{ end }}
+  {{/* Hero Image - Clickable */}}
+  <a href="{{ .RelPermalink }}" class="card__image-link">
+    <div class="card__image">
+      {{ if $image }}
+        {{ $resized := $image.Resize "800x450 q85" }}
+        <img
+          src="{{ $resized.RelPermalink }}"
+          alt="{{ .Title }}"
+          loading="lazy"
+        >
+      {{ end }}
 
-    {{/* Metric Badge Overlay */}}
-    {{ $metric := .Params.turnover | default .Params.revenue }}
-    {{ with $metric }}
-      <div class="card__metric">
-        <div class="metric__value">{{ . }}</div>
-        <div class="metric__label">{{ if $.Params.turnover }}Turnover{{ else }}Revenue{{ end }}</div>
-      </div>
-    {{ end }}
-  </div>
+      {{/* Metric Badge Overlay */}}
+      {{ $metric := .Params.turnover | default .Params.revenue }}
+      {{ with $metric }}
+        <div class="card__metric">
+          <div class="metric__value">{{ . }}</div>
+          <div class="metric__label">{{ if $.Params.turnover }}Turnover{{ else }}Revenue{{ end }}</div>
+        </div>
+      {{ end }}
+    </div>
+  </a>
 
   {{/* Card Content */}}
   <div class="card__content">

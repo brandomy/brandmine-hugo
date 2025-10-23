@@ -31,44 +31,46 @@
 {{ end }}
 
 <article class="card card--founder">
-  {{/* Portrait Photo with Experience Metric */}}
-  <div class="card__image">
-    {{ if $image }}
-      <img
-        src="{{ $image.RelPermalink }}"
-        alt="{{ .Title }}"
-        loading="lazy"
-      >
-      {{/* Generation Badge */}}
-      {{ if .Params.generation }}
-        {{ $genValue := "" }}
-        {{ if eq .Params.generation "first" }}{{ $genValue = "1st" }}{{ end }}
-        {{ if eq .Params.generation "second" }}{{ $genValue = "2nd" }}{{ end }}
-        {{ if eq .Params.generation "third" }}{{ $genValue = "3rd" }}{{ end }}
-        {{ if eq .Params.generation "fourth" }}{{ $genValue = "4th" }}{{ end }}
-        {{ if $genValue }}
-          <div class="card__metric card__metric--generation">
-            <span class="metric__value">{{ $genValue }}</span>
-            <span class="metric__label">GEN</span>
+  {{/* Portrait Photo with Experience Metric - Clickable */}}
+  <a href="{{ .RelPermalink }}" class="card__image-link">
+    <div class="card__image">
+      {{ if $image }}
+        <img
+          src="{{ $image.RelPermalink }}"
+          alt="{{ .Title }}"
+          loading="lazy"
+        >
+        {{/* Generation Badge */}}
+        {{ if .Params.generation }}
+          {{ $genValue := "" }}
+          {{ if eq .Params.generation "first" }}{{ $genValue = "1st" }}{{ end }}
+          {{ if eq .Params.generation "second" }}{{ $genValue = "2nd" }}{{ end }}
+          {{ if eq .Params.generation "third" }}{{ $genValue = "3rd" }}{{ end }}
+          {{ if eq .Params.generation "fourth" }}{{ $genValue = "4th" }}{{ end }}
+          {{ if $genValue }}
+            <div class="card__metric card__metric--generation">
+              <span class="metric__value">{{ $genValue }}</span>
+              <span class="metric__label">GEN</span>
+            </div>
+          {{ end }}
+        {{ else if .Params.yearsExperience }}
+          <div class="card__metric">
+            <span class="metric__value">{{ .Params.yearsExperience }}+</span>
+            <span class="metric__label">YEARS</span>
+          </div>
+        {{ else if .Params.founded }}
+          <div class="card__metric">
+            <span class="metric__value">{{ .Params.founded }}</span>
+            <span class="metric__label">FOUNDED</span>
           </div>
         {{ end }}
-      {{ else if .Params.yearsExperience }}
-        <div class="card__metric">
-          <span class="metric__value">{{ .Params.yearsExperience }}+</span>
-          <span class="metric__label">YEARS</span>
-        </div>
-      {{ else if .Params.founded }}
-        <div class="card__metric">
-          <span class="metric__value">{{ .Params.founded }}</span>
-          <span class="metric__label">FOUNDED</span>
+      {{ else }}
+        <div class="card__image-placeholder">
+          <span>{{ .Title | truncate 2 "" }}</span>
         </div>
       {{ end }}
-    {{ else }}
-      <div class="card__image-placeholder">
-        <span>{{ .Title | truncate 2 "" }}</span>
-      </div>
-    {{ end }}
-  </div>
+    </div>
+  </a>
 
   {{/* Card Content */}}
   <div class="card__content">
