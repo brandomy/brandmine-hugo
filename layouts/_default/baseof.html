@@ -42,8 +42,9 @@
   {{ $insightsList := resources.Get "css/pages/insights-list.css" }}
   {{ $insightsSingle := resources.Get "css/pages/insights-single.css" }}
   {{ $about := resources.Get "css/pages/about.css" }}
+  {{ $taxonomy := resources.Get "css/pages/taxonomy.css" }}
   {{ $main := resources.Get "css/main.css" }}
-  {{ $style := slice $variables $fonts $utilities $typography $panels $header $footer $breadcrumbs $contactForm $search $cards $statsGrid $dimensionCards $heroActions $stepItems $buildWithUs $brandSingle $brandsList $foundersList $foundersSingle $insightsList $insightsSingle $about $main | resources.Concat "css/bundled.css" }}
+  {{ $style := slice $variables $fonts $utilities $typography $panels $header $footer $breadcrumbs $contactForm $search $cards $statsGrid $dimensionCards $heroActions $stepItems $buildWithUs $brandSingle $brandsList $foundersList $foundersSingle $insightsList $insightsSingle $about $taxonomy $main | resources.Concat "css/bundled.css" }}
   {{ if hugo.IsProduction }}
     {{ $style = $style | minify | fingerprint }}
   {{ end }}

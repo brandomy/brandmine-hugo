@@ -1,0 +1,53 @@
+{{ define "main" }}
+
+{{/* Determine taxonomy type for color scheme */}}
+{{ $taxonomyType := .Data.Plural }}
+
+{{/* Use unified teal gradient for all taxonomy list pages */}}
+{{ $gradientClass := "split-hero--teal" }}
+
+{{/* Get i18n description key */}}
+{{ $descKey := printf "%s_description" $taxonomyType }}
+
+<!-- Split-Panel Hero -->
+<section class="panel panel--hero-split">
+  <div class="split-hero {{ $gradientClass }}">
+    <div class="split-hero__content">
+      <h1 class="split-hero__title">{{ .Title }}</h1>
+      <p class="split-hero__subtitle">{{ i18n $descKey }}</p>
+      <div class="taxonomy-list-count">
+        {{/* Calculate total brand count across all terms */}}
+        {{ $totalBrands := 0 }}
+        {{ range .Data.Terms }}
+          {{ $totalBrands = add $totalBrands .Count }}
+        {{ end }}
+        {{ len .Data.Terms }} {{ .Data.Plural | humanize | lower }} • {{ $totalBrands }} {{ if eq $totalBrands 1 }}{{ i18n "brand" | default "brand" }}{{ else }}{{ i18n "brands" | default "brands" }}{{ end }}
+      </div>
+    </div>
+    <div class="split-hero__image">
+      {{/* Load hero image for this taxonomy type */}}
+      {{ $heroPath := printf "images/heroes/%s.jpg" $taxonomyType }}
+      {{ $hero := resources.Get $heroPath }}
+      {{ if $hero }}
+        {{ $resized := $hero.Resize "1200x800 q85" }}
+        <img src="{{ $resized.RelPermalink }}" alt="{{ .Title }}" loading="eager">
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Terms Grid Panel -->
+<section class="panel panel--light">
+  <div class="panel__content">
+    <div class="taxonomy-terms-grid">
+      {{ range .Data.Terms.ByCount }}
+        <a href="{{ .Page.Permalink }}" class="taxonomy-term-card taxonomy-term-card--{{ $taxonomyType }}">
+          <h3 class="taxonomy-term-card__title">{{ .Page.Title }}</h3>
+          <p class="taxonomy-term-card__count">{{ .Count }} {{ if eq .Count 1 }}{{ i18n "brand" | default "brand" }}{{ else }}{{ i18n "brands" | default "brands" }}{{ end }}</p>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}

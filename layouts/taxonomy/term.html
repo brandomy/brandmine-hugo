@@ -1,31 +1,79 @@
 {{ define "main" }}
-<div class="taxonomy-page">
-  <div class="container">
-    <!-- Taxonomy Header -->
-    <header class="taxonomy-header" style="border-left-color: {{ .Page.Scratch.Get "dimensionColor" }}">
+
+{{/* Determine taxonomy type for color scheme */}}
+{{ $taxonomyType := .Data.Plural }}
+
+{{/* Load taxonomy data from JSON registry */}}
+{{ $taxonomyData := index site.Data.taxonomies $taxonomyType }}
+{{ $currentTerm := .Title | urlize }}
+{{ $termData := "" }}
+{{ range $taxonomyData }}
+  {{ if eq .id $currentTerm }}
+    {{ $termData = . }}
+  {{ end }}
+{{ end }}
+
+{{/* Get current language */}}
+{{ $lang := .Language.Lang }}
+
+{{/* Get localized description */}}
+{{ $description := "" }}
+{{ if $termData }}
+  {{ if $termData.short_description }}
+    {{ $description = index $termData.short_description $lang }}
+  {{ end }}
+{{ end }}
+{{ if not $description }}
+  {{ $description = .Description }}
+{{ end }}
+
+{{/* Use unified teal gradient for all taxonomy term pages */}}
+{{ $gradientClass := "split-hero--teal" }}
+
+{{/* Try to load hero image */}}
+{{ $heroImage := "" }}
+{{ $heroPath := printf "images/dimensions/%s/%s/originals/" $taxonomyType $currentTerm }}
+{{ $heroResources := resources.Match (printf "%s*.jpg" $heroPath) }}
+{{ if $heroResources }}
+  {{ $heroImage = index $heroResources 0 }}
+{{ end }}
+
+<!-- Split-Panel Hero -->
+<section class="panel panel--hero-split">
+  <div class="split-hero {{ $gradientClass }}">
+    <div class="split-hero__content">
       <div class="taxonomy-meta">
-        <span class="taxonomy-type">{{ .Data.Plural | humanize }}</span>
+        <span class="taxonomy-type">{{ .Data.Plural | humanize | title }}</span>
       </div>
-
-      <h1>{{ .Title }}</h1>
-
-      {{ with .Description }}
-        <p class="taxonomy-description">{{ . }}</p>
+      <h1 class="split-hero__title">{{ .Title }}</h1>
+      {{ with $description }}
+        <p class="split-hero__subtitle">{{ . }}</p>
       {{ end }}
-
-      <div class="taxonomy-count">
+      <div class="taxonomy-term-count">
         {{ .Pages | len }} {{ if eq (.Pages | len) 1 }}{{ i18n "brand" | default "brand" }}{{ else }}{{ i18n "brands" | default "brands" }}{{ end }}
       </div>
-    </header>
-
-    <!-- Optional Rich Content -->
-    {{ with .Content }}
-      <div class="taxonomy-content">
-        {{ . }}
-      </div>
+    </div>
+    {{ if $heroImage }}
+    <div class="split-hero__image">
+      {{ $resized := $heroImage.Resize "1200x800 q85" }}
+      <img src="{{ $resized.RelPermalink }}" alt="{{ .Title }}" loading="eager">
+    </div>
     {{ end }}
+  </div>
+</section>
 
-    <!-- Brand List -->
+<!-- Optional Rich Content -->
+{{ with .Content }}
+  <section class="panel panel--light">
+    <div class="panel__content taxonomy-content">
+      {{ . }}
+    </div>
+  </section>
+{{ end }}
+
+<!-- Brand Grid Panel -->
+<section class="panel panel--neutral-soft">
+  <div class="panel__content">
     {{ if .Pages }}
       <div class="brand-grid">
         {{ range .Pages }}
@@ -33,93 +81,9 @@
         {{ end }}
       </div>
     {{ else }}
-      <p class="no-content">{{ i18n "no_brands" | default "No brands found" }}.</p>
+      <p class="no-content">{{ i18n "taxonomy_no_brands" | default "No brands found in this category yet" }}.</p>
     {{ end }}
   </div>
-</div>
+</section>
 
-<style>
-.taxonomy-page {
-  padding: var(--space-12) 0;
-}
-
-.taxonomy-header {
-  margin-bottom: var(--space-12);
-  padding: var(--space-8);
-  background: var(--neutral-50);
-  border-radius: var(--radius-lg);
-  border-left: 6px solid var(--neutral-400);
-}
-
-.taxonomy-meta {
-  font-size: var(--text-sm);
-  font-weight: var(--font-semibold);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  color: var(--neutral-600);
-  margin-bottom: var(--space-2);
-}
-
-.taxonomy-header h1 {
-  font-size: var(--text-5xl);
-  margin-bottom: var(--space-4);
-}
-
-.taxonomy-description {
-  font-size: var(--text-lg);
-  color: var(--neutral-600);
-  max-width: 700px;
-  margin-bottom: var(--space-4);
-}
-
-.taxonomy-count {
-  font-size: var(--text-base);
-  font-weight: var(--font-semibold);
-  color: var(--neutral-700);
-}
-
-.taxonomy-content {
-  margin-bottom: var(--space-12);
-  font-size: var(--text-lg);
-  line-height: var(--leading-relaxed);
-}
-
-.brand-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: var(--space-6);
-}
-
-.no-content {
-  text-align: center;
-  color: var(--neutral-600);
-  font-size: var(--text-lg);
-  padding: var(--space-12) 0;
-}
-
-@media (min-width: 768px) {
-  .brand-grid {
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  }
-}
-</style>
-
-<script>
-// Set dimension color based on taxonomy type
-document.addEventListener('DOMContentLoaded', function() {
-  const taxonomyHeader = document.querySelector('.taxonomy-header');
-  const taxonomyType = '{{ .Data.Plural }}';
-
-  const dimensionColors = {
-    'markets': 'var(--sky-500)',
-    'sectors': 'var(--olive-500)',
-    'attributes': 'var(--secondary-500)',
-    'signals': 'var(--accent-500)'
-  };
-
-  if (taxonomyHeader && dimensionColors[taxonomyType]) {
-    taxonomyHeader.style.borderLeftColor = dimensionColors[taxonomyType];
-  }
-});
-</script>
 {{ end }}

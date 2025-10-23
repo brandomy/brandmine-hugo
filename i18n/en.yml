@@ -46,6 +46,7 @@ premium_membership_partners: "Premium Membership for Partners"
 no_brands: "No brands found."
 no_founders: "No founders found."
 no_insights: "No insights found."
+taxonomy_no_brands: "No brands found in this category yet"
 
 # Founder Profile
 professional: "Professional"

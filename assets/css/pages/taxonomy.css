@@ -1,0 +1,207 @@
+/* Taxonomy Pages CSS
+ * Styles for taxonomy list pages (e.g., /markets/)
+ * and taxonomy term pages (e.g., /markets/russia/)
+ */
+
+/* ================================
+   Taxonomy List Pages
+   ================================ */
+
+.taxonomy-list-count {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: var(--space-md);
+}
+
+/* Taxonomy Terms Grid */
+.taxonomy-terms-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  max-width: var(--max-width-2xl);
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .taxonomy-terms-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .taxonomy-terms-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Taxonomy Term Cards */
+.taxonomy-term-card {
+  display: block;
+  padding: var(--space-lg);
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--neutral-200);
+  border-left-width: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.taxonomy-term-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.taxonomy-term-card__title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--neutral-800);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.taxonomy-term-card__count {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  margin: 0;
+}
+
+/* Dimension-specific card colors */
+.taxonomy-term-card--markets {
+  border-left-color: var(--sky-500);
+}
+
+.taxonomy-term-card--markets:hover {
+  border-left-color: var(--sky-600);
+  background: var(--sky-50);
+}
+
+.taxonomy-term-card--sectors {
+  border-left-color: var(--olive-500);
+}
+
+.taxonomy-term-card--sectors:hover {
+  border-left-color: var(--olive-600);
+  background: var(--olive-50);
+}
+
+.taxonomy-term-card--attributes {
+  border-left-color: var(--secondary-500);
+}
+
+.taxonomy-term-card--attributes:hover {
+  border-left-color: var(--secondary-600);
+  background: var(--secondary-50);
+}
+
+.taxonomy-term-card--signals {
+  border-left-color: var(--accent-500);
+}
+
+.taxonomy-term-card--signals:hover {
+  border-left-color: var(--accent-600);
+  background: var(--accent-50);
+}
+
+/* ================================
+   Taxonomy Term Pages
+   ================================ */
+
+/* Taxonomy Meta (above title in hero) */
+.taxonomy-meta {
+  margin-bottom: var(--space-2);
+}
+
+.taxonomy-type {
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Taxonomy Term Count (below subtitle in hero) */
+.taxonomy-term-count {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: var(--space-md);
+}
+
+/* Taxonomy Content (optional rich content section) */
+.taxonomy-content {
+  max-width: var(--max-width-prose);
+  margin: 0 auto;
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+.taxonomy-content h2 {
+  margin-top: var(--space-2xl);
+  margin-bottom: var(--space-lg);
+}
+
+.taxonomy-content h3 {
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+}
+
+/* Brand Grid on Taxonomy Term Pages */
+.brand-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  max-width: var(--max-width-7xl);
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .brand-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .brand-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .brand-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* No Content Message */
+.no-content {
+  text-align: center;
+  color: var(--neutral-600);
+  font-size: var(--text-lg);
+  padding: var(--space-3xl) var(--space-lg);
+  max-width: var(--max-width-prose);
+  margin: 0 auto;
+}
+
+/* ================================
+   Dimension-Specific Gradients
+   ================================ */
+
+/* Sky Blue (Markets) */
+.split-hero--sky {
+  background: radial-gradient(circle at top right, #0EA5E9, #0284C7);
+}
+
+/* Olive Green (Sectors) */
+.split-hero--olive {
+  background: radial-gradient(circle at top right, #A3B763, #84994E);
+}
+
+/* Orange (Attributes) */
+.split-hero--orange {
+  background: radial-gradient(circle at top right, #F97316, #EA580C);
+}
+
+/* Indigo (Signals) */
+.split-hero--indigo {
+  background: radial-gradient(circle at top right, #6366F1, #4F46E5);
+}
