@@ -20,14 +20,14 @@
 </section>
 
 <!-- Search (OUTSIDE panel stacking context) -->
-<div class="search-wrapper" style="position: relative; z-index: 1000; background: white; padding: 2rem 0;">
+<div class="search-wrapper">
   <div class="container">
     {{ partial "search-bar.html" (dict "context" . "placeholder" "Search founders...") }}
   </div>
 </div>
 
 <!-- Founders Grid Panel -->
-<section class="panel panel--neutral-soft" style="padding-top: var(--space-xl); padding-bottom: var(--space-3xl);">
+<section class="panel panel--neutral-soft founders-grid-panel">
   <div class="panel__content">
     {{ if .Pages }}
       <div id="founder-grid" class="card-grid">

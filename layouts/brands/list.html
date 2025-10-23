@@ -20,14 +20,14 @@
 </section>
 
 <!-- Search (OUTSIDE panel stacking context) -->
-<div class="search-wrapper" style="position: relative; z-index: 1000; background: white; padding: 2rem 0;">
+<div class="search-wrapper">
   <div class="container">
     {{ partial "search-bar.html" (dict "context" . "placeholder" "Search brands...") }}
   </div>
 </div>
 
 <!-- Brand Grid Panel -->
-<section class="panel panel--neutral-soft" style="padding-top: var(--space-xl); padding-bottom: var(--space-3xl);">
+<section class="panel panel--neutral-soft brands-grid-panel">
   <div class="panel__content">
     {{ if .Pages }}
       <div id="brand-grid" class="card-grid">
@@ -43,13 +43,13 @@
 
 <!-- CTA Panel: Brand Signup -->
 <section class="panel panel--cta">
-  <div class="panel__content" style="max-width: 800px; margin: 0 auto; text-align: center;">
-    <h2 style="color: var(--secondary-200); margin-bottom: var(--space-md);">{{ i18n "brands_cta_heading" }}</h2>
-    <p style="color: white; opacity: 0.9; font-size: var(--text-lg); margin-bottom: var(--space-xl);">
+  <div class="panel__content brands-cta__content">
+    <h2 class="brands-cta__heading">{{ i18n "brands_cta_heading" }}</h2>
+    <p class="brands-cta__text">
       {{ i18n "brands_cta_text" }}
     </p>
 
-    <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center;">
+    <div class="brands-cta__buttons">
       <a href="/brand-signup/" class="btn btn--secondary">
         {{ i18n "grow_with_brandmine" }}
       </a>

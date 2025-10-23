@@ -1,0 +1,56 @@
+/* ==========================================================================
+   BRANDS LIST PAGE
+   ==========================================================================
+
+   Brands list page styles including search wrapper and CTA section.
+   Extracted from layouts/brands/list.html inline style attributes.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   SEARCH WRAPPER
+   -------------------------------------------------------------------------- */
+
+.search-wrapper {
+  position: relative;
+  z-index: 1000;
+  background: white;
+  padding: 2rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   BRAND GRID PANEL
+   -------------------------------------------------------------------------- */
+
+.brands-grid-panel {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-3xl);
+}
+
+/* --------------------------------------------------------------------------
+   BRANDS CTA SECTION
+   -------------------------------------------------------------------------- */
+
+.brands-cta__content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.brands-cta__heading {
+  color: var(--secondary-200);
+  margin-bottom: var(--space-md);
+}
+
+.brands-cta__text {
+  color: white;
+  opacity: 0.9;
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.brands-cta__buttons {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}

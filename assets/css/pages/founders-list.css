@@ -1,0 +1,16 @@
+/* ==========================================================================
+   FOUNDERS LIST PAGE
+   ==========================================================================
+
+   Founders list page styles (uses shared search-wrapper from brands-list.css).
+   Extracted from layouts/founders/list.html inline style attributes.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   FOUNDERS GRID PANEL
+   -------------------------------------------------------------------------- */
+
+.founders-grid-panel {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-3xl);
+}
