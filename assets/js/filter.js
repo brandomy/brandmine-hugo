@@ -157,11 +157,70 @@ class BrandFilter {
   }
 }
 
-// Initialize on page load
+// Initialize brand filter on page load
 if (typeof window !== 'undefined') {
   window.brandFilter = new BrandFilter();
 
   document.addEventListener('DOMContentLoaded', () => {
     window.brandFilter.init('#filter-panel', '#brand-grid');
+  });
+}
+
+/**
+ * Insights Category Filter
+ * Client-side filtering for insights by category type
+ */
+class InsightsFilter {
+  constructor() {
+    this.filterButtons = null;
+    this.insightCards = null;
+  }
+
+  init() {
+    this.filterButtons = document.querySelectorAll('.filter-btn');
+    this.insightCards = document.querySelectorAll('.insight-card-wrapper');
+
+    if (!this.filterButtons.length || !this.insightCards.length) {
+      // Silently return if filter elements don't exist on this page
+      return;
+    }
+
+    this.attachEventListeners();
+  }
+
+  attachEventListeners() {
+    this.filterButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        this.handleFilterClick(e.target);
+      });
+    });
+  }
+
+  handleFilterClick(button) {
+    const category = button.getAttribute('data-category');
+
+    // Update active button
+    this.filterButtons.forEach(btn => btn.classList.remove('filter-btn--active'));
+    button.classList.add('filter-btn--active');
+
+    // Filter cards
+    this.insightCards.forEach(card => {
+      const cardCategory = card.getAttribute('data-category');
+
+      if (category === 'all' || cardCategory === category) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+}
+
+// Initialize insights filter on page load
+if (typeof window !== 'undefined') {
+  window.insightsFilter = new InsightsFilter();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    window.insightsFilter.init();
   });
 }

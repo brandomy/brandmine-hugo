@@ -1,0 +1,91 @@
+/* ==========================================================================
+   INSIGHTS LIST PAGE
+   ==========================================================================
+
+   Insights list page styles including filter panel and card grid.
+   Extracted from layouts/insights/list.html inline <style> block.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   FILTER PANEL
+   -------------------------------------------------------------------------- */
+
+.filter-panel {
+  background: var(--neutral-50);
+  border-top: 1px solid var(--neutral-200);
+  border-bottom: 1px solid var(--neutral-200);
+  padding: var(--space-6) 0;
+  margin-bottom: 0;
+}
+
+.filter-panel__buttons {
+  max-width: var(--content-width-max, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: center;
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background: white;
+  border: 2px solid var(--neutral-300);
+  border-radius: 9999px;
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--neutral-700);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px; /* WCAG touch target */
+}
+
+.filter-btn:hover {
+  border-color: var(--primary-400);
+  color: var(--primary-700);
+  background: var(--primary-50);
+}
+
+.filter-btn.filter-btn--active {
+  background: var(--primary-400);
+  border-color: var(--primary-400);
+  color: white;
+}
+
+.filter-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   INSIGHT CARD WRAPPER
+   -------------------------------------------------------------------------- */
+
+.insight-card-wrapper {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.insight-card-wrapper.hidden {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE - MOBILE
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .filter-panel__buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
