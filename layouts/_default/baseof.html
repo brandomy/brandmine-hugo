@@ -21,13 +21,18 @@
   <!-- Styles -->
   {{ $variables := resources.Get "css/base/variables.css" }}
   {{ $fonts := resources.Get "css/base/fonts.css" }}
+  {{ $utilities := resources.Get "css/base/utilities.css" }}
   {{ $typography := resources.Get "css/typography.css" }}
   {{ $panels := resources.Get "css/base/panels.css" }}
   {{ $breadcrumbs := resources.Get "css/components/breadcrumbs.css" }}
   {{ $cards := resources.Get "css/components/cards.css" }}
+  {{ $statsGrid := resources.Get "css/components/stats-grid.css" }}
+  {{ $dimensionCards := resources.Get "css/components/dimension-cards.css" }}
+  {{ $heroActions := resources.Get "css/components/hero-actions.css" }}
+  {{ $stepItems := resources.Get "css/components/step-items.css" }}
   {{ $buildWithUs := resources.Get "css/pages/build-with-us.css" }}
   {{ $main := resources.Get "css/main.css" }}
-  {{ $style := slice $variables $fonts $typography $panels $breadcrumbs $cards $buildWithUs $main | resources.Concat "css/bundled.css" }}
+  {{ $style := slice $variables $fonts $utilities $typography $panels $breadcrumbs $cards $statsGrid $dimensionCards $heroActions $stepItems $buildWithUs $main | resources.Concat "css/bundled.css" }}
   {{ if hugo.IsProduction }}
     {{ $style = $style | minify | fingerprint }}
   {{ end }}

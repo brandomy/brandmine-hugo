@@ -1,0 +1,106 @@
+/* ==========================================================================
+   DIMENSION CARDS COMPONENT
+   ==========================================================================
+
+   Dimension exploration cards with icons and color-coded accents.
+   Used on home page and dimensions pages.
+   ========================================================================== */
+
+.dimension-card {
+  display: block;
+  padding: var(--space-6);
+  background: white;
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.dimension-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Border accents for each dimension type */
+.dimension-card--sectors {
+  border-left: 4px solid var(--olive-500);
+}
+
+.dimension-card--markets {
+  border-left: 4px solid var(--sky-500);
+}
+
+.dimension-card--attributes {
+  border-left: 4px solid var(--secondary-500);
+}
+
+.dimension-card--signals {
+  border-left: 4px solid var(--accent-500);
+}
+
+/* Icon container */
+.dimension-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+.dimension-card__icon--sectors {
+  background-color: var(--olive-100);
+  color: var(--olive-600);
+}
+
+.dimension-card__icon--markets {
+  background-color: var(--sky-100);
+  color: var(--sky-600);
+}
+
+.dimension-card__icon--attributes {
+  background-color: var(--secondary-100);
+  color: var(--secondary-600);
+}
+
+.dimension-card__icon--signals {
+  background-color: var(--accent-100);
+  color: var(--accent-600);
+}
+
+/* Icon SVG sizing */
+.dimension-card__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Heading */
+.dimension-card__heading {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  margin-bottom: var(--space-2);
+  margin-top: 0;
+}
+
+.dimension-card__heading--sectors {
+  color: var(--olive-700);
+}
+
+.dimension-card__heading--markets {
+  color: var(--sky-700);
+}
+
+.dimension-card__heading--attributes {
+  color: var(--secondary-700);
+}
+
+.dimension-card__heading--signals {
+  color: var(--accent-700);
+}
+
+/* Description */
+.dimension-card__description {
+  font-size: var(--text-base);
+  color: var(--neutral-600);
+  margin: 0;
+}

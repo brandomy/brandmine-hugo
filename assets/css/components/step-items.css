@@ -1,0 +1,32 @@
+/* ==========================================================================
+   STEP ITEMS COMPONENT
+   ==========================================================================
+
+   Numbered step indicators for "How It Works" sections.
+   ========================================================================== */
+
+.step-item {
+  /* Inherits grid positioning from .grid-steps utility */
+}
+
+.step-item__number {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-bold);
+  color: var(--secondary-300);
+  margin-bottom: var(--space-4);
+}
+
+.step-item__heading {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: white;
+  margin-bottom: var(--space-3);
+  margin-top: 0;
+}
+
+.step-item__description {
+  font-size: var(--text-base);
+  color: white;
+  opacity: 0.95;
+  margin: 0;
+}

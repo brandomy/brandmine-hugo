@@ -1,0 +1,22 @@
+/* ==========================================================================
+   HERO ACTIONS COMPONENT
+   ==========================================================================
+
+   Button groups in hero sections with responsive flex layout.
+   ========================================================================== */
+
+.hero-actions {
+  margin-top: var(--space-8);
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta-buttons {
+  margin-top: var(--space-12);
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}

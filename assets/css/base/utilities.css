@@ -1,0 +1,160 @@
+/* ==========================================================================
+   BRANDMINE UTILITY CLASSES - 2025 MINIMALIST
+   ==========================================================================
+
+   Reusable utility classes to replace inline styles.
+   Mobile-first, performance-optimized.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   GRID UTILITIES - Responsive Card Grids
+   -------------------------------------------------------------------------- */
+
+.grid-brands {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.grid-founders {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.grid-insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.grid-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-8);
+  margin: var(--space-12) 0;
+  text-align: center;
+}
+
+.grid-dimensions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.grid-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+  text-align: center;
+}
+
+.grid-audience {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+}
+
+/* --------------------------------------------------------------------------
+   TEXT ALIGNMENT UTILITIES
+   -------------------------------------------------------------------------- */
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   MAX-WIDTH UTILITIES - Content Containers
+   -------------------------------------------------------------------------- */
+
+.max-w-prose {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-w-lg {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-w-full {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --------------------------------------------------------------------------
+   SPACING UTILITIES
+   -------------------------------------------------------------------------- */
+
+.mt-0 { margin-top: 0; }
+.mt-2 { margin-top: var(--space-2); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mt-8 { margin-top: var(--space-8); }
+.mt-12 { margin-top: var(--space-12); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.mb-8 { margin-bottom: var(--space-8); }
+.mb-12 { margin-bottom: var(--space-12); }
+
+/* --------------------------------------------------------------------------
+   FLEX UTILITIES
+   -------------------------------------------------------------------------- */
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.flex-gap-4 {
+  gap: var(--space-4);
+}
+
+.flex-gap-6 {
+  gap: var(--space-6);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION INTRO - Repeated Pattern
+   -------------------------------------------------------------------------- */
+
+.section-intro {
+  text-align: center;
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  margin-top: var(--space-4);
+  margin-bottom: 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-intro--orange {
+  color: var(--neutral-700); /* Slightly darker for orange backgrounds */
+}

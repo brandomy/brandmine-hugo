@@ -5,7 +5,7 @@
   <div class="panel__content">
     <h1 class="panel__title">{{ i18n "home_hero_title" }}</h1>
     <p class="panel__subtitle">{{ i18n "home_hero_subtitle" }}</p>
-    <div class="hero-actions" style="margin-top: var(--space-8); display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center;">
+    <div class="hero-actions">
       <a href="{{ "/brands/" | relLangURL }}" class="btn btn--secondary">
         {{ i18n "explore_brands" }}
       </a>
@@ -19,21 +19,21 @@
 <!-- 2. Stats Section (Clarity) - Light Teal -->
 <section class="panel panel--primary-soft">
   <div class="panel__content">
-    <h2 class="panel__heading" style="text-align: center;">{{ i18n "stats_heading" }}</h2>
-    <p class="panel__lead-text" style="text-align: center; max-width: 100%; margin-left: auto; margin-right: auto;">{{ i18n "revealing_description" }}</p>
+    <h2 class="panel__heading text-center">{{ i18n "stats_heading" }}</h2>
+    <p class="panel__lead-text text-center max-w-full">{{ i18n "revealing_description" }}</p>
 
-    <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-8); margin-top: var(--space-8); text-align: center;">
+    <div class="grid-stats">
       <div class="stat-item">
-        <div style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--primary-600); margin-bottom: var(--space-2);">40%+</div>
-        <div style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "stat_population" }}</div>
+        <div class="stat-item__value">40%+</div>
+        <div class="stat-item__label">{{ i18n "stat_population" }}</div>
       </div>
       <div class="stat-item">
-        <div style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--primary-600); margin-bottom: var(--space-2);">25%+</div>
-        <div style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "stat_gdp" }}</div>
+        <div class="stat-item__value">25%+</div>
+        <div class="stat-item__label">{{ i18n "stat_gdp" }}</div>
       </div>
       <div class="stat-item">
-        <div style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--primary-600); margin-bottom: var(--space-2);">1000s</div>
-        <div style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "stat_opportunities" }}</div>
+        <div class="stat-item__value">1000s</div>
+        <div class="stat-item__label">{{ i18n "stat_opportunities" }}</div>
       </div>
     </div>
   </div>
@@ -42,16 +42,16 @@
 <!-- 3. Featured Brands Section (Trust) - White/Light Gray -->
 <section class="panel panel--light">
   <div class="panel__content">
-    <h2 class="panel__heading" style="text-align: center;">{{ i18n "brands" }}</h2>
-    <p class="section-intro" style="text-align: center; font-size: var(--text-lg); color: var(--neutral-600); margin-top: var(--space-4); margin-bottom: 0; max-width: 800px; margin-left: auto; margin-right: auto;">{{ i18n "brands_intro" }}</p>
+    <h2 class="panel__heading text-center">{{ i18n "brands" }}</h2>
+    <p class="section-intro">{{ i18n "brands_intro" }}</p>
 
-    <div class="brands-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
+    <div class="grid-brands">
       {{ range first 6 (where (where site.RegularPages "Section" "brands") ".Params.featured" true).ByWeight }}
         {{ partial "card-brand.html" . }}
       {{ end }}
     </div>
 
-    <div style="text-align: center; margin-top: var(--space-8);">
+    <div class="text-center mt-8">
       <a href="{{ "/brands/" | relLangURL }}" class="btn btn--primary">
         {{ i18n "view_all_brands" }}
       </a>
@@ -62,10 +62,10 @@
 <!-- 4. Founders Section (Human Connection) - Light Gray -->
 <section class="panel panel--neutral-soft">
   <div class="panel__content">
-    <h2 class="panel__heading" style="text-align: center;">{{ i18n "behind_the_brands" }}</h2>
-    <p class="section-intro" style="text-align: center; font-size: var(--text-lg); color: var(--neutral-600); margin-top: var(--space-4); margin-bottom: 0; max-width: 800px; margin-left: auto; margin-right: auto;">{{ i18n "founders_intro" }}</p>
+    <h2 class="panel__heading text-center">{{ i18n "behind_the_brands" }}</h2>
+    <p class="section-intro">{{ i18n "founders_intro" }}</p>
 
-    <div class="founders-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
+    <div class="grid-founders">
       {{ $founders := where site.RegularPages "Section" "founders" }}
       {{ $featuredFounders := where $founders "Params.featured" true }}
       {{ range first 3 $featuredFounders }}
@@ -73,7 +73,7 @@
       {{ end }}
     </div>
 
-    <div style="text-align: center; margin-top: var(--space-8);">
+    <div class="text-center mt-8">
       <a href="{{ "/founders/" | relLangURL }}" class="btn btn--primary">
         {{ i18n "view_all_founders" }}
       </a>
@@ -84,50 +84,50 @@
 <!-- 5. Dimensions Section (Intelligence) - White/Light Gray -->
 <section class="panel panel--light">
   <div class="panel__content">
-    <h2 class="panel__heading" style="text-align: center;">{{ i18n "explore_by_dimension" }}</h2>
-    <p class="panel__lead-text" style="text-align: center; max-width: 100%; margin-left: auto; margin-right: auto;">{{ i18n "dimension_description" }}</p>
+    <h2 class="panel__heading text-center">{{ i18n "explore_by_dimension" }}</h2>
+    <p class="panel__lead-text text-center max-w-full">{{ i18n "dimension_description" }}</p>
 
-    <div class="dimension-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
-      <a href="{{ "/sectors/" | relLangURL }}" class="dimension-card" style="display: block; padding: var(--space-6); background: white; border-radius: var(--radius-lg); border-left: 4px solid var(--olive-500); text-decoration: none; transition: transform var(--transition-base), box-shadow var(--transition-base);">
-        <div style="width: 48px; height: 48px; border-radius: 50%; background-color: var(--olive-100); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="color: var(--olive-600);">
+    <div class="grid-dimensions">
+      <a href="{{ "/sectors/" | relLangURL }}" class="dimension-card dimension-card--sectors">
+        <div class="dimension-card__icon dimension-card__icon--sectors">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M2 20h20M5 20V8h3m4 12V4h3m4 16v-6h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </div>
-        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--olive-700); margin-bottom: var(--space-2);">{{ i18n "sectors" }}</h3>
-        <p style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "sectors_description" }}</p>
+        <h3 class="dimension-card__heading dimension-card__heading--sectors">{{ i18n "sectors" }}</h3>
+        <p class="dimension-card__description">{{ i18n "sectors_description" }}</p>
       </a>
 
-      <a href="{{ "/markets/" | relLangURL }}" class="dimension-card" style="display: block; padding: var(--space-6); background: white; border-radius: var(--radius-lg); border-left: 4px solid var(--sky-500); text-decoration: none; transition: transform var(--transition-base), box-shadow var(--transition-base);">
-        <div style="width: 48px; height: 48px; border-radius: 50%; background-color: var(--sky-100); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="color: var(--sky-600);">
+      <a href="{{ "/markets/" | relLangURL }}" class="dimension-card dimension-card--markets">
+        <div class="dimension-card__icon dimension-card__icon--markets">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"></circle>
             <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" fill="none" stroke="currentColor" stroke-width="2"></path>
           </svg>
         </div>
-        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--sky-700); margin-bottom: var(--space-2);">{{ i18n "markets" }}</h3>
-        <p style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "markets_description" }}</p>
+        <h3 class="dimension-card__heading dimension-card__heading--markets">{{ i18n "markets" }}</h3>
+        <p class="dimension-card__description">{{ i18n "markets_description" }}</p>
       </a>
 
-      <a href="{{ "/attributes/" | relLangURL }}" class="dimension-card" style="display: block; padding: var(--space-6); background: white; border-radius: var(--radius-lg); border-left: 4px solid var(--secondary-500); text-decoration: none; transition: transform var(--transition-base), box-shadow var(--transition-base);">
-        <div style="width: 48px; height: 48px; border-radius: 50%; background-color: var(--secondary-100); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" style="color: var(--secondary-600); stroke: currentColor;" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <a href="{{ "/attributes/" | relLangURL }}" class="dimension-card dimension-card--attributes">
+        <div class="dimension-card__icon dimension-card__icon--attributes">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
             <line x1="7" y1="7" x2="7.01" y2="7"/>
           </svg>
         </div>
-        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--secondary-700); margin-bottom: var(--space-2);">{{ i18n "attributes" }}</h3>
-        <p style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "attributes_description" }}</p>
+        <h3 class="dimension-card__heading dimension-card__heading--attributes">{{ i18n "attributes" }}</h3>
+        <p class="dimension-card__description">{{ i18n "attributes_description" }}</p>
       </a>
 
-      <a href="{{ "/signals/" | relLangURL }}" class="dimension-card" style="display: block; padding: var(--space-6); background: white; border-radius: var(--radius-lg); border-left: 4px solid var(--accent-500); text-decoration: none; transition: transform var(--transition-base), box-shadow var(--transition-base);">
-        <div style="width: 48px; height: 48px; border-radius: 50%; background-color: var(--accent-100); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" style="color: var(--accent-600);">
+      <a href="{{ "/signals/" | relLangURL }}" class="dimension-card dimension-card--signals">
+        <div class="dimension-card__icon dimension-card__icon--signals">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M22 12h-4l-3 9L9 3l-3 9H2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </div>
-        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: var(--accent-700); margin-bottom: var(--space-2);">{{ i18n "signals" }}</h3>
-        <p style="font-size: var(--text-base); color: var(--neutral-600);">{{ i18n "signals_description" }}</p>
+        <h3 class="dimension-card__heading dimension-card__heading--signals">{{ i18n "signals" }}</h3>
+        <p class="dimension-card__description">{{ i18n "signals_description" }}</p>
       </a>
     </div>
   </div>
@@ -136,10 +136,10 @@
 <!-- 6. Insights Section (Warmth/Engagement) - Orange Soft -->
 <section class="panel panel--orange-soft">
   <div class="panel__content">
-    <h2 class="panel__heading" style="text-align: center;">{{ i18n "market_intelligence" }}</h2>
-    <p class="section-intro" style="text-align: center; font-size: var(--text-lg); color: var(--neutral-700); margin-top: var(--space-4); margin-bottom: 0; max-width: 800px; margin-left: auto; margin-right: auto;">{{ i18n "insights_intro" }}</p>
+    <h2 class="panel__heading text-center">{{ i18n "market_intelligence" }}</h2>
+    <p class="section-intro section-intro--orange">{{ i18n "insights_intro" }}</p>
 
-    <div class="insights-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-6); margin-top: var(--space-8);">
+    <div class="grid-insights">
       {{ $insights := where site.RegularPages "Section" "insights" }}
       {{ $featuredInsights := where $insights "Params.featured" true }}
       {{ range first 3 $featuredInsights }}
@@ -147,7 +147,7 @@
       {{ end }}
     </div>
 
-    <div style="text-align: center; margin-top: var(--space-8);">
+    <div class="text-center mt-8">
       <a href="{{ "/insights/" | relLangURL }}" class="btn btn--secondary">
         {{ i18n "view_all_insights" }}
       </a>
@@ -160,27 +160,27 @@
   <div class="panel__content">
     <h2 class="panel__heading">{{ i18n "how_it_works" }}</h2>
 
-    <div class="steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-8); margin: var(--space-12) 0; text-align: center;">
+    <div class="grid-steps">
       <div class="step-item">
-        <div style="font-size: var(--text-5xl); font-weight: var(--font-bold); color: var(--secondary-300); margin-bottom: var(--space-4);">1</div>
-        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: white; margin-bottom: var(--space-3);">{{ i18n "step_illuminate" }}</h3>
-        <p style="font-size: var(--text-base); color: white; opacity: 0.95;">{{ i18n "step_illuminate_description" }}</p>
+        <div class="step-item__number">1</div>
+        <h3 class="step-item__heading">{{ i18n "step_illuminate" }}</h3>
+        <p class="step-item__description">{{ i18n "step_illuminate_description" }}</p>
       </div>
 
       <div class="step-item">
-        <div style="font-size: var(--text-5xl); font-weight: var(--font-bold); color: var(--secondary-300); margin-bottom: var(--space-4);">2</div>
-        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: white; margin-bottom: var(--space-3);">{{ i18n "step_contextualize" }}</h3>
-        <p style="font-size: var(--text-base); color: white; opacity: 0.95;">{{ i18n "step_contextualize_description" }}</p>
+        <div class="step-item__number">2</div>
+        <h3 class="step-item__heading">{{ i18n "step_contextualize" }}</h3>
+        <p class="step-item__description">{{ i18n "step_contextualize_description" }}</p>
       </div>
 
       <div class="step-item">
-        <div style="font-size: var(--text-5xl); font-weight: var(--font-bold); color: var(--secondary-300); margin-bottom: var(--space-4);">3</div>
-        <h3 style="font-size: var(--text-xl); font-weight: var(--font-bold); color: white; margin-bottom: var(--space-3);">{{ i18n "step_connect" }}</h3>
-        <p style="font-size: var(--text-base); color: white; opacity: 0.95;">{{ i18n "step_connect_description" }}</p>
+        <div class="step-item__number">3</div>
+        <h3 class="step-item__heading">{{ i18n "step_connect" }}</h3>
+        <p class="step-item__description">{{ i18n "step_connect_description" }}</p>
       </div>
     </div>
 
-    <div class="cta-buttons" style="margin-top: var(--space-12); display: flex; gap: var(--space-4); flex-wrap: wrap; justify-content: center;">
+    <div class="cta-buttons">
       <a href="{{ "/brands/" | relLangURL }}" class="btn btn--secondary">
         {{ i18n "start_discovering" }}
       </a>
