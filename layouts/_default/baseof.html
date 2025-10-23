@@ -34,10 +34,12 @@
   {{ $brandSingle := resources.Get "css/pages/brand-single.css" }}
   {{ $brandsList := resources.Get "css/pages/brands-list.css" }}
   {{ $foundersList := resources.Get "css/pages/founders-list.css" }}
+  {{ $foundersSingle := resources.Get "css/pages/founders-single.css" }}
   {{ $insightsList := resources.Get "css/pages/insights-list.css" }}
+  {{ $insightsSingle := resources.Get "css/pages/insights-single.css" }}
   {{ $about := resources.Get "css/pages/about.css" }}
   {{ $main := resources.Get "css/main.css" }}
-  {{ $style := slice $variables $fonts $utilities $typography $panels $breadcrumbs $cards $statsGrid $dimensionCards $heroActions $stepItems $buildWithUs $brandSingle $brandsList $foundersList $insightsList $about $main | resources.Concat "css/bundled.css" }}
+  {{ $style := slice $variables $fonts $utilities $typography $panels $breadcrumbs $cards $statsGrid $dimensionCards $heroActions $stepItems $buildWithUs $brandSingle $brandsList $foundersList $foundersSingle $insightsList $insightsSingle $about $main | resources.Concat "css/bundled.css" }}
   {{ if hugo.IsProduction }}
     {{ $style = $style | minify | fingerprint }}
   {{ end }}
