@@ -1,0 +1,328 @@
+/* ==========================================================================
+   BRAND SINGLE PAGE
+   ==========================================================================
+
+   Brand profile page styles including hero, content, sidebar.
+   Extracted from layouts/brands/single.html inline <style> block.
+   ========================================================================== */
+
+.brand-single {
+  padding: var(--space-8) 0;
+}
+
+/* --------------------------------------------------------------------------
+   BRAND HERO SECTION
+   -------------------------------------------------------------------------- */
+
+.brand-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+  align-items: center;
+}
+
+.hero-content {
+  order: 1;
+}
+
+.hero-image {
+  order: 2;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+.hero-content h1 {
+  /* Inherits from global: PT Serif, teal color, standard size */
+  margin-bottom: var(--space-2);
+}
+
+.brand-country {
+  font-size: var(--text-lg);
+  color: var(--neutral-600);
+  margin-bottom: var(--space-3);
+  font-weight: var(--font-medium);
+}
+
+.brand-tagline {
+  font-size: var(--text-lg);
+  color: var(--neutral-700);
+  margin-bottom: var(--space-6);
+  line-height: var(--leading-relaxed);
+}
+
+.brand-logo-small {
+  max-width: 120px;
+  height: auto;
+  margin-bottom: var(--space-6);
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   QUICK FACTS
+   -------------------------------------------------------------------------- */
+
+.quick-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: var(--neutral-100);
+  border-radius: var(--radius-md);
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.fact-label {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+.fact-value {
+  font-size: var(--text-base);
+  color: var(--neutral-800);
+  font-weight: var(--font-semibold);
+}
+
+.fact-social {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.fact-social a {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: var(--primary-100);
+  color: var(--primary-700);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.fact-social a:hover {
+  background: var(--primary-200);
+  color: var(--primary-800);
+  transform: translateY(-1px);
+}
+
+.fact-coming-soon {
+  color: var(--neutral-500);
+  font-style: italic;
+  font-weight: var(--font-normal);
+}
+
+/* --------------------------------------------------------------------------
+   BRAND CONTENT LAYOUT
+   -------------------------------------------------------------------------- */
+
+.brand-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+.content-main {
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  color: var(--neutral-600);
+}
+
+.content-main p {
+  margin-bottom: var(--space-6);
+}
+
+/* --------------------------------------------------------------------------
+   SIDEBAR BOXES
+   -------------------------------------------------------------------------- */
+
+.dimensions-box,
+.founder-box {
+  padding: var(--space-6);
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.dimensions-box h3,
+.founder-box h3 {
+  font-size: var(--text-xl);
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+}
+
+.dimension-group {
+  margin-bottom: var(--space-4);
+}
+
+.dimension-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-2);
+}
+
+.dimension-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dimension-list li {
+  margin-bottom: var(--space-1);
+}
+
+.dimension-list a {
+  font-size: var(--text-sm);
+  color: var(--neutral-700);
+  transition: color 0.2s ease;
+}
+
+.dimension-list a:hover {
+  color: var(--primary-600);
+}
+
+/* --------------------------------------------------------------------------
+   FOUNDER LINK IN SIDEBAR
+   -------------------------------------------------------------------------- */
+
+.founder-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  text-decoration: none;
+  color: inherit;
+}
+
+.founder-photo {
+  width: 60px;
+  height: 90px;
+  aspect-ratio: 2 / 3;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.founder-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.founder-role {
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+}
+
+/* --------------------------------------------------------------------------
+   SOCIAL LINKS BOX
+   -------------------------------------------------------------------------- */
+
+.social-links-box {
+  padding: var(--space-6);
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.social-links-box h4 {
+  font-size: var(--text-base);
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+  color: var(--primary-800);
+  font-weight: var(--font-semibold);
+}
+
+.social-icons {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--neutral-600);
+  background: var(--neutral-50);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  background: var(--primary-600);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   PRESS ROOM CTA BOX
+   -------------------------------------------------------------------------- */
+
+.press-room-box {
+  padding: var(--space-6);
+  background: var(--primary-50);
+  border: 1px solid var(--primary-200);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+
+.press-room-box h4 {
+  font-size: var(--text-base);
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  color: var(--primary-800);
+  font-weight: var(--font-semibold);
+}
+
+.press-room-status {
+  font-size: var(--text-sm);
+  color: var(--neutral-700);
+  margin-bottom: var(--space-4);
+  line-height: var(--leading-relaxed);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE - DESKTOP
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 992px) {
+  .brand-hero {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+  }
+
+  .hero-content {
+    order: 1;
+  }
+
+  .hero-image {
+    order: 2;
+  }
+
+  .brand-content {
+    grid-template-columns: 2fr 1fr;
+  }
+}

@@ -31,8 +31,9 @@
   {{ $heroActions := resources.Get "css/components/hero-actions.css" }}
   {{ $stepItems := resources.Get "css/components/step-items.css" }}
   {{ $buildWithUs := resources.Get "css/pages/build-with-us.css" }}
+  {{ $brandSingle := resources.Get "css/pages/brand-single.css" }}
   {{ $main := resources.Get "css/main.css" }}
-  {{ $style := slice $variables $fonts $utilities $typography $panels $breadcrumbs $cards $statsGrid $dimensionCards $heroActions $stepItems $buildWithUs $main | resources.Concat "css/bundled.css" }}
+  {{ $style := slice $variables $fonts $utilities $typography $panels $breadcrumbs $cards $statsGrid $dimensionCards $heroActions $stepItems $buildWithUs $brandSingle $main | resources.Concat "css/bundled.css" }}
   {{ if hugo.IsProduction }}
     {{ $style = $style | minify | fingerprint }}
   {{ end }}
