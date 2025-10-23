@@ -1,0 +1,97 @@
+/* ==========================================================================
+   CONTACT FORM - Supabase Integration
+   ========================================================================== */
+
+.contact-form {
+  display: grid;
+  gap: var(--space-lg);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  /* Grid item - no additional styles needed */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  color: white;
+  font-weight: 600;
+  text-align: left;
+}
+
+.form-group label .required {
+  color: var(--secondary-400);
+}
+
+.form-group label .optional {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: var(--text-base);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.form-group textarea {
+  font-family: inherit;
+  resize: vertical;
+}
+
+/* Form Input Focus States */
+#contact-form input:focus,
+#contact-form select:focus,
+#contact-form textarea:focus {
+  outline: 2px solid var(--secondary-400);
+  outline-offset: 2px;
+  border-color: var(--secondary-400);
+}
+
+/* Select Dropdown Styling */
+#contact-form select option {
+  background: var(--primary-700);
+  color: white;
+}
+
+/* Placeholder Styling */
+#contact-form input::placeholder,
+#contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Form Messages */
+#form-message {
+  display: none;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-md);
+}
+
+#form-message.success {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: white;
+}
+
+#form-message.error {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: white;
+}
+
+/* Submit Button Positioning */
+.contact-form .btn {
+  justify-self: start;
+  min-width: 200px;
+}

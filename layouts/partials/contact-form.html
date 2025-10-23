@@ -1,44 +1,41 @@
 <!-- Contact Form with Supabase Integration -->
-<form id="contact-form" class="contact-form" style="display: grid; gap: var(--space-lg); width: 100%; max-width: 600px; margin: 0 auto;">
+<form id="contact-form" class="contact-form">
 
   <!-- Name Field -->
   <div class="form-group">
-    <label for="name" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
-      {{ i18n "form_name" }} <span style="color: var(--secondary-400);">*</span>
+    <label for="name">
+      {{ i18n "form_name" }} <span class="required">*</span>
     </label>
     <input
       type="text"
       id="name"
       name="name"
       required
-      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
     >
   </div>
 
   <!-- Email Field -->
   <div class="form-group">
-    <label for="email" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
-      {{ i18n "form_email" }} <span style="color: var(--secondary-400);">*</span>
+    <label for="email">
+      {{ i18n "form_email" }} <span class="required">*</span>
     </label>
     <input
       type="email"
       id="email"
       name="email"
       required
-      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
     >
   </div>
 
   <!-- Contact Type Field -->
   <div class="form-group">
-    <label for="contact_type" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
-      {{ i18n "form_i_am_a" }} <span style="color: var(--secondary-400);">*</span>
+    <label for="contact_type">
+      {{ i18n "form_i_am_a" }} <span class="required">*</span>
     </label>
     <select
       id="contact_type"
       name="contact_type"
       required
-      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
     >
       <option value="">{{ i18n "form_select" }}</option>
       <option value="brand">{{ i18n "form_brand" }}</option>
@@ -50,40 +47,37 @@
 
   <!-- Company Field (Optional) -->
   <div class="form-group">
-    <label for="company" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
-      {{ i18n "form_company" }} <span style="color: rgba(255,255,255,0.6); font-weight: 400;">({{ i18n "form_optional" }})</span>
+    <label for="company">
+      {{ i18n "form_company" }} <span class="optional">({{ i18n "form_optional" }})</span>
     </label>
     <input
       type="text"
       id="company"
       name="company"
-      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
     >
   </div>
 
   <!-- Message Field -->
   <div class="form-group">
-    <label for="message" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
-      {{ i18n "form_message" }} <span style="color: var(--secondary-400);">*</span>
+    <label for="message">
+      {{ i18n "form_message" }} <span class="required">*</span>
     </label>
     <textarea
       id="message"
       name="message"
       rows="5"
       required
-      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white; font-family: inherit; resize: vertical;"
     ></textarea>
   </div>
 
   <!-- Referral Source Field -->
   <div class="form-group">
-    <label for="referral_source" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
+    <label for="referral_source">
       {{ i18n "form_how_heard" }}
     </label>
     <select
       id="referral_source"
       name="referral_source"
-      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
     >
       <option value="">{{ i18n "form_select" }}</option>
       <option value="search">{{ i18n "form_search" }}</option>
@@ -95,13 +89,12 @@
 
   <!-- Country Field -->
   <div class="form-group">
-    <label for="country" style="display: block; margin-bottom: var(--space-sm); color: white; font-weight: 600; text-align: left;">
+    <label for="country">
       {{ i18n "form_country" }}
     </label>
     <select
       id="country"
       name="country"
-      style="width: 100%; padding: 0.75rem 1rem; font-size: var(--text-base); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-sm); background: rgba(255,255,255,0.1); color: white;"
     >
       <option value="">{{ i18n "form_select" }}</option>
       <!-- BRICS+ Countries -->
@@ -128,10 +121,10 @@
   <input type="hidden" name="source" value="{{ if .source }}{{ .source }}{{ else }}about{{ end }}">
 
   <!-- Success/Error Messages -->
-  <div id="form-message" style="display: none; padding: 1rem; border-radius: var(--radius-sm); margin-top: var(--space-md);"></div>
+  <div id="form-message"></div>
 
   <!-- Submit Button -->
-  <button type="submit" class="btn btn--secondary" style="justify-self: start; min-width: 200px;">
+  <button type="submit" class="btn btn--secondary">
     {{ i18n "form_submit" }}
   </button>
 </form>
@@ -202,27 +195,3 @@
     }
   });
 </script>
-
-<style>
-  /* Form Input Focus States */
-  #contact-form input:focus,
-  #contact-form select:focus,
-  #contact-form textarea:focus {
-    outline: 2px solid var(--secondary-400);
-    outline-offset: 2px;
-    border-color: var(--secondary-400);
-  }
-
-  /* Select Dropdown Styling */
-  #contact-form select option {
-    background: var(--primary-700);
-    color: white;
-  }
-
-  /* Placeholder Styling */
-  #contact-form input::placeholder,
-  #contact-form textarea::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-  }
-
-</style>

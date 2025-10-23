@@ -24,7 +24,11 @@
   {{ $utilities := resources.Get "css/base/utilities.css" }}
   {{ $typography := resources.Get "css/typography.css" }}
   {{ $panels := resources.Get "css/base/panels.css" }}
+  {{ $header := resources.Get "css/components/header.css" }}
+  {{ $footer := resources.Get "css/components/footer.css" }}
   {{ $breadcrumbs := resources.Get "css/components/breadcrumbs.css" }}
+  {{ $contactForm := resources.Get "css/components/contact-form.css" }}
+  {{ $search := resources.Get "css/components/search.css" }}
   {{ $cards := resources.Get "css/components/cards.css" }}
   {{ $statsGrid := resources.Get "css/components/stats-grid.css" }}
   {{ $dimensionCards := resources.Get "css/components/dimension-cards.css" }}
@@ -39,7 +43,7 @@
   {{ $insightsSingle := resources.Get "css/pages/insights-single.css" }}
   {{ $about := resources.Get "css/pages/about.css" }}
   {{ $main := resources.Get "css/main.css" }}
-  {{ $style := slice $variables $fonts $utilities $typography $panels $breadcrumbs $cards $statsGrid $dimensionCards $heroActions $stepItems $buildWithUs $brandSingle $brandsList $foundersList $foundersSingle $insightsList $insightsSingle $about $main | resources.Concat "css/bundled.css" }}
+  {{ $style := slice $variables $fonts $utilities $typography $panels $header $footer $breadcrumbs $contactForm $search $cards $statsGrid $dimensionCards $heroActions $stepItems $buildWithUs $brandSingle $brandsList $foundersList $foundersSingle $insightsList $insightsSingle $about $main | resources.Concat "css/bundled.css" }}
   {{ if hugo.IsProduction }}
     {{ $style = $style | minify | fingerprint }}
   {{ end }}

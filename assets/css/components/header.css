@@ -1,0 +1,160 @@
+/* ==========================================================================
+   HEADER - Edge-to-Edge Branding Layout
+   ========================================================================== */
+
+.site-header {
+  /* Full-width edge-to-edge */
+  background-color: var(--primary-400);
+  color: white;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: var(--space-3) 0;
+}
+
+.header-container {
+  position: relative;
+  height: 56px;
+  max-width: 100%;
+}
+
+/* Logo - Flush Left (16px from viewport edge) */
+.header__branding {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.site-logo {
+  text-decoration: none;
+}
+
+.site-title {
+  font-family: var(--font-body);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: white;
+}
+
+/* Navigation - Centered in Viewport */
+.header__nav {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: var(--space-6);
+  z-index: 5;
+}
+
+.header__nav a {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: white;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: color 0.2s ease, font-weight 0.1s ease;
+}
+
+.header__nav a:hover {
+  color: var(--secondary-200);
+  font-weight: var(--font-bold);
+}
+
+/* Language Switcher - Flush Right (16px from viewport edge) */
+.header__lang {
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  z-index: 10;
+}
+
+.header__lang a {
+  display: inline-block;
+  font-size: var(--text-base);
+  line-height: 1;
+  color: white;
+  opacity: 0.7;
+  font-weight: var(--font-normal);
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease, font-weight 0.1s ease;
+}
+
+.header__lang a:hover {
+  color: var(--secondary-200);
+  opacity: 1;
+  font-weight: var(--font-semibold);
+}
+
+.header__lang a.active {
+  opacity: 1;
+  font-weight: var(--font-semibold);
+}
+
+/* Tablet and Desktop */
+@media (min-width: 768px) {
+  .site-header {
+    padding: var(--space-3) 0;
+  }
+
+  .header-container {
+    height: 56px;
+  }
+
+  .site-title {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* Mobile - Stack Vertically, Centered */
+@media (max-width: 767px) {
+  .header-container {
+    height: auto;
+    padding: var(--space-4) 0;
+  }
+
+  .header__branding,
+  .header__lang,
+  .header__nav {
+    position: static;
+    transform: none;
+    left: auto;
+    right: auto;
+    top: auto;
+  }
+
+  .header__branding {
+    width: 100%;
+    text-align: center;
+    margin-bottom: var(--space-3);
+  }
+
+  .header__nav {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+
+  .header__nav a {
+    font-size: var(--text-base);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .header__lang {
+    width: 100%;
+    justify-content: center;
+  }
+}
