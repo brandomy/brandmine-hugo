@@ -1,1 +1,0 @@
-core/generate-all-json.py

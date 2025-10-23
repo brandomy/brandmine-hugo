@@ -1,1 +1,0 @@
-core/process_images.sh
