@@ -224,7 +224,19 @@
       "Bash(git -C /Users/randaleastman/dev/brandmine-hugo commit -m \"feat: complete Priority 1 - extract CSS from founders and insights single pages\n\nExtract massive style blocks from final two main page templates, completing\nPriority 1 CSS extraction for all 8 completed pages.\n\n## Changes\n\n### Created Files\n- assets/css/pages/founders-single.css (455 lines)\n  - Founder profile page comprehensive styling\n  - Hero layout, quick facts, content grid\n  - Sidebar boxes, social icons, brand compact card\n  - Achievement callout, metadata display\n  - Responsive breakpoints (992px, 768px)\n  \n- assets/css/pages/insights-single.css (387 lines)\n  - Insight article page comprehensive styling\n  - Hero with category badge, metadata, summary\n  - Content layout with sidebar grid\n  - Brand mini cards (60px square with fallback)\n  - Founder cards (60×90px photo, horizontal layout)\n  - Membership CTA box\n  - Responsive breakpoints (992px)\n\n### Modified Files\n- layouts/founders/single.html\n  - Before: 593 lines with 366-line style block (lines 226-592)\n  - After: 227 lines with zero inline styles\n  - 62% reduction in template size\n  \n- layouts/insights/single.html\n  - Before: 576 lines with 337-line style block (lines 239-575)\n  - After: 239 lines with zero inline styles\n  - 58% reduction in template size\n  \n- layouts/_default/baseof.html\n  - Add founders-single.css and insights-single.css to asset pipeline\n  - Included in main CSS bundle\n\n## Build Verification\n\n✅ Build successful: 395ms\n✅ All 8 main pages: 0 style blocks\n✅ All 8 main pages: 0 inline style attributes\n✅ CSS bundle size: Stable performance\n\n## Priority 1 COMPLETE - All 8 Main Pages\n\n✅ Home page (56 inline styles → 0)\n✅ Brand single page (292-line style block → 0)\n✅ Brand list page (5 inline styles → 0)\n✅ Founders single page (366-line style block → 0) ← COMPLETED\n✅ Founders list page (2 inline styles → 0)\n✅ Insights single page (337-line style block → 0) ← COMPLETED\n✅ Insights list page (76-line style block + 28-line script → 0)\n✅ About page (20+ inline styles + 16-line style block → 0)\n\n## Summary Statistics\n\n- **Templates cleaned**: 8 major pages (100% of completed pages)\n- **Inline styles eliminated**: 150+ style attributes + 1,387 lines of style blocks\n- **CSS files created**: 15 component/page CSS files\n- **Template size reduction**: Average 45% smaller\n- **Build time**: Stable at ~400ms\n- **Visual quality**: Zero degradation (all pages verified)\n- **CSP compliance**: Ready for Content Security Policy implementation\n\nAll main user-facing pages now have clean, maintainable, external CSS with\nzero inline styles or embedded style blocks. World-class 2025 CSS architecture\nachieved for Priority 1 scope.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\")",
       "Bash(git checkout:*)",
       "Bash(identify:*)",
-      "Bash(do identify \"$img\")"
+      "Bash(do identify \"$img\")",
+      "Bash(git -C /Users/randaleastman/dev/brandmine-hugo restore:*)",
+      "Bash(git -C /Users/randaleastman/dev/brandmine-hugo log --oneline -10)",
+      "Bash(git -C /Users/randaleastman/dev/brandmine-hugo config credential.helper)",
+      "Read(//Users/randaleastman/**)",
+      "Bash(security find-internet-password:*)",
+      "Bash(security delete-internet-password:*)",
+      "Bash(ssh:*)",
+      "Bash(ssh-keygen:*)",
+      "Bash(ssh-add:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git fetch:*)",
+      "Bash(git mv:*)"
     ],
     "deny": [],
     "ask": []
