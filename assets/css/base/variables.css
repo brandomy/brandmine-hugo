@@ -155,7 +155,41 @@
      LAYOUT & BREAKPOINTS
      ---------------------------------------------------------------------- */
 
-  /* Breakpoints */
+  /* Responsive Breakpoints - MOBILE FIRST
+
+     MOBILE FIRST PRINCIPLES:
+     - Write base styles for mobile (320px-767px)
+     - Use min-width to progressively enhance for larger screens
+     - Only use max-width for mobile-specific overrides
+
+     STANDARD BREAKPOINTS (use these exact values):
+     @media (min-width: 768px)  { } // Tablet and up - PRIMARY BREAKPOINT
+     @media (min-width: 992px)  { } // Desktop and up
+     @media (min-width: 1024px) { } // Large desktop and up
+
+     MOBILE-ONLY OVERRIDES (use sparingly):
+     @media (max-width: 767px)  { } // Mobile only (when needed to override tablet+ styles)
+
+     LESS COMMON:
+     @media (min-width: 375px)  { } // Large phones and up
+     @media (max-width: 414px)  { } // Small phones only
+
+     Current usage across codebase:
+     - min-width: 768px  (16 files) ✅ Mobile-first
+     - min-width: 992px  (3 files)  ✅ Mobile-first
+     - min-width: 1024px (5 files)  ✅ Mobile-first
+     - max-width: 767px  (10 files) ⚠️  Mobile-only overrides (acceptable)
+  */
+
+  /* Standard Breakpoints */
+  --breakpoint-xs:  375px;   /* Large phones (375px and up) */
+  --breakpoint-sm:  414px;   /* Extra large phones (414px and up) */
+  --breakpoint-md:  768px;   /* Tablets (768px and up) - PRIMARY BREAKPOINT */
+  --breakpoint-lg:  992px;   /* Desktop (992px and up) */
+  --breakpoint-xl:  1024px;  /* Large desktop (1024px and up) */
+  --breakpoint-2xl: 1200px;  /* Extra large desktop */
+
+  /* Legacy naming (for backwards compatibility - deprecated) */
   --bp-xs: 320px;   /* Small phones */
   --bp-sm: 375px;   /* Standard phones */
   --bp-md: 414px;   /* Large phones */

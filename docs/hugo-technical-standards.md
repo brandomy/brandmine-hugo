@@ -1176,12 +1176,49 @@ Copy queries directly from `queries.sql` into Supabase SQL Editor.
 - No JavaScript required for basic cards
 - Progressive enhancement only
 
-### Mobile-First
-**Primary viewport**: 320px-414px
-- No sidebars
-- Linear content flow
-- 44px minimum touch targets
-- Readable typography at mobile sizes
+### Mobile-First Responsive Design
+
+**Primary viewport**: 320px-767px (mobile)
+
+**Mobile-First Principles**:
+- Write base styles for mobile (320px-767px)
+- Use `min-width` to progressively enhance for larger screens
+- Only use `max-width` for mobile-specific overrides
+
+**Standard Breakpoints** (see `assets/css/base/variables.css`):
+```css
+/* Base styles here (mobile: 320px-767px) */
+
+@media (min-width: 768px) {
+  /* Tablet and up */
+}
+
+@media (min-width: 992px) {
+  /* Desktop and up */
+}
+
+@media (min-width: 1024px) {
+  /* Large desktop and up */
+}
+
+/* Mobile-only overrides (use sparingly) */
+@media (max-width: 767px) {
+  /* Override tablet+ styles for mobile */
+}
+```
+
+**Current Usage Across Codebase**:
+- `min-width: 768px` - 16 files ✅ Mobile-first
+- `min-width: 992px` - 3 files ✅ Mobile-first
+- `min-width: 1024px` - 5 files ✅ Mobile-first
+- `max-width: 767px` - 10 files ⚠️ Mobile-only overrides (acceptable)
+
+**Mobile Requirements**:
+- No sidebars (linear content flow)
+- 44px minimum touch targets (WCAG AA)
+- Readable typography (16px minimum body text)
+- Stacked layouts (no complex grids)
+- Full-width images (responsive srcset)
 
 ## Migration Standards
 
@@ -1201,6 +1238,6 @@ Copy queries directly from `queries.sql` into Supabase SQL Editor.
 
 ---
 
-**Last Updated**: 2025-10-05
-**Hugo Version**: 0.139.3
-**Status**: Breadcrumbs, hero panel gradients, insight sidebar components, and mini card patterns documented
+**Last Updated**: 2025-10-23
+**Hugo Version**: 0.150.0
+**Status**: Priority 2 complete (all partials use external CSS), Priority 3 complete (responsive breakpoint strategy documented)
