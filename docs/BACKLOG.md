@@ -8,6 +8,46 @@
 
 ## High Priority
 
+### #008: Fix Brand Hero Image Size on Desktop
+**Type**: Bug
+**Description**: Brand single page hero images display too small on desktop (400x266px instead of ~600px wide)
+**Root Cause**: Unclear - CSS has `width: 100%` but image not expanding to fill container. May be Retina display issue or container constraint.
+**Scope**:
+- Investigate why `.hero-image img { width: 100% }` not working
+- Check for parent container max-width constraints
+- Account for 2x Retina displays (generate 2x size images)
+- Test on both standard and Retina displays
+- Ensure proper aspect ratio maintained (3:2)
+
+**Acceptance Criteria**:
+- Hero image fills ~50% of 1200px container (~600px wide on desktop)
+- Displays at proper aspect ratio (no distortion)
+- Works on both Retina and non-Retina displays
+- Mobile display unaffected
+
+**Status**: Backlogged
+**Added**: 2025-10-23
+
+### #009: Fix Brand Logo Left-Alignment
+**Type**: Bug
+**Description**: Brand logo on single page appears centered instead of left-aligned with brand name
+**Symptoms**: Inspector shows margin: 0px 216px 16px (centered margins)
+**Scope**:
+- Add `text-align: left` to `.hero-content` parent
+- Remove any centering margins from `.brand-logo-small`
+- Ensure logo aligns with H1 brand name above it
+- Test across all brand pages
+
+**Acceptance Criteria**:
+- Logo left-aligns with brand name (no centering)
+- Consistent alignment across all brand profile pages
+- Mobile alignment unaffected
+
+**Status**: Backlogged
+**Added**: 2025-10-23
+
+## High Priority
+
 ### #001: Implement Separator Shortcode
 **Type**: Enhancement  
 **Description**: Create Hugo shortcode for decorative content separators (diamond, etc.)  
