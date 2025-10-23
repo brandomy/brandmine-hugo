@@ -1,0 +1,232 @@
+/* ==========================================================================
+   ABOUT PAGE
+   ==========================================================================
+
+   About page styles including panel content, team members, and audience sections.
+   Extracted from layouts/_default/about.html inline style attributes.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   PANEL CONTENT
+   -------------------------------------------------------------------------- */
+
+.about-panel__content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-panel__heading {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  color: var(--primary-800);
+}
+
+.about-panel__heading--xl {
+  margin-bottom: var(--space-xl);
+}
+
+.about-panel__heading--2xl {
+  margin-bottom: var(--space-2xl);
+}
+
+.about-panel__text {
+  font-size: var(--text-lg);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--space-md);
+}
+
+.about-panel__text--last {
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   AUDIENCE COLUMNS (Who We Serve)
+   -------------------------------------------------------------------------- */
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-xl);
+}
+
+.audience-column {
+  text-align: center;
+}
+
+.audience-icon {
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
+.audience-column h3 {
+  color: var(--primary-700);
+  margin-bottom: var(--space-md);
+}
+
+.audience-column p {
+  color: var(--neutral-700);
+}
+
+/* --------------------------------------------------------------------------
+   APPROACH LIST (Our Approach)
+   -------------------------------------------------------------------------- */
+
+.approach-container {
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--neutral-700);
+}
+
+.approach-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-md);
+}
+
+.approach-list li {
+  padding-left: 2rem;
+  position: relative;
+}
+
+.approach-list li span {
+  position: absolute;
+  left: 0;
+  color: var(--primary-600);
+  font-weight: 700;
+}
+
+.approach-footer {
+  text-align: center;
+  margin-top: var(--space-lg);
+  color: var(--neutral-700);
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   TEAM MEMBERS
+   -------------------------------------------------------------------------- */
+
+.team-member {
+  display: flex;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+  align-items: flex-start;
+}
+
+.team-member__photo {
+  flex-shrink: 0;
+}
+
+.team-member__photo img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.team-member__bio {
+  flex: 1;
+}
+
+.team-member__name-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.team-member__name-row h3 {
+  color: var(--primary-700);
+  margin: 0;
+}
+
+.team-member__linkedin {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.team-member__linkedin:hover {
+  opacity: 1 !important;
+}
+
+.team-member__title {
+  color: var(--neutral-500);
+  font-style: italic;
+  margin-bottom: var(--space-md);
+}
+
+.team-member__bio-text {
+  color: var(--neutral-700);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   TEAM GROWING CTA
+   -------------------------------------------------------------------------- */
+
+.team-growing {
+  text-align: center;
+  padding: var(--space-xl);
+  background: white;
+  border-radius: var(--radius-md);
+  margin-top: var(--space-2xl);
+}
+
+.team-growing h3 {
+  color: var(--primary-700);
+  margin-bottom: var(--space-md);
+}
+
+.team-growing p {
+  color: var(--neutral-700);
+  margin-bottom: var(--space-lg);
+}
+
+/* --------------------------------------------------------------------------
+   CONTACT SECTION
+   -------------------------------------------------------------------------- */
+
+.about-contact__content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-contact__heading {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  color: white;
+}
+
+.about-contact__text {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  color: white;
+  opacity: 0.9;
+  font-size: var(--text-lg);
+}
+
+.about-contact__form {
+  text-align: left;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE - MOBILE
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .team-member {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center;
+  }
+
+  .team-member__photo {
+    margin-bottom: var(--space-md);
+  }
+}
