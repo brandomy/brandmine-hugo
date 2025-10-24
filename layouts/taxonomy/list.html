@@ -36,17 +36,47 @@
   </div>
 </section>
 
+<!-- Search and Sort Controls -->
+<section class="taxonomy-controls">
+  <div class="container">
+    <div class="taxonomy-controls__wrapper">
+      <div class="taxonomy-search">
+        <input
+          type="text"
+          id="taxonomy-search-input"
+          class="taxonomy-search__input"
+          placeholder="Search {{ .Data.Plural | humanize | lower }}..."
+          aria-label="Search {{ .Data.Plural | humanize | lower }}"
+        >
+        <svg class="taxonomy-search__icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+      </div>
+      <div class="taxonomy-sort">
+        <label for="taxonomy-sort-select" class="taxonomy-sort__label">Sort by:</label>
+        <select id="taxonomy-sort-select" class="taxonomy-sort__select">
+          <option value="count">Most brands</option>
+          <option value="alpha">Alphabetical</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Terms Grid Panel -->
 <section class="panel panel--light">
   <div class="panel__content">
-    <div class="taxonomy-terms-grid">
+    <div id="taxonomy-terms-grid" class="taxonomy-terms-grid">
       {{ range .Data.Terms.ByCount }}
-        <a href="{{ .Page.Permalink }}" class="taxonomy-term-card taxonomy-term-card--{{ $taxonomyType }}">
+        <a href="{{ .Page.Permalink }}" class="taxonomy-term-card taxonomy-term-card--{{ $taxonomyType }}" data-term-name="{{ .Page.Title | lower }}" data-term-count="{{ .Count }}">
           <h3 class="taxonomy-term-card__title">{{ .Page.Title }}</h3>
           <p class="taxonomy-term-card__count">{{ .Count }} {{ if eq .Count 1 }}{{ i18n "brand" | default "brand" }}{{ else }}{{ i18n "brands" | default "brands" }}{{ end }}</p>
         </a>
       {{ end }}
     </div>
+    <p id="taxonomy-no-results" class="taxonomy-no-results" style="display: none;">
+      No {{ .Data.Plural | humanize | lower }} found matching your search.
+    </p>
   </div>
 </section>
 

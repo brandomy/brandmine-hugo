@@ -224,3 +224,100 @@ if (typeof window !== 'undefined') {
     window.insightsFilter.init();
   });
 }
+
+/**
+ * Taxonomy Filter
+ * Search and sort for taxonomy list pages (markets, sectors, attributes, signals)
+ */
+class TaxonomyFilter {
+  constructor() {
+    this.searchInput = null;
+    this.sortSelect = null;
+    this.termsGrid = null;
+    this.termCards = [];
+    this.noResultsMessage = null;
+  }
+
+  init() {
+    this.searchInput = document.getElementById('taxonomy-search-input');
+    this.sortSelect = document.getElementById('taxonomy-sort-select');
+    this.termsGrid = document.getElementById('taxonomy-terms-grid');
+    this.noResultsMessage = document.getElementById('taxonomy-no-results');
+
+    if (!this.searchInput || !this.sortSelect || !this.termsGrid) {
+      // Silently return if elements don't exist on this page
+      return;
+    }
+
+    this.collectTerms();
+    this.attachEventListeners();
+  }
+
+  collectTerms() {
+    const cards = this.termsGrid.querySelectorAll('.taxonomy-term-card');
+    this.termCards = Array.from(cards).map(card => ({
+      element: card,
+      name: card.dataset.termName || '',
+      count: parseInt(card.dataset.termCount || '0', 10),
+      title: card.querySelector('.taxonomy-term-card__title')?.textContent || ''
+    }));
+  }
+
+  attachEventListeners() {
+    // Search input - debounced for performance
+    let searchTimeout;
+    this.searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        this.applyFilters();
+      }, 150);
+    });
+
+    // Sort select
+    this.sortSelect.addEventListener('change', () => {
+      this.sortTerms();
+    });
+  }
+
+  applyFilters() {
+    const searchQuery = this.searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    this.termCards.forEach(term => {
+      const matches = !searchQuery || term.name.includes(searchQuery);
+      term.element.style.display = matches ? '' : 'none';
+      if (matches) visibleCount++;
+    });
+
+    // Show/hide no results message
+    if (this.noResultsMessage) {
+      this.noResultsMessage.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+    this.termsGrid.style.display = visibleCount === 0 ? 'none' : '';
+  }
+
+  sortTerms() {
+    const sortBy = this.sortSelect.value;
+
+    // Sort the termCards array
+    if (sortBy === 'alpha') {
+      this.termCards.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortBy === 'count') {
+      this.termCards.sort((a, b) => b.count - a.count); // Descending
+    }
+
+    // Re-append elements in sorted order
+    this.termCards.forEach(term => {
+      this.termsGrid.appendChild(term.element);
+    });
+  }
+}
+
+// Initialize taxonomy filter on page load
+if (typeof window !== 'undefined') {
+  window.taxonomyFilter = new TaxonomyFilter();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    window.taxonomyFilter.init();
+  });
+}
