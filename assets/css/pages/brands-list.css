@@ -17,6 +17,14 @@
   padding: 2rem 0;
 }
 
+.search-result-counter {
+  text-align: center;
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--neutral-600);
+  font-weight: var(--font-medium);
+}
+
 /* --------------------------------------------------------------------------
    BRAND GRID PANEL
    -------------------------------------------------------------------------- */

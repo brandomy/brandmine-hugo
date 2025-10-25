@@ -23,6 +23,7 @@
 <div class="search-wrapper">
   <div class="container">
     {{ partial "search-bar.html" (dict "context" . "placeholder" "Search brands...") }}
+    <div class="search-result-counter" id="search-result-counter">{{ len .Pages }} {{ if eq (len .Pages) 1 }}brand{{ else }}brands{{ end }}</div>
   </div>
 </div>
 

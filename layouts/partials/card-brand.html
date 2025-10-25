@@ -36,7 +36,7 @@
   {{ end }}
 {{ end }}
 
-<article class="card card--brand">
+<article class="card card--brand" data-brand-id="{{ .RelPermalink }}" data-searchable="{{ .Title | lower }} {{ with .Params.description }}{{ . | lower }}{{ end }} {{ with .Params.headquarters }}{{ .city | lower }}{{ end }}">
   {{/* Hero Image - Clickable */}}
   <a href="{{ .RelPermalink }}" class="card__image-link">
     <div class="card__image">

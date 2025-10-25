@@ -9,15 +9,25 @@ class BrandSearch {
     this.searchInput = null;
     this.resultsContainer = null;
     this.isLoaded = false;
+    this.cardGrid = null;
+    this.allCards = [];
+    this.resultCounter = null;
   }
 
-  async init(inputSelector, resultsSelector) {
+  async init(inputSelector, resultsSelector, cardGridSelector = null, counterSelector = null) {
     this.searchInput = document.querySelector(inputSelector);
     this.resultsContainer = document.querySelector(resultsSelector);
+    this.cardGrid = cardGridSelector ? document.querySelector(cardGridSelector) : null;
+    this.resultCounter = counterSelector ? document.querySelector(counterSelector) : null;
 
     if (!this.searchInput || !this.resultsContainer) {
       // Silently return if search elements don't exist on this page
       return;
+    }
+
+    // Collect cards for on-page filtering if grid exists
+    if (this.cardGrid) {
+      this.collectCards();
     }
 
     // Lazy load index on first focus
@@ -57,14 +67,71 @@ class BrandSearch {
     }
   }
 
+  collectCards() {
+    // Collect all brand or founder cards from the page
+    const brandCards = this.cardGrid.querySelectorAll('[data-brand-id]');
+    const founderCards = this.cardGrid.querySelectorAll('[data-founder-id]');
+
+    const cards = brandCards.length > 0 ? brandCards : founderCards;
+
+    this.allCards = Array.from(cards).map(card => ({
+      element: card,
+      searchable: (card.dataset.searchable || '').toLowerCase()
+    }));
+
+    console.log(`On-page filter initialized with ${this.allCards.length} cards`);
+  }
+
   handleSearch(query) {
     if (!query || query.length < 2) {
       this.hideResults();
+      this.showAllCards();
       return;
     }
 
     const results = this.search(query);
     this.displayResults(results, query);
+    this.filterVisibleCards(query);
+  }
+
+  filterVisibleCards(query) {
+    if (!this.cardGrid || this.allCards.length === 0) return;
+
+    const lowerQuery = query.toLowerCase();
+    let visibleCount = 0;
+
+    this.allCards.forEach(card => {
+      const matches = card.searchable.includes(lowerQuery);
+      card.element.style.display = matches ? '' : 'none';
+      if (matches) visibleCount++;
+    });
+
+    this.updateResultCounter(visibleCount);
+  }
+
+  showAllCards() {
+    if (!this.cardGrid || this.allCards.length === 0) return;
+
+    this.allCards.forEach(card => {
+      card.element.style.display = '';
+    });
+
+    this.updateResultCounter(this.allCards.length);
+  }
+
+  updateResultCounter(count) {
+    if (!this.resultCounter) return;
+
+    const total = this.allCards.length;
+    const isBrandPage = this.allCards[0]?.element.dataset.brandId !== undefined;
+    const itemType = isBrandPage ? 'brand' : 'founder';
+    const itemTypePlural = isBrandPage ? 'brands' : 'founders';
+
+    if (count === total) {
+      this.resultCounter.textContent = `${total} ${count === 1 ? itemType : itemTypePlural}`;
+    } else {
+      this.resultCounter.textContent = `${count} of ${total} ${itemTypePlural}`;
+    }
   }
 
   search(query) {
@@ -172,7 +239,7 @@ class BrandSearch {
       } else if (result.type === 'founder') {
         // Add company tag
         if (result.company) {
-          tags.push(`<span class="result-tag result-tag--market">${this.escapeHtml(result.company)}</span>`);
+          tags.push(`<span class="result-tag result-tag--company">${this.escapeHtml(result.company)}</span>`);
         }
       }
 
@@ -229,6 +296,12 @@ if (typeof window !== 'undefined') {
   window.brandSearch = new BrandSearch();
 
   document.addEventListener('DOMContentLoaded', () => {
-    window.brandSearch.init('#search-input', '#search-results');
+    // Initialize with optional on-page filtering
+    // Detects if we're on brands or founders list page
+    const cardGrid = document.querySelector('#brand-grid') || document.querySelector('#founder-grid');
+    const counterSelector = cardGrid ? '#search-result-counter' : null;
+    const gridSelector = cardGrid ? (cardGrid.id === 'brand-grid' ? '#brand-grid' : '#founder-grid') : null;
+
+    window.brandSearch.init('#search-input', '#search-results', gridSelector, counterSelector);
   });
 }

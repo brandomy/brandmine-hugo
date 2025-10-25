@@ -126,6 +126,11 @@
   color: var(--olive-800);
 }
 
+.result-tag--company {
+  background: var(--primary-100);
+  color: var(--primary-800);
+}
+
 .search-no-results {
   padding: var(--space-6);
   text-align: center;

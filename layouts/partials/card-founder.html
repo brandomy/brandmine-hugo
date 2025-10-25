@@ -30,7 +30,7 @@
   {{ $image = resources.Get "images/placeholders/originals/founder-headshot.jpg" }}
 {{ end }}
 
-<article class="card card--founder">
+<article class="card card--founder" data-founder-id="{{ .RelPermalink }}" data-searchable="{{ .Params.name | lower }} {{ with .Params.role }}{{ . | lower }}{{ end }} {{ with .Params.bio }}{{ . | lower }}{{ end }} {{ with .Params.city }}{{ . | lower }}{{ end }}">
   {{/* Portrait Photo with Experience Metric - Clickable */}}
   <a href="{{ .RelPermalink }}" class="card__image-link">
     <div class="card__image">
